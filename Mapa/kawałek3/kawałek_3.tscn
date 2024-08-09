@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://due6kkr85glhn"]
+
+[ext_resource type="Script" path="res://Mapa/kawałek3/kawałek_3.gd" id="1_ap4my"]
+[ext_resource type="Texture2D" uid="uid://b0vutpgpls1qh" path="res://Mapa/kawałek3/pole3_0.png" id="1_wb6yl"]
+[ext_resource type="Texture2D" uid="uid://8mpeea7ytnnb" path="res://Mapa/kawałek3/pole3_1.png" id="2_lltg3"]
+[ext_resource type="Texture2D" uid="uid://da7ru33dnumx2" path="res://Mapa/kawałek3/pole3_2.png" id="3_15nht"]
+[ext_resource type="Texture2D" uid="uid://cvtsghqgmock8" path="res://Mapa/kawałek3/pole3_3.png" id="4_t20da"]
+[ext_resource type="Texture2D" uid="uid://dk3l44j0a1xbk" path="res://Mapa/kawałek3/pole3_4.png" id="5_6sscx"]
+[ext_resource type="Texture2D" uid="uid://brssmhtetdg02" path="res://Mapa/kawałek3/pole3_5.png" id="6_1fvhj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wid6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wb6yl")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lltg3")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_15nht")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t20da")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6sscx")
+}],
+"loop": false,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1fvhj")
+}],
+"loop": false,
+"name": &"5",
+"speed": 5.0
+}]
+
+[node name="Kawałek3" type="Area2D"]
+script = ExtResource("1_ap4my")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_wid6g")
+animation = &"5"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-97, 72, -94, 56, -68, 53, -43, 39, -11, -23, -4, -65, -6, -87, 71, -92, 87, -114, 87, -135, 99, -119, 99, -95, 87, -61, 82, -38, 88, -23, 85, 4, 85, 27, 89, 50, 83, 68, 71, 93, 12, 136, -19, 130, -70, 121, -88, 94)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

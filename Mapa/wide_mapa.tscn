@@ -1,0 +1,81 @@
+[gd_scene load_steps=18 format=3 uid="uid://gibjfwvaggvf"]
+
+[ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
+[ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_bqjdw"]
+[ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_bcyqi"]
+[ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="4_wnbpo"]
+[ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="5_udpry"]
+[ext_resource type="PackedScene" uid="uid://cqt4n3lxo4au6" path="res://Mapa/kawałek5/kawałek_5.tscn" id="6_5c7sx"]
+[ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="7_qekhn"]
+[ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="8_ysg1w"]
+[ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="9_qbyuq"]
+[ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="10_xxso4"]
+[ext_resource type="PackedScene" uid="uid://cwkorr4fc4wuf" path="res://Mapa/kawałek10/kawałek_10.tscn" id="11_plkeb"]
+[ext_resource type="PackedScene" uid="uid://qk7xlltaywn" path="res://Mapa/kawałek11/kawałek_11.tscn" id="12_lx7ix"]
+[ext_resource type="PackedScene" uid="uid://cto0or21dya2h" path="res://Mapa/kawałek12/kawałek_12.tscn" id="13_j21to"]
+[ext_resource type="PackedScene" uid="uid://do6xyoip7a6hu" path="res://Mapa/kawałek13/kawałek_13.tscn" id="14_lxnwh"]
+[ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="15_pklcd"]
+[ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="16_27fi4"]
+[ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="17_npd45"]
+
+[node name="WideMapa" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_cr8sa")
+
+[node name="Kawałek1" parent="." instance=ExtResource("2_bqjdw")]
+position = Vector2(468, 56)
+
+[node name="Kawałek2" parent="." instance=ExtResource("3_bcyqi")]
+position = Vector2(650, 161)
+
+[node name="Kawałek3" parent="." instance=ExtResource("4_wnbpo")]
+position = Vector2(629, 371)
+
+[node name="Kawałek4" parent="." instance=ExtResource("5_udpry")]
+position = Vector2(532, 500)
+
+[node name="Kawałek5" parent="." instance=ExtResource("6_5c7sx")]
+position = Vector2(558, 292)
+
+[node name="Kawałek6" parent="." instance=ExtResource("7_qekhn")]
+position = Vector2(470, 126)
+
+[node name="Kawałek7" parent="." instance=ExtResource("8_ysg1w")]
+position = Vector2(449, 220)
+
+[node name="Kawałek8" parent="." instance=ExtResource("9_qbyuq")]
+position = Vector2(450, 347)
+
+[node name="Kawałek9" parent="." instance=ExtResource("10_xxso4")]
+position = Vector2(357, 426)
+
+[node name="Kawałek10" parent="." instance=ExtResource("11_plkeb")]
+position = Vector2(346, 344)
+
+[node name="Kawałek11" parent="." instance=ExtResource("12_lx7ix")]
+position = Vector2(276, 489)
+
+[node name="Kawałek12" parent="." instance=ExtResource("13_j21to")]
+position = Vector2(343, 267)
+
+[node name="Kawałek13" parent="." instance=ExtResource("14_lxnwh")]
+position = Vector2(283, 165)
+
+[node name="Kawałek14" parent="." instance=ExtResource("15_pklcd")]
+position = Vector2(203, 341)
+
+[node name="Kawałek15" parent="." instance=ExtResource("16_27fi4")]
+position = Vector2(105, 340)
+
+[node name="Kawałek16" parent="." instance=ExtResource("17_npd45")]
+position = Vector2(149, 184)
