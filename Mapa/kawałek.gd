@@ -19,6 +19,8 @@ func _input(event):
 				var piece = get_parent().get_child(piece_index)
 				piece.update(1) #zależne kawałki updatują się o 1
 				
+	SignalBus.emit_signal("piece_clicked")
+				
 func update(damage):
 	if stage < 0:
 		sprite.show()

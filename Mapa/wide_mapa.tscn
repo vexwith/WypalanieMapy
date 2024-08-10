@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=25 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://uwtm3gdg1suw" path="res://Mapa/mapa100.png" id="1_oqgoa"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_bqjdw"]
+[ext_resource type="Texture2D" uid="uid://bqwahwffaqcia" path="res://Mapa/lewy_bok.png" id="2_ncj5k"]
+[ext_resource type="Texture2D" uid="uid://cy70uwp1td5iw" path="res://Mapa/prawy_bok.png" id="3_1dsfw"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_bcyqi"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="4_wnbpo"]
 [ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="5_udpry"]
@@ -37,6 +39,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_oqgoa")
 
+[node name="LewyBok" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 266.0
+offset_top = 300.0
+offset_right = 400.0
+offset_bottom = 900.0
+texture = ExtResource("2_ncj5k")
+
+[node name="PrawyBok" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 300.0
+offset_right = 1334.0
+offset_bottom = 900.0
+texture = ExtResource("3_1dsfw")
+
 [node name="BaseMap" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -44,113 +64,113 @@ offset_bottom = 40.0
 
 [node name="TextureRect2" type="TextureRect" parent="BaseMap"]
 layout_mode = 0
-offset_left = 397.0
-offset_top = 304.0
-offset_right = 1197.0
-offset_bottom = 904.0
+offset_left = 266.0
+offset_top = 300.0
+offset_right = 1333.0
+offset_bottom = 900.0
 texture = ExtResource("1_cr8sa")
 
 [node name="Kawałek1" parent="BaseMap" instance=ExtResource("2_bqjdw")]
-position = Vector2(868, 360)
+position = Vector2(868, 356)
 affected_pieces = [6]
 
 [node name="Kawałek2" parent="BaseMap" instance=ExtResource("3_bcyqi")]
-position = Vector2(1050, 465)
+position = Vector2(1050, 461)
 affected_pieces = [3, 5, 6]
 
 [node name="Kawałek3" parent="BaseMap" instance=ExtResource("4_wnbpo")]
-position = Vector2(1029, 675)
+position = Vector2(1029, 671)
 affected_pieces = [2, 4, 5]
 
 [node name="Kawałek4" parent="BaseMap" instance=ExtResource("5_udpry")]
-position = Vector2(932, 804)
+position = Vector2(932, 800)
 affected_pieces = [3, 5, 8, 9, 11]
 
 [node name="Kawałek5" parent="BaseMap" instance=ExtResource("6_5c7sx")]
-position = Vector2(958, 596)
+position = Vector2(958, 592)
 affected_pieces = [2, 3, 4, 6, 7, 8]
 
 [node name="Kawałek6" parent="BaseMap" instance=ExtResource("7_qekhn")]
-position = Vector2(870, 430)
+position = Vector2(870, 426)
 affected_pieces = [1, 2, 5, 7, 13]
 
 [node name="Kawałek7" parent="BaseMap" instance=ExtResource("8_ysg1w")]
-position = Vector2(849, 524)
+position = Vector2(849, 520)
 affected_pieces = [5, 6, 8, 12, 13]
 
 [node name="Kawałek8" parent="BaseMap" instance=ExtResource("9_qbyuq")]
-position = Vector2(850, 651)
+position = Vector2(850, 647)
 affected_pieces = [4, 5, 7, 9, 10, 12]
 
 [node name="Kawałek9" parent="BaseMap" instance=ExtResource("10_xxso4")]
-position = Vector2(757, 730)
+position = Vector2(757, 726)
 affected_pieces = [4, 8, 10, 11, 12]
 
 [node name="Kawałek10" parent="BaseMap" instance=ExtResource("11_plkeb")]
-position = Vector2(746, 648)
+position = Vector2(746, 644)
 affected_pieces = [8, 9, 12]
 
 [node name="Kawałek11" parent="BaseMap" instance=ExtResource("12_lx7ix")]
-position = Vector2(676, 793)
+position = Vector2(676, 789)
 affected_pieces = [4, 9, 14, 15]
 
 [node name="Kawałek12" parent="BaseMap" instance=ExtResource("13_j21to")]
-position = Vector2(743, 571)
+position = Vector2(743, 567)
 affected_pieces = [7, 8, 9, 10, 13, 14]
 
 [node name="Kawałek13" parent="BaseMap" instance=ExtResource("14_lxnwh")]
-position = Vector2(683, 469)
+position = Vector2(683, 465)
 affected_pieces = [6, 7, 12, 14, 16]
 
 [node name="Kawałek14" parent="BaseMap" instance=ExtResource("15_pklcd")]
-position = Vector2(603, 645)
+position = Vector2(603, 641)
 affected_pieces = [9, 11, 12, 13, 15, 16]
 
 [node name="Kawałek15" parent="BaseMap" instance=ExtResource("16_27fi4")]
-position = Vector2(505, 644)
+position = Vector2(505, 640)
 affected_pieces = [11, 14, 16]
 
 [node name="Kawałek16" parent="BaseMap" instance=ExtResource("17_npd45")]
-position = Vector2(549, 488)
+position = Vector2(549, 484)
 affected_pieces = [13, 14, 15]
 
 [node name="Kawałek17" parent="BaseMap" instance=ExtResource("6_5c7sx")]
-position = Vector2(1137, 783)
+position = Vector2(1137, 779)
 rotation = 0.346757
 
 [node name="Kawałek18" parent="BaseMap" instance=ExtResource("4_wnbpo")]
-position = Vector2(462, 738)
+position = Vector2(462, 734)
 rotation = 3.04605
 scale = Vector2(0.976538, -1)
 
 [node name="Kawałek19" parent="BaseMap" instance=ExtResource("7_qekhn")]
-position = Vector2(663, 880)
+position = Vector2(663, 876)
 rotation = 0.108237
 
 [node name="Kawałek20" parent="BaseMap" instance=ExtResource("19_kxjht")]
-position = Vector2(664, 343)
+position = Vector2(664, 339)
 
 [node name="Kawałek21" parent="BaseMap" instance=ExtResource("8_ysg1w")]
-position = Vector2(776, 296)
+position = Vector2(776, 292)
 rotation = -1.63681
 
 [node name="Kawałek26" parent="BaseMap" instance=ExtResource("20_usan4")]
-position = Vector2(1107, 939)
+position = Vector2(1107, 935)
 rotation = 2.21865
 scale = Vector2(1, -1.05238)
 
 [node name="Kawałek24" parent="BaseMap" instance=ExtResource("21_yqv7h")]
-position = Vector2(1227, 588)
+position = Vector2(1227, 584)
 
 [node name="Kawałek22" parent="BaseMap" instance=ExtResource("22_dku72")]
-position = Vector2(958, 282)
+position = Vector2(958, 278)
 
 [node name="Kawałek23" parent="BaseMap" instance=ExtResource("15_pklcd")]
-position = Vector2(372, 535)
+position = Vector2(372, 531)
 rotation = 1.98178
 
 [node name="Kawałek25" parent="BaseMap" instance=ExtResource("5_udpry")]
-position = Vector2(488, 392)
+position = Vector2(488, 388)
 rotation = 1.97701
 
 [editable path="BaseMap/Kawałek1"]

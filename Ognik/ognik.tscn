@@ -1,42 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbav8h88a3lio"]
+[gd_scene load_steps=3 format=3 uid="uid://bbav8h88a3lio"]
 
 [ext_resource type="Script" path="res://Ognik/ognik.gd" id="1_jmu2s"]
-[ext_resource type="Texture2D" uid="uid://7hp4rmeacmlj" path="res://Ognik/OGNIK_0.png" id="2_2w5fn"]
-[ext_resource type="Texture2D" uid="uid://uuonvg6yyfru" path="res://Ognik/OGNIK_1.png" id="3_olwr1"]
-[ext_resource type="Texture2D" uid="uid://dqx4yv27i37av" path="res://Ognik/OGNIK_2.png" id="4_ruony"]
-[ext_resource type="Texture2D" uid="uid://dd4bapajnlxbh" path="res://Ognik/OGNIK_3.png" id="5_lcjfm"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c00oi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_2w5fn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_olwr1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_ruony")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_lcjfm")
-}],
-"loop": true,
-"name": &"default",
-"speed": 15.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpdue"]
 
 [node name="Ognik" type="Area2D"]
 script = ExtResource("1_jmu2s")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1, -16)
-sprite_frames = SubResource("SpriteFrames_c00oi")
-autoplay = "default"
-frame_progress = 0.202822
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rpdue")

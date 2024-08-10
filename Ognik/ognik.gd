@@ -10,5 +10,5 @@ var frame_index = 0
 #	global_position = get_global_mouse_position()
 
 func _on_timer_timeout():
-	Input.set_custom_mouse_cursor(cursor_frames[frame_index], Input.CURSOR_ARROW, Vector2(25, 45))
+	Input.set_custom_mouse_cursor(cursor_frames[frame_index], Input.CURSOR_ARROW, Vector2(45, 100))
 	frame_index = (frame_index + 1) % 4
