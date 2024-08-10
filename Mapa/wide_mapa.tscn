@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=29 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
-[ext_resource type="Texture2D" uid="uid://uwtm3gdg1suw" path="res://Mapa/mapa100.png" id="1_oqgoa"]
+[ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_ny5fj"]
+[ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="1_qqujy"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_bqjdw"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_bcyqi"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="4_wnbpo"]
@@ -19,6 +20,18 @@
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="16_27fi4"]
 [ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="17_npd45"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_19.gd" id="19_h3e0y"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_17.gd" id="20_cnu40"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_18.gd" id="21_lm28g"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_20.gd" id="23_qmb8c"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_21.gd" id="24_640dx"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_22.gd" id="25_lkaxd"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_23.gd" id="26_khfy8"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_24.gd" id="27_6ua3g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwwdt"]
+shader = ExtResource("1_ny5fj")
+shader_parameter/direction = Vector2(-1, 0)
+shader_parameter/speed_scale = 0.01
 
 [node name="WideMapa" type="Control"]
 layout_mode = 3
@@ -28,18 +41,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="OuterVoid" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_nwwdt")
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_oqgoa")
+offset_right = 1600.0
+offset_bottom = 1200.0
+texture = ExtResource("1_qqujy")
+stretch_mode = 1
 
 [node name="BaseMap" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect2" type="TextureRect" parent="BaseMap"]
+[node name="FirstBackground" type="TextureRect" parent="BaseMap"]
 layout_mode = 0
 offset_left = 266.0
 offset_top = 300.0
@@ -114,12 +129,14 @@ affected_pieces = [13, 14, 15]
 [node name="Kawałek17" parent="BaseMap" instance=ExtResource("6_5c7sx")]
 position = Vector2(1137, 779)
 rotation = 0.346757
+script = ExtResource("20_cnu40")
 affected_pieces = [3, 4]
 
 [node name="Kawałek18" parent="BaseMap" instance=ExtResource("4_wnbpo")]
 position = Vector2(462, 734)
 rotation = 3.04605
 scale = Vector2(0.976538, -1)
+script = ExtResource("21_lm28g")
 affected_pieces = [11, 15]
 
 [node name="Kawałek19" parent="BaseMap" instance=ExtResource("7_qekhn")]
@@ -131,26 +148,31 @@ affected_pieces = [11, 18]
 [node name="Kawałek20" parent="BaseMap" instance=ExtResource("4_wnbpo")]
 position = Vector2(1152, 407)
 rotation = 5.45213
+script = ExtResource("23_qmb8c")
 affected_pieces = [2]
 
 [node name="Kawałek21" parent="BaseMap" instance=ExtResource("3_bcyqi")]
 position = Vector2(655, 310)
 rotation = 1.66556
+script = ExtResource("24_640dx")
 affected_pieces = [13, 1]
 
 [node name="Kawałek22" parent="BaseMap" instance=ExtResource("6_5c7sx")]
 position = Vector2(410, 483)
 rotation = -3.0348
+script = ExtResource("25_lkaxd")
 affected_pieces = [16, 15, 18]
 
 [node name="Kawałek23" parent="BaseMap" instance=ExtResource("12_lx7ix")]
 position = Vector2(1266, 720)
 rotation = 1.50202
+script = ExtResource("26_khfy8")
 affected_pieces = [17]
 
 [node name="Kawałek24" parent="BaseMap" instance=ExtResource("10_xxso4")]
 position = Vector2(401, 319)
 rotation = 2.62907
+script = ExtResource("27_6ua3g")
 affected_pieces = [21, 22]
 
 [editable path="BaseMap/Kawałek1"]

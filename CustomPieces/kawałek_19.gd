@@ -1,8 +1,11 @@
 extends Piece
 
 
+func _ready():
+	clickable = false
+
 func _input(event):
-	if cursor_entered and event.is_action_pressed("LPM"):
+	if cursor_entered and clickable and event.is_action_pressed("LPM"):
 		make_move()
 		
 		#this piece swaps 18 and 20
@@ -15,3 +18,5 @@ func _input(event):
 		second_piece.sprite.play(str(min(second_piece.stage, 5)))
 				
 		SignalBus.emit_signal("piece_clicked", self)
+
+

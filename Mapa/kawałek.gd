@@ -10,8 +10,10 @@ var stage = -1 #stopień spalenia
 var cursor_entered = false
 var modulation = 1.0
 
+var clickable = true #used in first map outer pieces
+
 func _input(event):
-	if cursor_entered and event.is_action_pressed("LPM"):
+	if cursor_entered and clickable and event.is_action_pressed("LPM"):
 		make_move()
 				
 		SignalBus.emit_signal("piece_clicked", self)
@@ -44,6 +46,10 @@ func update(damage):
 	else:
 		sprite.play(str(min(stage, 5)))
 	
+func update_affected(): #used only for first map outer pieces to link with others
+	if not affected_pieces.is_empty():
+		for index in affected_pieces:
+			get_parent().get_child(index).affected_pieces.append(get_index())
 
 func _on_mouse_entered():
 	cursor_entered = true
