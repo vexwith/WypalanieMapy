@@ -1,9 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=10 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
+[ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
 [ext_resource type="PackedScene" uid="uid://bbav8h88a3lio" path="res://Ognik/ognik.tscn" id="2_w6n46"]
+[ext_resource type="Texture2D" uid="uid://cvt1yhux55mnl" path="res://GUI/brestartoc.png" id="3_g0v1m"]
+[ext_resource type="Texture2D" uid="uid://cy01wwi12q7av" path="res://GUI/brestartom_2.png" id="4_mcr2b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjddy"]
+texture = ExtResource("3_g0v1m")
+region_rect = Rect2(5, 4, 65, 65)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2y58w"]
+texture = ExtResource("4_mcr2b")
+region_rect = Rect2(5, 4, 54, 55)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptfh3"]
+texture = ExtResource("3_g0v1m")
+region_rect = Rect2(5, 4, 65, 65)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lq3v5"]
 
 [node name="GameManager" type="Node2D"]
+script = ExtResource("1_vkdem")
 
 [node name="WideMapa" parent="." instance=ExtResource("1_8rl2d")]
 offset_left = -515.0
@@ -13,3 +31,16 @@ offset_bottom = -552.0
 scale = Vector2(1.8, 1.8)
 
 [node name="Ognik" parent="." instance=ExtResource("2_w6n46")]
+
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 1366.0
+offset_top = 977.0
+offset_right = 1374.0
+offset_bottom = 985.0
+scale = Vector2(10, 10)
+theme_override_styles/normal = SubResource("StyleBoxTexture_yjddy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2y58w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ptfh3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lq3v5")
+
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]

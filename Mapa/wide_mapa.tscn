@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=23 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://uwtm3gdg1suw" path="res://Mapa/mapa100.png" id="1_oqgoa"]
@@ -18,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="15_pklcd"]
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="16_27fi4"]
 [ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="17_npd45"]
+[ext_resource type="PackedScene" uid="uid://v42cdqd6rrmv" path="res://Mapa/kawałek17/kawałek_17.tscn" id="19_kxjht"]
+[ext_resource type="PackedScene" uid="uid://cnsn1rca030sw" path="res://Mapa/kawałek26/kawałek_26.tscn" id="20_usan4"]
+[ext_resource type="PackedScene" uid="uid://bo6f5ocmd48wa" path="res://Mapa/kawałek24/kawałek_24.tscn" id="21_yqv7h"]
+[ext_resource type="PackedScene" uid="uid://dmq8quxw8nid6" path="res://Mapa/kawałek22/kawałek_22.tscn" id="22_dku72"]
 
 [node name="WideMapa" type="Control"]
 layout_mode = 3
@@ -39,7 +43,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TextureRect2" type="TextureRect" parent="BaseMap"]
-visible = false
 layout_mode = 0
 offset_left = 397.0
 offset_top = 304.0
@@ -124,6 +127,32 @@ scale = Vector2(0.976538, -1)
 position = Vector2(663, 880)
 rotation = 0.108237
 
+[node name="Kawałek20" parent="BaseMap" instance=ExtResource("19_kxjht")]
+position = Vector2(664, 343)
+
+[node name="Kawałek21" parent="BaseMap" instance=ExtResource("8_ysg1w")]
+position = Vector2(776, 296)
+rotation = -1.63681
+
+[node name="Kawałek26" parent="BaseMap" instance=ExtResource("20_usan4")]
+position = Vector2(1107, 939)
+rotation = 2.21865
+scale = Vector2(1, -1.05238)
+
+[node name="Kawałek24" parent="BaseMap" instance=ExtResource("21_yqv7h")]
+position = Vector2(1227, 588)
+
+[node name="Kawałek22" parent="BaseMap" instance=ExtResource("22_dku72")]
+position = Vector2(958, 282)
+
+[node name="Kawałek23" parent="BaseMap" instance=ExtResource("15_pklcd")]
+position = Vector2(372, 535)
+rotation = 1.98178
+
+[node name="Kawałek25" parent="BaseMap" instance=ExtResource("5_udpry")]
+position = Vector2(488, 392)
+rotation = 1.97701
+
 [editable path="BaseMap/Kawałek1"]
 [editable path="BaseMap/Kawałek2"]
 [editable path="BaseMap/Kawałek3"]
@@ -142,3 +171,11 @@ rotation = 0.108237
 [editable path="BaseMap/Kawałek16"]
 [editable path="BaseMap/Kawałek17"]
 [editable path="BaseMap/Kawałek18"]
+[editable path="BaseMap/Kawałek19"]
+[editable path="BaseMap/Kawałek20"]
+[editable path="BaseMap/Kawałek21"]
+[editable path="BaseMap/Kawałek26"]
+[editable path="BaseMap/Kawałek24"]
+[editable path="BaseMap/Kawałek22"]
+[editable path="BaseMap/Kawałek23"]
+[editable path="BaseMap/Kawałek25"]
