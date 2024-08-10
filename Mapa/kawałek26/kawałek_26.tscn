@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnsn1rca030sw"]
+
+[ext_resource type="Script" path="res://Mapa/kawałek.gd" id="1_co786"]
+[ext_resource type="Texture2D" uid="uid://doifdkj3sf3jv" path="res://Mapa/kawałek26/mapa26_0.png" id="2_2ns2t"]
+[ext_resource type="Texture2D" uid="uid://c5m341ydc4qgo" path="res://Mapa/kawałek26/mapa26_2.png" id="2_6lmwk"]
+[ext_resource type="Texture2D" uid="uid://bh6j8svt63i3r" path="res://Mapa/kawałek26/mapa26_1.png" id="3_78dno"]
+[ext_resource type="Texture2D" uid="uid://berrd8b6cfhjo" path="res://Mapa/kawałek26/mapa26_3.png" id="5_7xoox"]
+[ext_resource type="Texture2D" uid="uid://c3icjksbjqj6d" path="res://Mapa/kawałek26/mapa26_4.png" id="6_h4wkl"]
+[ext_resource type="Texture2D" uid="uid://by3gjgrnxbkj1" path="res://Mapa/kawałek26/mapa26_5.png" id="7_i5505"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cct61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2ns2t")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_78dno")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6lmwk")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7xoox")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h4wkl")
+}],
+"loop": false,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i5505")
+}],
+"loop": false,
+"name": &"5",
+"speed": 5.0
+}]
+
+[node name="Kawałek26" type="Area2D"]
+script = ExtResource("1_co786")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_cct61")
+animation = &"5"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(38, -82, 66, -87, 94, -92, 112, -58, 104, -34, 85, -19, 80, 18, 69, 63, 36, 99, -19, 90, -91, 87, -114, 62, -104, 4, -70, -4, -33, -21, -6, -41, 14, -70, 0, -95, 11, -92)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited" flags=18]
