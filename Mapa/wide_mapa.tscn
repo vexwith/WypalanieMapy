@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=20 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://uwtm3gdg1suw" path="res://Mapa/mapa100.png" id="1_oqgoa"]
@@ -18,10 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="15_pklcd"]
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="16_27fi4"]
 [ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="17_npd45"]
-[ext_resource type="PackedScene" uid="uid://v42cdqd6rrmv" path="res://Mapa/kawałek17/kawałek_17.tscn" id="19_kxjht"]
-[ext_resource type="PackedScene" uid="uid://cnsn1rca030sw" path="res://Mapa/kawałek26/kawałek_26.tscn" id="20_usan4"]
-[ext_resource type="PackedScene" uid="uid://bo6f5ocmd48wa" path="res://Mapa/kawałek24/kawałek_24.tscn" id="21_yqv7h"]
-[ext_resource type="PackedScene" uid="uid://dmq8quxw8nid6" path="res://Mapa/kawałek22/kawałek_22.tscn" id="22_dku72"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_19.gd" id="19_h3e0y"]
 
 [node name="WideMapa" type="Control"]
 layout_mode = 3
@@ -84,7 +81,7 @@ affected_pieces = [4, 5, 7, 9, 10, 12]
 
 [node name="Kawałek9" parent="BaseMap" instance=ExtResource("10_xxso4")]
 position = Vector2(757, 726)
-affected_pieces = [4, 8, 10, 11, 12]
+affected_pieces = [4, 8, 10, 11, 12, 14]
 
 [node name="Kawałek10" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(746, 644)
@@ -117,41 +114,44 @@ affected_pieces = [13, 14, 15]
 [node name="Kawałek17" parent="BaseMap" instance=ExtResource("6_5c7sx")]
 position = Vector2(1137, 779)
 rotation = 0.346757
+affected_pieces = [3, 4]
 
 [node name="Kawałek18" parent="BaseMap" instance=ExtResource("4_wnbpo")]
 position = Vector2(462, 734)
 rotation = 3.04605
 scale = Vector2(0.976538, -1)
+affected_pieces = [11, 15]
 
 [node name="Kawałek19" parent="BaseMap" instance=ExtResource("7_qekhn")]
 position = Vector2(663, 876)
 rotation = 0.108237
+script = ExtResource("19_h3e0y")
+affected_pieces = [11, 18]
 
-[node name="Kawałek20" parent="BaseMap" instance=ExtResource("19_kxjht")]
-position = Vector2(664, 339)
+[node name="Kawałek20" parent="BaseMap" instance=ExtResource("4_wnbpo")]
+position = Vector2(1152, 407)
+rotation = 5.45213
+affected_pieces = [2]
 
-[node name="Kawałek21" parent="BaseMap" instance=ExtResource("8_ysg1w")]
-position = Vector2(776, 292)
-rotation = -1.63681
+[node name="Kawałek21" parent="BaseMap" instance=ExtResource("3_bcyqi")]
+position = Vector2(655, 310)
+rotation = 1.66556
+affected_pieces = [13, 1]
 
-[node name="Kawałek26" parent="BaseMap" instance=ExtResource("20_usan4")]
-position = Vector2(1107, 935)
-rotation = 2.21865
-scale = Vector2(1, -1.05238)
+[node name="Kawałek22" parent="BaseMap" instance=ExtResource("6_5c7sx")]
+position = Vector2(410, 483)
+rotation = -3.0348
+affected_pieces = [16, 15, 18]
 
-[node name="Kawałek24" parent="BaseMap" instance=ExtResource("21_yqv7h")]
-position = Vector2(1227, 584)
+[node name="Kawałek23" parent="BaseMap" instance=ExtResource("12_lx7ix")]
+position = Vector2(1266, 720)
+rotation = 1.50202
+affected_pieces = [17]
 
-[node name="Kawałek22" parent="BaseMap" instance=ExtResource("22_dku72")]
-position = Vector2(958, 278)
-
-[node name="Kawałek23" parent="BaseMap" instance=ExtResource("15_pklcd")]
-position = Vector2(372, 531)
-rotation = 1.98178
-
-[node name="Kawałek25" parent="BaseMap" instance=ExtResource("5_udpry")]
-position = Vector2(488, 388)
-rotation = 1.97701
+[node name="Kawałek24" parent="BaseMap" instance=ExtResource("10_xxso4")]
+position = Vector2(401, 319)
+rotation = 2.62907
+affected_pieces = [21, 22]
 
 [editable path="BaseMap/Kawałek1"]
 [editable path="BaseMap/Kawałek2"]
@@ -174,8 +174,6 @@ rotation = 1.97701
 [editable path="BaseMap/Kawałek19"]
 [editable path="BaseMap/Kawałek20"]
 [editable path="BaseMap/Kawałek21"]
-[editable path="BaseMap/Kawałek26"]
-[editable path="BaseMap/Kawałek24"]
 [editable path="BaseMap/Kawałek22"]
 [editable path="BaseMap/Kawałek23"]
-[editable path="BaseMap/Kawałek25"]
+[editable path="BaseMap/Kawałek24"]

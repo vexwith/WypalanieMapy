@@ -45,7 +45,6 @@ func update(damage):
 		sprite.play(str(min(stage, 5)))
 	
 
-
 func _on_mouse_entered():
 	cursor_entered = true
 #	Globals.focused_piece = self
