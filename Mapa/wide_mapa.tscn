@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=19 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
+[ext_resource type="Texture2D" uid="uid://uwtm3gdg1suw" path="res://Mapa/mapa100.png" id="1_oqgoa"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_bqjdw"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_bcyqi"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="4_wnbpo"]
@@ -30,52 +31,114 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture = ExtResource("1_oqgoa")
+
+[node name="BaseMap" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="BaseMap"]
+visible = false
+layout_mode = 0
+offset_left = 397.0
+offset_top = 304.0
+offset_right = 1197.0
+offset_bottom = 904.0
 texture = ExtResource("1_cr8sa")
 
-[node name="Kawałek1" parent="." instance=ExtResource("2_bqjdw")]
-position = Vector2(468, 56)
+[node name="Kawałek1" parent="BaseMap" instance=ExtResource("2_bqjdw")]
+position = Vector2(868, 360)
+affected_pieces = [6]
 
-[node name="Kawałek2" parent="." instance=ExtResource("3_bcyqi")]
-position = Vector2(650, 161)
+[node name="Kawałek2" parent="BaseMap" instance=ExtResource("3_bcyqi")]
+position = Vector2(1050, 465)
+affected_pieces = [3, 5, 6]
 
-[node name="Kawałek3" parent="." instance=ExtResource("4_wnbpo")]
-position = Vector2(629, 371)
+[node name="Kawałek3" parent="BaseMap" instance=ExtResource("4_wnbpo")]
+position = Vector2(1029, 675)
+affected_pieces = [2, 4, 5]
 
-[node name="Kawałek4" parent="." instance=ExtResource("5_udpry")]
-position = Vector2(532, 500)
+[node name="Kawałek4" parent="BaseMap" instance=ExtResource("5_udpry")]
+position = Vector2(932, 804)
+affected_pieces = [3, 5, 8, 9, 11]
 
-[node name="Kawałek5" parent="." instance=ExtResource("6_5c7sx")]
-position = Vector2(558, 292)
+[node name="Kawałek5" parent="BaseMap" instance=ExtResource("6_5c7sx")]
+position = Vector2(958, 596)
+affected_pieces = [2, 3, 4, 6, 7, 8]
 
-[node name="Kawałek6" parent="." instance=ExtResource("7_qekhn")]
-position = Vector2(470, 126)
+[node name="Kawałek6" parent="BaseMap" instance=ExtResource("7_qekhn")]
+position = Vector2(870, 430)
+affected_pieces = [1, 2, 5, 7, 13]
 
-[node name="Kawałek7" parent="." instance=ExtResource("8_ysg1w")]
-position = Vector2(449, 220)
+[node name="Kawałek7" parent="BaseMap" instance=ExtResource("8_ysg1w")]
+position = Vector2(849, 524)
+affected_pieces = [5, 6, 8, 12, 13]
 
-[node name="Kawałek8" parent="." instance=ExtResource("9_qbyuq")]
-position = Vector2(450, 347)
+[node name="Kawałek8" parent="BaseMap" instance=ExtResource("9_qbyuq")]
+position = Vector2(850, 651)
+affected_pieces = [4, 5, 7, 9, 10, 12]
 
-[node name="Kawałek9" parent="." instance=ExtResource("10_xxso4")]
-position = Vector2(357, 426)
+[node name="Kawałek9" parent="BaseMap" instance=ExtResource("10_xxso4")]
+position = Vector2(757, 730)
+affected_pieces = [4, 8, 10, 11, 12]
 
-[node name="Kawałek10" parent="." instance=ExtResource("11_plkeb")]
-position = Vector2(346, 344)
+[node name="Kawałek10" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(746, 648)
+affected_pieces = [8, 9, 12]
 
-[node name="Kawałek11" parent="." instance=ExtResource("12_lx7ix")]
-position = Vector2(276, 489)
+[node name="Kawałek11" parent="BaseMap" instance=ExtResource("12_lx7ix")]
+position = Vector2(676, 793)
+affected_pieces = [4, 9, 14, 15]
 
-[node name="Kawałek12" parent="." instance=ExtResource("13_j21to")]
-position = Vector2(343, 267)
+[node name="Kawałek12" parent="BaseMap" instance=ExtResource("13_j21to")]
+position = Vector2(743, 571)
+affected_pieces = [7, 8, 9, 10, 13, 14]
 
-[node name="Kawałek13" parent="." instance=ExtResource("14_lxnwh")]
-position = Vector2(283, 165)
+[node name="Kawałek13" parent="BaseMap" instance=ExtResource("14_lxnwh")]
+position = Vector2(683, 469)
+affected_pieces = [6, 7, 12, 14, 16]
 
-[node name="Kawałek14" parent="." instance=ExtResource("15_pklcd")]
-position = Vector2(203, 341)
+[node name="Kawałek14" parent="BaseMap" instance=ExtResource("15_pklcd")]
+position = Vector2(603, 645)
+affected_pieces = [9, 11, 12, 13, 15, 16]
 
-[node name="Kawałek15" parent="." instance=ExtResource("16_27fi4")]
-position = Vector2(105, 340)
+[node name="Kawałek15" parent="BaseMap" instance=ExtResource("16_27fi4")]
+position = Vector2(505, 644)
+affected_pieces = [11, 14, 16]
 
-[node name="Kawałek16" parent="." instance=ExtResource("17_npd45")]
-position = Vector2(149, 184)
+[node name="Kawałek16" parent="BaseMap" instance=ExtResource("17_npd45")]
+position = Vector2(549, 488)
+affected_pieces = [13, 14, 15]
+
+[node name="Kawałek17" parent="BaseMap" instance=ExtResource("6_5c7sx")]
+position = Vector2(1137, 783)
+rotation = 0.346757
+
+[node name="Kawałek18" parent="BaseMap" instance=ExtResource("4_wnbpo")]
+position = Vector2(462, 738)
+rotation = 3.04605
+scale = Vector2(0.976538, -1)
+
+[node name="Kawałek19" parent="BaseMap" instance=ExtResource("7_qekhn")]
+position = Vector2(663, 880)
+rotation = 0.108237
+
+[editable path="BaseMap/Kawałek1"]
+[editable path="BaseMap/Kawałek2"]
+[editable path="BaseMap/Kawałek3"]
+[editable path="BaseMap/Kawałek4"]
+[editable path="BaseMap/Kawałek5"]
+[editable path="BaseMap/Kawałek6"]
+[editable path="BaseMap/Kawałek7"]
+[editable path="BaseMap/Kawałek8"]
+[editable path="BaseMap/Kawałek9"]
+[editable path="BaseMap/Kawałek10"]
+[editable path="BaseMap/Kawałek11"]
+[editable path="BaseMap/Kawałek12"]
+[editable path="BaseMap/Kawałek13"]
+[editable path="BaseMap/Kawałek14"]
+[editable path="BaseMap/Kawałek15"]
+[editable path="BaseMap/Kawałek16"]
+[editable path="BaseMap/Kawałek17"]
+[editable path="BaseMap/Kawałek18"]

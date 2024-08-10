@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cto0or21dya2h"]
 
+[ext_resource type="Script" path="res://Mapa/kawałek.gd" id="1_8ka77"]
 [ext_resource type="Texture2D" uid="uid://bcyr6v64litfy" path="res://Mapa/kawałek12/pole12_0.png" id="1_775ro"]
-[ext_resource type="Script" path="res://Mapa/kawałek12/kawałek_12.gd" id="1_m27rc"]
 [ext_resource type="Texture2D" uid="uid://c5ta4cqj3x24g" path="res://Mapa/kawałek12/pole12_1.png" id="2_ibvd5"]
 [ext_resource type="Texture2D" uid="uid://crhg7lss0t2ft" path="res://Mapa/kawałek12/pole12_2.png" id="3_wqcbu"]
 [ext_resource type="Texture2D" uid="uid://c6vfgfoxbcped" path="res://Mapa/kawałek12/pole12_3.png" id="4_46yet"]
@@ -60,7 +60,7 @@ animations = [{
 }]
 
 [node name="Kawałek12" type="Area2D"]
-script = ExtResource("1_m27rc")
+script = ExtResource("1_8ka77")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

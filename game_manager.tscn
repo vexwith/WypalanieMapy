@@ -6,8 +6,10 @@
 [node name="GameManager" type="Node2D"]
 
 [node name="WideMapa" parent="." instance=ExtResource("1_8rl2d")]
-offset_left = 240.0
-offset_right = 240.0
+offset_left = -515.0
+offset_top = -552.0
+offset_right = -515.0
+offset_bottom = -552.0
 scale = Vector2(1.8, 1.8)
 
 [node name="Ognik" parent="." instance=ExtResource("2_w6n46")]

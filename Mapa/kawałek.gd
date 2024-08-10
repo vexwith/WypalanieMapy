@@ -3,9 +3,9 @@ class_name Piece
 
 @onready var sprite = $AnimatedSprite2D
 
-var stage = -1 #stopień spalenia
+@export var affected_pieces = []
 
-var affected_pieces = []
+var stage = -1 #stopień spalenia
 
 var cursor_entered = false
 var modulation = 1.0
