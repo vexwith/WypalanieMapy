@@ -70,5 +70,9 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_t6tpp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_worti")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_id60w")
 
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="button_down" from="Wyjście" to="." method="_on_wyjście_button_down"]

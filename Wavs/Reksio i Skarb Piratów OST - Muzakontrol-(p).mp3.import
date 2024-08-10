@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c00t7nvi4vipy"
+path="res://.godot/imported/Reksio i Skarb Piratów OST - Muzakontrol-(p).mp3-ac5a6d8278958bba93ac5f1dcff06939.mp3str"
+
+[deps]
+
+source_file="res://Wavs/Reksio i Skarb Piratów OST - Muzakontrol-(p).mp3"
+dest_files=["res://.godot/imported/Reksio i Skarb Piratów OST - Muzakontrol-(p).mp3-ac5a6d8278958bba93ac5f1dcff06939.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c12w853k336nw"
+path="res://.godot/imported/Reksio i Skarb Piratów OST - Muza0mapa-(p).mp3-f0142c3379f2760501d3d1c40068fc5d.mp3str"
+
+[deps]
+
+source_file="res://Wavs/Reksio i Skarb Piratów OST - Muza0mapa-(p).mp3"
+dest_files=["res://.godot/imported/Reksio i Skarb Piratów OST - Muza0mapa-(p).mp3-f0142c3379f2760501d3d1c40068fc5d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

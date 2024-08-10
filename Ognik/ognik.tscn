@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbav8h88a3lio"]
+[gd_scene load_steps=4 format=3 uid="uid://bbav8h88a3lio"]
 
 [ext_resource type="Script" path="res://Ognik/ognik.gd" id="1_jmu2s"]
+[ext_resource type="AudioStream" uid="uid://pef4xfo8hw5l" path="res://Wavs/00ognik1.wav" id="2_6h2h3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpdue"]
 
@@ -13,5 +14,9 @@ shape = SubResource("CircleShape2D_rpdue")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.06
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6h2h3")
+volume_db = -2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

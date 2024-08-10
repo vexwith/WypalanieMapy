@@ -1,10 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=23 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://uwtm3gdg1suw" path="res://Mapa/mapa100.png" id="1_oqgoa"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_bqjdw"]
-[ext_resource type="Texture2D" uid="uid://bqwahwffaqcia" path="res://Mapa/lewy_bok.png" id="2_ncj5k"]
-[ext_resource type="Texture2D" uid="uid://cy70uwp1td5iw" path="res://Mapa/prawy_bok.png" id="3_1dsfw"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_bcyqi"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="4_wnbpo"]
 [ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="5_udpry"]
@@ -38,24 +36,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_oqgoa")
-
-[node name="LewyBok" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 266.0
-offset_top = 300.0
-offset_right = 400.0
-offset_bottom = 900.0
-texture = ExtResource("2_ncj5k")
-
-[node name="PrawyBok" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 1200.0
-offset_top = 300.0
-offset_right = 1334.0
-offset_bottom = 900.0
-texture = ExtResource("3_1dsfw")
 
 [node name="BaseMap" type="Control" parent="."]
 anchors_preset = 0

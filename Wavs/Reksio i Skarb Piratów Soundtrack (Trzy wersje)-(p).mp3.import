@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbsicfrpxh2dd"
+path="res://.godot/imported/Reksio i Skarb Piratów Soundtrack (Trzy wersje)-(p).mp3-05de88bed78de4c7f2c884df201bac58.mp3str"
+
+[deps]
+
+source_file="res://Wavs/Reksio i Skarb Piratów Soundtrack (Trzy wersje)-(p).mp3"
+dest_files=["res://.godot/imported/Reksio i Skarb Piratów Soundtrack (Trzy wersje)-(p).mp3-05de88bed78de4c7f2c884df201bac58.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

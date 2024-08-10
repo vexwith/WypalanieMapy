@@ -12,20 +12,39 @@ var modulation = 1.0
 
 func _input(event):
 	if cursor_entered and event.is_action_pressed("LPM"):
-		update(2) #self update zadaje 2 dmg
-		
-		if not affected_pieces.is_empty():
-			for piece_index in affected_pieces:
-				var piece = get_parent().get_child(piece_index)
-				piece.update(1) #zależne kawałki updatują się o 1
+		make_move()
 				
-	SignalBus.emit_signal("piece_clicked")
+		SignalBus.emit_signal("piece_clicked", self)
+	
+	if cursor_entered and event.is_action_pressed("PPM"): #test
+		undo_move()
+				
+func make_move():
+	move(2, 1)
+				
+func undo_move():
+	move(-2, -1)
+				
+func move(main, sub):
+	update(main) #self update zadaje/dodaje 2 stage
+		
+	if not affected_pieces.is_empty():
+		for piece_index in affected_pieces:
+			var piece = get_parent().get_child(piece_index)
+			piece.update(sub) #zależne kawałki updatują się o 1
 				
 func update(damage):
-	if stage < 0:
+	if stage < 0: #if we start from -1 show sprite
+		if sign(damage) == -1: #cant undo more than -1
+			return
 		sprite.show()
-	stage = min(stage + damage, 6)
-	sprite.play(str(min(stage, 5)))
+	stage = stage + damage
+	if stage < 0: #in case of undoing to -1 hide
+		sprite.hide()
+	else:
+		sprite.play(str(min(stage, 5)))
+	
+
 
 func _on_mouse_entered():
 	cursor_entered = true
