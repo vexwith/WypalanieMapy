@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=65 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_ny5fj"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cw415vyp3ytn8" path="res://Mapa/2_1.png" id="6_510xw"]
 [ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="7_qekhn"]
 [ext_resource type="Texture2D" uid="uid://dnyj8vjpmajrr" path="res://Mapa/2_2.png" id="7_r3nyf"]
+[ext_resource type="Texture2D" uid="uid://dr277co7nvekp" path="res://Mapa/saper_base.png" id="8_3in6j"]
 [ext_resource type="Texture2D" uid="uid://cx7f2o0olay4g" path="res://Mapa/3_1.png" id="8_b0yvt"]
 [ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="8_ysg1w"]
 [ext_resource type="Texture2D" uid="uid://e0u038sl3abq" path="res://Mapa/3_2.png" id="9_ccb5e"]
@@ -38,7 +39,10 @@
 [ext_resource type="Script" path="res://CustomPieces/kawałek_22.gd" id="25_lkaxd"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_23.gd" id="26_khfy8"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_24.gd" id="27_6ua3g"]
+[ext_resource type="Script" path="res://CustomPieces/saper_numbers.gd" id="33_iuho5"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_40.gd" id="39_e0bxi"]
+[ext_resource type="Texture2D" uid="uid://drtp0o861aoxv" path="res://Ognik/cursor_0.png" id="40_1c3es"]
+[ext_resource type="Texture2D" uid="uid://d0gkwkcov420j" path="res://Ognik/cursor_1.png" id="41_70a1k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwwdt"]
 shader = ExtResource("1_ny5fj")
@@ -270,6 +274,18 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxp7l"]
+texture = ExtResource("40_1c3es")
+region_rect = Rect2(0, 0, 54, 56)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shxml"]
+texture = ExtResource("41_70a1k")
+region_rect = Rect2(0, 0, 56, 54)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g37xd"]
+texture = ExtResource("40_1c3es")
+region_rect = Rect2(0, 0, 54, 56)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ectia"]
 
 [node name="WideMapa" type="Control"]
 layout_mode = 3
@@ -356,6 +372,21 @@ scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_huvit")
 autoplay = "default"
 frame_progress = 0.201522
+
+[node name="Sprite2D" type="Sprite2D" parent="Saper"]
+position = Vector2(263, 119)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_3in6j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Saper"]
+position = Vector2(416, 122)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8_3in6j")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Saper"]
+position = Vector2(275, 270)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_3in6j")
 
 [node name="BaseMap" type="Control" parent="."]
 anchors_preset = 0
@@ -486,11 +517,11 @@ affected_pieces = [21, 22]
 [node name="Kawałek25" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1560, 39)
 scale = Vector2(0.7, 0.7)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek25" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [26, 30]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek25"]
+visible = false
 position = Vector2(1.42847, 2.85714)
 scale = Vector2(0.571429, 0.571429)
 sprite_frames = SubResource("SpriteFrames_cddwh")
@@ -513,11 +544,11 @@ visible = true
 [node name="Kawałek28" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1330, 41)
 scale = Vector2(0.7, 0.7)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek28" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [27, 29, 33]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek28"]
+visible = false
 position = Vector2(1.42859, 2.85714)
 scale = Vector2(0.571429, 0.571429)
 sprite_frames = SubResource("SpriteFrames_jug7e")
@@ -534,11 +565,11 @@ visible = true
 [node name="Kawałek30" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1565, 116)
 scale = Vector2(0.6, 0.6)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek30" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [25, 31]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek30"]
+visible = false
 position = Vector2(3.33325, 1.66667)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7ay3b")
@@ -554,11 +585,11 @@ visible = true
 [node name="Kawałek32" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1405, 118)
 scale = Vector2(0.7, 0.7)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek32" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [27, 31, 33, 36]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek32"]
+visible = false
 position = Vector2(1.42859, 1.42857)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_13wq4")
@@ -568,11 +599,11 @@ frame_progress = 0.484629
 [node name="Kawałek33" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1333, 118)
 scale = Vector2(0.5, 0.5)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek33" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [28, 32, 34, 37]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek33"]
+visible = false
 position = Vector2(2, 2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_5oill")
@@ -582,11 +613,11 @@ frame_progress = 0.422923
 [node name="Kawałek34" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1253, 127)
 scale = Vector2(0.8, 0.8)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek34" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [29, 33]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek34"]
+visible = false
 position = Vector2(1.25, 5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jug7e")
@@ -596,11 +627,11 @@ frame_progress = 0.0145831
 [node name="Kawałek35" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1506, 215)
 scale = Vector2(0.9, 0.9)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek35" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [31, 36]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek35"]
+visible = false
 position = Vector2(2.22229, 3.33333)
 scale = Vector2(0.555556, 0.555556)
 sprite_frames = SubResource("SpriteFrames_4eo06")
@@ -624,11 +655,11 @@ visible = true
 [node name="Kawałek38" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1415, 295)
 scale = Vector2(0.7, 0.7)
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek38" index="0"]
-visible = true
+script = ExtResource("33_iuho5")
+affected_pieces = [36, 39]
 
 [node name="Number" type="AnimatedSprite2D" parent="BaseMap/Kawałek38"]
+visible = false
 position = Vector2(1.42859, 1.42856)
 scale = Vector2(0.571429, 0.571429)
 sprite_frames = SubResource("SpriteFrames_80xam")
@@ -654,11 +685,19 @@ visible = true
 wait_time = 6.0
 
 [node name="Lapa" type="Button" parent="BaseMap/Kawałek40"]
-offset_right = 8.0
-offset_bottom = 8.0
+visible = false
+offset_left = -14.9773
+offset_top = -12.0698
+offset_right = -6.97731
+offset_bottom = -4.06976
+scale = Vector2(4, 4)
 theme_override_styles/normal = SubResource("StyleBoxTexture_sxp7l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_shxml")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g37xd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ectia")
 
 [connection signal="timeout" from="BaseMap/Kawałek40/Timer" to="BaseMap/Kawałek40" method="_on_timer_timeout"]
+[connection signal="button_up" from="BaseMap/Kawałek40/Lapa" to="BaseMap/Kawałek40" method="_on_lapa_button_up"]
 
 [editable path="BaseMap/Kawałek1"]
 [editable path="BaseMap/Kawałek2"]

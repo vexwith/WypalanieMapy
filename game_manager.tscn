@@ -122,7 +122,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_p7brn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j65kq")
 
 [node name="LapaButton" type="Button" parent="Camera2D"]
-visible = false
 offset_left = -828.0
 offset_top = -525.0
 offset_right = -820.0

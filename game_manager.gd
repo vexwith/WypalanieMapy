@@ -12,6 +12,7 @@ extends Node2D
 @onready var ognik = $Ognik
 @onready var camera = $Camera2D
 @onready var exit = $Camera2D/Wyjście
+@onready var lapa_button = $Camera2D/LapaButton
 
 var first_map = true
 const MAX_PIECES = 25 #all pieces including hidden on the first map + 1
@@ -27,6 +28,12 @@ var offset : Vector2
 func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
 #	MAX_PIECES = base_map.get_child_count()
+	if not Globals.lapa_gained:
+		lapa_button.hide()
+	else:
+		base_map.get_child(0).texture = load("res://Mapa/bkg_postlapa.png")
+		plaza_version = 8
+			
 	
 func _process(delta):
 	#bgm handler
@@ -112,9 +119,9 @@ func _on_piece_clicked(clicked_piece):
 	elif between_maps:
 		if map_completed(MAX_PIECES):
 			between_maps = false
-			draggable = true
+#			draggable = true
 			var moving_piece = base_map.get_child(40)
-			moving_piece.move(1, 0)
+			moving_piece.move(1, 0) #deals one dmg
 			moving_piece.timer.start()
 
 func map_completed(search_range):
@@ -156,12 +163,12 @@ func _on_wyjście_button_down():
 	var x
 	var y
 	while true:
-		x = randi_range(20, 1900)
-		y = randi_range(20, 1060)
-		if abs(exit.global_position.x - x) < 90 or abs(exit.global_position.y - y) < 126:
+		x = randi_range(-940, 940)
+		y = randi_range(-540, 540)
+		if abs(exit.position.x - x) < 90 or abs(exit.position.y - y) < 126:
 			continue
 		break
-	exit.global_position = Vector2(x, y)
+	exit.position = Vector2(x, y)
 
 func clear_items():
 	for item in ognik.przedmioty.keys():
