@@ -126,7 +126,8 @@ func _on_piece_clicked(clicked_piece):
 		if map_completed(MAX_PIECES):
 			between_maps = false
 #			draggable = true
-			upgrade_to_wide_map()
+			if not Globals.lapa_gained:
+				upgrade_to_wide_map()
 
 func _on_non_euclidean_clicked():
 	#animating zoom in
@@ -161,7 +162,7 @@ func upgrade_to_wide_map():
 	var moving_piece = base_map.get_child(40)
 	moving_piece.timer.start()
 	
-	for easy_saper in [31, 33, 39]: #they start from 0
+	for easy_saper in [31, 33, 39, 45]: #they start from 0
 		var piece = base_map.get_child(easy_saper)
 		piece.update(-1)
 
@@ -181,6 +182,7 @@ func _on_reset_button_pressed():
 	Globals.focused_piece = null
 	Globals.ignore_clicks = false
 	Globals.undraggable = false
+	Globals.bomb_clicked = false
 #	#return visibility
 #	max_modulation = 1.0
 #	first_bkg.modulate.a = 1.0

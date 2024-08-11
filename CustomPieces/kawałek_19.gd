@@ -1,5 +1,6 @@
 extends Piece
 
+@onready var audio = $AudioStreamPlayer
 
 func _ready():
 	clickable = false
@@ -16,6 +17,8 @@ func _input(event):
 		second_piece.stage = tmp_stage
 		first_piece.sprite.play(str(min(first_piece.stage, 5)))
 		second_piece.sprite.play(str(min(second_piece.stage, 5)))
+		
+		audio.play()
 				
 		SignalBus.emit_signal("piece_clicked", self)
 

@@ -8,7 +8,8 @@ func _ready():
 
 
 func _on_piece_clicked(piece):
-	if piece == self:
+	if piece == self and not Globals.bomb_clicked:
 		if Globals.saper_count < 8:
 			bomb.show()
 			update(5)
+			Globals.bomb_clicked = true
