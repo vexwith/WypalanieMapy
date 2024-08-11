@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=30 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
 [ext_resource type="PackedScene" uid="uid://bbav8h88a3lio" path="res://Ognik/ognik.tscn" id="2_w6n46"]
 [ext_resource type="Texture2D" uid="uid://cvt1yhux55mnl" path="res://GUI/brestartoc.png" id="3_g0v1m"]
+[ext_resource type="PackedScene" uid="uid://c518p1nuohyvc" path="res://Mapa/NonEuclideanMap/non_euclidean_map.tscn" id="3_r1k3c"]
 [ext_resource type="Texture2D" uid="uid://cy01wwi12q7av" path="res://GUI/brestartom_2.png" id="4_mcr2b"]
 [ext_resource type="Texture2D" uid="uid://vcjqo87klng5" path="res://GUI/breturnom.png" id="7_tvjuq"]
 [ext_resource type="Texture2D" uid="uid://b1h2pl8h4jlk8" path="res://GUI/breturn.png" id="8_1ent8"]
@@ -78,6 +79,9 @@ offset_top = -540.0
 offset_right = -480.0
 offset_bottom = -540.0
 scale = Vector2(1.8, 1.8)
+
+[node name="NonEuclideanMap" parent="." instance=ExtResource("3_r1k3c")]
+visible = false
 
 [node name="Ognik" parent="." instance=ExtResource("2_w6n46")]
 

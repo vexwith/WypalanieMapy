@@ -9,6 +9,10 @@ extends Node2D
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
 @onready var first_bkg = $WideMapa/BaseMap/FirstBackground
+
+@onready var non_euclidean_map = $NonEuclideanMap
+@onready var non_euclidean_pieces = $NonEuclideanMap/Pieces
+
 @onready var ognik = $Ognik
 @onready var camera = $Camera2D
 @onready var exit = $Camera2D/Wyjście
@@ -27,6 +31,7 @@ var offset : Vector2
 
 func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
+	SignalBus.connect("non_euclidean_clicked", _on_non_euclidean_clicked)
 #	MAX_PIECES = base_map.get_child_count()
 	if not Globals.lapa_gained:
 		lapa_button.hide()
@@ -123,6 +128,29 @@ func _on_piece_clicked(clicked_piece):
 #			draggable = true
 			upgrade_to_wide_map()
 
+func _on_non_euclidean_clicked():
+	#animating zoom in
+	var portal_piece = base_map.get_child(41)
+	var init_cam_pos = camera.position
+	var tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property(camera, "zoom", Vector2(4.0, 4.0), 1.0)
+	tween.tween_property(camera, "position", portal_piece.global_position, 1.0)
+	await tween.finished
+	camera.position = init_cam_pos
+	camera.zoom = Vector2(1.0, 1.0)
+	#enable non euclidean map and disable wide map
+	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540)
+	non_euclidean_map.show()
+	wide_map.hide()
+	#lapa returns you to wide map instead
+	Globals.undraggable = true
+	
+func back_from_non_euclidean():
+	non_euclidean_map.hide()
+	wide_map.show()
+	Globals.undraggable = false
+	draggable = true	
+
 func upgrade_to_wide_map():
 	#in outer wide map all pieces start from 1
 	for i in range(25, base_map.get_child_count()):
@@ -152,6 +180,7 @@ func _on_reset_button_pressed():
 	
 	Globals.focused_piece = null
 	Globals.ignore_clicks = false
+	Globals.undraggable = false
 #	#return visibility
 #	max_modulation = 1.0
 #	first_bkg.modulate.a = 1.0
@@ -209,5 +238,6 @@ func _on_lapa_button_mouse_exited():
 func _on_lapa_button_button_up():
 	clear_items()
 	ognik.przedmioty["lapa"] = true
-	draggable = true
+	if not Globals.undraggable:
+		draggable = true
 	Globals.ignore_clicks = true

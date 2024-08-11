@@ -19,6 +19,8 @@ func _process(delta):
 	if przedmioty["lapa"]:
 		if Input.is_action_just_pressed("LPM"):
 			lapa_index = 1
+			if Globals.undraggable:
+				get_parent().back_from_non_euclidean()
 		if Input.is_action_just_released("LPM"):
 			lapa_index = 0
 
