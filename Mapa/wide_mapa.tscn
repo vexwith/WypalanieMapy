@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=67 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_ny5fj"]
@@ -40,6 +40,8 @@
 [ext_resource type="Script" path="res://CustomPieces/kawałek_23.gd" id="26_khfy8"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_24.gd" id="27_6ua3g"]
 [ext_resource type="Script" path="res://CustomPieces/saper_numbers.gd" id="33_iuho5"]
+[ext_resource type="Script" path="res://CustomPieces/saper_bomb.gd" id="35_l123k"]
+[ext_resource type="Texture2D" uid="uid://c81jy5sukemsa" path="res://Mapa/360fx360f.png" id="36_mrfhe"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_40.gd" id="39_e0bxi"]
 [ext_resource type="Texture2D" uid="uid://drtp0o861aoxv" path="res://Ognik/cursor_0.png" id="40_1c3es"]
 [ext_resource type="Texture2D" uid="uid://d0gkwkcov420j" path="res://Ognik/cursor_1.png" id="41_70a1k"]
@@ -484,6 +486,8 @@ rotation = 0.108237
 script = ExtResource("19_h3e0y")
 affected_pieces = [11, 18]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BaseMap/Kawałek19"]
+
 [node name="Kawałek20" parent="BaseMap" instance=ExtResource("4_wnbpo")]
 position = Vector2(1152, 407)
 rotation = 5.45213
@@ -530,16 +534,25 @@ autoplay = "default"
 [node name="Kawałek26" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1483, 39)
 scale = Vector2(0.7, 0.7)
+script = ExtResource("35_l123k")
+affected_pieces = [25, 27, 31]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek26" index="0"]
-visible = true
+[node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek26"]
+visible = false
+position = Vector2(1.42871, 1.42857)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek27" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1406, 41)
 scale = Vector2(0.7, 0.7)
+script = ExtResource("35_l123k")
+affected_pieces = [26, 28, 32]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek27" index="0"]
-visible = true
+[node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek27"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek28" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1330, 41)
@@ -558,9 +571,13 @@ frame_progress = 0.451222
 [node name="Kawałek29" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1253, 39)
 scale = Vector2(0.7, 0.7)
+script = ExtResource("35_l123k")
+affected_pieces = [28, 34]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek29" index="0"]
-visible = true
+[node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek29"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek30" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1565, 116)
@@ -578,9 +595,13 @@ autoplay = "default"
 [node name="Kawałek31" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1485, 121)
 scale = Vector2(0.75, 0.75)
+script = ExtResource("35_l123k")
+affected_pieces = [26, 30, 32, 35]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek31" index="0"]
-visible = true
+[node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek31"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek32" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1405, 118)
@@ -641,16 +662,25 @@ frame_progress = 0.292292
 [node name="Kawałek36" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1410, 208)
 scale = Vector2(0.7, 0.7)
+script = ExtResource("35_l123k")
+affected_pieces = [32, 35, 37, 38]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek36" index="0"]
-visible = true
+[node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek36"]
+visible = false
+position = Vector2(2.85742, 1.42859)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek37" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1332, 195)
 scale = Vector2(0.7, 0.7)
+script = ExtResource("35_l123k")
+affected_pieces = [33, 36, 39]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek37" index="0"]
-visible = true
+[node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek37"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek38" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1415, 295)
@@ -669,9 +699,13 @@ frame_progress = 0.940629
 [node name="Kawałek39" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1345, 270)
 scale = Vector2(0.5, 0.5)
+script = ExtResource("35_l123k")
+affected_pieces = [37, 38]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek39" index="0"]
-visible = true
+[node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek39"]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek40" parent="BaseMap" instance=ExtResource("15_pklcd")]
 position = Vector2(199, 989)

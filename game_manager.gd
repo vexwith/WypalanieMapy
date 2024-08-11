@@ -31,6 +31,7 @@ func _ready():
 	if not Globals.lapa_gained:
 		lapa_button.hide()
 	else:
+		upgrade_to_wide_map()
 		base_map.get_child(0).texture = load("res://Mapa/bkg_postlapa.png")
 		plaza_version = 8
 			
@@ -120,9 +121,21 @@ func _on_piece_clicked(clicked_piece):
 		if map_completed(MAX_PIECES):
 			between_maps = false
 #			draggable = true
-			var moving_piece = base_map.get_child(40)
-			moving_piece.move(1, 0) #deals one dmg
-			moving_piece.timer.start()
+			upgrade_to_wide_map()
+
+func upgrade_to_wide_map():
+	#in outer wide map all pieces start from 1
+	for i in range(25, base_map.get_child_count()):
+		var piece = base_map.get_child(i)
+		piece.update(1)
+		
+	#special cases
+	var moving_piece = base_map.get_child(40)
+	moving_piece.timer.start()
+	
+	for easy_saper in [31, 33, 39]: #they start from 0
+		var piece = base_map.get_child(easy_saper)
+		piece.update(-1)
 
 func map_completed(search_range):
 	#check if map is done	
