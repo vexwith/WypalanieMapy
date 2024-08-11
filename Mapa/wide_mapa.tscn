@@ -1,19 +1,30 @@
-[gd_scene load_steps=29 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=56 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_ny5fj"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="1_qqujy"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_bqjdw"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_bcyqi"]
+[ext_resource type="Texture2D" uid="uid://d07yyjcoifh7v" path="res://Mapa/saper.png" id="3_c7cyl"]
+[ext_resource type="Texture2D" uid="uid://byegpo7weh6fu" path="res://Mapa/1_1.png" id="4_cjqsl"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="4_wnbpo"]
+[ext_resource type="Texture2D" uid="uid://box4hjuhxneb5" path="res://Mapa/1_2.png" id="5_8mxgq"]
 [ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="5_udpry"]
 [ext_resource type="PackedScene" uid="uid://cqt4n3lxo4au6" path="res://Mapa/kawałek5/kawałek_5.tscn" id="6_5c7sx"]
+[ext_resource type="Texture2D" uid="uid://cw415vyp3ytn8" path="res://Mapa/2_1.png" id="6_510xw"]
 [ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="7_qekhn"]
+[ext_resource type="Texture2D" uid="uid://dnyj8vjpmajrr" path="res://Mapa/2_2.png" id="7_r3nyf"]
+[ext_resource type="Texture2D" uid="uid://cx7f2o0olay4g" path="res://Mapa/3_1.png" id="8_b0yvt"]
 [ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="8_ysg1w"]
+[ext_resource type="Texture2D" uid="uid://e0u038sl3abq" path="res://Mapa/3_2.png" id="9_ccb5e"]
 [ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="9_qbyuq"]
+[ext_resource type="Texture2D" uid="uid://d4kk8i0ytk5v6" path="res://Mapa/4_1.png" id="10_raak8"]
 [ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="10_xxso4"]
+[ext_resource type="Texture2D" uid="uid://di1w0m1ig3v86" path="res://Mapa/4_2.png" id="11_0vsyv"]
 [ext_resource type="PackedScene" uid="uid://cwkorr4fc4wuf" path="res://Mapa/kawałek10/kawałek_10.tscn" id="11_plkeb"]
 [ext_resource type="PackedScene" uid="uid://qk7xlltaywn" path="res://Mapa/kawałek11/kawałek_11.tscn" id="12_lx7ix"]
+[ext_resource type="Texture2D" uid="uid://bqf67fcro1tqt" path="res://Mapa/5_1.png" id="12_un2ql"]
+[ext_resource type="Texture2D" uid="uid://t5njknd5je1w" path="res://Mapa/5_2.png" id="13_j0qju"]
 [ext_resource type="PackedScene" uid="uid://cto0or21dya2h" path="res://Mapa/kawałek12/kawałek_12.tscn" id="13_j21to"]
 [ext_resource type="PackedScene" uid="uid://do6xyoip7a6hu" path="res://Mapa/kawałek13/kawałek_13.tscn" id="14_lxnwh"]
 [ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="15_pklcd"]
@@ -33,6 +44,230 @@ shader = ExtResource("1_ny5fj")
 shader_parameter/direction = Vector2(-1, 0)
 shader_parameter/speed_scale = 0.01
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6o10m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cjqsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8mxgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3apx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_510xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r3nyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4svss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_510xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r3nyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_queng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cjqsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8mxgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mr7a8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cjqsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8mxgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7etb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cjqsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8mxgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gg4ny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cjqsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8mxgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ijty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cjqsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8mxgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_huvit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8mxgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cjqsl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jug7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_510xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r3nyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cddwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_510xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r3nyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ay3b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_510xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r3nyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4eo06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_510xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r3nyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80xam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_b0yvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ccb5e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5oill"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_raak8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0vsyv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13wq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_un2ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_j0qju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="WideMapa" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -48,6 +283,130 @@ offset_right = 1600.0
 offset_bottom = 1200.0
 texture = ExtResource("1_qqujy")
 stretch_mode = 1
+
+[node name="Saper" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1070.0
+offset_right = 1600.0
+offset_bottom = 400.0
+texture = ExtResource("3_c7cyl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(506, 203)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_6o10m")
+autoplay = "default"
+frame_progress = 0.925319
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(198, 262)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_o3apx")
+autoplay = "default"
+frame_progress = 0.757627
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(194, 201)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4svss")
+autoplay = "default"
+frame_progress = 0.866923
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(440, 299)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_queng")
+autoplay = "default"
+frame_progress = 0.366807
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(347, 359)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_mr7a8")
+autoplay = "default"
+frame_progress = 0.913137
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(276, 337)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_q7etb")
+autoplay = "default"
+frame_progress = 0.662404
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(218, 329)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_gg4ny")
+autoplay = "default"
+frame_progress = 0.575286
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(116, 133)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1ijty")
+autoplay = "default"
+frame_progress = 0.701629
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(115, 47)
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_huvit")
+autoplay = "default"
+frame_progress = 0.201522
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(184, 131)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_jug7e")
+autoplay = "default"
+frame_progress = 0.0145831
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(261, 43)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_jug7e")
+autoplay = "default"
+frame_progress = 0.451222
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(491, 41)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_cddwh")
+autoplay = "default"
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(497, 117)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_7ay3b")
+autoplay = "default"
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(438, 218)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4eo06")
+autoplay = "default"
+frame_progress = 0.292292
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(346, 296)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_80xam")
+autoplay = "default"
+frame_progress = 0.940629
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(264, 119)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_5oill")
+autoplay = "default"
+frame_progress = 0.422923
+
+[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="Saper"]
+position = Vector2(336, 119)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_13wq4")
+autoplay = "default"
+frame_progress = 0.484629
 
 [node name="BaseMap" type="Control" parent="."]
 anchors_preset = 0
@@ -175,6 +534,111 @@ rotation = 2.62907
 script = ExtResource("27_6ua3g")
 affected_pieces = [21, 22]
 
+[node name="Kawałek25" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1560, 39)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek25" index="0"]
+visible = true
+
+[node name="Kawałek26" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1483, 39)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek26" index="0"]
+visible = true
+
+[node name="Kawałek27" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1406, 41)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek27" index="0"]
+visible = true
+
+[node name="Kawałek28" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1330, 41)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek28" index="0"]
+visible = true
+
+[node name="Kawałek29" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1253, 39)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek29" index="0"]
+visible = true
+
+[node name="Kawałek30" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1565, 116)
+scale = Vector2(0.6, 0.6)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek30" index="0"]
+visible = true
+
+[node name="Kawałek31" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1485, 121)
+scale = Vector2(0.75, 0.75)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek31" index="0"]
+visible = true
+
+[node name="Kawałek32" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1405, 118)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek32" index="0"]
+visible = true
+
+[node name="Kawałek33" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1333, 118)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek33" index="0"]
+visible = true
+
+[node name="Kawałek34" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1253, 127)
+scale = Vector2(0.8, 0.8)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek34" index="0"]
+visible = true
+
+[node name="Kawałek35" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1506, 215)
+scale = Vector2(0.9, 0.9)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek35" index="0"]
+visible = true
+
+[node name="Kawałek36" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1410, 208)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek36" index="0"]
+visible = true
+
+[node name="Kawałek37" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1332, 195)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek37" index="0"]
+visible = true
+
+[node name="Kawałek38" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1415, 295)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek38" index="0"]
+visible = true
+
+[node name="Kawałek39" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(1345, 270)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek39" index="0"]
+visible = true
+
 [editable path="BaseMap/Kawałek1"]
 [editable path="BaseMap/Kawałek2"]
 [editable path="BaseMap/Kawałek3"]
@@ -199,3 +663,18 @@ affected_pieces = [21, 22]
 [editable path="BaseMap/Kawałek22"]
 [editable path="BaseMap/Kawałek23"]
 [editable path="BaseMap/Kawałek24"]
+[editable path="BaseMap/Kawałek25"]
+[editable path="BaseMap/Kawałek26"]
+[editable path="BaseMap/Kawałek27"]
+[editable path="BaseMap/Kawałek28"]
+[editable path="BaseMap/Kawałek29"]
+[editable path="BaseMap/Kawałek30"]
+[editable path="BaseMap/Kawałek31"]
+[editable path="BaseMap/Kawałek32"]
+[editable path="BaseMap/Kawałek33"]
+[editable path="BaseMap/Kawałek34"]
+[editable path="BaseMap/Kawałek35"]
+[editable path="BaseMap/Kawałek36"]
+[editable path="BaseMap/Kawałek37"]
+[editable path="BaseMap/Kawałek38"]
+[editable path="BaseMap/Kawałek39"]

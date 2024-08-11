@@ -12,7 +12,7 @@ extends Node2D
 @onready var exit = $Wyjście
 
 var first_map = true
-var MAX_PIECES = 24 #all pieces including hidden on the first map + 1
+const MAX_PIECES = 25 #all pieces including hidden on the first map + 1
 var next_piece = 17 #index of next piece used to show hidden pieces in first map
 var plaza_version = 0
 var max_modulation = 1.0 #max modulation of first map
@@ -21,7 +21,7 @@ var between_maps = true
 
 func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
-	MAX_PIECES = base_map.get_child_count()
+#	MAX_PIECES = base_map.get_child_count()
 	
 func _process(delta):
 	#bgm handler
@@ -91,7 +91,7 @@ func _on_piece_clicked(clicked_piece):
 				else:
 					piece.undo_move()
 	elif between_maps:
-		if map_completed(base_map.get_child_count()):
+		if map_completed(MAX_PIECES):
 			print("nice")
 
 func map_completed(search_range):
