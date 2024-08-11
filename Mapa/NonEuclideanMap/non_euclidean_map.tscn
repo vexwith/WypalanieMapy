@@ -1,0 +1,123 @@
+[gd_scene load_steps=15 format=3 uid="uid://c518p1nuohyvc"]
+
+[ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_p5w6s"]
+[ext_resource type="Texture2D" uid="uid://b8r1phhymqlk7" path="res://Mapa/NonEuclideanMap/noneuclidean2.png" id="2_5pgyy"]
+[ext_resource type="PackedScene" uid="uid://v42cdqd6rrmv" path="res://Mapa/kawałek17/kawałek_17.tscn" id="3_svxqp"]
+[ext_resource type="PackedScene" uid="uid://bpkjfbrp06ssn" path="res://Mapa/kawałek18/kawałek_18.tscn" id="4_0stb4"]
+[ext_resource type="Script" path="res://Mapa/NonEuclideanMap/kawałek_17.gd" id="4_7cwx5"]
+[ext_resource type="PackedScene" uid="uid://dtse88q2mxlav" path="res://Mapa/kawałek19/kawałek_19.tscn" id="5_kfn07"]
+[ext_resource type="PackedScene" uid="uid://khgsaiyj8o1b" path="res://Mapa/kawałek20/kawałek_20.tscn" id="6_n7sax"]
+[ext_resource type="PackedScene" uid="uid://txmdbrkwinlj" path="res://Mapa/kawałek21/kawałek_21.tscn" id="7_4ypa3"]
+[ext_resource type="PackedScene" uid="uid://dmq8quxw8nid6" path="res://Mapa/kawałek22/kawałek_22.tscn" id="8_d8gho"]
+[ext_resource type="PackedScene" uid="uid://dmykni4rovdq7" path="res://Mapa/kawałek23/kawałek_23.tscn" id="9_0krhw"]
+[ext_resource type="PackedScene" uid="uid://bo6f5ocmd48wa" path="res://Mapa/kawałek24/kawałek_24.tscn" id="10_dl1fl"]
+[ext_resource type="PackedScene" uid="uid://cwiveoqmd8pr6" path="res://Mapa/kawałek25/kawałek_25.tscn" id="11_8rrri"]
+[ext_resource type="PackedScene" uid="uid://cnsn1rca030sw" path="res://Mapa/kawałek26/kawałek_26.tscn" id="12_pg2pt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nsnj"]
+shader = ExtResource("1_p5w6s")
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/speed_scale = 0.01
+
+[node name="NonEuclideanMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BKG" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2nsnj")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5pgyy")
+stretch_mode = 1
+
+[node name="Pieces" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.8, 1.8)
+
+[node name="Kawałek17" parent="Pieces" instance=ExtResource("3_svxqp")]
+position = Vector2(624.445, 485.556)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(624.445, 485.556)
+high_pos = Vector2(797.222, 398.333)
+affected_pieces = [1]
+
+[node name="Kawałek18" parent="Pieces" instance=ExtResource("4_0stb4")]
+position = Vector2(663.889, 429.444)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(663.889, 429.444)
+high_pos = Vector2(534.444, 363.333)
+affected_pieces = [2, 9]
+
+[node name="Kawałek19" parent="Pieces" instance=ExtResource("5_kfn07")]
+position = Vector2(663.889, 330)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(663.889, 330)
+high_pos = Vector2(347.222, 455)
+affected_pieces = [3, 4, 5]
+
+[node name="Kawałek20" parent="Pieces" instance=ExtResource("6_n7sax")]
+position = Vector2(752.222, 256.667)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(752.222, 256.667)
+high_pos = Vector2(473.889, 118.333)
+affected_pieces = [2, 4]
+
+[node name="Kawałek21" parent="Pieces" instance=ExtResource("7_4ypa3")]
+position = Vector2(687.778, 193.889)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(687.778, 193.889)
+high_pos = Vector2(872.222, 154.444)
+affected_pieces = [2, 3, 5]
+
+[node name="Kawałek22" parent="Pieces" instance=ExtResource("8_d8gho")]
+position = Vector2(540, 211.667)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(540, 211.667)
+high_pos = Vector2(705.556, 292.778)
+affected_pieces = [2, 4, 6, 7, 8]
+
+[node name="Kawałek23" parent="Pieces" instance=ExtResource("9_0krhw")]
+position = Vector2(395, 111.111)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(395, 111.111)
+high_pos = Vector2(123.333, 140)
+affected_pieces = [5, 7]
+
+[node name="Kawałek24" parent="Pieces" instance=ExtResource("10_dl1fl")]
+position = Vector2(346.111, 167.778)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(346.111, 167.778)
+high_pos = Vector2(308.333, 50)
+affected_pieces = [5, 6, 8]
+
+[node name="Kawałek25" parent="Pieces" instance=ExtResource("11_8rrri")]
+position = Vector2(376.667, 296.667)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(376.667, 296.667)
+high_pos = Vector2(651.111, 520)
+affected_pieces = [5, 7, 9]
+
+[node name="Kawałek26" parent="Pieces" instance=ExtResource("12_pg2pt")]
+position = Vector2(412.778, 388.333)
+script = ExtResource("4_7cwx5")
+mid_pos = Vector2(412.778, 388.333)
+high_pos = Vector2(128.889, 475.556)
+affected_pieces = [8, 1]
+
+[editable path="Pieces/Kawałek17"]
+[editable path="Pieces/Kawałek18"]
+[editable path="Pieces/Kawałek19"]
+[editable path="Pieces/Kawałek20"]
+[editable path="Pieces/Kawałek21"]
+[editable path="Pieces/Kawałek22"]
+[editable path="Pieces/Kawałek23"]
+[editable path="Pieces/Kawałek24"]
+[editable path="Pieces/Kawałek25"]
+[editable path="Pieces/Kawałek26"]
