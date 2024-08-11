@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=29 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://cy01wwi12q7av" path="res://GUI/brestartom_2.png" id="4_mcr2b"]
 [ext_resource type="Texture2D" uid="uid://vcjqo87klng5" path="res://GUI/breturnom.png" id="7_tvjuq"]
 [ext_resource type="Texture2D" uid="uid://b1h2pl8h4jlk8" path="res://GUI/breturn.png" id="8_1ent8"]
+[ext_resource type="Texture2D" uid="uid://cyhhdpfwl4jlq" path="res://GUI/bpochodniaoc.png" id="8_4587s"]
+[ext_resource type="Texture2D" uid="uid://3hlxd4u54u6g" path="res://GUI/bpochodniaom.png" id="9_5kcr4"]
+[ext_resource type="Texture2D" uid="uid://bhc3uho36xwnf" path="res://GUI/bpochodnia.png" id="10_72sdo"]
+[ext_resource type="Texture2D" uid="uid://dum2dn6nxm8nk" path="res://GUI/lapa_button.png" id="11_ch5pr"]
+[ext_resource type="Texture2D" uid="uid://d1j18oc8wsun5" path="res://GUI/lapa_button_glow.png" id="12_cl5nr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjddy"]
 texture = ExtResource("3_g0v1m")
@@ -36,6 +41,34 @@ region_rect = Rect2(3, 1, 57, 61)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_id60w"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74kxu"]
+texture = ExtResource("10_72sdo")
+region_rect = Rect2(0, 0, 54, 55)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tqfl"]
+texture = ExtResource("9_5kcr4")
+region_rect = Rect2(3, 4, 63, 62)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7brn"]
+texture = ExtResource("8_4587s")
+region_rect = Rect2(0, 0, 67, 67)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j65kq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_br1w4"]
+texture = ExtResource("11_ch5pr")
+region_rect = Rect2(2, 2, 53, 52)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8j1e"]
+texture = ExtResource("12_cl5nr")
+region_rect = Rect2(2, 2, 53, 52)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7n1u"]
+texture = ExtResource("11_ch5pr")
+region_rect = Rect2(2, 2, 53, 52)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5see7"]
+
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_vkdem")
 
@@ -48,31 +81,67 @@ scale = Vector2(1.8, 1.8)
 
 [node name="Ognik" parent="." instance=ExtResource("2_w6n46")]
 
-[node name="ResetButton" type="Button" parent="."]
-offset_left = 1455.0
-offset_top = 953.0
-offset_right = 1463.0
-offset_bottom = 961.0
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+limit_left = -480
+limit_top = -540
+limit_right = 2400
+limit_bottom = 1620
+
+[node name="ResetButton" type="Button" parent="Camera2D"]
+offset_left = 495.0
+offset_top = 413.0
+offset_right = 503.0
+offset_bottom = 421.0
 scale = Vector2(12, 12)
 theme_override_styles/normal = SubResource("StyleBoxTexture_yjddy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2y58w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ptfh3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lq3v5")
 
-[node name="Wyjście" type="Button" parent="."]
-offset_left = 1570.0
-offset_top = 953.0
-offset_right = 1578.0
-offset_bottom = 961.0
+[node name="Wyjście" type="Button" parent="Camera2D"]
+offset_left = 610.0
+offset_top = 413.0
+offset_right = 618.0
+offset_bottom = 421.0
 scale = Vector2(12, 12)
 theme_override_styles/normal = SubResource("StyleBoxTexture_qab5x")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t6tpp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_worti")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_id60w")
 
+[node name="OgnikButton" type="Button" parent="Camera2D"]
+offset_left = -946.0
+offset_top = -525.0
+offset_right = -938.0
+offset_bottom = -517.0
+scale = Vector2(12, 12)
+theme_override_styles/normal = SubResource("StyleBoxTexture_74kxu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8tqfl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_p7brn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j65kq")
+
+[node name="LapaButton" type="Button" parent="Camera2D"]
+visible = false
+offset_left = -828.0
+offset_top = -525.0
+offset_right = -820.0
+offset_bottom = -517.0
+scale = Vector2(12, 12)
+theme_override_styles/normal = SubResource("StyleBoxTexture_br1w4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_m8j1e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d7n1u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5see7")
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 
-[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="button_down" from="Wyjście" to="." method="_on_wyjście_button_down"]
+[connection signal="pressed" from="Camera2D/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="button_down" from="Camera2D/Wyjście" to="." method="_on_wyjście_button_down"]
+[connection signal="button_up" from="Camera2D/OgnikButton" to="." method="_on_ognik_button_button_up"]
+[connection signal="mouse_entered" from="Camera2D/OgnikButton" to="." method="_on_ognik_button_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/OgnikButton" to="." method="_on_ognik_button_mouse_exited"]
+[connection signal="button_up" from="Camera2D/LapaButton" to="." method="_on_lapa_button_button_up"]
+[connection signal="mouse_entered" from="Camera2D/LapaButton" to="." method="_on_lapa_button_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/LapaButton" to="." method="_on_lapa_button_mouse_exited"]

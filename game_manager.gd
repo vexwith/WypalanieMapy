@@ -9,7 +9,9 @@ extends Node2D
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
 @onready var first_bkg = $WideMapa/BaseMap/FirstBackground
-@onready var exit = $Wyjście
+@onready var ognik = $Ognik
+@onready var camera = $Camera2D
+@onready var exit = $Camera2D/Wyjście
 
 var first_map = true
 const MAX_PIECES = 25 #all pieces including hidden on the first map + 1
@@ -19,7 +21,7 @@ var max_modulation = 1.0 #max modulation of first map
 
 var between_maps = true
 
-var draggable = false
+var draggable = false #false
 var offset : Vector2
 
 func _ready():
@@ -57,15 +59,20 @@ func _process(delta):
 	#bkg handler
 	if first_bkg.modulate.a > max_modulation:
 		first_bkg.modulate.a -= 0.001
-		
-	#dragging handler
-	if draggable:
-		if Input.is_action_just_pressed("LPM"):
-			offset = get_global_mouse_position() - wide_map.global_position
-		if Input.is_action_pressed("LPM"):
-			if wide_map.global_position.x > -960 and wide_map.global_position.x < 960 and \
-			   wide_map.global_position.y > -1080 and wide_map.global_position.y < 0:
-				wide_map.global_position = get_global_mouse_position() - offset
+	
+func _input(event): #dragging hamdler
+	if event is InputEventMouseMotion and draggable:
+		if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
+			var new_pos = camera.position - event.relative * camera.zoom * 0.4
+			camera.position = new_pos
+			if new_pos.x < 480:
+				camera.position.x = 480
+			if new_pos.x > 1440:
+				camera.position.x = 1440
+			if new_pos.y < 0:
+				camera.position.y = 0
+			if new_pos.y > 1080:
+				camera.position.y = 1080
 	
 func _on_piece_clicked(clicked_piece):
 	if clicked_piece.stage == 5 or clicked_piece.stage == 6:
@@ -104,7 +111,11 @@ func _on_piece_clicked(clicked_piece):
 					piece.undo_move()
 	elif between_maps:
 		if map_completed(MAX_PIECES):
+			between_maps = false
 			draggable = true
+			var moving_piece = base_map.get_child(40)
+			moving_piece.move(1, 0)
+			moving_piece.timer.start()
 
 func map_completed(search_range):
 	#check if map is done	
@@ -118,6 +129,9 @@ func map_completed(search_range):
 
 func _on_reset_button_pressed():
 	get_tree().reload_current_scene()
+	
+	Globals.focused_piece = null
+	Globals.ignore_clicks = false
 #	#return visibility
 #	max_modulation = 1.0
 #	first_bkg.modulate.a = 1.0
@@ -148,3 +162,32 @@ func _on_wyjście_button_down():
 			continue
 		break
 	exit.global_position = Vector2(x, y)
+
+func clear_items():
+	for item in ognik.przedmioty.keys():
+		ognik.przedmioty[item] = false
+
+func _on_ognik_button_mouse_entered():
+	Globals.ignore_clicks = true
+
+func _on_ognik_button_mouse_exited():
+	if not ognik.przedmioty["lapa"]:
+		Globals.ignore_clicks = false
+
+func _on_ognik_button_button_up():
+	clear_items()
+	ognik.przedmioty["ognik"] = true
+	draggable = false
+
+func _on_lapa_button_mouse_entered():
+	Globals.ignore_clicks = true
+
+func _on_lapa_button_mouse_exited():
+	if not ognik.przedmioty["lapa"]:
+		Globals.ignore_clicks = false
+
+func _on_lapa_button_button_up():
+	clear_items()
+	ognik.przedmioty["lapa"] = true
+	draggable = true
+	Globals.ignore_clicks = true

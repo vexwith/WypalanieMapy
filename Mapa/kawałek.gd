@@ -13,7 +13,7 @@ var modulation = 1.0
 var clickable = true #used in first map outer pieces
 
 func _input(event):
-	if cursor_entered and clickable and event.is_action_pressed("LPM"):
+	if cursor_entered and clickable and not Globals.ignore_clicks and event.is_action_pressed("LPM"):
 		make_move()
 				
 		SignalBus.emit_signal("piece_clicked", self)
