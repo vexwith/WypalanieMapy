@@ -19,6 +19,9 @@ var max_modulation = 1.0 #max modulation of first map
 
 var between_maps = true
 
+var draggable = false
+var offset : Vector2
+
 func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
 #	MAX_PIECES = base_map.get_child_count()
@@ -54,6 +57,15 @@ func _process(delta):
 	#bkg handler
 	if first_bkg.modulate.a > max_modulation:
 		first_bkg.modulate.a -= 0.001
+		
+	#dragging handler
+	if draggable:
+		if Input.is_action_just_pressed("LPM"):
+			offset = get_global_mouse_position() - wide_map.global_position
+		if Input.is_action_pressed("LPM"):
+			if wide_map.global_position.x > -960 and wide_map.global_position.x < 960 and \
+			   wide_map.global_position.y > -1080 and wide_map.global_position.y < 0:
+				wide_map.global_position = get_global_mouse_position() - offset
 	
 func _on_piece_clicked(clicked_piece):
 	if clicked_piece.stage == 5 or clicked_piece.stage == 6:
@@ -92,7 +104,7 @@ func _on_piece_clicked(clicked_piece):
 					piece.undo_move()
 	elif between_maps:
 		if map_completed(MAX_PIECES):
-			print("nice")
+			draggable = true
 
 func map_completed(search_range):
 	#check if map is done	
