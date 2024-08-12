@@ -87,10 +87,10 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
-limit_left = -480
-limit_top = -540
-limit_right = 2400
-limit_bottom = 1620
+limit_left = -624
+limit_top = -684
+limit_right = 2544
+limit_bottom = 1764
 
 [node name="ResetButton" type="Button" parent="Camera2D"]
 offset_left = 495.0

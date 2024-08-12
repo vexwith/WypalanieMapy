@@ -88,14 +88,14 @@ func _input(event): #dragging hamdler
 		if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
 			var new_pos = camera.position - event.relative * camera.zoom * 0.4
 			camera.position = new_pos
-			if new_pos.x < 480:
-				camera.position.x = 480
-			if new_pos.x > 1440:
-				camera.position.x = 1440
-			if new_pos.y < 0:
-				camera.position.y = 0
-			if new_pos.y > 1080:
-				camera.position.y = 1080
+			if new_pos.x < 400: #480
+				camera.position.x = 400
+			if new_pos.x > 1520: #1440
+				camera.position.x = 1520
+			if new_pos.y < -80: #0
+				camera.position.y = -80
+			if new_pos.y > 1160: #1080
+				camera.position.y = 1160
 	
 func _on_piece_clicked(clicked_piece):
 	if clicked_piece.stage == 5 or clicked_piece.stage == 6:
