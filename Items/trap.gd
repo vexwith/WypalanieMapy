@@ -36,9 +36,12 @@ func _on_mouse_freed():
 
 func _on_area_entered(area):
 	if area.is_in_group("return"):
-		owner.get_parent().exit.hide()
+		var gm = owner.get_parent()
+		gm.exit.hide()
 		sprite.play("attack_return")
 		await sprite.animation_finished
 		Globals.return_trapped = true
-		
+		gm.real_exit.global_position = gm.exit.global_position + Vector2(-10, -39)
+		gm.real_exit.show()
+		gm.exit.hide()
 		queue_free()

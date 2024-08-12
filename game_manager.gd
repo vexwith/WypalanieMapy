@@ -29,6 +29,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var camera = $Camera2D
 @onready var reset = $Camera2D/ResetButton
 @onready var exit = $Camera2D/Wyjście
+@onready var real_exit = $Camera2D/RealExit
 @onready var hills_exit = $HillsExit
 @onready var lapa_button = $Camera2D/LapaButton
 @onready var small_piece = $SmallPiece
@@ -62,6 +63,7 @@ func save_data(path : String):
 	var data = {
 		"player_data" : {
 			"lapa_gained" : Globals.lapa_gained,
+			"return_trapped" : Globals.return_trapped,
 			"first_enter" : Globals.first_enter,
 			"first_restart" : Globals.first_restart,
 			"say_restart" : Globals.say_restart,
@@ -89,6 +91,7 @@ func load_data(path : String):
 			return
 			
 		Globals.lapa_gained = data.player_data.lapa_gained
+		Globals.return_trapped = data.player_data.return_trapped
 		Globals.first_enter = data.player_data.first_enter
 		Globals.first_restart = data.player_data.first_restart
 		Globals.say_restart = data.player_data.say_restart
@@ -113,6 +116,11 @@ func _ready():
 			bgm.stop()
 		sfx.volume_db = -7.0
 		plaza_version = 9 #reset
+		
+	if not Globals.return_trapped:
+		real_exit.hide()
+	else:
+		exit.hide()
 		
 	if Globals.first_enter:
 		Globals.first_enter = false
@@ -545,3 +553,12 @@ func _on_save_button_up():
 func _on_load_button_up():
 	load_data(SAVE_DIR + SAVE_FILE_NAME)
 	get_tree().reload_current_scene()
+
+
+func _on_real_exit_button_up():
+	var tween = get_tree().create_tween()
+	$Camera2D/Shadow.show()
+	$Camera2D/Endings.show()
+	$Camera2D/Endings.text = "TO BE CONTINUED"
+	tween.tween_property($Camera2D/Shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+	tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)

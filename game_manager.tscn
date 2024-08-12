@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=58 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -15,12 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://cyhhdpfwl4jlq" path="res://GUI/bpochodniaoc.png" id="8_4587s"]
 [ext_resource type="Texture2D" uid="uid://3hlxd4u54u6g" path="res://GUI/bpochodniaom.png" id="9_5kcr4"]
 [ext_resource type="Texture2D" uid="uid://bhc3uho36xwnf" path="res://GUI/bpochodnia.png" id="10_72sdo"]
+[ext_resource type="Texture2D" uid="uid://beh5esbksoc85" path="res://Items/pulapkareturn3.png" id="11_8eg3j"]
 [ext_resource type="Texture2D" uid="uid://dum2dn6nxm8nk" path="res://GUI/lapa_button.png" id="11_ch5pr"]
 [ext_resource type="Texture2D" uid="uid://d1j18oc8wsun5" path="res://GUI/lapa_button_glow.png" id="12_cl5nr"]
+[ext_resource type="Texture2D" uid="uid://b0e8obcdhpqo0" path="res://GUI/pulapkareturnnom.png" id="12_u2w4e"]
 [ext_resource type="Texture2D" uid="uid://dlsr5ykbk51r" path="res://GUI/b_lev0_0.png" id="18_3gk7w"]
 [ext_resource type="AudioStream" uid="uid://d0pnta0dpkhie" path="res://Wavs/0hornfrench2.wav" id="18_bt8q6"]
 [ext_resource type="Texture2D" uid="uid://cdnjhhj5dlpwd" path="res://GUI/b_lev1_0.png" id="19_oqw3y"]
 [ext_resource type="Texture2D" uid="uid://dwv7js2un0fsx" path="res://GUI/b_lev2_0.png" id="20_3rgua"]
+[ext_resource type="FontFile" uid="uid://c8uy1iu1mljoy" path="res://BasicHandwriting.ttf" id="20_pu80j"]
 [ext_resource type="Texture2D" uid="uid://dyubr3w0wmhuh" path="res://GUI/b_lev3_0.png" id="21_fxaop"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
@@ -64,6 +67,20 @@ texture = ExtResource("3_g0v1m")
 region_rect = Rect2(5, 4, 65, 65)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lq3v5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5cut"]
+texture = ExtResource("11_8eg3j")
+region_rect = Rect2(0, 0, 75, 135)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgwby"]
+texture = ExtResource("12_u2w4e")
+region_rect = Rect2(0, 0, 75, 135)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oos46"]
+texture = ExtResource("11_8eg3j")
+region_rect = Rect2(0, 0, 75, 135)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8txy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qab5x"]
 texture = ExtResource("8_1ent8")
@@ -109,6 +126,12 @@ texture = ExtResource("11_ch5pr")
 region_rect = Rect2(2, 2, 53, 52)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5see7"]
+
+[sub_resource type="Gradient" id="Gradient_vcxga"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3sm7f"]
+gradient = SubResource("Gradient_vcxga")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rdh5l"]
 animations = [{
@@ -184,6 +207,10 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_t5sn2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ymeyc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8kde5")
 
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="NonEuclideanMap" parent="." instance=ExtResource("3_r1k3c")]
 visible = false
 
@@ -208,10 +235,15 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ptfh3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lq3v5")
 
 [node name="RealExit" type="Button" parent="Camera2D"]
-offset_left = 613.0
-offset_top = 270.0
-offset_right = 621.0
-offset_bottom = 278.0
+offset_left = 600.0
+offset_top = 374.0
+offset_right = 607.0
+offset_bottom = 386.0
+scale = Vector2(17, 17)
+theme_override_styles/normal = SubResource("StyleBoxTexture_i5cut")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qgwby")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_oos46")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a8txy")
 
 [node name="Wyjście" type="Button" parent="Camera2D"]
 offset_left = 610.0
@@ -266,6 +298,28 @@ offset_right = 926.0
 offset_bottom = -424.0
 text = "LOAD"
 
+[node name="Shadow" type="TextureRect" parent="Camera2D"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("GradientTexture1D_3sm7f")
+
+[node name="Endings" type="Label" parent="Camera2D"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -259.0
+offset_top = -148.0
+offset_right = 260.0
+offset_bottom = -8.0
+theme_override_fonts/font = ExtResource("20_pu80j")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="SmallPiece" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(2061, -262)
@@ -279,6 +333,7 @@ stream = ExtResource("18_bt8q6")
 [connection signal="button_up" from="HillsExit" to="." method="_on_hills_exit_button_up"]
 [connection signal="button_up" from="Klepsydra" to="." method="_on_klepsydra_button_up"]
 [connection signal="pressed" from="Camera2D/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="button_up" from="Camera2D/RealExit" to="." method="_on_real_exit_button_up"]
 [connection signal="button_down" from="Camera2D/Wyjście" to="." method="_on_wyjście_button_down"]
 [connection signal="button_up" from="Camera2D/OgnikButton" to="." method="_on_ognik_button_button_up"]
 [connection signal="mouse_entered" from="Camera2D/OgnikButton" to="." method="_on_ognik_button_mouse_entered"]
