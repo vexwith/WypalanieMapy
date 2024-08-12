@@ -799,7 +799,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek40" parent="BaseMap" instance=ExtResource("15_pklcd")]
-position = Vector2(199, 989)
+position = Vector2(302, 800)
 rotation = -0.191412
 script = ExtResource("39_e0bxi")
 
@@ -834,13 +834,16 @@ wait_time = 0.6
 autostart = true
 
 [node name="Kawałek42" parent="BaseMap" instance=ExtResource("16_27fi4")]
-position = Vector2(108, 352)
-rotation = -0.353388
-affected_pieces = [43]
+position = Vector2(110, 358)
+rotation = -0.658886
+affected_pieces = [43, 65]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek42" index="0"]
+visible = true
 
 [node name="Kawałek43" parent="BaseMap" instance=ExtResource("16_27fi4")]
-position = Vector2(204, 317)
-rotation = 2.73102
+position = Vector2(184, 284)
+rotation = 2.42552
 affected_pieces = [42, 44]
 
 [node name="Kawałek44" parent="BaseMap" instance=ExtResource("7_qekhn")]
@@ -951,6 +954,69 @@ rotation = -1.31532
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek60" index="0"]
 visible = true
 
+[node name="Kawałek61" parent="BaseMap" instance=ExtResource("10_xxso4")]
+position = Vector2(57, 616)
+rotation = -4.29471
+scale = Vector2(0.5, 0.5)
+affected_pieces = [62, 63]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek61" index="0"]
+visible = true
+
+[node name="Kawałek62" parent="BaseMap" instance=ExtResource("11_plkeb")]
+position = Vector2(145, 593)
+rotation = -2.40888
+scale = Vector2(0.5, 0.5)
+affected_pieces = [61, 63, 64, 65]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek62" index="0"]
+visible = true
+
+[node name="Kawałek63" parent="BaseMap" instance=ExtResource("13_j21to")]
+position = Vector2(122, 641)
+rotation = -2.55811
+scale = Vector2(0.5, 0.5)
+affected_pieces = [61, 62, 66, 67]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek63" index="0"]
+visible = true
+
+[node name="Kawałek64" parent="BaseMap" instance=ExtResource("13_j21to")]
+position = Vector2(192, 566)
+rotation = -2.10712
+scale = Vector2(0.5, -0.48)
+affected_pieces = [62, 65, 66]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek64" index="0"]
+visible = true
+
+[node name="Kawałek65" parent="BaseMap" instance=ExtResource("10_xxso4")]
+position = Vector2(183, 501)
+rotation = 2.89558
+scale = Vector2(-0.644, 0.5)
+affected_pieces = [42, 62, 64]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek65" index="0"]
+visible = true
+
+[node name="Kawałek66" parent="BaseMap" instance=ExtResource("16_27fi4")]
+position = Vector2(200, 692)
+rotation = 0.493819
+scale = Vector2(0.8, 0.8)
+affected_pieces = [63, 64]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek66" index="0"]
+visible = true
+
+[node name="Kawałek67" parent="BaseMap" instance=ExtResource("12_lx7ix")]
+position = Vector2(58, 825)
+rotation = -1.67553
+scale = Vector2(0.97956, 0.9)
+affected_pieces = [63]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek67" index="0"]
+visible = true
+
 [connection signal="timeout" from="BaseMap/Kawałek40/Timer" to="BaseMap/Kawałek40" method="_on_timer_timeout"]
 [connection signal="button_up" from="BaseMap/Kawałek40/Lapa" to="BaseMap/Kawałek40" method="_on_lapa_button_up"]
 [connection signal="timeout" from="BaseMap/Kawałek41/Timer" to="BaseMap/Kawałek41" method="_on_timer_timeout"]
@@ -1015,3 +1081,10 @@ visible = true
 [editable path="BaseMap/Kawałek58"]
 [editable path="BaseMap/Kawałek59"]
 [editable path="BaseMap/Kawałek60"]
+[editable path="BaseMap/Kawałek61"]
+[editable path="BaseMap/Kawałek62"]
+[editable path="BaseMap/Kawałek63"]
+[editable path="BaseMap/Kawałek64"]
+[editable path="BaseMap/Kawałek65"]
+[editable path="BaseMap/Kawałek66"]
+[editable path="BaseMap/Kawałek67"]

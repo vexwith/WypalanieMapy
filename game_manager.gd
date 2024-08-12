@@ -165,6 +165,10 @@ func upgrade_to_wide_map():
 	for easy_saper in [31, 33, 39, 45]: #they start from 0
 		var piece = base_map.get_child(easy_saper)
 		piece.update(-1)
+		
+	for harder in [44]: #they start from 2
+		var piece = base_map.get_child(harder)
+		piece.update(1)
 
 func map_completed(search_range):
 	#check if map is done	

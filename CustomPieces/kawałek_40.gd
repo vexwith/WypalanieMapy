@@ -13,11 +13,11 @@ func _ready():
 	
 func _process(delta):
 	if position.x > 243:
-		affected_pieces = [18]
+		affected_pieces = [18, 66]
 	elif position.x < 180:
-		affected_pieces = []
+		affected_pieces = [67]
 	else:
-		affected_pieces = [1, 2, 4, 5, 6, 7, 8, 9, 10, 11]
+		affected_pieces = [66, 67]
 		
 
 func _on_timer_timeout():
