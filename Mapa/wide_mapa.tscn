@@ -1,7 +1,7 @@
-[gd_scene load_steps=87 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=91 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
-[ext_resource type="Texture2D" uid="uid://brkislr0025si" path="res://Mapa/hills.png" id="1_djpjk"]
+[ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_ny5fj"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="1_qqujy"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_bqjdw"]
@@ -63,6 +63,18 @@
 [ext_resource type="Texture2D" uid="uid://iu13ma1grms2" path="res://Mapa/cloud_2.png" id="62_vwxmg"]
 [ext_resource type="Texture2D" uid="uid://df3a3ake47dje" path="res://Mapa/cloud_3.png" id="63_ct4ha"]
 [ext_resource type="Texture2D" uid="uid://bvyu0ipdqepke" path="res://Mapa/cloud_4.png" id="64_bnl35"]
+
+[sub_resource type="Gradient" id="Gradient_70r0r"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ub3q"]
+gradient = SubResource("Gradient_70r0r")
+
+[sub_resource type="Gradient" id="Gradient_7fb2i"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4c3g2"]
+gradient = SubResource("Gradient_7fb2i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwwdt"]
 shader = ExtResource("1_ny5fj")
@@ -386,34 +398,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MrWhite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -2049.0
+offset_right = -1793.0
+offset_bottom = 1200.0
+texture = SubResource("GradientTexture1D_7ub3q")
+
 [node name="Hills" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1574.0
-offset_right = 26.0
+offset_left = -1799.0
+offset_right = 1.0
 offset_bottom = 1200.0
-texture = ExtResource("1_djpjk")
+texture = ExtResource("1_mn8p5")
 
-[node name="Kawałek45Base2" type="TextureRect" parent="."]
-visible = false
+[node name="WhiteShadow" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -154.0
-offset_top = 1181.0
-offset_right = 176.0
-offset_bottom = 1341.0
-rotation = -0.0765372
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("9_6wbwc")
-
-[node name="Kawałek45Base3" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -158.0
-offset_top = -93.0
-offset_right = 172.0
-offset_bottom = 67.0
-rotation = -0.0765372
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("9_6wbwc")
+offset_left = -1801.0
+offset_right = -1101.0
+offset_bottom = 1200.0
+texture = SubResource("GradientTexture1D_4c3g2")
 
 [node name="OuterVoid" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_nwwdt")
@@ -1094,7 +1099,8 @@ rotation = 1.07735
 affected_pieces = [73, 74]
 
 [node name="Kawałek73" parent="BaseMap" instance=ExtResource("17_npd45")]
-position = Vector2(-225, 304)
+position = Vector2(-184, 284)
+rotation = -1.38554
 affected_pieces = [72, 75]
 
 [node name="Kawałek74" parent="BaseMap" instance=ExtResource("17_npd45")]
@@ -1103,8 +1109,8 @@ rotation = 2.20365
 affected_pieces = [72, 76]
 
 [node name="Kawałek75" parent="BaseMap" instance=ExtResource("9_qbyuq")]
-position = Vector2(-346, 241)
-rotation = 0.307936
+position = Vector2(-192, 115)
+rotation = 1.93353
 affected_pieces = [73, 77]
 
 [node name="Kawałek76" parent="BaseMap" instance=ExtResource("6_5c7sx")]
@@ -1113,16 +1119,17 @@ rotation = 3.46563
 affected_pieces = [74, 80]
 
 [node name="Kawałek77" parent="BaseMap" instance=ExtResource("7_qekhn")]
-position = Vector2(-476, 138)
+position = Vector2(-408, 111)
+rotation = -0.0384396
 affected_pieces = [75, 78]
 
 [node name="Kawałek78" parent="BaseMap" instance=ExtResource("12_lx7ix")]
-position = Vector2(-760, 142)
-rotation = -0.370579
+position = Vector2(-559, 150)
+rotation = 0.220193
 affected_pieces = [77, 79]
 
 [node name="Kawałek79" parent="BaseMap" instance=ExtResource("8_ysg1w")]
-position = Vector2(-982, 145)
+position = Vector2(-756, 121)
 affected_pieces = [78]
 
 [node name="Kawałek80" parent="BaseMap" instance=ExtResource("11_plkeb")]
@@ -1175,17 +1182,17 @@ rotation = -1.34004
 affected_pieces = [84, 87, 89]
 
 [node name="Kawałek91" parent="BaseMap" instance=ExtResource("12_lx7ix")]
-position = Vector2(-699, 443)
-rotation = -0.729189
+position = Vector2(-690, 482)
+rotation = -0.316462
 affected_pieces = [86, 92]
 
 [node name="Kawałek92" parent="BaseMap" instance=ExtResource("7_qekhn")]
-position = Vector2(-714, 341)
-rotation = -3.04409
+position = Vector2(-567, 359)
+rotation = -2.23586
 affected_pieces = [91, 93]
 
 [node name="Kawałek93" parent="BaseMap" instance=ExtResource("2_bqjdw")]
-position = Vector2(-934, 309)
+position = Vector2(-904, 208)
 rotation = 0.115266
 affected_pieces = [92, 94]
 

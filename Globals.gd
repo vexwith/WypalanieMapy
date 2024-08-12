@@ -12,9 +12,11 @@ var undraggable = false #cant drag on non euclidean map
 var crawl_mode = false #hills mode
 
 #variables saved between playthroughs
-var lapa_gained = true #after acquiring lapa it stays on you
+var lapa_gained = false #after acquiring lapa it stays on you
 
 var first_enter = true
 var first_restart = true
 var say_restart = false
+
+var map_pieces = 0 #cel gry xD
 
