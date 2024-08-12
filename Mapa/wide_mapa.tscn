@@ -48,10 +48,10 @@
 [ext_resource type="AudioStream" uid="uid://cvnfhgs2ryoo0" path="res://Wavs/00teleport1.wav" id="29_vdvan"]
 [ext_resource type="Script" path="res://CustomPieces/saper_numbers.gd" id="33_iuho5"]
 [ext_resource type="Script" path="res://CustomPieces/saper_bomb.gd" id="35_l123k"]
-[ext_resource type="Texture2D" uid="uid://c81jy5sukemsa" path="res://Mapa/360fx360f.png" id="36_mrfhe"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_40.gd" id="39_e0bxi"]
 [ext_resource type="Texture2D" uid="uid://drtp0o861aoxv" path="res://Ognik/cursor_0.png" id="40_1c3es"]
 [ext_resource type="Texture2D" uid="uid://d0gkwkcov420j" path="res://Ognik/cursor_1.png" id="41_70a1k"]
+[ext_resource type="Texture2D" uid="uid://debcs6mmao851" path="res://Mapa/Untitled7.png" id="43_i4p0y"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_41.gd" id="46_56amj"]
 [ext_resource type="Texture2D" uid="uid://dtojrmly2w7ag" path="res://Mapa/NonEuclideanMap/pole7_0.png" id="47_q33j3"]
 [ext_resource type="Texture2D" uid="uid://dx5ft4bd8hic4" path="res://Mapa/NonEuclideanMap/pole7_1.png" id="48_uo226"]
@@ -688,7 +688,7 @@ affected_pieces = [25, 27, 31]
 visible = false
 position = Vector2(1.42871, 1.42857)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("36_mrfhe")
+texture = ExtResource("43_i4p0y")
 
 [node name="Kawałek27" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1406, 41)
@@ -699,7 +699,7 @@ affected_pieces = [26, 28, 32]
 [node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek27"]
 visible = false
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("36_mrfhe")
+texture = ExtResource("43_i4p0y")
 
 [node name="Kawałek28" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1330, 41)
@@ -724,7 +724,7 @@ affected_pieces = [28, 34]
 [node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek29"]
 visible = false
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("36_mrfhe")
+texture = ExtResource("43_i4p0y")
 
 [node name="Kawałek30" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1565, 116)
@@ -748,7 +748,7 @@ affected_pieces = [26, 30, 32, 35]
 [node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek31"]
 visible = false
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("36_mrfhe")
+texture = ExtResource("43_i4p0y")
 
 [node name="Kawałek32" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1405, 118)
@@ -816,7 +816,7 @@ affected_pieces = [32, 35, 37, 38]
 visible = false
 position = Vector2(2.85742, 1.42859)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("36_mrfhe")
+texture = ExtResource("43_i4p0y")
 
 [node name="Kawałek37" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1332, 195)
@@ -827,7 +827,7 @@ affected_pieces = [33, 36, 39]
 [node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek37"]
 visible = false
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("36_mrfhe")
+texture = ExtResource("43_i4p0y")
 
 [node name="Kawałek38" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1415, 295)
@@ -852,7 +852,7 @@ affected_pieces = [37, 38]
 [node name="Sprite2D" type="Sprite2D" parent="BaseMap/Kawałek39"]
 visible = false
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("36_mrfhe")
+texture = ExtResource("43_i4p0y")
 
 [node name="Kawałek40" parent="BaseMap" instance=ExtResource("15_pklcd")]
 position = Vector2(99, 1087)
