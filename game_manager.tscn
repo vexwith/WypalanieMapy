@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=49 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -17,6 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://bhc3uho36xwnf" path="res://GUI/bpochodnia.png" id="10_72sdo"]
 [ext_resource type="Texture2D" uid="uid://dum2dn6nxm8nk" path="res://GUI/lapa_button.png" id="11_ch5pr"]
 [ext_resource type="Texture2D" uid="uid://d1j18oc8wsun5" path="res://GUI/lapa_button_glow.png" id="12_cl5nr"]
+[ext_resource type="Texture2D" uid="uid://dlsr5ykbk51r" path="res://GUI/b_lev0_0.png" id="18_3gk7w"]
+[ext_resource type="AudioStream" uid="uid://d0pnta0dpkhie" path="res://Wavs/0hornfrench2.wav" id="18_bt8q6"]
+[ext_resource type="Texture2D" uid="uid://cdnjhhj5dlpwd" path="res://GUI/b_lev1_0.png" id="19_oqw3y"]
+[ext_resource type="Texture2D" uid="uid://dwv7js2un0fsx" path="res://GUI/b_lev2_0.png" id="20_3rgua"]
+[ext_resource type="Texture2D" uid="uid://dyubr3w0wmhuh" path="res://GUI/b_lev3_0.png" id="21_fxaop"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
 texture = ExtResource("3_t42ev")
@@ -74,6 +79,9 @@ region_rect = Rect2(3, 1, 57, 61)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_id60w"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isvkt"]
+size = Vector2(4.91667, 4.58333)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74kxu"]
 texture = ExtResource("10_72sdo")
 region_rect = Rect2(0, 0, 54, 55)
@@ -101,6 +109,46 @@ texture = ExtResource("11_ch5pr")
 region_rect = Rect2(2, 2, 53, 52)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5see7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdh5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_3gk7w")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_oqw3y")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_3rgua")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_fxaop")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_vkdem")
@@ -159,6 +207,12 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_2y58w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ptfh3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lq3v5")
 
+[node name="RealExit" type="Button" parent="Camera2D"]
+offset_left = 613.0
+offset_top = 270.0
+offset_right = 621.0
+offset_bottom = 278.0
+
 [node name="Wyjście" type="Button" parent="Camera2D"]
 offset_left = 610.0
 offset_top = 413.0
@@ -169,6 +223,12 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_qab5x")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t6tpp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_worti")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_id60w")
+
+[node name="Area2D" type="Area2D" parent="Camera2D/Wyjście" groups=["return"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Wyjście/Area2D"]
+position = Vector2(4.125, 3.70833)
+shape = SubResource("RectangleShape2D_isvkt")
 
 [node name="OgnikButton" type="Button" parent="Camera2D"]
 offset_left = -946.0
@@ -206,7 +266,15 @@ offset_right = 926.0
 offset_bottom = -424.0
 text = "LOAD"
 
+[node name="SmallPiece" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(2061, -262)
+sprite_frames = SubResource("SpriteFrames_rdh5l")
+animation = &"1"
+autoplay = "default"
+
 [node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_bt8q6")
 
 [connection signal="button_up" from="HillsExit" to="." method="_on_hills_exit_button_up"]
 [connection signal="button_up" from="Klepsydra" to="." method="_on_klepsydra_button_up"]

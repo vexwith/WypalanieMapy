@@ -1,0 +1,130 @@
+[gd_scene load_steps=18 format=3 uid="uid://bf6vn2ul20fnm"]
+
+[ext_resource type="Script" path="res://Items/trap.gd" id="1_8udmu"]
+[ext_resource type="Texture2D" uid="uid://cp6jbltr3agdu" path="res://Items/pulapki_2.png" id="1_ffusi"]
+[ext_resource type="Texture2D" uid="uid://cdfrafld2gyli" path="res://Items/pulapki_38.png" id="2_m8eg4"]
+[ext_resource type="Texture2D" uid="uid://ccwj5bcwq7ip7" path="res://Items/pulapki_54.png" id="3_8clem"]
+[ext_resource type="Texture2D" uid="uid://dbwx1ifef3ik6" path="res://Items/pulapki_66.png" id="4_ao8fj"]
+[ext_resource type="Texture2D" uid="uid://w4gkjcgkn12" path="res://Items/pulapkamouse1.png" id="5_i73jg"]
+[ext_resource type="Texture2D" uid="uid://b0l1ht3cj3fhr" path="res://Items/pulapki_74.png" id="5_oxvfj"]
+[ext_resource type="Texture2D" uid="uid://j3uq0fwcjl6q" path="res://Items/pulapki_82.png" id="6_1t8oi"]
+[ext_resource type="Texture2D" uid="uid://b7xvppwo1mrw" path="res://Items/pulapkamouse2.png" id="6_eotfb"]
+[ext_resource type="Texture2D" uid="uid://b31xw7d2csebw" path="res://Items/pulapkamouse3.png" id="7_elxbr"]
+[ext_resource type="Texture2D" uid="uid://d3ol0dxvy5duv" path="res://Items/pulapkamouse0.png" id="9_76lpx"]
+[ext_resource type="Texture2D" uid="uid://dwigy0wrxos3v" path="res://Items/cursor_0.png" id="12_hocs4"]
+[ext_resource type="Texture2D" uid="uid://b3te0lggujva5" path="res://Items/pulapkareturn1.png" id="12_lkqq0"]
+[ext_resource type="Texture2D" uid="uid://q1wypgbyqcn6" path="res://Items/pulapkareturn2.png" id="13_5ubyo"]
+[ext_resource type="Texture2D" uid="uid://beh5esbksoc85" path="res://Items/pulapkareturn3.png" id="14_yv5s8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d72o3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ffusi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m8eg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8clem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ao8fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oxvfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1t8oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oxvfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1t8oi")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ffusi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m8eg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i73jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_76lpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eotfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_elxbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eotfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_elxbr")
+}],
+"loop": false,
+"name": &"attack_mouse",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ffusi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m8eg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8clem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lkqq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5ubyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yv5s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5ubyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yv5s8")
+}],
+"loop": false,
+"name": &"attack_return",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b83ia"]
+radius = 44.0114
+
+[node name="Trap" type="Area2D"]
+collision_mask = 0
+script = ExtResource("1_8udmu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d72o3")
+animation = &"attack_return"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b83ia")
+
+[node name="mouse" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_hocs4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

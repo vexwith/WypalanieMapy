@@ -21,6 +21,9 @@ func _process(delta):
 			lapa_index = 1
 			if Globals.undraggable:
 				get_parent().back_from_non_euclidean()
+			if Globals.trapped:
+				Globals.trapped = false
+				SignalBus.emit_signal("mouse_freed")
 		if Input.is_action_just_released("LPM"):
 			lapa_index = 0
 

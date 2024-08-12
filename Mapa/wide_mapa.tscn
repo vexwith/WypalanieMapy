@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=93 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
@@ -59,6 +59,8 @@
 [ext_resource type="Texture2D" uid="uid://ckmo4x6cac7c8" path="res://Mapa/NonEuclideanMap/pole7_3.png" id="50_s1jew"]
 [ext_resource type="Texture2D" uid="uid://k3lbry52wlsu" path="res://Mapa/NonEuclideanMap/pole7_4.png" id="51_yc7kb"]
 [ext_resource type="Texture2D" uid="uid://bjelttbjbgyvt" path="res://Mapa/NonEuclideanMap/pole7_5.png" id="52_ggtlm"]
+[ext_resource type="PackedScene" uid="uid://bf6vn2ul20fnm" path="res://Items/trap.tscn" id="60_uxvvb"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_52.gd" id="60_whw0o"]
 [ext_resource type="Texture2D" uid="uid://cu2aorwh2euw1" path="res://Mapa/cloud_1.png" id="61_jt636"]
 [ext_resource type="Texture2D" uid="uid://iu13ma1grms2" path="res://Mapa/cloud_2.png" id="62_vwxmg"]
 [ext_resource type="Texture2D" uid="uid://df3a3ake47dje" path="res://Mapa/cloud_3.png" id="63_ct4ha"]
@@ -951,10 +953,15 @@ visible = true
 [node name="Kawałek52" parent="BaseMap" instance=ExtResource("3_bcyqi")]
 position = Vector2(1415, 874)
 rotation = 0.108173
+script = ExtResource("60_whw0o")
 affected_pieces = [50, 51, 53, 55]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek52" index="0"]
 visible = true
+
+[node name="Trap" parent="BaseMap/Kawałek52" instance=ExtResource("60_uxvvb")]
+visible = false
+position = Vector2(2.02869, 27.9443)
 
 [node name="Kawałek53" parent="BaseMap" instance=ExtResource("6_5c7sx")]
 position = Vector2(1538, 979)
@@ -1231,7 +1238,6 @@ rotation = 0.392602
 affected_pieces = [97]
 
 [node name="Clouds" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

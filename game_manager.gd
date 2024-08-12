@@ -13,10 +13,14 @@ const SECURITY_KEY = "092GSD2"
 @onready var ojoj = preload("res://Wavs/6dziura.wav")
 @onready var dobrze = preload("res://Wavs/6entre.wav")
 @onready var rozumiem = preload("res://Wavs/6failed.wav")
+@onready var win = preload("res://Wavs/win.wav")
+@onready var mina_setup = preload("res://Wavs/00ekran.wav")
+@onready var mina_wybuch = preload("res://Wavs/explosion-91872.mp3")
 
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
 @onready var first_bkg = $WideMapa/BaseMap/FirstBackground
+@onready var clouds = $WideMapa/Clouds
 
 @onready var non_euclidean_map = $NonEuclideanMap
 @onready var non_euclidean_pieces = $NonEuclideanMap/Pieces
@@ -27,6 +31,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var exit = $Camera2D/Wyjście
 @onready var hills_exit = $HillsExit
 @onready var lapa_button = $Camera2D/LapaButton
+@onready var small_piece = $SmallPiece
 
 var camera_limits = [-624, -684, 2544, 1764]
 var reset_pos = Vector2(495, 413)
@@ -168,7 +173,7 @@ func _process(delta):
 		first_bkg.modulate.a -= 0.001
 	
 func _input(event): #dragging hamdler
-	if not Globals.crawl_mode:
+	if not Globals.crawl_mode and not Globals.trapped:
 		if event is InputEventMouseMotion and draggable:
 			if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
 				var new_pos = camera.position - event.relative * camera.zoom * 0.4
@@ -195,6 +200,8 @@ func failed(piece):
 	return false
 	
 func _on_piece_clicked(clicked_piece):
+	get_small_piece(clicked_piece)
+	
 	if failed(clicked_piece):
 		sfx.stream = ojoj
 		sfx.play()
@@ -241,6 +248,23 @@ func _on_piece_clicked(clicked_piece):
 			unlock_hills = false
 			var entre = base_map.get_child(72)
 			entre.global_position.x += 70
+			
+			#move clouds away
+			for up in [53, 54, 31]:
+				var piece = clouds.find_child("Cloud" + str(up))
+				var tween = get_tree().create_tween()
+				tween.tween_property(piece, "position", Vector2(piece.position.x, piece.position.y - 70), 2.0)
+#				piece.position.y -= 70
+			for down in [9, 55, 32]:
+				var piece = clouds.find_child("Cloud" + str(down))
+				var tween = get_tree().create_tween()
+				tween.tween_property(piece, "position", Vector2(piece.position.x, piece.position.y + 70), 2.0)
+#				piece.position.y += 70
+
+			if sfx.playing:
+				await sfx.finished
+			sfx.stream = win
+			sfx.play()
 			
 	elif clicked_piece.get_index() == 72 and not Globals.crawl_mode:
 		Globals.crawl_mode = true
@@ -293,6 +317,7 @@ func _on_piece_clicked(clicked_piece):
 			troll.update(3)
 				
 			Globals.ignore_clicks = false
+
 
 func _on_non_euclidean_clicked():
 	#animating zoom in
@@ -350,10 +375,42 @@ func upgrade_to_wide_map():
 	var troll = base_map.get_child(84)
 	troll.update(3)
 
-func map_completed(search_range):
+func get_small_piece(piece):
+	if Globals.map_pieces["saper"] == false and map_completed(39, 25):
+		Globals.map_pieces["saper"] = true
+		small_piece_animation(Vector2(2061, -262))
+		
+	if Globals.map_pieces["non_euclidean"] == false and non_euclidean_completed():
+		Globals.map_pieces["non_euclidean"] = true
+		small_piece_animation(camera.global_position)
+	
+
+	
+func small_piece_animation(pos : Vector2):
+	sfx.stop()
+	sfx.stream = win
+	sfx.play()
+	
+	small_piece.global_position = pos
+	small_piece.show()
+	var count = 0
+	for value in Globals.map_pieces.values():
+		if value:
+			count += 1
+	small_piece.play(str(count))
+	var tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property(small_piece, "scale", Vector2(1.0, 1.0), 0.5).from(Vector2(0.1, 0.1))
+	tween.tween_property(small_piece, "global_position", small_piece.position + Vector2(0, 40), 0.3).set_ease(Tween.EASE_IN)
+	tween.chain().tween_property(small_piece, "global_position", small_piece.position - Vector2(0, 40), 0.3).set_ease(Tween.EASE_OUT)
+	tween.chain().tween_property(small_piece, "global_position", $Camera2D/Save.global_position, 0.7).set_ease(Tween.EASE_OUT_IN)
+	tween.chain().tween_property(small_piece, "scale", Vector2(0.1, 0.1), 0.3)
+	await tween.finished
+	small_piece.hide()
+	
+func map_completed(search_range, start = 1):
 	#check if map is done	
 	var win_condition = true
-	for i in range(1, search_range):
+	for i in range(start, search_range):
 		var piece = base_map.get_child(i)
 		if piece.stage != 3 and piece.stage != 4:
 			return false
@@ -384,6 +441,7 @@ func _on_reset_button_pressed():
 	Globals.ignore_clicks = false
 	Globals.undraggable = false
 	Globals.bomb_clicked = false
+	Globals.trapped = false
 	
 	if Globals.crawl_mode:
 		Globals.crawl_mode = false

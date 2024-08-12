@@ -12,8 +12,11 @@ func _on_piece_clicked(piece):
 		if Globals.saper_count < 8:
 			bomb.show()
 			Globals.bomb_clicked = true
-			await get_tree().create_timer(1.0).timeout
-			owner.get_parent().sfx.stream = load("res://Wavs/explosion-91872.mp3")
-			owner.get_parent().sfx.play()
+			var gm = owner.get_parent()
+			gm.sfx.stream = gm.mina_setup
+			gm.sfx.play()
+			await gm.sfx.finished
+			gm.sfx.stream = gm.mina_wybuch
+			gm.sfx.play()
 			update(5)
 			bomb.hide()

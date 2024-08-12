@@ -13,7 +13,7 @@ var delay_time = 0.0
 var DELAY_RATE = 0.2
 
 func _ready():
-	SignalBus.connect("piece_clicked", _on_piece_clicked)
+#	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	
 	position = starting_pos
 	
@@ -29,6 +29,11 @@ func _process(delta):
 		else:
 			affected_pieces = [66, 67, 71]
 		update_affected()
+
+func update(damage):
+	super.update(damage)
+	if not Globals.lapa_gained and stage >= 5:
+		lapa.show()
 		
 func clear_affected():
 	if not affected_pieces.is_empty():
@@ -43,10 +48,7 @@ func _on_timer_timeout():
 		tween.tween_property(self, "position", ending_pos, 2.0).set_ease(Tween.EASE_OUT_IN)
 	else:
 		tween.tween_property(self, "position", starting_pos, 2.0).set_ease(Tween.EASE_OUT_IN)
-
-func _on_piece_clicked(piece):
-	if piece == self and not Globals.lapa_gained and stage >= 5:
-		lapa.show()
+	
 
 func _on_lapa_button_up():
 	var tween = get_tree().create_tween()
