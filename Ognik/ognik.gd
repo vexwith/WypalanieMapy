@@ -13,7 +13,7 @@ var lapa_index = 0
 var przedmioty = {"ognik": true, "lapa": false}
 	
 func _process(delta):
-	if not audio.playing:
+	if not audio.playing and przedmioty["ognik"]:
 		audio.play()
 #	global_position = get_global_mouse_position()
 	if przedmioty["lapa"]:

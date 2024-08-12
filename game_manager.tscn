@@ -136,8 +136,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_m8j1e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d7n1u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5see7")
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Camera2D/ResetButton" to="." method="_on_reset_button_pressed"]

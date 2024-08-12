@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=82 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_ny5fj"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dr277co7nvekp" path="res://Mapa/saper_base.png" id="8_3in6j"]
 [ext_resource type="Texture2D" uid="uid://cx7f2o0olay4g" path="res://Mapa/3_1.png" id="8_b0yvt"]
 [ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="8_ysg1w"]
+[ext_resource type="Texture2D" uid="uid://0v3gmkob514d" path="res://Mapa/kawałek11base.png" id="9_6wbwc"]
 [ext_resource type="Texture2D" uid="uid://e0u038sl3abq" path="res://Mapa/3_2.png" id="9_ccb5e"]
 [ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="9_qbyuq"]
 [ext_resource type="Texture2D" uid="uid://b8s773of7hvos" path="res://Mapa/NonEuclideanMap/zly_wir_0.png" id="9_r45ip"]
@@ -473,6 +474,21 @@ position = Vector2(275, 270)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_3in6j")
 
+[node name="Other" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Kawałek45Base" type="TextureRect" parent="Other"]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 67.0
+offset_right = 1095.0
+offset_bottom = 227.0
+rotation = 2.32869
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("9_6wbwc")
+
 [node name="Spiral" type="AnimatedSprite2D" parent="."]
 position = Vector2(322, 77)
 scale = Vector2(0.7, 0.7)
@@ -574,7 +590,7 @@ affected_pieces = [11, 15]
 position = Vector2(663, 876)
 rotation = 0.108237
 script = ExtResource("19_h3e0y")
-affected_pieces = [11, 18]
+affected_pieces = [11, 18, 68, 70]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BaseMap/Kawałek19"]
 stream = ExtResource("29_vdvan")
@@ -601,7 +617,7 @@ affected_pieces = [16, 15, 18]
 position = Vector2(1266, 720)
 rotation = 1.50202
 script = ExtResource("26_khfy8")
-affected_pieces = [17]
+affected_pieces = [17, 50]
 
 [node name="Kawałek24" parent="BaseMap" instance=ExtResource("10_xxso4")]
 position = Vector2(389, 321)
@@ -799,7 +815,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("36_mrfhe")
 
 [node name="Kawałek40" parent="BaseMap" instance=ExtResource("15_pklcd")]
-position = Vector2(302, 800)
+position = Vector2(99, 1087)
 rotation = -0.191412
 script = ExtResource("39_e0bxi")
 
@@ -838,9 +854,6 @@ position = Vector2(110, 358)
 rotation = -0.658886
 affected_pieces = [43, 65]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek42" index="0"]
-visible = true
-
 [node name="Kawałek43" parent="BaseMap" instance=ExtResource("16_27fi4")]
 position = Vector2(184, 284)
 rotation = 2.42552
@@ -874,6 +887,7 @@ affected_pieces = [47, 45]
 [node name="Kawałek49" parent="BaseMap" instance=ExtResource("9_qbyuq")]
 position = Vector2(1519, 493)
 rotation = -0.184694
+affected_pieces = [50]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek49" index="0"]
 visible = true
@@ -881,6 +895,7 @@ visible = true
 [node name="Kawałek50" parent="BaseMap" instance=ExtResource("14_lxnwh")]
 position = Vector2(1426, 591)
 rotation = -1.88055
+affected_pieces = [49, 51, 52]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek50" index="0"]
 visible = true
@@ -888,6 +903,7 @@ visible = true
 [node name="Kawałek51" parent="BaseMap" instance=ExtResource("13_j21to")]
 position = Vector2(1511, 722)
 rotation = -0.913591
+affected_pieces = [50, 52, 53]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek51" index="0"]
 visible = true
@@ -895,6 +911,7 @@ visible = true
 [node name="Kawałek52" parent="BaseMap" instance=ExtResource("3_bcyqi")]
 position = Vector2(1415, 874)
 rotation = 0.108173
+affected_pieces = [50, 51, 53, 55]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek52" index="0"]
 visible = true
@@ -902,6 +919,7 @@ visible = true
 [node name="Kawałek53" parent="BaseMap" instance=ExtResource("6_5c7sx")]
 position = Vector2(1538, 979)
 rotation = 0.247112
+affected_pieces = [51, 52, 54]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek53" index="0"]
 visible = true
@@ -910,12 +928,14 @@ visible = true
 position = Vector2(1456, 1128)
 rotation = -2.55428
 scale = Vector2(1, -0.824731)
+affected_pieces = [53, 55, 56]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek54" index="0"]
 visible = true
 
 [node name="Kawałek55" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(1322, 1034)
+affected_pieces = [52, 54, 56]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek55" index="0"]
 visible = true
@@ -923,6 +943,7 @@ visible = true
 [node name="Kawałek56" parent="BaseMap" instance=ExtResource("5_udpry")]
 position = Vector2(1247, 1069)
 rotation = 0.349274
+affected_pieces = [54, 55, 57]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek56" index="0"]
 visible = true
@@ -930,6 +951,7 @@ visible = true
 [node name="Kawałek57" parent="BaseMap" instance=ExtResource("17_npd45")]
 position = Vector2(1071, 1030)
 rotation = -1.44283
+affected_pieces = [56, 58, 59]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek57" index="0"]
 visible = true
@@ -937,12 +959,14 @@ visible = true
 [node name="Kawałek58" parent="BaseMap" instance=ExtResource("16_27fi4")]
 position = Vector2(1005, 1148)
 rotation = -0.934599
+affected_pieces = [57, 59, 60]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek58" index="0"]
 visible = true
 
 [node name="Kawałek59" parent="BaseMap" instance=ExtResource("8_ysg1w")]
 position = Vector2(921, 985)
+affected_pieces = [57, 59, 60, 68]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek59" index="0"]
 visible = true
@@ -950,6 +974,7 @@ visible = true
 [node name="Kawałek60" parent="BaseMap" instance=ExtResource("13_j21to")]
 position = Vector2(855, 1085)
 rotation = -1.31532
+affected_pieces = [58, 59, 68, 69]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek60" index="0"]
 visible = true
@@ -960,17 +985,11 @@ rotation = -4.29471
 scale = Vector2(0.5, 0.5)
 affected_pieces = [62, 63]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek61" index="0"]
-visible = true
-
 [node name="Kawałek62" parent="BaseMap" instance=ExtResource("11_plkeb")]
 position = Vector2(145, 593)
 rotation = -2.40888
 scale = Vector2(0.5, 0.5)
 affected_pieces = [61, 63, 64, 65]
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek62" index="0"]
-visible = true
 
 [node name="Kawałek63" parent="BaseMap" instance=ExtResource("13_j21to")]
 position = Vector2(122, 641)
@@ -978,17 +997,11 @@ rotation = -2.55811
 scale = Vector2(0.5, 0.5)
 affected_pieces = [61, 62, 66, 67]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek63" index="0"]
-visible = true
-
 [node name="Kawałek64" parent="BaseMap" instance=ExtResource("13_j21to")]
 position = Vector2(192, 566)
 rotation = -2.10712
 scale = Vector2(0.5, -0.48)
 affected_pieces = [62, 65, 66]
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek64" index="0"]
-visible = true
 
 [node name="Kawałek65" parent="BaseMap" instance=ExtResource("10_xxso4")]
 position = Vector2(183, 501)
@@ -996,17 +1009,11 @@ rotation = 2.89558
 scale = Vector2(-0.644, 0.5)
 affected_pieces = [42, 62, 64]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek65" index="0"]
-visible = true
-
 [node name="Kawałek66" parent="BaseMap" instance=ExtResource("16_27fi4")]
 position = Vector2(200, 692)
 rotation = 0.493819
 scale = Vector2(0.8, 0.8)
 affected_pieces = [63, 64]
-
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek66" index="0"]
-visible = true
 
 [node name="Kawałek67" parent="BaseMap" instance=ExtResource("12_lx7ix")]
 position = Vector2(58, 825)
@@ -1014,7 +1021,36 @@ rotation = -1.67553
 scale = Vector2(0.97956, 0.9)
 affected_pieces = [63]
 
-[node name="AnimatedSprite2D" parent="BaseMap/Kawałek67" index="0"]
+[node name="Kawałek68" parent="BaseMap" instance=ExtResource("16_27fi4")]
+position = Vector2(743, 1017)
+rotation = 0.825787
+affected_pieces = [59, 60, 69, 70]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek68" index="0"]
+visible = true
+
+[node name="Kawałek69" parent="BaseMap" instance=ExtResource("17_npd45")]
+position = Vector2(700, 1181)
+rotation = -3.49565
+affected_pieces = [60, 68, 70]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek69" index="0"]
+visible = true
+
+[node name="Kawałek70" parent="BaseMap" instance=ExtResource("15_pklcd")]
+position = Vector2(582, 1023)
+rotation = 0.457751
+affected_pieces = [68, 69, 71]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek70" index="0"]
+visible = true
+
+[node name="Kawałek71" parent="BaseMap" instance=ExtResource("4_wnbpo")]
+position = Vector2(365, 1082)
+rotation = -2.65399
+affected_pieces = [70]
+
+[node name="AnimatedSprite2D" parent="BaseMap/Kawałek71" index="0"]
 visible = true
 
 [connection signal="timeout" from="BaseMap/Kawałek40/Timer" to="BaseMap/Kawałek40" method="_on_timer_timeout"]
@@ -1088,3 +1124,7 @@ visible = true
 [editable path="BaseMap/Kawałek65"]
 [editable path="BaseMap/Kawałek66"]
 [editable path="BaseMap/Kawałek67"]
+[editable path="BaseMap/Kawałek68"]
+[editable path="BaseMap/Kawałek69"]
+[editable path="BaseMap/Kawałek70"]
+[editable path="BaseMap/Kawałek71"]

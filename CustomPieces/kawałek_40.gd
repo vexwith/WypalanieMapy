@@ -6,19 +6,34 @@ extends Piece
 var starting_pos = Vector2(99, 1087)
 var ending_pos =  Vector2(302, 800)
 
+var change_affected = true
+
+var game_time = 0.0
+var delay_time = 0.0
+var DELAY_RATE = 0.2
+
 func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	
 	position = starting_pos
 	
 func _process(delta):
-	if position.x > 243:
-		affected_pieces = [18, 66]
-	elif position.x < 180:
-		affected_pieces = [67]
-	else:
-		affected_pieces = [66, 67]
+	game_time += delta
+	if game_time - delay_time >= DELAY_RATE:
+		delay_time = game_time
+		clear_affected()
+		if position.x > 243:
+			affected_pieces = [18, 66]
+		elif position.x < 180:
+			affected_pieces = [67, 71]
+		else:
+			affected_pieces = [66, 67, 71]
+		update_affected()
 		
+func clear_affected():
+	if not affected_pieces.is_empty():
+		for index in affected_pieces:
+			get_parent().get_child(index).affected_pieces.erase(get_index())
 
 func _on_timer_timeout():
 	timer.start() #loop

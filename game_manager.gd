@@ -1,7 +1,8 @@
 extends Node2D
 
-@onready var bgm = $BGM
+@onready var bgm = Bgm
 @onready var plaza = preload("res://Wavs/Reksio i Skarb Piratów OST - Muza1-(p).mp3")
+@onready var medley = preload("res://Wavs/Reksio i Skarb Piratów Medley (Tomasz Jachowicz cover ⧸ variation by KKR)-(p).mp3")
 
 @onready var sfx = $SFX
 @onready var ojoj = preload("res://Wavs/6dziura.wav")
@@ -35,39 +36,48 @@ func _ready():
 #	MAX_PIECES = base_map.get_child_count()
 	if not Globals.lapa_gained:
 		lapa_button.hide()
+		sfx.volume_db = 0.0
 	else:
 		upgrade_to_wide_map()
 		base_map.get_child(0).texture = load("res://Mapa/bkg_postlapa.png")
-		plaza_version = 8
+		if bgm.stream == plaza:
+			bgm.stop()
+		sfx.volume_db = -7.0
+		plaza_version = 9 #reset
 			
 	
 func _process(delta):
 	#bgm handler
 	if not bgm.playing:
-		if first_map:
+		if not Globals.lapa_gained:
 			bgm.stream = plaza
+		else:
+			bgm.stream = medley
 		bgm.play()
 	#slowing down plaza
-	if between_maps:
-		match plaza_version:
-			0:
-				bgm.pitch_scale = 1.0
-			1:
-				bgm.pitch_scale = 0.95
-			2:
-				bgm.pitch_scale = 1.05
-			3:
-				bgm.pitch_scale = 0.90
-			4:
-				bgm.pitch_scale = 0.85
-			5:
-				bgm.pitch_scale = 0.80
-			6:
-				bgm.pitch_scale = 0.70
-			7:
-				bgm.pitch_scale = 0.65
-			8:
-				bgm.pitch_scale = 0.15
+#	if between_maps:
+	match plaza_version:
+		0:
+			bgm.pitch_scale = 1.0
+		1:
+			bgm.pitch_scale = 0.95
+		2:
+			bgm.pitch_scale = 1.05
+		3:
+			bgm.pitch_scale = 0.90
+		4:
+			bgm.pitch_scale = 0.85
+		5:
+			bgm.pitch_scale = 0.80
+		6:
+			bgm.pitch_scale = 0.70
+		7:
+			bgm.pitch_scale = 0.65
+		8:
+			bgm.pitch_scale = 0.15
+		9: #reset
+			bgm.pitch_scale = 1.0
+			plaza_version += 1
 				
 	#bkg handler
 	if first_bkg.modulate.a > max_modulation:
@@ -128,6 +138,10 @@ func _on_piece_clicked(clicked_piece):
 #			draggable = true
 			if not Globals.lapa_gained:
 				upgrade_to_wide_map()
+	else:
+		if map_completed(base_map.get_child_count()):
+			sfx.stream = load("res://Wavs/6failed.wav")
+			sfx.play()
 
 func _on_non_euclidean_clicked():
 	#animating zoom in
@@ -150,7 +164,12 @@ func back_from_non_euclidean():
 	non_euclidean_map.hide()
 	wide_map.show()
 	Globals.undraggable = false
-	draggable = true	
+	draggable = true
+	
+	if non_euclidean_completed():
+		var teleport = base_map.get_child(41)
+		teleport.stage = 4
+		teleport.sprite.play(str(teleport.stage))
 
 func upgrade_to_wide_map():
 	#in outer wide map all pieces start from 1
@@ -175,6 +194,15 @@ func map_completed(search_range):
 	var win_condition = true
 	for i in range(1, search_range):
 		var piece = base_map.get_child(i)
+		if piece.stage != 3 and piece.stage != 4:
+			return false
+			
+	return win_condition
+	
+func non_euclidean_completed():
+	#check if non euclidean is done
+	var win_condition = true
+	for piece in non_euclidean_pieces.get_children():
 		if piece.stage != 3 and piece.stage != 4:
 			return false
 			
