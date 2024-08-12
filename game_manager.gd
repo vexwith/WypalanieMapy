@@ -6,6 +6,8 @@ extends Node2D
 
 @onready var sfx = $SFX
 @onready var ojoj = preload("res://Wavs/6dziura.wav")
+@onready var dobrze = preload("res://Wavs/6entre.wav")
+@onready var rozumiem = preload("res://Wavs/6failed.wav")
 
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
@@ -27,6 +29,8 @@ var max_modulation = 1.0 #max modulation of first map
 
 var between_maps = true
 
+var unlock_hills = true
+
 var draggable = false #false
 var offset : Vector2
 
@@ -44,7 +48,23 @@ func _ready():
 			bgm.stop()
 		sfx.volume_db = -7.0
 		plaza_version = 9 #reset
+		
+	if Globals.first_enter:
+		Globals.first_enter = false
+		sfx.stream = dobrze
+		sfx.play()
 			
+	if Globals.say_restart:
+		Globals.say_restart = false
+		sfx.stream = rozumiem
+		sfx.play()
+		
+	for i in range(1, 72):
+		var piece = base_map.get_child(i)
+		piece.stage = 4
+		piece.sprite.play(str(piece.stage))
+	first_map = false
+	between_maps = false
 	
 func _process(delta):
 	#bgm handler
@@ -138,10 +158,15 @@ func _on_piece_clicked(clicked_piece):
 #			draggable = true
 			if not Globals.lapa_gained:
 				upgrade_to_wide_map()
-	else:
-		if map_completed(base_map.get_child_count()):
-			sfx.stream = load("res://Wavs/6failed.wav")
-			sfx.play()
+				
+	elif unlock_hills:
+		if map_completed(72) and non_euclidean_completed(): #all before hills
+			unlock_hills = false
+			var entre = base_map.get_child(72)
+			entre.global_position.x += 70
+			
+	elif clicked_piece.get_index() == 72:
+		Globals.crawl_mode = true
 
 func _on_non_euclidean_clicked():
 	#animating zoom in
@@ -215,6 +240,11 @@ func _on_reset_button_pressed():
 	Globals.ignore_clicks = false
 	Globals.undraggable = false
 	Globals.bomb_clicked = false
+	Globals.crawl_mode = false
+	
+	if Globals.first_restart:
+		Globals.first_restart = false
+		Globals.say_restart = true
 #	#return visibility
 #	max_modulation = 1.0
 #	first_bkg.modulate.a = 1.0
