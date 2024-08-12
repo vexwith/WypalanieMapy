@@ -47,6 +47,7 @@ var between_maps = true
 
 var unlock_hills = true
 var camera_exit_pos
+var first_door = true
 
 var draggable = false #false
 var offset : Vector2
@@ -542,8 +543,6 @@ func _on_hills_exit_button_up():
 	bgm.pitch_scale = 1.0
 
 
-func _on_klepsydra_button_up():
-	_on_hills_exit_button_up()
 
 
 func _on_save_button_up():
@@ -562,3 +561,18 @@ func _on_real_exit_button_up():
 	$Camera2D/Endings.text = "TO BE CONTINUED"
 	tween.tween_property($Camera2D/Shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 	tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+
+
+func _on_door_button_up():
+	if first_door:
+		first_door = false
+		var tween = get_tree().create_tween()
+		$Door/AnimatedSprite2D.play("open")
+		tween.tween_property($Door/AnimatedSprite2D, "global_position", Vector2(-3879, 350 + 184), 1.0)
+	else:
+		var tween = get_tree().create_tween()
+		$Camera2D/Shadow.show()
+		$Camera2D/Endings.show()
+		$Camera2D/Endings.text = "ENDING 1"
+		tween.tween_property($Camera2D/Shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+		tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)

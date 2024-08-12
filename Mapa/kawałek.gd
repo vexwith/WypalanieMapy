@@ -18,8 +18,8 @@ func _input(event):
 				
 		SignalBus.emit_signal("piece_clicked", self)
 	
-	if cursor_entered and event.is_action_pressed("PPM"): #test
-		undo_move()
+#	if cursor_entered and event.is_action_pressed("PPM"): #test
+#		undo_move()
 				
 func make_move():
 	move(2, 1)
