@@ -188,6 +188,13 @@ func _process(delta):
 func _input(event): #dragging hamdler
 	if event.is_action_pressed("ui_cancel"): #esc to end
 		get_tree().quit()
+		
+	if event.is_action_pressed("rewind"):
+		if len(Globals.map_state_log) > 1:
+			Globals.map_state_log.pop_back()
+			var prev_state = Globals.map_state_log[-1].duplicate()
+			load_prev(prev_state)
+			
 	
 	if not Globals.crawl_mode and not Globals.trapped:
 		if event is InputEventMouseMotion and draggable:
@@ -320,12 +327,18 @@ func _on_piece_clicked(clicked_piece):
 			_on_hills_exit_button_up()
 			
 			
-				
+			
 			Globals.ignore_clicks = false
 			
 	#saving map state
+	var map_state = []
+	for piece in base_map.get_children():
+		if piece is Area2D:
+			map_state.append(piece.stage)
 	for non_euclidean_piece in non_euclidean_pieces.get_children():
-		Globals.map_state.append(non_euclidean_piece.stage)
+		map_state.append(non_euclidean_piece.stage)
+	map_state.append(camera.global_position)
+	Globals.map_state_log.append(map_state)
 
 
 func _on_non_euclidean_clicked():
@@ -573,6 +586,20 @@ func _on_load_button_up():
 	_on_reset_button_pressed()
 	load_data(SAVE_DIR + SAVE_FILE_NAME)
 	get_tree().reload_current_scene()
+	
+func load_prev(map_state):
+	camera.global_position = map_state.pop_back()
+	var non_euclidean_count = 0
+	for i in range(len(map_state) - 1, -1, -1):
+		if non_euclidean_count < 10:
+			var piece = non_euclidean_pieces.get_child(non_euclidean_count)
+			piece.stage = map_state.pop_back()
+			piece.update(0)
+			non_euclidean_count += 1
+		else:
+			var piece = base_map.get_child(i + 1)
+			piece.stage = map_state.pop_back()
+			piece.update(0)
 
 
 func _on_real_exit_button_up():
