@@ -8,7 +8,7 @@ class_name Piece
 var stage = -1 #stopień spalenia
 
 var cursor_entered = false
-var modulation = 1.0
+#var modulation = 1.0
 
 var clickable = true #used in first map outer pieces
 
@@ -54,9 +54,9 @@ func update_affected(): #used only for first map outer pieces to link with other
 func _on_mouse_entered():
 	cursor_entered = true
 #	Globals.focused_piece = self
-	modulate.a = modulation
+#	modulate.a = modulation
 
 func _on_mouse_exited():
 	cursor_entered = false
 #	Globals.focused_piece = null
-	modulate.a = 1.0
+#	modulate.a = 1.0

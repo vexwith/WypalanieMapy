@@ -432,6 +432,7 @@ texture = ExtResource("1_qqujy")
 stretch_mode = 1
 
 [node name="Saper" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 1070.0
 offset_right = 1600.0

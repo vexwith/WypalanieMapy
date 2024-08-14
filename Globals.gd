@@ -23,3 +23,6 @@ var say_restart = false
 
 var map_pieces = {"saper": false, "non_euclidean": false, "strzalki": false, "hills": false} #cel gry xD
 
+var map_state : Array = [] #current map state
+var map_state_log : Array = [] #all previous map states
+

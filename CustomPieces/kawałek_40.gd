@@ -16,6 +16,9 @@ func _ready():
 #	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	
 	position = starting_pos
+
+	if not Globals.lapa_gained:
+		lapa.show()
 	
 func _process(delta):
 	game_time += delta
@@ -30,10 +33,10 @@ func _process(delta):
 			affected_pieces = [66, 67, 71]
 		update_affected()
 
-func update(damage):
-	super.update(damage)
-	if not Globals.lapa_gained and stage >= 5:
-		lapa.show()
+#func update(damage):
+#	super.update(damage)
+#	if not Globals.lapa_gained and stage >= 5:
+#		lapa.show()
 		
 func clear_affected():
 	if not affected_pieces.is_empty():
@@ -56,4 +59,7 @@ func _on_lapa_button_up():
 	await tween.finished
 	lapa.hide()
 	Globals.lapa_gained = true
-	owner.get_parent().lapa_button.show()
+	var gm = owner.get_parent()
+	gm.lapa_button.show()
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(gm.wide_map.find_child("Saper"), "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)

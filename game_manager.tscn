@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=61 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://d1j18oc8wsun5" path="res://GUI/lapa_button_glow.png" id="12_cl5nr"]
 [ext_resource type="Texture2D" uid="uid://b0e8obcdhpqo0" path="res://GUI/pulapkareturnnom.png" id="12_u2w4e"]
 [ext_resource type="Texture2D" uid="uid://dlsr5ykbk51r" path="res://GUI/b_lev0_0.png" id="18_3gk7w"]
-[ext_resource type="AudioStream" uid="uid://d0pnta0dpkhie" path="res://Wavs/0hornfrench2.wav" id="18_bt8q6"]
 [ext_resource type="Texture2D" uid="uid://cdnjhhj5dlpwd" path="res://GUI/b_lev1_0.png" id="19_oqw3y"]
 [ext_resource type="Texture2D" uid="uid://dwv7js2un0fsx" path="res://GUI/b_lev2_0.png" id="20_3rgua"]
 [ext_resource type="FontFile" uid="uid://c8uy1iu1mljoy" path="res://BasicHandwriting.ttf" id="20_pu80j"]
@@ -348,7 +347,6 @@ animation = &"1"
 autoplay = "default"
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_bt8q6")
 
 [connection signal="button_up" from="HillsExit" to="." method="_on_hills_exit_button_up"]
 [connection signal="button_up" from="Door" to="." method="_on_door_button_up"]

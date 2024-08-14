@@ -32,6 +32,7 @@ func _on_mouse_freed():
 	await tween.finished
 	mouse.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Globals.trapped = false
 
 
 func _on_area_entered(area):
@@ -41,7 +42,7 @@ func _on_area_entered(area):
 		sprite.play("attack_return")
 		await sprite.animation_finished
 		Globals.return_trapped = true
-		gm.real_exit.global_position = gm.exit.global_position + Vector2(-10, -39)
+		gm.real_exit.global_position = self.global_position + Vector2(-59.5, -102)
 		gm.real_exit.show()
 		gm.exit.hide()
 		queue_free()

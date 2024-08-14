@@ -16,6 +16,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var win = preload("res://Wavs/win.wav")
 @onready var mina_setup = preload("res://Wavs/00ekran.wav")
 @onready var mina_wybuch = preload("res://Wavs/explosion-91872.mp3")
+@onready var postmapa = preload("res://Mapa/bkg_postlapa.png")
 
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
@@ -112,11 +113,14 @@ func _ready():
 		sfx.volume_db = 0.0
 	else:
 		upgrade_to_wide_map()
-		base_map.get_child(0).texture = load("res://Mapa/bkg_postlapa.png")
+		base_map.get_child(0).texture = postmapa
 		if bgm.stream == plaza:
 			bgm.stop()
 		sfx.volume_db = -7.0
 		plaza_version = 9 #reset
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(wide_map.find_child("Saper"), "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 		
 	if not Globals.return_trapped:
 		real_exit.hide()
@@ -182,6 +186,9 @@ func _process(delta):
 		first_bkg.modulate.a -= 0.001
 	
 func _input(event): #dragging hamdler
+	if event.is_action_pressed("ui_cancel"): #esc to end
+		get_tree().quit()
+	
 	if not Globals.crawl_mode and not Globals.trapped:
 		if event is InputEventMouseMotion and draggable:
 			if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
@@ -312,20 +319,13 @@ func _on_piece_clicked(clicked_piece):
 			await sfx.finished
 			_on_hills_exit_button_up()
 			
-			for i in range(72, 101):
-				var piece = base_map.get_child(i)
-				piece.stage = -1
-				piece.update(0)
-				if i > 74:
-					piece.clickable = false
-			for i in [72, 80, 94, 84]:
-				var piece = base_map.get_child(i)
-				piece.update(1)
-				
-			var troll = base_map.get_child(84)
-			troll.update(3)
+			
 				
 			Globals.ignore_clicks = false
+			
+	#saving map state
+	for non_euclidean_piece in non_euclidean_pieces.get_children():
+		Globals.map_state.append(non_euclidean_piece.stage)
 
 
 func _on_non_euclidean_clicked():
@@ -355,6 +355,7 @@ func back_from_non_euclidean():
 		var teleport = base_map.get_child(41)
 		teleport.stage = 4
 		teleport.sprite.play(str(teleport.stage))
+		_on_piece_clicked(teleport)
 
 func upgrade_to_wide_map():
 	#in outer wide map all pieces start from 1
@@ -383,6 +384,7 @@ func upgrade_to_wide_map():
 			
 	var troll = base_map.get_child(84)
 	troll.update(3)
+	
 
 func get_small_piece(piece):
 	if Globals.map_pieces["saper"] == false and map_completed(39, 25):
@@ -435,6 +437,12 @@ func non_euclidean_completed():
 			
 	return win_condition
 	
+func saper_failed():
+	for i in range(25, 40):
+		var piece = base_map.get_child(i)
+		if piece.stage >= 5:
+			Globals.bomb_clicked = true
+	
 func hills_failed():
 	#check if wypaliles dziure
 	var failed = false
@@ -450,6 +458,7 @@ func _on_reset_button_pressed():
 	Globals.ignore_clicks = false
 	Globals.undraggable = false
 	Globals.bomb_clicked = false
+	Globals.saper_count = 0
 	Globals.trapped = false
 	
 	if Globals.crawl_mode:
@@ -542,7 +551,18 @@ func _on_hills_exit_button_up():
 	bgm.stop()
 	bgm.pitch_scale = 1.0
 
-
+	for i in range(72, 101):
+		var piece = base_map.get_child(i)
+		piece.stage = -1
+		piece.update(0)
+		if i > 74:
+			piece.clickable = false
+	for i in [72, 80, 94, 84]:
+		var piece = base_map.get_child(i)
+		piece.update(1)
+		
+	var troll = base_map.get_child(84)
+	troll.update(3)
 
 
 func _on_save_button_up():
@@ -550,6 +570,7 @@ func _on_save_button_up():
 
 
 func _on_load_button_up():
+	_on_reset_button_pressed()
 	load_data(SAVE_DIR + SAVE_FILE_NAME)
 	get_tree().reload_current_scene()
 
@@ -561,6 +582,9 @@ func _on_real_exit_button_up():
 	$Camera2D/Endings.text = "TO BE CONTINUED"
 	tween.tween_property($Camera2D/Shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 	tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+	
+	await tween.finished
+	wide_map.hide()
 
 
 func _on_door_button_up():
@@ -576,3 +600,6 @@ func _on_door_button_up():
 		$Camera2D/Endings.text = "ENDING 1"
 		tween.tween_property($Camera2D/Shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 		tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+		
+		await tween.finished
+		wide_map.hide()
