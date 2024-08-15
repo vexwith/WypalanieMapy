@@ -37,11 +37,6 @@ func _process(delta):
 #	super.update(damage)
 #	if not Globals.lapa_gained and stage >= 5:
 #		lapa.show()
-		
-func clear_affected():
-	if not affected_pieces.is_empty():
-		for index in affected_pieces:
-			get_parent().get_child(index).affected_pieces.erase(get_index())
 
 func _on_timer_timeout():
 	timer.start() #loop

@@ -50,6 +50,11 @@ func update_affected(): #used only for first map outer pieces to link with other
 	if not affected_pieces.is_empty():
 		for index in affected_pieces:
 			get_parent().get_child(index).affected_pieces.append(get_index())
+			
+func clear_affected(): #used when undoing first map outer pieces
+	if not affected_pieces.is_empty():
+		for index in affected_pieces:
+			get_parent().get_child(index).affected_pieces.erase(get_index())
 
 func _on_mouse_entered():
 	cursor_entered = true

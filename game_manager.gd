@@ -99,6 +99,8 @@ func load_data(path : String):
 		Globals.say_restart = data.player_data.say_restart
 		Globals.map_pieces = data.player_data.map_pieces
 		
+#		Globals.map_state_log = data.map_data.map_state_log
+		
 	else:
 		printerr("Cannot open non-existent file at %s!" % [path])
 
@@ -194,8 +196,10 @@ func _input(event): #dragging hamdler
 			Globals.map_state_log.pop_back()
 			var prev_state = Globals.map_state_log[-1].duplicate()
 			load_prev(prev_state)
+		elif len(Globals.map_state_log) == 1:
+			var prev_state = Globals.map_state_log[-1].duplicate()
+			load_prev(prev_state)
 			
-	
 	if not Globals.crawl_mode and not Globals.trapped:
 		if event is InputEventMouseMotion and draggable:
 			if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
@@ -250,9 +254,9 @@ func _on_piece_clicked(clicked_piece):
 						new_piece.clickable = true
 					
 					next_piece += 1
-					plaza_version += 1
+					plaza_version = next_piece - 17 #dont add plaza version from undoing
 					
-					max_modulation -= 0.15
+					max_modulation = 1.0 - (next_piece - 17) * 0.15 #dont add modulation from undoing
 					
 					if next_piece == MAX_PIECES: #after getting all the closest ones change to 100 element map
 						first_map = false
@@ -331,14 +335,16 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = false
 			
 	#saving map state
-	var map_state = []
-	for piece in base_map.get_children():
-		if piece is Area2D:
-			map_state.append(piece.stage)
-	for non_euclidean_piece in non_euclidean_pieces.get_children():
-		map_state.append(non_euclidean_piece.stage)
-	map_state.append(camera.global_position)
-	Globals.map_state_log.append(map_state)
+	if not saper_activated():
+		var map_state = []
+		for piece in base_map.get_children():
+			if piece is Area2D:
+				map_state.append(piece.stage)
+		for non_euclidean_piece in non_euclidean_pieces.get_children():
+			map_state.append(non_euclidean_piece.stage)
+		map_state.append(camera.global_position)
+		map_state.append(next_piece)
+		Globals.map_state_log.append(map_state)
 
 
 func _on_non_euclidean_clicked():
@@ -433,38 +439,42 @@ func small_piece_animation(pos : Vector2):
 	
 func map_completed(search_range, start = 1):
 	#check if map is done	
-	var win_condition = true
 	for i in range(start, search_range):
 		var piece = base_map.get_child(i)
 		if piece.stage != 3 and piece.stage != 4:
 			return false
 			
-	return win_condition
+	return true
 	
 func non_euclidean_completed():
 	#check if non euclidean is done
-	var win_condition = true
 	for piece in non_euclidean_pieces.get_children():
 		if piece.stage != 3 and piece.stage != 4:
 			return false
 			
-	return win_condition
+	return true
 	
 func saper_failed():
 	for i in range(25, 40):
 		var piece = base_map.get_child(i)
 		if piece.stage >= 5:
 			Globals.bomb_clicked = true
+			
+func saper_activated():
+	for i in range(25, 40):
+		var piece = base_map.get_child(i)
+		if piece.stage >= 2:
+			return true
+	return false
 	
 func hills_failed():
 	#check if wypaliles dziure
-	var failed = false
 	for i in range(72, 101):
 		var piece = base_map.get_child(i)
 		if piece.stage >= 5:
 			return true
 			
-	return failed
+	return false
 
 func _on_reset_button_pressed():
 	Globals.focused_piece = null
@@ -588,7 +598,20 @@ func _on_load_button_up():
 	get_tree().reload_current_scene()
 	
 func load_prev(map_state):
-	camera.global_position = map_state.pop_back()
+	#clearing saper
+	Globals.bomb_clicked = false
+	Globals.saper_count = 0
+	SignalBus.emit_signal("rewind_numbers")
+	
+	#rewinding first map outer pieces
+	next_piece = map_state.pop_back()
+	for i in range(next_piece, MAX_PIECES):
+		var piece = base_map.get_child(i)
+		piece.clickable = false
+		piece.clear_affected()
+		
+	var camera_pos = map_state.pop_back()
+	camera.global_position = camera_pos
 	var non_euclidean_count = 0
 	for i in range(len(map_state) - 1, -1, -1):
 		if non_euclidean_count < 10:
