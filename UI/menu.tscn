@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxves47achr7l"]
+
+[ext_resource type="Script" path="res://UI/menu.gd" id="1_87cqx"]
+[ext_resource type="Texture2D" uid="uid://mjoo8a2x7wbg" path="res://UI/bkg_30.png" id="1_g3hhs"]
+[ext_resource type="Theme" uid="uid://c8ivmupmyaa5s" path="res://UI/default.tres" id="2_8wue4"]
+
+[sub_resource type="Gradient" id="Gradient_a3ke8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ytqt7"]
+gradient = SubResource("Gradient_a3ke8")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_87cqx")
+
+[node name="Color" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1.52588e-05
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture1D_ytqt7")
+
+[node name="BKG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 1040.0
+offset_bottom = 600.0
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_g3hhs")
+
+[node name="Controls" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls"]
+layout_mode = 2
+offset_left = 753.0
+offset_top = 327.0
+offset_right = 1148.0
+offset_bottom = 861.0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="NewGame" type="Button" parent="Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_8wue4")
+text = "Nowa Gra"
+
+[node name="Continue" type="Button" parent="Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_8wue4")
+text = "Kontunuuj"
+
+[node name="Tutorial" type="Button" parent="Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_8wue4")
+text = "Tutorial"
+
+[node name="Exit" type="Button" parent="Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_8wue4")
+text = "Wyjscie"
+
+[connection signal="pressed" from="Controls/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Controls/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Controls/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Controls/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
