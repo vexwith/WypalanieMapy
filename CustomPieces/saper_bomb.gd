@@ -20,3 +20,11 @@ func _on_piece_clicked(piece):
 			gm.sfx.play()
 			update(5)
 			bomb.hide()
+
+func bomb_vanish():
+	bomb.show()
+	var tween = get_tree().create_tween()
+	tween.tween_property(bomb, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0).from(Color(1.0, 1.0, 1.0, 0.0))
+	var x = randi_range(800, 1200)
+	var y = - randi_range(300, 1000)
+	tween.tween_property(bomb, "global_position", bomb.global_position + Vector2(x, y), 4.0)

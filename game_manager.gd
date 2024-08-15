@@ -335,7 +335,7 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = false
 			
 	#saving map state
-	if not saper_activated():
+	if clicked_piece.get_index() not in range(25, 40): #if inside saper
 		var map_state = []
 		for piece in base_map.get_children():
 			if piece is Area2D:
@@ -477,6 +477,7 @@ func hills_failed():
 	return false
 
 func _on_reset_button_pressed():
+	Globals.map_state_log.clear()
 	Globals.focused_piece = null
 	Globals.ignore_clicks = false
 	Globals.undraggable = false
