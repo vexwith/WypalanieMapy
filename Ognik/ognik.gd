@@ -17,6 +17,7 @@ func _process(delta):
 		audio.play()
 #	global_position = get_global_mouse_position()
 	if przedmioty["lapa"]:
+		audio.stop()
 		if Input.is_action_just_pressed("LPM"):
 			lapa_index = 1
 			if Globals.undraggable:

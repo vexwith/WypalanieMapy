@@ -195,7 +195,7 @@ func _process(delta):
 	
 func _input(event): #dragging hamdler
 	if event.is_action_pressed("ui_cancel"): #esc to end
-		get_tree().quit()
+		_on_menu_pressed()
 		
 	if event.is_action_pressed("rewind"):
 		if len(Globals.map_state_log) > 1:

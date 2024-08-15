@@ -869,7 +869,6 @@ visible = true
 wait_time = 6.0
 
 [node name="Lapa" type="Button" parent="BaseMap/Kawałek40"]
-visible = false
 offset_left = -14.9773
 offset_top = -12.0698
 offset_right = -6.97731

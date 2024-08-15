@@ -14,6 +14,10 @@ func _ready():
 	
 	if not FileAccess.file_exists(SAVE_DIR + SAVE_FILE_NAME):
 		$Controls/VBoxContainer/Continue.disabled = true
+		
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 
 func _on_new_game_pressed():
 	Globals.kontynuuj = false
