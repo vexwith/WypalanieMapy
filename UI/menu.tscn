@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxves47achr7l"]
+[gd_scene load_steps=7 format=3 uid="uid://cxves47achr7l"]
 
 [ext_resource type="Script" path="res://UI/menu.gd" id="1_87cqx"]
 [ext_resource type="Texture2D" uid="uid://mjoo8a2x7wbg" path="res://UI/bkg_30.png" id="1_g3hhs"]
 [ext_resource type="Theme" uid="uid://c8ivmupmyaa5s" path="res://UI/default.tres" id="2_8wue4"]
+[ext_resource type="AudioStream" uid="uid://cysqrd6nvhmpq" path="res://Wavs/Reksio i Skarb Piratów OST - Muzamenu-(p).mp3" id="4_jticx"]
 
 [sub_resource type="Gradient" id="Gradient_a3ke8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -27,7 +28,7 @@ offset_bottom = 1080.0
 texture = SubResource("GradientTexture1D_ytqt7")
 
 [node name="BKG" type="TextureRect" parent="."]
-layout_mode = 0
+layout_mode = 2
 offset_left = 240.0
 offset_right = 1040.0
 offset_bottom = 600.0
@@ -71,6 +72,9 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_8wue4")
 text = "Wyjscie"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jticx")
 
 [connection signal="pressed" from="Controls/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

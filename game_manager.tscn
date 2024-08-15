@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=62 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -145,6 +145,9 @@ texture = ExtResource("11_ch5pr")
 region_rect = Rect2(2, 2, 53, 52)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5see7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4iovj"]
+region_rect = Rect2(81, 97, 30, 30)
 
 [sub_resource type="Gradient" id="Gradient_vcxga"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -303,19 +306,13 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_m8j1e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d7n1u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5see7")
 
-[node name="Save" type="Button" parent="Camera2D"]
+[node name="Menu" type="Button" parent="Camera2D"]
 offset_left = 876.0
 offset_top = -508.0
 offset_right = 923.0
 offset_bottom = -477.0
-text = "SAVE"
-
-[node name="Load" type="Button" parent="Camera2D"]
-offset_left = 874.0
-offset_top = -455.0
-offset_right = 926.0
-offset_bottom = -424.0
-text = "LOAD"
+theme_override_styles/normal = SubResource("StyleBoxTexture_4iovj")
+text = "MENU"
 
 [node name="Shadow" type="TextureRect" parent="Camera2D"]
 visible = false
@@ -359,5 +356,4 @@ autoplay = "default"
 [connection signal="button_up" from="Camera2D/LapaButton" to="." method="_on_lapa_button_button_up"]
 [connection signal="mouse_entered" from="Camera2D/LapaButton" to="." method="_on_lapa_button_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/LapaButton" to="." method="_on_lapa_button_mouse_exited"]
-[connection signal="button_up" from="Camera2D/Save" to="." method="_on_save_button_up"]
-[connection signal="button_up" from="Camera2D/Load" to="." method="_on_load_button_up"]
+[connection signal="pressed" from="Camera2D/Menu" to="." method="_on_menu_pressed"]

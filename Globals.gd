@@ -12,6 +12,10 @@ var trapped = false
 
 var crawl_mode = false #hills mode
 
+var kontynuuj = false #load from menu
+
+var map_state_log : Array = [] #all previous map states
+
 #variables saved between playthroughs
 var lapa_gained = false #after acquiring lapa it stays on you
 
@@ -23,5 +27,4 @@ var say_restart = false
 
 var map_pieces = {"saper": false, "non_euclidean": false, "strzalki": false, "hills": false} #cel gry xD
 
-var map_state_log : Array = [] #all previous map states
 

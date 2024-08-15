@@ -34,6 +34,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var hills_exit = $HillsExit
 @onready var lapa_button = $Camera2D/LapaButton
 @onready var small_piece = $SmallPiece
+@onready var menu = $Camera2D/Menu
 
 var camera_limits = [-624, -684, 2544, 1764]
 var reset_pos = Vector2(495, 413)
@@ -106,6 +107,11 @@ func load_data(path : String):
 
 func _ready():
 	verify_save_directory(SAVE_DIR)
+	if Globals.kontynuuj:
+		Globals.kontynuuj = false
+		_on_reset_button_pressed()
+		load_data(SAVE_DIR + SAVE_FILE_NAME)
+		get_tree().reload_current_scene()
 	
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	SignalBus.connect("non_euclidean_clicked", _on_non_euclidean_clicked)
@@ -432,7 +438,7 @@ func small_piece_animation(pos : Vector2):
 	tween.tween_property(small_piece, "scale", Vector2(1.0, 1.0), 0.5).from(Vector2(0.1, 0.1))
 	tween.tween_property(small_piece, "global_position", small_piece.position + Vector2(0, 40), 0.3).set_ease(Tween.EASE_IN)
 	tween.chain().tween_property(small_piece, "global_position", small_piece.position - Vector2(0, 40), 0.3).set_ease(Tween.EASE_OUT)
-	tween.chain().tween_property(small_piece, "global_position", $Camera2D/Save.global_position, 0.7).set_ease(Tween.EASE_OUT_IN)
+	tween.chain().tween_property(small_piece, "global_position", menu.global_position, 0.7).set_ease(Tween.EASE_OUT_IN)
 	tween.chain().tween_property(small_piece, "scale", Vector2(0.1, 0.1), 0.3)
 	await tween.finished
 	small_piece.hide()
@@ -587,16 +593,8 @@ func _on_hills_exit_button_up():
 		
 	var troll = base_map.get_child(84)
 	troll.update(3)
+	
 
-
-func _on_save_button_up():
-	save_data(SAVE_DIR + SAVE_FILE_NAME)
-
-
-func _on_load_button_up():
-	_on_reset_button_pressed()
-	load_data(SAVE_DIR + SAVE_FILE_NAME)
-	get_tree().reload_current_scene()
 	
 func load_prev(map_state):
 	#clearing saper
@@ -654,3 +652,7 @@ func _on_door_button_up():
 		
 		await tween.finished
 		wide_map.hide()
+
+func _on_menu_pressed():
+	save_data(SAVE_DIR + SAVE_FILE_NAME)
+	get_tree().change_scene_to_file("res://UI/menu.tscn")
