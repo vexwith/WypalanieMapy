@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://b08scbdwv7hst"]
 
-[ext_resource type="FontFile" uid="uid://cqei5g67wqjn5" path="res://PixelFraktur.ttf" id="1_7fy51"]
+[ext_resource type="FontFile" uid="uid://ca1bjtx2uqilh" path="res://Silver.ttf" id="1_k14uv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iem2e"]
 
@@ -14,5 +14,5 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 30
-Label/fonts/font = ExtResource("1_7fy51")
+Label/fonts/font = ExtResource("1_k14uv")
 Label/styles/normal = SubResource("StyleBoxEmpty_iem2e")

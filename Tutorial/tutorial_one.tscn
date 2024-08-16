@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://qnyxc1f7413i"]
+[gd_scene load_steps=32 format=3 uid="uid://qnyxc1f7413i"]
 
 [ext_resource type="Texture2D" uid="uid://d1i0cmninopb4" path="res://Mapa/bkg_postlapa.png" id="1_irklf"]
 [ext_resource type="Script" path="res://Tutorial/tutorial_one.gd" id="1_jtsgf"]
@@ -19,6 +19,38 @@
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="16_dw2nh"]
 [ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="17_njdgq"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="19_d5qum"]
+[ext_resource type="Texture2D" uid="uid://dbbcxyoocwnvg" path="res://Tutorial/m_but1_0.png" id="20_5mlpw"]
+[ext_resource type="Texture2D" uid="uid://dpt3mp8py5glw" path="res://Tutorial/m_but1_1.png" id="21_3g326"]
+[ext_resource type="Texture2D" uid="uid://bju6s1q6hapnb" path="res://GUI/17gotolawaA.png" id="22_0jw0t"]
+[ext_resource type="Texture2D" uid="uid://cagwvgy70y76h" path="res://GUI/17goto16b.png" id="23_1nfla"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ndo43"]
+texture = ExtResource("20_5mlpw")
+region_rect = Rect2(0, 0, 113, 97)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ky7s1"]
+texture = ExtResource("20_5mlpw")
+region_rect = Rect2(0, 0, 113, 97)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nj45"]
+texture = ExtResource("21_3g326")
+region_rect = Rect2(0, 0, 113, 97)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_awcqk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a61dg"]
+texture = ExtResource("22_0jw0t")
+region_rect = Rect2(1, 1, 64, 52)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bjair"]
+texture = ExtResource("23_1nfla")
+region_rect = Rect2(1, 1, 66, 50)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ha4d"]
+texture = ExtResource("22_0jw0t")
+region_rect = Rect2(1, 1, 64, 52)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm7u7"]
 
 [node name="TutorialOne" type="Control"]
 layout_mode = 3
@@ -90,14 +122,61 @@ position = Vector2(402.222, 341.667)
 [node name="Kawałek16" parent="Pieces" instance=ExtResource("17_njdgq")]
 position = Vector2(446.667, 185.556)
 
-[node name="Label" type="Label" parent="."]
+[node name="text" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 69.4445
-offset_top = 126.111
-offset_right = 109.444
-offset_bottom = 149.111
+offset_left = 40.5556
+offset_top = 108.889
+offset_right = 282.556
+offset_bottom = 182.889
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 theme = ExtResource("19_d5qum")
-text = "Każdy kawałek ma 7 stanów"
+text = "KAŻDY KAWAŁEK MA 7 STANÓW"
+
+[node name="Label2" type="Label" parent="text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("19_d5qum")
+text = "6 STANÓW WYPALENIA I 1 PUSTY"
+
+[node name="Label3" type="Label" parent="text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("19_d5qum")
+text = "GUZIK DO ZMIENIANIA STANÓW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = 97.7778
+offset_top = 325.556
+offset_right = 210.778
+offset_bottom = 422.556
+theme_override_styles/normal = SubResource("StyleBoxTexture_ndo43")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ky7s1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6nj45")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_awcqk")
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 120.556
+offset_top = 461.667
+offset_right = 185.556
+offset_bottom = 515.667
+theme_override_styles/normal = SubResource("StyleBoxTexture_a61dg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bjair")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8ha4d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vm7u7")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="Pieces/Kawałek1"]
 [editable path="Pieces/Kawałek2"]
