@@ -151,7 +151,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 97.7778
@@ -177,6 +176,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_8ha4d")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vm7u7")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 
 [editable path="Pieces/Kawałek1"]
 [editable path="Pieces/Kawałek2"]

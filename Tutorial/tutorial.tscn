@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://4qnxr8tt246x"]
+[gd_scene load_steps=3 format=3 uid="uid://4qnxr8tt246x"]
 
 [ext_resource type="PackedScene" uid="uid://qnyxc1f7413i" path="res://Tutorial/tutorial_one.tscn" id="1_1jvkj"]
-[ext_resource type="PackedScene" uid="uid://qhjh10w0bkmm" path="res://Tutorial/tutorial_two.tscn" id="1_xlu5m"]
 [ext_resource type="PackedScene" uid="uid://bbav8h88a3lio" path="res://Ognik/ognik.tscn" id="2_8p8i3"]
 
 [node name="Tutorial" type="Control"]
@@ -20,10 +19,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TutorialOne" parent="." instance=ExtResource("1_1jvkj")]
-layout_mode = 1
-
-[node name="TutorialTwo" parent="." instance=ExtResource("1_xlu5m")]
-visible = false
 layout_mode = 1
 
 [node name="Ognik" parent="." instance=ExtResource("2_8p8i3")]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://qhjh10w0bkmm"]
+[gd_scene load_steps=4 format=3 uid="uid://qhjh10w0bkmm"]
 
+[ext_resource type="Script" path="res://Tutorial/tutorial_two.gd" id="1_5yswb"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="1_nn7sh"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="3_v7fhf"]
 
 [node name="TutorialTwo" type="Control"]
 layout_mode = 3
@@ -12,46 +14,76 @@ offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8, 1.8)
+script = ExtResource("1_5yswb")
 
-[node name="Kawałek1" parent="." instance=ExtResource("1_nn7sh")]
+[node name="Pieces" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Kawałek1" parent="Pieces" instance=ExtResource("1_nn7sh")]
 position = Vector2(512.222, 97.2222)
 
-[node name="AnimatedSprite2D" parent="Kawałek1" index="0"]
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek1" index="0"]
 visible = true
 
-[node name="Kawałek2" parent="." instance=ExtResource("1_nn7sh")]
+[node name="Kawałek2" parent="Pieces" instance=ExtResource("1_nn7sh")]
 position = Vector2(858.889, 97)
 
-[node name="AnimatedSprite2D" parent="Kawałek2" index="0"]
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek2" index="0"]
 visible = true
 
-[node name="Kawałek3" parent="." instance=ExtResource("1_nn7sh")]
+[node name="Kawałek3" parent="Pieces" instance=ExtResource("1_nn7sh")]
 position = Vector2(512.778, 273.333)
 
-[node name="AnimatedSprite2D" parent="Kawałek3" index="0"]
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek3" index="0"]
 visible = true
 
-[node name="Kawałek4" parent="." instance=ExtResource("1_nn7sh")]
+[node name="Kawałek4" parent="Pieces" instance=ExtResource("1_nn7sh")]
 position = Vector2(861.111, 280)
 
-[node name="AnimatedSprite2D" parent="Kawałek4" index="0"]
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek4" index="0"]
 visible = true
 
-[node name="Kawałek5" parent="." instance=ExtResource("1_nn7sh")]
+[node name="Kawałek5" parent="Pieces" instance=ExtResource("1_nn7sh")]
 position = Vector2(508.889, 457.778)
 
-[node name="AnimatedSprite2D" parent="Kawałek5" index="0"]
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek5" index="0"]
 visible = true
 
-[node name="Kawałek6" parent="." instance=ExtResource("1_nn7sh")]
+[node name="Kawałek6" parent="Pieces" instance=ExtResource("1_nn7sh")]
 position = Vector2(862.222, 460)
 
-[node name="AnimatedSprite2D" parent="Kawałek6" index="0"]
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek6" index="0"]
 visible = true
 
-[editable path="Kawałek1"]
-[editable path="Kawałek2"]
-[editable path="Kawałek3"]
-[editable path="Kawałek4"]
-[editable path="Kawałek5"]
-[editable path="Kawałek6"]
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 150.0
+offset_right = 358.0
+offset_bottom = 439.0
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("3_v7fhf")
+text = "KLIKNIĘCIE NA KAWAŁEK ZWIĘKSZA JEGO POZIOM WYPALENIA O 2"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("3_v7fhf")
+text = "ABY WYPALIĆ MAPĘ NALEŻY DOPROWADZIĆ WSZYSTKIE JEJ KAWAŁKI DO POZIOMU 4 LUB 5"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[editable path="Pieces/Kawałek1"]
+[editable path="Pieces/Kawałek2"]
+[editable path="Pieces/Kawałek3"]
+[editable path="Pieces/Kawałek4"]
+[editable path="Pieces/Kawałek5"]
+[editable path="Pieces/Kawałek6"]
