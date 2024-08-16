@@ -1,57 +1,117 @@
-[gd_scene load_steps=2 format=3 uid="uid://qhjh10w0bkmm"]
+[gd_scene load_steps=20 format=3 uid="uid://qnyxc1f7413i"]
 
-[ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="1_nn7sh"]
+[ext_resource type="Texture2D" uid="uid://d1i0cmninopb4" path="res://Mapa/bkg_postlapa.png" id="1_irklf"]
+[ext_resource type="Script" path="res://Tutorial/tutorial_one.gd" id="1_jtsgf"]
+[ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="2_vt8nc"]
+[ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_ae51s"]
+[ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="4_2tamh"]
+[ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="5_2fllo"]
+[ext_resource type="PackedScene" uid="uid://cqt4n3lxo4au6" path="res://Mapa/kawałek5/kawałek_5.tscn" id="6_4xvnb"]
+[ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="7_toj4y"]
+[ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="8_eevun"]
+[ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="9_eywl7"]
+[ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="10_kx2f8"]
+[ext_resource type="PackedScene" uid="uid://cwkorr4fc4wuf" path="res://Mapa/kawałek10/kawałek_10.tscn" id="11_lxfjy"]
+[ext_resource type="PackedScene" uid="uid://qk7xlltaywn" path="res://Mapa/kawałek11/kawałek_11.tscn" id="12_561x8"]
+[ext_resource type="PackedScene" uid="uid://cto0or21dya2h" path="res://Mapa/kawałek12/kawałek_12.tscn" id="13_kemph"]
+[ext_resource type="PackedScene" uid="uid://do6xyoip7a6hu" path="res://Mapa/kawałek13/kawałek_13.tscn" id="14_8araa"]
+[ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="15_7njed"]
+[ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="16_dw2nh"]
+[ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="17_njdgq"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="19_d5qum"]
 
 [node name="TutorialOne" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -420.0
-offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8, 1.8)
+script = ExtResource("1_jtsgf")
 
-[node name="Kawałek1" parent="." instance=ExtResource("1_nn7sh")]
-position = Vector2(512.222, 97.2222)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 162.222
+offset_right = 1229.22
+offset_bottom = 600.0
+texture = ExtResource("1_irklf")
 
-[node name="AnimatedSprite2D" parent="Kawałek1" index="0"]
-visible = true
+[node name="Pieces" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Kawałek2" parent="." instance=ExtResource("1_nn7sh")]
-position = Vector2(858.889, 97)
+[node name="Kawałek1" parent="Pieces" instance=ExtResource("2_vt8nc")]
+position = Vector2(765.556, 57.2222)
 
-[node name="AnimatedSprite2D" parent="Kawałek2" index="0"]
-visible = true
+[node name="Kawałek2" parent="Pieces" instance=ExtResource("3_ae51s")]
+position = Vector2(946.667, 161.667)
 
-[node name="Kawałek3" parent="." instance=ExtResource("1_nn7sh")]
-position = Vector2(512.778, 273.333)
+[node name="Kawałek3" parent="Pieces" instance=ExtResource("4_2tamh")]
+position = Vector2(925, 371.667)
 
-[node name="AnimatedSprite2D" parent="Kawałek3" index="0"]
-visible = true
+[node name="Kawałek4" parent="Pieces" instance=ExtResource("5_2fllo")]
+position = Vector2(827.778, 501.111)
 
-[node name="Kawałek4" parent="." instance=ExtResource("1_nn7sh")]
-position = Vector2(861.111, 280)
+[node name="Kawałek5" parent="Pieces" instance=ExtResource("6_4xvnb")]
+position = Vector2(853.333, 292.778)
 
-[node name="AnimatedSprite2D" parent="Kawałek4" index="0"]
-visible = true
+[node name="Kawałek6" parent="Pieces" instance=ExtResource("7_toj4y")]
+position = Vector2(767.222, 126.111)
 
-[node name="Kawałek5" parent="." instance=ExtResource("1_nn7sh")]
-position = Vector2(508.889, 457.778)
+[node name="Kawałek7" parent="Pieces" instance=ExtResource("8_eevun")]
+position = Vector2(745.556, 220)
 
-[node name="AnimatedSprite2D" parent="Kawałek5" index="0"]
-visible = true
+[node name="Kawałek8" parent="Pieces" instance=ExtResource("9_eywl7")]
+position = Vector2(745, 346.667)
 
-[node name="Kawałek6" parent="." instance=ExtResource("1_nn7sh")]
-position = Vector2(862.222, 460)
+[node name="Kawałek9" parent="Pieces" instance=ExtResource("10_kx2f8")]
+position = Vector2(652.778, 427.778)
 
-[node name="AnimatedSprite2D" parent="Kawałek6" index="0"]
-visible = true
+[node name="Kawałek10" parent="Pieces" instance=ExtResource("11_lxfjy")]
+position = Vector2(640.556, 345)
 
-[editable path="Kawałek1"]
-[editable path="Kawałek2"]
-[editable path="Kawałek3"]
-[editable path="Kawałek4"]
-[editable path="Kawałek5"]
-[editable path="Kawałek6"]
+[node name="Kawałek11" parent="Pieces" instance=ExtResource("12_561x8")]
+position = Vector2(572.222, 491.111)
+
+[node name="Kawałek12" parent="Pieces" instance=ExtResource("13_kemph")]
+position = Vector2(640, 267.778)
+
+[node name="Kawałek13" parent="Pieces" instance=ExtResource("14_8araa")]
+position = Vector2(580.556, 165)
+
+[node name="Kawałek14" parent="Pieces" instance=ExtResource("15_7njed")]
+position = Vector2(499.444, 341.667)
+
+[node name="Kawałek15" parent="Pieces" instance=ExtResource("16_dw2nh")]
+position = Vector2(402.222, 341.667)
+
+[node name="Kawałek16" parent="Pieces" instance=ExtResource("17_njdgq")]
+position = Vector2(446.667, 185.556)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 69.4445
+offset_top = 126.111
+offset_right = 109.444
+offset_bottom = 149.111
+theme = ExtResource("19_d5qum")
+text = "Każdy kawałek ma 7 stanów"
+
+[editable path="Pieces/Kawałek1"]
+[editable path="Pieces/Kawałek2"]
+[editable path="Pieces/Kawałek3"]
+[editable path="Pieces/Kawałek4"]
+[editable path="Pieces/Kawałek5"]
+[editable path="Pieces/Kawałek6"]
+[editable path="Pieces/Kawałek7"]
+[editable path="Pieces/Kawałek8"]
+[editable path="Pieces/Kawałek9"]
+[editable path="Pieces/Kawałek10"]
+[editable path="Pieces/Kawałek11"]
+[editable path="Pieces/Kawałek12"]
+[editable path="Pieces/Kawałek13"]
+[editable path="Pieces/Kawałek14"]
+[editable path="Pieces/Kawałek15"]
+[editable path="Pieces/Kawałek16"]
