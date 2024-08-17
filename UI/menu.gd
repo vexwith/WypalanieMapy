@@ -20,6 +20,14 @@ func _input(event):
 		get_tree().quit()
 
 func _on_new_game_pressed():
+	#reset meta globals
+	Globals.lapa_gained = false
+	Globals.return_trapped = false
+	Globals.first_enter = true
+	Globals.first_restart = true
+	Globals.say_restart = false
+	Globals.map_pieces = {"saper": false, "non_euclidean": false, "strzalki": false, "hills": false}
+
 	Globals.kontynuuj = false
 	get_tree().change_scene_to_file("res://game_manager.tscn")
 

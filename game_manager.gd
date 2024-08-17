@@ -215,7 +215,8 @@ func _input(event): #dragging hamdler
 			Globals.ignore_clicks = false
 		
 	if event.is_action_pressed("2"):
-		_on_lapa_button_button_up()
+		if not Globals.crawl_mode:
+			_on_lapa_button_button_up()
 			
 	#dragging
 	if not Globals.crawl_mode and not Globals.trapped:
@@ -272,7 +273,7 @@ func _on_piece_clicked(clicked_piece):
 						new_piece.clickable = true
 					
 					next_piece += 1
-					plaza_version = next_piece - 17 #dont add plaza version from undoing
+					plaza_version = next_piece - 17 if plaza_version < 9 else 9 #dont add plaza version from undoing
 					
 					max_modulation = 1.0 - (next_piece - 17) * 0.15 #dont add modulation from undoing
 					
@@ -361,12 +362,25 @@ func _on_non_euclidean_clicked():
 	#animating zoom in
 	var portal_piece = base_map.get_child(41)
 	var init_cam_pos = camera.position
+	
+	var over = 9000
+	camera.limit_left = -over
+	camera.limit_top = -over
+	camera.limit_right = over
+	camera.limit_bottom = over
+	
 	var tween = get_tree().create_tween().set_parallel(true)
 	tween.tween_property(camera, "zoom", Vector2(4.0, 4.0), 1.0)
 	tween.tween_property(camera, "position", portal_piece.global_position, 1.0)
 	await tween.finished
 	camera.position = init_cam_pos
 	camera.zoom = Vector2(1.0, 1.0)
+	
+	camera.limit_left = camera_limits[0]
+	camera.limit_top = camera_limits[1]
+	camera.limit_right = camera_limits[2]
+	camera.limit_bottom = camera_limits[3]
+	
 	#enable non euclidean map and disable wide map
 	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540)
 	non_euclidean_map.show()

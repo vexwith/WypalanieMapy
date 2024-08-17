@@ -17,8 +17,8 @@ func _ready():
 	
 	position = starting_pos
 
-	if not Globals.lapa_gained:
-		lapa.show()
+	if Globals.lapa_gained:
+		lapa.hide()
 	
 func _process(delta):
 	game_time += delta

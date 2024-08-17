@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=70 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -26,9 +26,12 @@
 [ext_resource type="Texture2D" uid="uid://cdnjhhj5dlpwd" path="res://GUI/b_lev1_0.png" id="19_oqw3y"]
 [ext_resource type="Texture2D" uid="uid://dwv7js2un0fsx" path="res://GUI/b_lev2_0.png" id="20_3rgua"]
 [ext_resource type="FontFile" uid="uid://c8uy1iu1mljoy" path="res://BasicHandwriting.ttf" id="20_pu80j"]
+[ext_resource type="Texture2D" uid="uid://bi75qp257bl7m" path="res://GUI/keyboard_1.png" id="21_2lek6"]
 [ext_resource type="Texture2D" uid="uid://dyubr3w0wmhuh" path="res://GUI/b_lev3_0.png" id="21_fxaop"]
 [ext_resource type="Texture2D" uid="uid://coxj3xlfnguh5" path="res://GUI/bexit_2.png" id="23_oslr8"]
 [ext_resource type="Texture2D" uid="uid://huatjbly557s" path="res://GUI/bexitom_2.png" id="24_l4ipa"]
+[ext_resource type="Texture2D" uid="uid://dlakmdsc6fv6k" path="res://GUI/keyboard_2.png" id="24_v2j41"]
+[ext_resource type="Texture2D" uid="uid://cvsvjd05grxe6" path="res://GUI/keyboard_32.png" id="25_a2es2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
 texture = ExtResource("3_t42ev")
@@ -308,6 +311,11 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_8tqfl")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_p7brn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j65kq")
 
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/OgnikButton"]
+position = Vector2(4, 11.25)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("21_2lek6")
+
 [node name="LapaButton" type="Button" parent="Camera2D"]
 offset_left = -828.0
 offset_top = -525.0
@@ -318,6 +326,33 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_br1w4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_m8j1e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d7n1u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5see7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/LapaButton"]
+position = Vector2(4.167, 11.25)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("24_v2j41")
+
+[node name="Rewind" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -898.0
+offset_top = -306.0
+offset_right = -858.0
+offset_bottom = -266.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Rewind"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("25_a2es2")
+
+[node name="Label" type="Label" parent="Camera2D/Rewind"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = -10.0
+offset_right = 87.0
+offset_bottom = 13.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_pu80j")
+text = "- UNDO"
 
 [node name="Shadow" type="TextureRect" parent="Camera2D"]
 visible = false

@@ -32,6 +32,9 @@ func _on_piece_clicked(clicked_piece):
 	save_prev()
 	
 	if win_condition:
+		get_parent().sfx.stream = get_parent().win
+		get_parent().sfx.play()
+		await get_parent().sfx.finished
 		var tutorial = get_parent().tutorial_four.instantiate()
 		get_parent().get_child(1).add_sibling(tutorial)
 		queue_free()
