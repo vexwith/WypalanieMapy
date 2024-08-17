@@ -16,7 +16,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var win = preload("res://Wavs/win.wav")
 @onready var mina_setup = preload("res://Wavs/00ekran.wav")
 @onready var mina_wybuch = preload("res://Wavs/explosion-91872.mp3")
-@onready var postmapa = preload("res://Mapa/bkg_postlapa.png")
+@onready var postmapa = preload("res://Mapa/bkg_postlapa2.png")
 
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
@@ -115,9 +115,6 @@ func _ready():
 		load_data(SAVE_DIR + SAVE_FILE_NAME)
 		get_tree().reload_current_scene()
 	
-	#saving blank map
-	save_prev()
-	
 #	MAX_PIECES = base_map.get_child_count()
 	if not Globals.lapa_gained:
 		lapa_button.hide()
@@ -148,6 +145,9 @@ func _ready():
 		sfx.stream = rozumiem
 		sfx.play()
 		
+	#saving blank map
+	save_prev()
+
 #	for i in range(1, 72):
 #		var piece = base_map.get_child(i)
 #		piece.stage = 4
@@ -430,13 +430,20 @@ func upgrade_to_wide_map():
 	
 
 func get_small_piece(piece):
-	if Globals.map_pieces["saper"] == false and map_completed(39, 25):
-		Globals.map_pieces["saper"] = true
-		small_piece_animation(Vector2(2061, -262))
+	var non_euclidean = non_euclidean_completed()
+	var saper = map_completed(39, 25)
+	
+	if saper:
+		if Globals.map_pieces["saper"] == false:
+			Globals.map_pieces["saper"] = true
+			small_piece_animation(Vector2(2061, -262))
 		
-	if Globals.map_pieces["non_euclidean"] == false and non_euclidean_completed():
-		Globals.map_pieces["non_euclidean"] = true
-		small_piece_animation(camera.global_position)
+		
+	if non_euclidean:
+		if Globals.map_pieces["non_euclidean"] == false:
+			Globals.map_pieces["non_euclidean"] = true
+			small_piece_animation(camera.global_position)
+		base_map.get_child(41).find_child("Completed").visible = non_euclidean
 	
 
 	
@@ -456,7 +463,7 @@ func small_piece_animation(pos : Vector2):
 	tween.tween_property(small_piece, "scale", Vector2(1.0, 1.0), 0.5).from(Vector2(0.1, 0.1))
 	tween.tween_property(small_piece, "global_position", small_piece.position + Vector2(0, 40), 0.3).set_ease(Tween.EASE_IN)
 	tween.chain().tween_property(small_piece, "global_position", small_piece.position - Vector2(0, 40), 0.3).set_ease(Tween.EASE_OUT)
-	tween.chain().tween_property(small_piece, "global_position", menu.global_position, 0.7).set_ease(Tween.EASE_OUT_IN)
+	tween.chain().tween_property(small_piece, "global_position", menu.global_position + Vector2(39.75, 39), 0.7).set_ease(Tween.EASE_OUT_IN)
 	tween.chain().tween_property(small_piece, "scale", Vector2(0.1, 0.1), 0.3)
 	await tween.finished
 	small_piece.hide()
@@ -619,8 +626,15 @@ func save_prev():
 			map_state.append(piece.stage)
 	for non_euclidean_piece in non_euclidean_pieces.get_children():
 		map_state.append(non_euclidean_piece.stage)
+		
 	map_state.append(camera.global_position)
 	map_state.append(next_piece)
+	
+	if not non_euclidean_map.visible: #bool responsible for changing from non-euclidean to normal
+		map_state.append(true)
+	else:
+		map_state.append(false)
+		
 	Globals.map_state_log.append(map_state)
 	
 func load_prev(map_state):
@@ -628,6 +642,12 @@ func load_prev(map_state):
 	Globals.bomb_clicked = false
 	Globals.saper_count = 0
 	SignalBus.emit_signal("rewind_numbers")
+	
+	#reading in which map you are
+	var in_normal = map_state.pop_back()
+	wide_map.visible = in_normal
+	non_euclidean_map.visible = !in_normal
+	Globals.undraggable = !in_normal
 	
 	#rewinding first map outer pieces
 	next_piece = map_state.pop_back()
@@ -638,13 +658,15 @@ func load_prev(map_state):
 		
 	var camera_pos = map_state.pop_back()
 	camera.global_position = camera_pos
-	var non_euclidean_count = 0
+	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540) #teleport non-euclidean back
+	
+	var non_euclidean_count = 9
 	for i in range(len(map_state) - 1, -1, -1):
-		if non_euclidean_count < 10:
+		if non_euclidean_count >= 0:
 			var piece = non_euclidean_pieces.get_child(non_euclidean_count)
 			piece.stage = map_state.pop_back()
 			piece.update(0)
-			non_euclidean_count += 1
+			non_euclidean_count -= 1
 		else:
 			var piece = base_map.get_child(i + 1)
 			piece.stage = map_state.pop_back()

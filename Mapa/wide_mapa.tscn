@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=94 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://ckmo4x6cac7c8" path="res://Mapa/NonEuclideanMap/pole7_3.png" id="50_s1jew"]
 [ext_resource type="Texture2D" uid="uid://k3lbry52wlsu" path="res://Mapa/NonEuclideanMap/pole7_4.png" id="51_yc7kb"]
 [ext_resource type="Texture2D" uid="uid://bjelttbjbgyvt" path="res://Mapa/NonEuclideanMap/pole7_5.png" id="52_ggtlm"]
+[ext_resource type="Texture2D" uid="uid://ch5ro81jf8lmu" path="res://Mapa/NonEuclideanMap/telecomp.png" id="60_fcs4n"]
 [ext_resource type="PackedScene" uid="uid://bf6vn2ul20fnm" path="res://Items/trap.tscn" id="60_uxvvb"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_52.gd" id="60_whw0o"]
 [ext_resource type="Texture2D" uid="uid://cu2aorwh2euw1" path="res://Mapa/cloud_1.png" id="61_jt636"]
@@ -551,6 +552,7 @@ offset_top = 300.0
 offset_right = 1333.0
 offset_bottom = 900.0
 texture = ExtResource("1_cr8sa")
+stretch_mode = 3
 
 [node name="Kawałek1" parent="BaseMap" instance=ExtResource("2_bqjdw")]
 position = Vector2(868, 356)
@@ -890,6 +892,11 @@ sprite_frames = SubResource("SpriteFrames_iw5y1")
 [node name="Timer" type="Timer" parent="BaseMap/Kawałek41"]
 wait_time = 0.6
 autostart = true
+
+[node name="Completed" type="Sprite2D" parent="BaseMap/Kawałek41"]
+visible = false
+show_behind_parent = true
+texture = ExtResource("60_fcs4n")
 
 [node name="Kawałek42" parent="BaseMap" instance=ExtResource("16_27fi4")]
 position = Vector2(110, 358)
