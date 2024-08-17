@@ -80,3 +80,4 @@ stream = ExtResource("4_jticx")
 [connection signal="pressed" from="Controls/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

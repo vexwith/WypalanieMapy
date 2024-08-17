@@ -7,3 +7,4 @@ signal non_euclidean_clicked()
 signal mouse_freed()
 
 signal rewind_numbers() #in saper
+signal rewind_bomb()

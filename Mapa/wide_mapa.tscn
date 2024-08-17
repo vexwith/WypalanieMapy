@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=109 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
@@ -392,6 +392,87 @@ animations = [{
 "name": &"5",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_earms"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fwgk4"]
+gradient = SubResource("Gradient_earms")
+
+[sub_resource type="Curve" id="Curve_x5vx3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yeqhy"]
+curve = SubResource("Curve_x5vx3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2tesd"]
+emission_shape = 3
+emission_box_extents = Vector3(50, 50, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_yeqhy")
+color_ramp = SubResource("GradientTexture1D_fwgk4")
+
+[sub_resource type="Gradient" id="Gradient_p2drl"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dvnst"]
+gradient = SubResource("Gradient_p2drl")
+
+[sub_resource type="Curve" id="Curve_p8vc6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c8dga"]
+curve = SubResource("Curve_p8vc6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yc10l"]
+emission_shape = 3
+emission_box_extents = Vector3(250, 200, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 25.0
+scale_curve = SubResource("CurveTexture_c8dga")
+color_ramp = SubResource("GradientTexture1D_dvnst")
+
+[sub_resource type="Gradient" id="Gradient_rq33x"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o8elq"]
+gradient = SubResource("Gradient_rq33x")
+
+[sub_resource type="Curve" id="Curve_oe7sv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.48125, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3qpax"]
+curve = SubResource("Curve_oe7sv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fyvdw"]
+emission_shape = 3
+emission_box_extents = Vector3(1000, 700, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 50.0
+scale_curve = SubResource("CurveTexture_3qpax")
+color_ramp = SubResource("GradientTexture1D_o8elq")
 
 [node name="WideMapa" type="Control"]
 layout_mode = 3
@@ -898,6 +979,12 @@ visible = false
 show_behind_parent = true
 texture = ExtResource("60_fcs4n")
 
+[node name="Particles" type="GPUParticles2D" parent="BaseMap/Kawałek41"]
+visible = false
+position = Vector2(10, -7)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_2tesd")
+
 [node name="Kawałek42" parent="BaseMap" instance=ExtResource("16_27fi4")]
 position = Vector2(110, 358)
 rotation = -0.658886
@@ -1243,6 +1330,18 @@ affected_pieces = [98]
 position = Vector2(-1578, 562)
 rotation = 0.392602
 affected_pieces = [97]
+
+[node name="SaperParticles" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(1402, 168)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_yc10l")
+
+[node name="WideParticles" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(798, 592)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_fyvdw")
 
 [node name="Clouds" type="Control" parent="."]
 anchors_preset = 0

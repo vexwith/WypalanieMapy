@@ -215,7 +215,7 @@ func _input(event): #dragging hamdler
 			Globals.ignore_clicks = false
 		
 	if event.is_action_pressed("2"):
-		if not Globals.crawl_mode:
+		if not Globals.crawl_mode and Globals.lapa_gained:
 			_on_lapa_button_button_up()
 			
 	#dragging
@@ -246,7 +246,7 @@ func failed(piece):
 	return false
 	
 func _on_piece_clicked(clicked_piece):
-	get_small_piece(clicked_piece)
+	get_small_piece()
 	
 	if failed(clicked_piece):
 		sfx.stream = ojoj
@@ -306,11 +306,6 @@ func _on_piece_clicked(clicked_piece):
 				var tween = get_tree().create_tween()
 				tween.tween_property(piece, "position", Vector2(piece.position.x, piece.position.y + 70), 2.0)
 #				piece.position.y += 70
-
-			if sfx.playing:
-				await sfx.finished
-			sfx.stream = win
-			sfx.play()
 			
 	elif clicked_piece.get_index() == 72 and not Globals.crawl_mode:
 		Globals.crawl_mode = true
@@ -429,28 +424,46 @@ func upgrade_to_wide_map():
 	troll.update(3)
 	
 
-func get_small_piece(piece):
+func get_small_piece():
 	var non_euclidean = non_euclidean_completed()
 	var saper = map_completed(39, 25)
+	var wide = map_completed(72) and non_euclidean_completed()
+	
+	if wide:
+		if Globals.map_pieces["wide_map"] == false:
+			Globals.map_pieces["wide_map"] = true
+			small_piece_animation(camera.global_position)
+	var wide_particles = wide_map.find_child("WideParticles")
+	if not wide_particles.visible and wide and not sfx.playing:
+		play_win()
+	wide_particles.visible = wide
 	
 	if saper:
 		if Globals.map_pieces["saper"] == false:
 			Globals.map_pieces["saper"] = true
 			small_piece_animation(Vector2(2061, -262))
+	var saper_particles = wide_map.find_child("SaperParticles")
+	if not saper_particles.visible and saper and not sfx.playing:
+		play_win()
+	saper_particles.visible = saper
 		
 		
 	if non_euclidean:
 		if Globals.map_pieces["non_euclidean"] == false:
 			Globals.map_pieces["non_euclidean"] = true
 			small_piece_animation(camera.global_position)
-		base_map.get_child(41).find_child("Completed").visible = non_euclidean
+	var non_euclidean_particles = base_map.get_child(41).find_child("Particles")
+	if not non_euclidean_particles.visible and non_euclidean and not sfx.playing:
+		play_win()
+	non_euclidean_particles.visible = non_euclidean
 	
-
-	
-func small_piece_animation(pos : Vector2):
+func play_win():
 	sfx.stop()
 	sfx.stream = win
 	sfx.play()
+	
+func small_piece_animation(pos : Vector2):
+	play_win()
 	
 	small_piece.global_position = pos
 	small_piece.show()
@@ -642,6 +655,7 @@ func load_prev(map_state):
 	Globals.bomb_clicked = false
 	Globals.saper_count = 0
 	SignalBus.emit_signal("rewind_numbers")
+	SignalBus.emit_signal("rewind_bomb")
 	
 	#reading in which map you are
 	var in_normal = map_state.pop_back()
@@ -671,7 +685,9 @@ func load_prev(map_state):
 			var piece = base_map.get_child(i + 1)
 			piece.stage = map_state.pop_back()
 			piece.update(0)
-
+			
+	#reestablish particles
+	get_small_piece()
 
 func _on_real_exit_button_up():
 	var tween = get_tree().create_tween()
