@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnhmtuwiemrmn"]
+
+[ext_resource type="Script" path="res://Tutorial/tutorial_three.gd" id="1_37w6u"]
+[ext_resource type="PackedScene" uid="uid://cwkorr4fc4wuf" path="res://Mapa/kawałek10/kawałek_10.tscn" id="1_xrg4e"]
+[ext_resource type="PackedScene" uid="uid://cto0or21dya2h" path="res://Mapa/kawałek12/kawałek_12.tscn" id="2_56oeb"]
+[ext_resource type="Texture2D" uid="uid://dknwkhrofosws" path="res://Tutorial/0tierpiece2.png" id="2_ffsnm"]
+[ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="3_kn0lc"]
+[ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="4_2nmej"]
+[ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="5_suhd1"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="6_4qa52"]
+
+[node name="TutorialThree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_37w6u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 543.333
+offset_top = 118.333
+offset_right = 974.333
+offset_bottom = 472.333
+texture = ExtResource("2_ffsnm")
+
+[node name="Pieces" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 140.0
+offset_top = 1.66667
+offset_right = 180.0
+offset_bottom = 41.6667
+
+[node name="Kawałek10" parent="Pieces" instance=ExtResource("1_xrg4e")]
+position = Vector2(631.667, 286.111)
+affected_pieces = [1, 2, 3]
+
+[node name="Kawałek12" parent="Pieces" instance=ExtResource("2_56oeb")]
+position = Vector2(628.333, 210)
+affected_pieces = [0, 2, 3]
+
+[node name="Kawałek9" parent="Pieces" instance=ExtResource("3_kn0lc")]
+position = Vector2(642.222, 368.889)
+affected_pieces = [0, 1, 3]
+
+[node name="Kawałek8" parent="Pieces" instance=ExtResource("4_2nmej")]
+position = Vector2(735, 287.778)
+affected_pieces = [0, 1, 2]
+
+[node name="Kawałek14" parent="Pieces" instance=ExtResource("5_suhd1")]
+position = Vector2(489.444, 282.778)
+affected_pieces = [1, 2]
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 56.1111
+offset_top = 170.556
+offset_right = 466.111
+offset_bottom = 395.556
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("6_4qa52")
+text = "KLIKNIĘCIE W KAWAŁEK MAPY ZAWSZE ZWIĘKSZA POZIOM WYPALENIA SĄSIADUJĄCYCH KAWAŁKÓW O 1"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("6_4qa52")
+text = "JEŚLI POPEŁNIŁEŚ BŁĄD MOŻESZ KLIKNĄĆ RESTART ŻEBY COFNĄĆ SIĘ DO POCZĄTKU LUB WCISNĄĆ Z NA KLAWIATURZE ABY COFNĄĆ SWÓJ RUCH"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[editable path="Pieces/Kawałek10"]
+[editable path="Pieces/Kawałek12"]
+[editable path="Pieces/Kawałek9"]
+[editable path="Pieces/Kawałek8"]
+[editable path="Pieces/Kawałek14"]

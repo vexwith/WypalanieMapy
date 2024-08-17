@@ -1,6 +1,5 @@
 extends Control
 
-@onready var tutorial_two = preload("res://Tutorial/tutorial_two.tscn")
 
 @onready var pieces = $Pieces
 
@@ -16,8 +15,8 @@ func _ready():
 	var tween = get_tree().create_tween()
 	tween.tween_property($text/Label, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($text/Label2, "modulate", Color.WHITE, 2.0)
-	tween.tween_property($text/Label3, "modulate", Color.WHITE, 1.0)
 	tween.tween_property($Button, "modulate", Color.WHITE, 1.0)
+	tween.tween_property($text/Label3, "modulate", Color.WHITE, 1.0)
 
 
 
@@ -38,6 +37,10 @@ func _on_button_pressed():
 
 
 func _on_button_2_pressed():
-	var tutorial = tutorial_two.instantiate()
+	get_parent().find_child("Reset").show()
+	var tutorial = get_parent().tutorial_two.instantiate()
 	get_parent().find_child("TutorialOne").add_sibling(tutorial)
 	queue_free()
+	
+func reset():
+	pass

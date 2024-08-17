@@ -1,13 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://4qnxr8tt246x"]
+[gd_scene load_steps=10 format=3 uid="uid://4qnxr8tt246x"]
 
 [ext_resource type="PackedScene" uid="uid://qnyxc1f7413i" path="res://Tutorial/tutorial_one.tscn" id="1_1jvkj"]
+[ext_resource type="Script" path="res://Tutorial/tutorial.gd" id="1_3jdpk"]
 [ext_resource type="PackedScene" uid="uid://bbav8h88a3lio" path="res://Ognik/ognik.tscn" id="2_8p8i3"]
+[ext_resource type="Texture2D" uid="uid://cvt1yhux55mnl" path="res://GUI/brestartoc.png" id="3_7af6p"]
+[ext_resource type="Texture2D" uid="uid://cy01wwi12q7av" path="res://GUI/brestartom_2.png" id="4_8x7yh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5f5b2"]
+texture = ExtResource("3_7af6p")
+region_rect = Rect2(5, 4, 65, 65)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4888e"]
+texture = ExtResource("4_8x7yh")
+region_rect = Rect2(5, 4, 54, 55)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vy0j5"]
+texture = ExtResource("3_7af6p")
+region_rect = Rect2(5, 4, 65, 65)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0gp0"]
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+script = ExtResource("1_3jdpk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -22,3 +40,18 @@ color = Color(0, 0, 0, 1)
 layout_mode = 1
 
 [node name="Ognik" parent="." instance=ExtResource("2_8p8i3")]
+
+[node name="Reset" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1749.0
+offset_top = 953.0
+offset_right = 1757.0
+offset_bottom = 961.0
+scale = Vector2(12, 12)
+theme_override_styles/normal = SubResource("StyleBoxTexture_5f5b2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4888e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vy0j5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d0gp0")
+
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

@@ -106,6 +106,8 @@ func load_data(path : String):
 		printerr("Cannot open non-existent file at %s!" % [path])
 
 func _ready():
+	SignalBus.connect("piece_clicked", _on_piece_clicked)
+	SignalBus.connect("non_euclidean_clicked", _on_non_euclidean_clicked)
 	verify_save_directory(SAVE_DIR)
 	if Globals.kontynuuj:
 		Globals.kontynuuj = false
@@ -113,8 +115,9 @@ func _ready():
 		load_data(SAVE_DIR + SAVE_FILE_NAME)
 		get_tree().reload_current_scene()
 	
-	SignalBus.connect("piece_clicked", _on_piece_clicked)
-	SignalBus.connect("non_euclidean_clicked", _on_non_euclidean_clicked)
+	#saving blank map
+	save_prev()
+	
 #	MAX_PIECES = base_map.get_child_count()
 	if not Globals.lapa_gained:
 		lapa_button.hide()
@@ -206,6 +209,15 @@ func _input(event): #dragging hamdler
 			var prev_state = Globals.map_state_log[-1].duplicate()
 			load_prev(prev_state)
 			
+	if event.is_action_pressed("1"):
+		if not Globals.trapped:
+			_on_ognik_button_button_up()
+			Globals.ignore_clicks = false
+		
+	if event.is_action_pressed("2"):
+		_on_lapa_button_button_up()
+			
+	#dragging
 	if not Globals.crawl_mode and not Globals.trapped:
 		if event is InputEventMouseMotion and draggable:
 			if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
@@ -342,15 +354,7 @@ func _on_piece_clicked(clicked_piece):
 			
 	#saving map state
 	if clicked_piece.get_index() not in range(25, 40): #if inside saper
-		var map_state = []
-		for piece in base_map.get_children():
-			if piece is Area2D:
-				map_state.append(piece.stage)
-		for non_euclidean_piece in non_euclidean_pieces.get_children():
-			map_state.append(non_euclidean_piece.stage)
-		map_state.append(camera.global_position)
-		map_state.append(next_piece)
-		Globals.map_state_log.append(map_state)
+		save_prev()
 
 
 func _on_non_euclidean_clicked():
@@ -594,7 +598,16 @@ func _on_hills_exit_button_up():
 	var troll = base_map.get_child(84)
 	troll.update(3)
 	
-
+func save_prev():
+	var map_state = []
+	for piece in base_map.get_children():
+		if piece is Area2D:
+			map_state.append(piece.stage)
+	for non_euclidean_piece in non_euclidean_pieces.get_children():
+		map_state.append(non_euclidean_piece.stage)
+	map_state.append(camera.global_position)
+	map_state.append(next_piece)
+	Globals.map_state_log.append(map_state)
 	
 func load_prev(map_state):
 	#clearing saper

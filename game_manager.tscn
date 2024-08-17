@@ -148,6 +148,12 @@ region_rect = Rect2(2, 2, 53, 52)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5see7"]
 
+[sub_resource type="Gradient" id="Gradient_vcxga"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3sm7f"]
+gradient = SubResource("Gradient_vcxga")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4iovj"]
 texture = ExtResource("23_oslr8")
 region_rect = Rect2(0, 0, 53, 52)
@@ -161,12 +167,6 @@ texture = ExtResource("23_oslr8")
 region_rect = Rect2(0, 0, 53, 52)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3uyue"]
-
-[sub_resource type="Gradient" id="Gradient_vcxga"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3sm7f"]
-gradient = SubResource("Gradient_vcxga")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rdh5l"]
 animations = [{
@@ -319,17 +319,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_m8j1e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d7n1u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5see7")
 
-[node name="Menu" type="Button" parent="Camera2D"]
-offset_left = 852.0
-offset_top = -516.0
-offset_right = 905.0
-offset_bottom = -464.0
-scale = Vector2(1.5, 1.5)
-theme_override_styles/normal = SubResource("StyleBoxTexture_4iovj")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xr3tq")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_f04tw")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3uyue")
-
 [node name="Shadow" type="TextureRect" parent="Camera2D"]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -351,6 +340,17 @@ theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Menu" type="Button" parent="Camera2D"]
+offset_left = 852.0
+offset_top = -516.0
+offset_right = 905.0
+offset_bottom = -464.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_4iovj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xr3tq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_f04tw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3uyue")
 
 [node name="SmallPiece" type="AnimatedSprite2D" parent="."]
 visible = false

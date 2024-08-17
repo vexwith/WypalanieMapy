@@ -29,7 +29,7 @@ func _on_continue_pressed():
 
 
 func _on_tutorial_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Tutorial/tutorial.tscn")
 
 
 func _on_exit_pressed():

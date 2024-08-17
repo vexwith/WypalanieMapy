@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://bk1ley73a6bru"]
+
+[ext_resource type="Script" path="res://Tutorial/tutorial_four.gd" id="1_k2lga"]
+[ext_resource type="Texture2D" uid="uid://coxj3xlfnguh5" path="res://GUI/bexit_2.png" id="2_wd2la"]
+[ext_resource type="Texture2D" uid="uid://huatjbly557s" path="res://GUI/bexitom_2.png" id="3_b42oo"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="4_osx0y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1f1v"]
+texture = ExtResource("2_wd2la")
+region_rect = Rect2(0, 0, 53, 52)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icc1v"]
+texture = ExtResource("3_b42oo")
+region_rect = Rect2(3, 3, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ar6m"]
+texture = ExtResource("2_wd2la")
+region_rect = Rect2(0, 0, 53, 52)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e64h"]
+
+[node name="TutorialFour" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_k2lga")
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 752.778
+offset_top = 251.667
+offset_right = 805.778
+offset_bottom = 303.667
+theme_override_styles/normal = SubResource("StyleBoxTexture_y1f1v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_icc1v")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6ar6m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5e64h")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 162.0
+offset_right = 539.0
+offset_bottom = 390.0
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_osx0y")
+text = "KOMPAS TO WYJŚCIE DO MENU"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_osx0y")
+text = "WYJŚCIE DO MENU AUTOMATYCZNIE ZAPISUJE TWOJE NAJWAŻNIEJSZE CHECKPOINTY"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_osx0y")
+text = "NIE ZAPISUJE TO TWOJEGO STANU MAPY!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
