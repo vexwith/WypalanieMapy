@@ -18,6 +18,8 @@ const SECURITY_KEY = "092GSD2"
 @onready var mina_wybuch = preload("res://Wavs/explosion-91872.mp3")
 @onready var postmapa = preload("res://Mapa/bkg_postlapa2.png")
 
+@onready var message_scene = preload("res://Items/message.tscn")
+
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
 @onready var first_bkg = $WideMapa/BaseMap/FirstBackground
@@ -70,6 +72,7 @@ func save_data(path : String):
 			"first_enter" : Globals.first_enter,
 			"first_restart" : Globals.first_restart,
 			"say_restart" : Globals.say_restart,
+			"wypalenia" : Globals.wypalenia,
 			"map_pieces" : Globals.map_pieces
 		}
 	}
@@ -98,6 +101,7 @@ func load_data(path : String):
 		Globals.first_enter = data.player_data.first_enter
 		Globals.first_restart = data.player_data.first_restart
 		Globals.say_restart = data.player_data.say_restart
+		Globals.wypalenia = data.player_data.wypalenia
 		Globals.map_pieces = data.player_data.map_pieces
 		
 #		Globals.map_state_log = data.map_data.map_state_log
@@ -235,6 +239,11 @@ func _input(event): #dragging hamdler
 
 func failed(piece):
 	if piece.stage == 5 or piece.stage == 6:
+		Globals.wypalenia += 1
+		if Globals.wypalenia == 3:
+			var message = message_scene.instantiate()
+			get_tree().root.add_child(message)
+			message.global_position = piece.global_position
 		return true
 		
 	if not 'low_pos' in piece:
@@ -651,6 +660,9 @@ func save_prev():
 	Globals.map_state_log.append(map_state)
 	
 func load_prev(map_state):
+	if not Globals.lapa_gained:
+		base_map.get_child(40).lapa.hide()
+	
 	#clearing saper
 	Globals.bomb_clicked = false
 	Globals.saper_count = 0

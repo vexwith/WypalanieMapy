@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfdvqa0ogw2w3"]
+
+[ext_resource type="Texture2D" uid="uid://cdx61u5yhrg3p" path="res://Items/ogloszenie1_0.png" id="1_ayp8a"]
+[ext_resource type="Script" path="res://Items/message.gd" id="2_cmayo"]
+[ext_resource type="Texture2D" uid="uid://bsila2ww7b0a8" path="res://Items/message.png" id="3_bh3ei"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="4_e8021"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4wt6"]
+texture = ExtResource("1_ayp8a")
+region_rect = Rect2(0, 0, 29, 39)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxt2b"]
+texture = ExtResource("1_ayp8a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52rph"]
+texture = ExtResource("1_ayp8a")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2vlx"]
+
+[node name="Message" type="Button"]
+offset_left = -14.5
+offset_top = -19.5
+offset_right = 14.5
+offset_bottom = 19.5
+theme_override_styles/normal = SubResource("StyleBoxTexture_c4wt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uxt2b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_52rph")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d2vlx")
+script = ExtResource("2_cmayo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -137.5
+offset_top = -145.5
+offset_right = 165.5
+offset_bottom = 198.5
+texture = ExtResource("3_bh3ei")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -96.5
+offset_top = -78.5
+offset_right = 136.5
+offset_bottom = 152.5
+theme = ExtResource("4_e8021")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ło matku!
+Chyba nie chcesz wywołać pożaru co?! 
+Myślisz, że znajdziesz jakieś skarby?"
+autowrap_mode = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

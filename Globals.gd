@@ -25,6 +25,8 @@ var first_enter = true
 var first_restart = true
 var say_restart = false
 
+var wypalenia = 0 #after 3 wypalenia spawn a message once
+
 var map_pieces = {"saper": false, "non_euclidean": false, "strzalki": false, "hills": false, "wide_map": false} #cel gry xD
 
 

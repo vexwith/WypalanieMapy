@@ -23,13 +23,15 @@ func _input(event):
 		get_tree().quit()
 		
 func _on_new_game_pressed():
+	Globals.ignore_clicks = false
 	#reset meta globals
 	Globals.lapa_gained = false
 	Globals.return_trapped = false
 	Globals.first_enter = true
 	Globals.first_restart = true
 	Globals.say_restart = false
-	for key in Globals.map_pieces.values():
+	Globals.wypalenia = 0
+	for key in Globals.map_pieces.keys():
 		Globals.map_pieces[key] = false
 
 	Globals.kontynuuj = false
