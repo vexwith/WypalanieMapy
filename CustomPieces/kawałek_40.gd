@@ -21,6 +21,7 @@ func _ready():
 		lapa.hide()
 	
 func _process(delta):
+	super._process(delta)
 	game_time += delta
 	if game_time - delay_time >= DELAY_RATE:
 		delay_time = game_time

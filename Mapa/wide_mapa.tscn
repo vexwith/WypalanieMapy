@@ -980,8 +980,8 @@ show_behind_parent = true
 texture = ExtResource("60_fcs4n")
 
 [node name="Particles" type="GPUParticles2D" parent="BaseMap/Kawałek41"]
-visible = false
 position = Vector2(10, -7)
+emitting = false
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_2tesd")
 
@@ -1332,14 +1332,14 @@ rotation = 0.392602
 affected_pieces = [97]
 
 [node name="SaperParticles" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(1402, 168)
+emitting = false
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_yc10l")
 
 [node name="WideParticles" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(798, 592)
+emitting = false
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_fyvdw")
 

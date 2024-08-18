@@ -40,11 +40,11 @@ affected_pieces = [1, 2, 3]
 
 [node name="Kawałek12" parent="Pieces" instance=ExtResource("2_56oeb")]
 position = Vector2(628.333, 210)
-affected_pieces = [0, 2, 3]
+affected_pieces = [0, 2, 3, 4]
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("3_kn0lc")]
 position = Vector2(642.222, 368.889)
-affected_pieces = [0, 1, 3]
+affected_pieces = [0, 1, 3, 4]
 
 [node name="Kawałek8" parent="Pieces" instance=ExtResource("4_2nmej")]
 position = Vector2(735, 287.778)

@@ -8,9 +8,17 @@ class_name Piece
 var stage = -1 #stopień spalenia
 
 var cursor_entered = false
-#var modulation = 1.0
+var modulation = 0.7
+var affected_modulation = Color.CORNFLOWER_BLUE
 
 var clickable = true #used in first map outer pieces
+
+func _process(delta):
+	if cursor_entered:
+		modulate.a = modulation
+		for i in affected_pieces:
+			var piece = get_parent().get_child(i)
+			piece.modulate = affected_modulation
 
 func _input(event):
 	if cursor_entered and clickable and not Globals.ignore_clicks and event.is_action_pressed("LPM"):
@@ -59,9 +67,12 @@ func clear_affected(): #used when undoing first map outer pieces
 func _on_mouse_entered():
 	cursor_entered = true
 #	Globals.focused_piece = self
-#	modulate.a = modulation
+	
 
 func _on_mouse_exited():
 	cursor_entered = false
 #	Globals.focused_piece = null
-#	modulate.a = 1.0
+	modulate.a = 1.0
+	for i in affected_pieces:
+		var piece = get_parent().get_child(i)
+		piece.modulate = Color.WHITE

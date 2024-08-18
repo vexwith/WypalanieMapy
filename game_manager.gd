@@ -56,6 +56,8 @@ var first_door = true
 var draggable = false #false
 var offset : Vector2
 
+var last_piece = null
+
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
 	
@@ -166,8 +168,10 @@ func _process(delta):
 	if not bgm.playing:
 		if Globals.crawl_mode:
 			bgm.stream = hills
+			plaza_version = 9 #reset
 		elif Globals.lapa_gained:
 			bgm.stream = medley
+			plaza_version = 9 #reset
 		else:
 			bgm.stream = plaza
 		bgm.play()
@@ -205,13 +209,14 @@ func _input(event): #dragging hamdler
 		_on_menu_pressed()
 		
 	if event.is_action_pressed("rewind"):
-		if len(Globals.map_state_log) > 1:
-			Globals.map_state_log.pop_back()
-			var prev_state = Globals.map_state_log[-1].duplicate()
-			load_prev(prev_state)
-		elif len(Globals.map_state_log) == 1:
-			var prev_state = Globals.map_state_log[-1].duplicate()
-			load_prev(prev_state)
+		if Globals.lapa_gained or between_maps:
+			if len(Globals.map_state_log) > 1:
+				Globals.map_state_log.pop_back()
+				var prev_state = Globals.map_state_log[-1].duplicate()
+				load_prev(prev_state)
+			elif len(Globals.map_state_log) == 1:
+				var prev_state = Globals.map_state_log[-1].duplicate()
+				load_prev(prev_state)
 			
 	if event.is_action_pressed("1"):
 		if not Globals.trapped:
@@ -359,6 +364,7 @@ func _on_piece_clicked(clicked_piece):
 			
 	#saving map state
 	if clicked_piece.get_index() not in range(25, 40): #if inside saper
+		last_piece = clicked_piece
 		save_prev()
 
 
@@ -443,18 +449,18 @@ func get_small_piece():
 			Globals.map_pieces["wide_map"] = true
 			small_piece_animation(camera.global_position)
 	var wide_particles = wide_map.find_child("WideParticles")
-	if not wide_particles.visible and wide and not sfx.playing:
+	if not wide_particles.emitting and wide and not sfx.playing:
 		play_win()
-	wide_particles.visible = wide
+	wide_particles.emitting = wide
 	
 	if saper:
 		if Globals.map_pieces["saper"] == false:
 			Globals.map_pieces["saper"] = true
 			small_piece_animation(Vector2(2061, -262))
 	var saper_particles = wide_map.find_child("SaperParticles")
-	if not saper_particles.visible and saper and not sfx.playing:
+	if not saper_particles.emitting and saper and not sfx.playing:
 		play_win()
-	saper_particles.visible = saper
+	saper_particles.emitting = saper
 		
 		
 	if non_euclidean:
@@ -462,9 +468,9 @@ func get_small_piece():
 			Globals.map_pieces["non_euclidean"] = true
 			small_piece_animation(camera.global_position)
 	var non_euclidean_particles = base_map.get_child(41).find_child("Particles")
-	if not non_euclidean_particles.visible and non_euclidean and not sfx.playing:
+	if not non_euclidean_particles.emitting and non_euclidean and not sfx.playing:
 		play_win()
-	non_euclidean_particles.visible = non_euclidean
+	non_euclidean_particles.emitting = non_euclidean
 	
 func play_win():
 	sfx.stop()
@@ -651,17 +657,24 @@ func save_prev():
 		
 	map_state.append(camera.global_position)
 	map_state.append(next_piece)
+	map_state.append(first_map)
 	
 	if not non_euclidean_map.visible: #bool responsible for changing from non-euclidean to normal
 		map_state.append(true)
 	else:
 		map_state.append(false)
 		
+	map_state.append(last_piece)
+		
 	Globals.map_state_log.append(map_state)
 	
 func load_prev(map_state):
-	if not Globals.lapa_gained:
-		base_map.get_child(40).lapa.hide()
+	for piece in base_map.get_children():
+		if piece is Area2D:
+			piece.sprite.self_modulate = Color.WHITE
+	var last = map_state.pop_back()
+	if last != null:
+		last.sprite.self_modulate = Color.LIME
 	
 	#clearing saper
 	Globals.bomb_clicked = false
@@ -676,6 +689,7 @@ func load_prev(map_state):
 	Globals.undraggable = !in_normal
 	
 	#rewinding first map outer pieces
+	first_map = map_state.pop_back()
 	next_piece = map_state.pop_back()
 	for i in range(next_piece, MAX_PIECES):
 		var piece = base_map.get_child(i)
