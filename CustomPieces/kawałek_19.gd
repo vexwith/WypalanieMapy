@@ -3,6 +3,7 @@ extends Piece
 @onready var audio = $AudioStreamPlayer
 
 func _ready():
+	super._ready()
 	clickable = false
 
 func _input(event):

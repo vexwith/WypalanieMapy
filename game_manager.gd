@@ -35,6 +35,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var real_exit = $Camera2D/RealExit
 @onready var hills_exit = $HillsExit
 @onready var lapa_button = $Camera2D/LapaButton
+@onready var key_one = $Camera2D/OgnikButton/Sprite2D
 @onready var small_piece = $SmallPiece
 @onready var menu = $Camera2D/Menu
 
@@ -124,6 +125,7 @@ func _ready():
 #	MAX_PIECES = base_map.get_child_count()
 	if not Globals.lapa_gained:
 		lapa_button.hide()
+		key_one.hide()
 		sfx.volume_db = 0.0
 	else:
 		upgrade_to_wide_map()
@@ -208,10 +210,18 @@ func _input(event): #dragging hamdler
 	if event.is_action_pressed("ui_cancel"): #esc to end
 		_on_menu_pressed()
 		
-	if event.is_action_pressed("rewind"):
+	if event.is_action_pressed("rewind") and not Globals.crawl_mode:
 		if Globals.lapa_gained or between_maps:
 			if len(Globals.map_state_log) > 1:
-				Globals.map_state_log.pop_back()
+				var cur_state = Globals.map_state_log.pop_back()
+				
+				for piece in base_map.get_children():
+					if piece is Area2D:
+						piece.sprite.self_modulate = Color.WHITE
+				var last = cur_state.pop_back()
+				if last != null:
+					last.sprite.self_modulate = Color.PALE_GREEN
+				
 				var prev_state = Globals.map_state_log[-1].duplicate()
 				load_prev(prev_state)
 			elif len(Globals.map_state_log) == 1:
@@ -226,6 +236,9 @@ func _input(event): #dragging hamdler
 	if event.is_action_pressed("2"):
 		if not Globals.crawl_mode and Globals.lapa_gained:
 			_on_lapa_button_button_up()
+			
+	if event.is_action_pressed("restart"):
+		_on_reset_button_pressed()
 			
 	#dragging
 	if not Globals.crawl_mode and not Globals.trapped:
@@ -363,7 +376,7 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = false
 			
 	#saving map state
-	if clicked_piece.get_index() not in range(25, 40): #if inside saper
+	if clicked_piece.get_index() not in range(25, 40) and not Globals.crawl_mode: #if not inside saper or hills
 		last_piece = clicked_piece
 		save_prev()
 
@@ -399,9 +412,9 @@ func _on_non_euclidean_clicked():
 	Globals.undraggable = true
 	
 func back_from_non_euclidean():
+	Globals.undraggable = false
 	non_euclidean_map.hide()
 	wide_map.show()
-	Globals.undraggable = false
 	draggable = true
 	
 	if non_euclidean_completed():
@@ -444,15 +457,6 @@ func get_small_piece():
 	var saper = map_completed(39, 25)
 	var wide = map_completed(72) and non_euclidean_completed()
 	
-	if wide:
-		if Globals.map_pieces["wide_map"] == false:
-			Globals.map_pieces["wide_map"] = true
-			small_piece_animation(camera.global_position)
-	var wide_particles = wide_map.find_child("WideParticles")
-	if not wide_particles.emitting and wide and not sfx.playing:
-		play_win()
-	wide_particles.emitting = wide
-	
 	if saper:
 		if Globals.map_pieces["saper"] == false:
 			Globals.map_pieces["saper"] = true
@@ -461,6 +465,18 @@ func get_small_piece():
 	if not saper_particles.emitting and saper and not sfx.playing:
 		play_win()
 	saper_particles.emitting = saper
+	
+	if sfx.playing:
+		await sfx.finished
+	
+	if wide:
+		if Globals.map_pieces["wide_map"] == false:
+			Globals.map_pieces["wide_map"] = true
+			small_piece_animation(camera.global_position)
+	var wide_particles = wide_map.find_child("WideParticles")
+	if not wide_particles.emitting and wide and not sfx.playing:
+		play_win()
+	wide_particles.emitting = wide
 		
 		
 	if non_euclidean:
@@ -536,6 +552,10 @@ func hills_failed():
 	return false
 
 func _on_reset_button_pressed():
+	if Globals.crawl_mode:
+		_on_hills_exit_button_up()
+		return
+		
 	Globals.map_state_log.clear()
 	Globals.focused_piece = null
 	Globals.ignore_clicks = false
@@ -544,9 +564,9 @@ func _on_reset_button_pressed():
 	Globals.saper_count = 0
 	Globals.trapped = false
 	
-	if Globals.crawl_mode:
-		Globals.crawl_mode = false
-		bgm.stop()
+#	if Globals.crawl_mode:
+#		Globals.crawl_mode = false
+#		bgm.stop()
 	
 	if Globals.first_restart:
 		Globals.first_restart = false
@@ -669,12 +689,7 @@ func save_prev():
 	Globals.map_state_log.append(map_state)
 	
 func load_prev(map_state):
-	for piece in base_map.get_children():
-		if piece is Area2D:
-			piece.sprite.self_modulate = Color.WHITE
-	var last = map_state.pop_back()
-	if last != null:
-		last.sprite.self_modulate = Color.LIME
+	map_state.pop_back() #get rid of last piece
 	
 	#clearing saper
 	Globals.bomb_clicked = false

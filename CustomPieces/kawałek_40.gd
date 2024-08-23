@@ -13,6 +13,7 @@ var delay_time = 0.0
 var DELAY_RATE = 0.2
 
 func _ready():
+	super._ready()
 #	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	
 	position = starting_pos
@@ -57,5 +58,6 @@ func _on_lapa_button_up():
 	Globals.lapa_gained = true
 	var gm = owner.get_parent()
 	gm.lapa_button.show()
+	gm.key_one.show()
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(gm.wide_map.find_child("Saper"), "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)

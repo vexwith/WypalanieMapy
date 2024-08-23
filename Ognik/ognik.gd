@@ -18,10 +18,10 @@ func _process(delta):
 #	global_position = get_global_mouse_position()
 	if przedmioty["lapa"]:
 		audio.stop()
+		if Globals.undraggable: #changing to lapa in any way will return to wide map
+			get_parent().back_from_non_euclidean()
 		if Input.is_action_just_pressed("LPM"):
 			lapa_index = 1
-			if Globals.undraggable:
-				get_parent().back_from_non_euclidean()
 			if Globals.trapped:
 				SignalBus.emit_signal("mouse_freed")
 		if Input.is_action_just_released("LPM"):

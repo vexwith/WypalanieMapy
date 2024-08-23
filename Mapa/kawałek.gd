@@ -2,23 +2,28 @@ extends Area2D
 class_name Piece
 
 @onready var sprite = $AnimatedSprite2D
+@onready var rim = $Rim
 
 @export var affected_pieces = []
 
 var stage = -1 #stopień spalenia
 
 var cursor_entered = false
-var modulation = 0.7
-var affected_modulation = Color.CORNFLOWER_BLUE
+var modulation = 0.7 #0.7
+var affected_modulation = Color.SKY_BLUE
 
 var clickable = true #used in first map outer pieces
 
+func _ready():
+	rim.modulate.a = 0.0
+	rim.z_index = 1
+
 func _process(delta):
-	if cursor_entered:
-		modulate.a = modulation
+	if cursor_entered and clickable and not Globals.crawl_mode:
+#		modulate.a = modulation
 		for i in affected_pieces:
 			var piece = get_parent().get_child(i)
-			piece.modulate = affected_modulation
+			piece.rim.modulate = affected_modulation
 
 func _input(event):
 	if cursor_entered and clickable and not Globals.ignore_clicks and event.is_action_pressed("LPM"):
@@ -72,7 +77,8 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	cursor_entered = false
 #	Globals.focused_piece = null
-	modulate.a = 1.0
+#	modulate.a = 1.0
+	rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
 	for i in affected_pieces:
 		var piece = get_parent().get_child(i)
-		piece.modulate = Color.WHITE
+		piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)

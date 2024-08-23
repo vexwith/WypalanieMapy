@@ -7,6 +7,7 @@ var init_pos : Vector2
 var tween : Tween #global tween so we can stop it
 
 func _ready():
+	super._ready()
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	SignalBus.connect("rewind_bomb", _on_rewind_bomb)
 	

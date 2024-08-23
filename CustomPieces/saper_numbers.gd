@@ -3,6 +3,7 @@ extends Piece
 @onready var number = $Number
 
 func _ready():
+	super._ready()
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	SignalBus.connect("rewind_numbers", _on_rewind_numbers)
 

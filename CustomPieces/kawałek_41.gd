@@ -3,7 +3,7 @@ extends Piece
 var swaper = 0
 
 func _input(event):
-	if cursor_entered and clickable and event.is_action_pressed("LPM"):
+	if cursor_entered and clickable and not Globals.ignore_clicks and event.is_action_pressed("LPM"):
 		SignalBus.emit_signal("non_euclidean_clicked")
 				
 #		SignalBus.emit_signal("piece_clicked", self)

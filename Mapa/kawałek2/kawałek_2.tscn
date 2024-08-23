@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhlhjgt8bmlcr"]
+[gd_scene load_steps=10 format=3 uid="uid://dhlhjgt8bmlcr"]
 
 [ext_resource type="Script" path="res://Mapa/kawałek.gd" id="1_8offa"]
 [ext_resource type="Texture2D" uid="uid://cuctjsqdbgh7r" path="res://Mapa/kawałek2/pole2_0.png" id="1_45kjm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://vxceaeg1do3n" path="res://Mapa/kawałek2/pole2_3.png" id="4_2mag0"]
 [ext_resource type="Texture2D" uid="uid://b0br0h48egbv4" path="res://Mapa/kawałek2/pole2_4.png" id="5_dhcs2"]
 [ext_resource type="Texture2D" uid="uid://bng1k72oujs8h" path="res://Mapa/kawałek2/pole2_5.png" id="6_mi1iw"]
+[ext_resource type="Texture2D" uid="uid://ci4r0jqu24yv1" path="res://Mapa/kawałek2/pole2_rim.png" id="8_h6pei"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1d718"]
 animations = [{
@@ -69,6 +70,9 @@ animation = &"5"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-70, 0, -56, -15, -55, -53, -44, -65, -46, -88, -37, -111, -23, -118, -6, -109, 4, -88, 24, -72, 42, -58, 56, -52, 61, -39, 62, -23, 66, -9, 66, 6, 67, 27, 62, 47, 53, 64, 57, 81, 54, 98, 43, 106, 20, 112, -8, 115, -29, 116, -39, 85, -62, 5)
+
+[node name="Rim" type="Sprite2D" parent="."]
+texture = ExtResource("8_h6pei")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

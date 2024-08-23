@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=71 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dum2dn6nxm8nk" path="res://GUI/lapa_button.png" id="11_ch5pr"]
 [ext_resource type="Texture2D" uid="uid://d1j18oc8wsun5" path="res://GUI/lapa_button_glow.png" id="12_cl5nr"]
 [ext_resource type="Texture2D" uid="uid://b0e8obcdhpqo0" path="res://GUI/pulapkareturnnom.png" id="12_u2w4e"]
+[ext_resource type="Texture2D" uid="uid://bn0s77j1kvekb" path="res://GUI/keyboard_16.png" id="14_0bn3h"]
 [ext_resource type="Texture2D" uid="uid://dlsr5ykbk51r" path="res://GUI/b_lev0_0.png" id="18_3gk7w"]
 [ext_resource type="Texture2D" uid="uid://cdnjhhj5dlpwd" path="res://GUI/b_lev1_0.png" id="19_oqw3y"]
 [ext_resource type="Texture2D" uid="uid://dwv7js2un0fsx" path="res://GUI/b_lev2_0.png" id="20_3rgua"]
@@ -255,6 +256,7 @@ visible = false
 [node name="Ognik" parent="." instance=ExtResource("2_w6n46")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 1
 position = Vector2(960, 540)
 limit_left = -624
 limit_top = -684
@@ -271,6 +273,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_yjddy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2y58w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ptfh3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lq3v5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/ResetButton"]
+position = Vector2(-3.33337, 4.25)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_0bn3h")
 
 [node name="RealExit" type="Button" parent="Camera2D"]
 offset_left = 600.0

@@ -9,6 +9,7 @@ var MOVE_RATE = 5.0
 var move_time = 0.0
 
 func _ready():
+	super._ready()
 	low_pos = mid_pos + (mid_pos - high_pos)
 
 func _process(delta):

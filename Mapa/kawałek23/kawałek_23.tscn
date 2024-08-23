@@ -70,5 +70,7 @@ animation = &"5"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(40, -21, 61, -15, 67, 0, 57, 38, 84, 51, 60, 64, 26, 59, 15, 36, -4, 35, -39, 28, -70, 28, -84, 18, -74, -1, -85, -22, -82, -40, -48, -50, -37, -62, -16, -63, 20, -45)
 
+[node name="Rim" type="Sprite2D" parent="."]
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited" flags=18]
