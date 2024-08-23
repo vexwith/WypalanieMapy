@@ -74,5 +74,10 @@ polygon = PackedVector2Array(-79, 7, -72, 0, -68, -31, -62, -43, 74, -40, 79, -4
 [node name="Rim" type="Sprite2D" parent="."]
 texture = ExtResource("8_m7tsn")
 
+[node name="Label" type="Label" parent="Rim"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1"
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

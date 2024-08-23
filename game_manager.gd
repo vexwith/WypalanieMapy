@@ -20,6 +20,11 @@ const SECURITY_KEY = "092GSD2"
 
 @onready var message_scene = preload("res://Items/message.tscn")
 
+@onready var lapa_button_normal = preload("res://GUI/lapa_button.png")
+@onready var lapa_button_hover = preload("res://GUI/lapa_button_glow.png")
+@onready var lapa_exit_normal = preload("res://GUI/m_exit_0.png")
+@onready var lapa_exit_hover = preload("res://GUI/m_exit_1.png")
+
 @onready var wide_map = $WideMapa
 @onready var base_map = $WideMapa/BaseMap
 @onready var first_bkg = $WideMapa/BaseMap/FirstBackground
@@ -408,7 +413,15 @@ func _on_non_euclidean_clicked():
 	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540)
 	non_euclidean_map.show()
 	wide_map.hide()
+	
 	#lapa returns you to wide map instead
+	var door_rect = Rect2(0, 0, 43, 51)
+	lapa_button.get_theme_stylebox("normal").texture = lapa_exit_normal
+	lapa_button.get_theme_stylebox("normal").region_rect = door_rect
+	lapa_button.get_theme_stylebox("hover").texture = lapa_exit_hover
+	lapa_button.get_theme_stylebox("hover").region_rect = door_rect
+	
+	
 	Globals.undraggable = true
 	
 func back_from_non_euclidean():
@@ -416,6 +429,12 @@ func back_from_non_euclidean():
 	non_euclidean_map.hide()
 	wide_map.show()
 	draggable = true
+	
+	var door_rect = Rect2(2, 2, 53, 52)
+	lapa_button.get_theme_stylebox("normal").texture = lapa_button_normal
+	lapa_button.get_theme_stylebox("normal").region_rect = door_rect
+	lapa_button.get_theme_stylebox("hover").texture = lapa_button_hover
+	lapa_button.get_theme_stylebox("hover").region_rect = door_rect
 	
 	if non_euclidean_completed():
 		var teleport = base_map.get_child(41)
@@ -689,6 +708,10 @@ func save_prev():
 	Globals.map_state_log.append(map_state)
 	
 func load_prev(map_state):
+	var message = get_tree().root.find_child("Message", true, false)
+	if message != null:
+		message.queue_free()
+	
 	map_state.pop_back() #get rid of last piece
 	
 	#clearing saper

@@ -23,6 +23,20 @@ func _input(event):
 		get_tree().quit()
 		
 func _on_new_game_pressed():
+	if FileAccess.file_exists(SAVE_DIR + SAVE_FILE_NAME):
+		$Controls/ConfirmNewGame.show()
+		$Controls/ConfirmText.show()
+	else:
+		start_new_game()
+
+func _on_yes_pressed():
+	start_new_game()
+
+func _on_no_pressed():
+	$Controls/ConfirmNewGame.hide()
+	$Controls/ConfirmText.hide()
+	
+func start_new_game():
 	Globals.ignore_clicks = false
 	#reset meta globals
 	Globals.lapa_gained = false
@@ -48,5 +62,7 @@ func _on_tutorial_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
 
 

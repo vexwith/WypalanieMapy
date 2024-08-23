@@ -18,10 +18,11 @@ texture = ExtResource("1_ayp8a")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2vlx"]
 
 [node name="Message" type="Button"]
-offset_left = -14.5
-offset_top = -19.5
-offset_right = 14.5
-offset_bottom = 19.5
+offset_left = -22.0
+offset_top = -30.0
+offset_right = 7.0
+offset_bottom = 9.0
+scale = Vector2(1.5, 1.5)
 theme_override_styles/normal = SubResource("StyleBoxTexture_c4wt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_uxt2b")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_52rph")
@@ -31,19 +32,21 @@ script = ExtResource("2_cmayo")
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -137.5
-offset_top = -145.5
-offset_right = 165.5
-offset_bottom = 198.5
+offset_left = -103.333
+offset_top = -100.667
+offset_right = 199.667
+offset_bottom = 243.333
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_bh3ei")
 
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -96.5
-offset_top = -78.5
-offset_right = 136.5
-offset_bottom = 152.5
+offset_left = -69.3333
+offset_top = -54.0
+offset_right = 163.667
+offset_bottom = 177.0
+scale = Vector2(0.75, 0.75)
 theme = ExtResource("4_e8021")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Ło matku!

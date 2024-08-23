@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxves47achr7l"]
+[gd_scene load_steps=39 format=3 uid="uid://cxves47achr7l"]
 
 [ext_resource type="Script" path="res://UI/menu.gd" id="1_87cqx"]
 [ext_resource type="Texture2D" uid="uid://mjoo8a2x7wbg" path="res://UI/bkg_30.png" id="1_g3hhs"]
@@ -19,6 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://bwive2mu115cg" path="res://UI/kawa6.png" id="9_8hmbx"]
 [ext_resource type="Texture2D" uid="uid://cjqneycpnwvj8" path="res://UI/lampa6.png" id="9_g4ywf"]
 [ext_resource type="Texture2D" uid="uid://3mu0vc2wwuvl" path="res://UI/kawa7.png" id="10_8s52f"]
+[ext_resource type="Texture2D" uid="uid://ko301h7r2ncn" path="res://UI/GUI.png" id="19_c2veh"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="20_7whbo"]
+[ext_resource type="Texture2D" uid="uid://c61wrekpwixal" path="res://UI/m_yes_0.png" id="20_21lp1"]
+[ext_resource type="Texture2D" uid="uid://cux8i2efnunlu" path="res://UI/m_yes_1.png" id="20_dbied"]
+[ext_resource type="Texture2D" uid="uid://bdffoc8amh3vm" path="res://UI/m_no_0.png" id="22_gx8d2"]
+[ext_resource type="Texture2D" uid="uid://kcckkdm6j6ok" path="res://UI/m_no_1.png" id="23_52u0w"]
 
 [sub_resource type="Gradient" id="Gradient_a3ke8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -102,6 +108,32 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e61o5"]
+atlas = ExtResource("19_c2veh")
+region = Rect2(0, 96, 48, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4gk6"]
+texture = ExtResource("20_21lp1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6cdfq"]
+texture = ExtResource("20_dbied")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5u337"]
+texture = ExtResource("20_21lp1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5g1i6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3ln1"]
+texture = ExtResource("22_gx8d2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lou3m"]
+texture = ExtResource("23_52u0w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m2dji"]
+texture = ExtResource("22_gx8d2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enl2k"]
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -178,6 +210,53 @@ size_flags_vertical = 3
 theme = ExtResource("2_8wue4")
 text = "Wyjscie"
 
+[node name="ConfirmNewGame" type="TextureRect" parent="Controls"]
+visible = false
+layout_mode = 0
+offset_left = 657.0
+offset_top = 243.0
+offset_right = 705.0
+offset_bottom = 275.0
+scale = Vector2(12, 12)
+texture = SubResource("AtlasTexture_e61o5")
+
+[node name="Yes" type="Button" parent="Controls/ConfirmNewGame"]
+layout_mode = 0
+offset_left = 12.1667
+offset_top = 17.1667
+offset_right = 20.1667
+offset_bottom = 25.1667
+theme_override_styles/normal = SubResource("StyleBoxTexture_l4gk6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6cdfq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5u337")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5g1i6")
+
+[node name="No" type="Button" parent="Controls/ConfirmNewGame"]
+layout_mode = 0
+offset_left = 28.25
+offset_top = 17.1667
+offset_right = 36.25
+offset_bottom = 25.1667
+theme_override_styles/normal = SubResource("StyleBoxTexture_l3ln1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lou3m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m2dji")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_enl2k")
+
+[node name="ConfirmText" type="Label" parent="Controls"]
+visible = false
+layout_mode = 0
+offset_left = 690.0
+offset_top = 292.0
+offset_right = 1201.0
+offset_bottom = 484.0
+theme = ExtResource("20_7whbo")
+theme_override_font_sizes/font_size = 35
+text = "UWAGA! Nowa gra zresetuje twój postęp!
+Czy aby na pewno chcesz zacząć nową grę?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jticx")
 
@@ -185,4 +264,6 @@ stream = ExtResource("4_jticx")
 [connection signal="pressed" from="Controls/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Controls/ConfirmNewGame/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Controls/ConfirmNewGame/No" to="." method="_on_no_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
