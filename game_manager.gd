@@ -244,6 +244,14 @@ func _input(event): #dragging hamdler
 			
 	if event.is_action_pressed("restart"):
 		_on_reset_button_pressed()
+		
+	if event.is_action_pressed("ctrl"):
+		Globals.detail_mode = !Globals.detail_mode
+#		$Camera2D/DetailShadow.color.a = 0.4
+#	if event.is_action_released("ctrl"):
+#		Globals.detail_mode = false
+#		$Camera2D/DetailShadow.color.a = 0.0
+		
 			
 	#dragging
 	if not Globals.crawl_mode and not Globals.trapped:

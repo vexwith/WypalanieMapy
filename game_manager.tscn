@@ -263,6 +263,14 @@ limit_top = -684
 limit_right = 2544
 limit_bottom = 1764
 
+[node name="DetailShadow" type="ColorRect" parent="Camera2D"]
+visible = false
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0)
+
 [node name="ResetButton" type="Button" parent="Camera2D"]
 offset_left = 495.0
 offset_top = 413.0

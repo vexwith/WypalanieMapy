@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhlhjgt8bmlcr"]
+[gd_scene load_steps=11 format=3 uid="uid://dhlhjgt8bmlcr"]
 
 [ext_resource type="Script" path="res://Mapa/kawałek.gd" id="1_8offa"]
 [ext_resource type="Texture2D" uid="uid://cuctjsqdbgh7r" path="res://Mapa/kawałek2/pole2_0.png" id="1_45kjm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0br0h48egbv4" path="res://Mapa/kawałek2/pole2_4.png" id="5_dhcs2"]
 [ext_resource type="Texture2D" uid="uid://bng1k72oujs8h" path="res://Mapa/kawałek2/pole2_5.png" id="6_mi1iw"]
 [ext_resource type="Texture2D" uid="uid://ci4r0jqu24yv1" path="res://Mapa/kawałek2/pole2_rim.png" id="8_h6pei"]
+[ext_resource type="Theme" uid="uid://1ilqi4d5psi5" path="res://Mapa/number_theme.tres" id="9_bi3r2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1d718"]
 animations = [{
@@ -73,6 +74,13 @@ polygon = PackedVector2Array(-70, 0, -56, -15, -55, -53, -44, -65, -46, -88, -37
 
 [node name="Rim" type="Sprite2D" parent="."]
 texture = ExtResource("8_h6pei")
+
+[node name="StageNumber" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 32.0
+offset_bottom = 24.0
+theme = ExtResource("9_bi3r2")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

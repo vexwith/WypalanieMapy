@@ -7,23 +7,35 @@ class_name Piece
 @export var affected_pieces = []
 
 var stage = -1 #stopień spalenia
+var stage_number
 
 var cursor_entered = false
 var modulation = 0.7 #0.7
-var affected_modulation = Color.SKY_BLUE
+var affected_modulation = Color.ROSY_BROWN #SKY_BLUE 87ceeb
 
 var clickable = true #used in first map outer pieces
 
 func _ready():
 	rim.modulate.a = 0.0
 	rim.z_index = 1
+	
+	stage_number = find_child("StageNumber")
+	if stage_number != null:
+#		stage_number.scale = Vector2(1.0, 1.0)
+		stage_number.rotation_degrees -= rotation_degrees
+		stage_number.hide()
 
 func _process(delta):
-	if cursor_entered and clickable and not Globals.crawl_mode:
+	if stage_number != null:
+		stage_number.text = str(min(stage + 1, 6))
+	
+	if cursor_entered and clickable and not Globals.crawl_mode and Globals.detail_mode:
 #		modulate.a = modulation
+		if stage_number != null: stage_number.show()
 		for i in affected_pieces:
 			var piece = get_parent().get_child(i)
 			piece.rim.modulate = affected_modulation
+			if stage_number != null: piece.stage_number.show()
 
 func _input(event):
 	if cursor_entered and clickable and not Globals.ignore_clicks and event.is_action_pressed("LPM"):
@@ -79,6 +91,8 @@ func _on_mouse_exited():
 #	Globals.focused_piece = null
 #	modulate.a = 1.0
 	rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	if stage_number != null: stage_number.hide()
 	for i in affected_pieces:
 		var piece = get_parent().get_child(i)
 		piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
+		if stage_number != null: piece.stage_number.hide()

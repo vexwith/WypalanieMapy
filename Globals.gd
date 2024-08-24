@@ -2,6 +2,8 @@ extends Node
 
 var focused_piece = null #keep track of piece your cursor is on
 
+var detail_mode = false #mode that shows you details
+
 var ignore_clicks = false #so we dont burn map
 
 var bomb_clicked = false #dont show saper after failing even once
