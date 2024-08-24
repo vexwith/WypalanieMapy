@@ -56,10 +56,10 @@ affected_pieces = [1, 2]
 
 [node name="Text" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 56.1111
-offset_top = 170.556
-offset_right = 466.111
-offset_bottom = 395.556
+offset_left = 51.1111
+offset_top = 106.667
+offset_right = 461.111
+offset_bottom = 482.667
 theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="Text"]
@@ -74,7 +74,17 @@ autowrap_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("6_4qa52")
-text = "JEŚLI POPEŁNIŁEŚ BŁĄD MOŻESZ KLIKNĄĆ RESTART ŻEBY COFNĄĆ SIĘ DO POCZĄTKU LUB WCISNĄĆ Z NA KLAWIATURZE ABY COFNĄĆ SWÓJ RUCH"
+text = "JEŚLI POPEŁNIŁEŚ BŁĄD MOŻESZ KLIKNĄĆ
+(R) RESTART ŻEBY COFNĄĆ SIĘ DO POCZĄTKU LUB
+(Z) ABY COFNĄĆ SWÓJ RUCH"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Text"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("6_4qa52")
+text = "(CTRL) PRZEŁĄCZA MIĘDZY TRYBEM ZWYKŁYM A DETALICZNYM. TRYB DETALICZNY POKAZUJE STOPNIE WYPALENIA ORAZ POŁĄCZENIA KAWAŁKÓW MAPY"
 horizontal_alignment = 1
 autowrap_mode = 2
 

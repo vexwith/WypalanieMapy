@@ -622,6 +622,7 @@ autoplay = "default"
 frame_progress = 0.34996
 
 [node name="BaseMap" type="Control" parent="."]
+clip_children = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -43,6 +43,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var key_one = $Camera2D/OgnikButton/Sprite2D
 @onready var small_piece = $SmallPiece
 @onready var menu = $Camera2D/Menu
+#@onready var detail_shadow = $"WideMapa/BaseMap/Kawałek100/DetailShadow"
 
 var camera_limits = [-624, -684, 2544, 1764]
 var reset_pos = Vector2(495, 413)
@@ -221,12 +222,12 @@ func _input(event): #dragging hamdler
 			if len(Globals.map_state_log) > 1:
 				var cur_state = Globals.map_state_log.pop_back()
 				
-				for piece in base_map.get_children():
-					if piece is Area2D:
-						piece.sprite.self_modulate = Color.WHITE
+				clear_modulation()
 				var last = cur_state.pop_back()
 				if last != null:
 					last.sprite.self_modulate = Color.PALE_GREEN
+#					if last.stage == -1:
+#						last.sprite.play("1")
 				
 				var prev_state = Globals.map_state_log[-1].duplicate()
 				load_prev(prev_state)
@@ -248,7 +249,12 @@ func _input(event): #dragging hamdler
 		
 	if event.is_action_pressed("ctrl"):
 		Globals.detail_mode = !Globals.detail_mode
-#		$Camera2D/DetailShadow.color.a = 0.4
+		if !Globals.detail_mode:
+			for i in range(1, len(base_map.get_children())):
+				var piece = base_map.get_child(i)
+				piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
+				if piece.stage_number != null: piece.stage_number.hide()
+#		detail_shadow.color.a = 0.4 if detail_shadow.color.a == 0.0 else 0.0
 #	if event.is_action_released("ctrl"):
 #		Globals.detail_mode = false
 #		$Camera2D/DetailShadow.color.a = 0.0
@@ -269,6 +275,11 @@ func _input(event): #dragging hamdler
 				if new_pos.y > 1160: #1080
 					camera.position.y = 1160
 
+func clear_modulation():
+	for piece in base_map.get_children():
+		if piece is Area2D:
+			piece.sprite.self_modulate = Color.WHITE
+
 func failed(piece):
 	if piece.stage == 5 or piece.stage == 6:
 		Globals.wypalenia += 1
@@ -288,6 +299,7 @@ func failed(piece):
 	
 func _on_piece_clicked(clicked_piece):
 	get_small_piece()
+	clear_modulation()
 	
 	if failed(clicked_piece):
 		sfx.stream = ojoj

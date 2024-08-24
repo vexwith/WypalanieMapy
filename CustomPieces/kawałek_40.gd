@@ -6,7 +6,7 @@ extends Piece
 var starting_pos = Vector2(99, 1087)
 var ending_pos =  Vector2(302, 800)
 
-var change_affected = true
+var change_affected = {"up": false, "mid": false, "down": false}
 
 var game_time = 0.0
 var delay_time = 0.0
@@ -27,13 +27,41 @@ func _process(delta):
 	if game_time - delay_time >= DELAY_RATE:
 		delay_time = game_time
 		clear_affected()
-		if position.x > 243:
-			affected_pieces = [18, 66]
-		elif position.x < 180:
+		if position.x > 243 and !change_affected["up"]:
+			change_affected["up"] = true
+			change_affected["mid"] = false
+			
+			keep_cursor()
+			
+			if get_parent().get_child(18).clickable:
+				affected_pieces = [18, 66]
+			else:
+				affected_pieces = [66]
+			update_affected()
+		elif position.x < 180 and !change_affected["down"]:
+			change_affected["down"] = true
+			change_affected["mid"] = false
+			
+			keep_cursor()
+			
 			affected_pieces = [67, 71]
-		else:
+			update_affected()			
+		elif position.x > 180 and position.x < 243 and !change_affected["mid"]:
+			change_affected["mid"] = true
+			change_affected["up"] = false
+			change_affected["down"] = false
+			
+			keep_cursor()
+			
 			affected_pieces = [66, 67, 71]
-		update_affected()
+			update_affected()
+
+func keep_cursor():
+	if cursor_entered:
+		_on_mouse_exited()
+		cursor_entered = true
+	else:
+		_on_mouse_exited()
 
 #func update(damage):
 #	super.update(damage)

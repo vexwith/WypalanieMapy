@@ -12,6 +12,7 @@ func _ready():
 	var tween = get_tree().create_tween()
 	tween.tween_property($Text/Label, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($Text/Label2, "modulate", Color.WHITE, 2.0)
+	tween.tween_property($Text/Label3, "modulate", Color.WHITE, 1.0)
 	
 func _input(event):
 	if event.is_action_pressed("rewind"):
@@ -22,6 +23,12 @@ func _input(event):
 		elif len(map_state_log) == 1:
 			var prev_state = map_state_log[-1].duplicate()
 			load_prev(prev_state)
+			
+	if event.is_action_pressed("restart"):
+		reset()
+			
+	if event.is_action_pressed("ctrl"):
+		Globals.detail_mode = !Globals.detail_mode
 	
 func _on_piece_clicked(clicked_piece):
 	var win_condition = true
