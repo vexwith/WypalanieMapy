@@ -128,12 +128,13 @@ func _ready():
 		get_tree().reload_current_scene()
 	
 #	MAX_PIECES = base_map.get_child_count()
+	upgrade_to_wide_map()
 	if not Globals.lapa_gained:
 		lapa_button.hide()
 		key_one.hide()
 		sfx.volume_db = 0.0
 	else:
-		upgrade_to_wide_map()
+		start_flying_piece()
 		base_map.get_child(0).texture = postmapa
 		if bgm.stream == plaza:
 			bgm.stop()
@@ -327,7 +328,8 @@ func _on_piece_clicked(clicked_piece):
 			between_maps = false
 #			draggable = true
 			if not Globals.lapa_gained:
-				upgrade_to_wide_map()
+				start_flying_piece()
+#				upgrade_to_wide_map()
 				
 	elif unlock_hills:
 		if map_completed(72) and non_euclidean_completed(): #all before hills
@@ -457,9 +459,6 @@ func upgrade_to_wide_map():
 		piece.update(1)
 		
 	#special cases
-	var moving_piece = base_map.get_child(40)
-	moving_piece.timer.start()
-	
 	for easy_saper in [31, 33, 39, 45]: #they start from 0
 		var piece = base_map.get_child(easy_saper)
 		piece.update(-1)
@@ -478,6 +477,9 @@ func upgrade_to_wide_map():
 	var troll = base_map.get_child(84)
 	troll.update(3)
 	
+func start_flying_piece():
+	var moving_piece = base_map.get_child(40)
+	moving_piece.timer.start()
 
 func get_small_piece():
 	var non_euclidean = non_euclidean_completed()
