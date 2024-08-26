@@ -98,6 +98,18 @@ text = "NIEKTÓRE KAWAŁKI MOGĄ ZACZYNAĆ NA WYŻSZYM POZIOMIE WYPALENIA"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 405.0
+offset_top = 6.0
+offset_right = 949.0
+offset_bottom = 43.0
+theme = ExtResource("3_v7fhf")
+text = "DOPROWADŹ WSZYSTKIE KAWAŁKI DO POZIOMU 4 LUB 5"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [editable path="Pieces/Kawałek1"]
 [editable path="Pieces/Kawałek2"]
 [editable path="Pieces/Kawałek3"]

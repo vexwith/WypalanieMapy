@@ -16,6 +16,7 @@ func _ready():
 	tween.tween_property($Text/Label, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($Text/Label2, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($Text/Label3, "modulate", Color.WHITE, 2.0)
+	tween.tween_property($Label, "modulate", Color.WHITE, 2.0)
 
 func _on_piece_clicked(clicked_piece):
 	var win_condition = true

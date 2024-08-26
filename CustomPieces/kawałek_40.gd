@@ -26,8 +26,8 @@ func _process(delta):
 	game_time += delta
 	if game_time - delay_time >= DELAY_RATE:
 		delay_time = game_time
-		clear_affected()
 		if position.x > 243 and !change_affected["up"]:
+			clear_affected()
 			change_affected["up"] = true
 			change_affected["mid"] = false
 			
@@ -39,6 +39,7 @@ func _process(delta):
 				affected_pieces = [66]
 			update_affected()
 		elif position.x < 180 and !change_affected["down"]:
+			clear_affected()
 			change_affected["down"] = true
 			change_affected["mid"] = false
 			
@@ -47,6 +48,7 @@ func _process(delta):
 			affected_pieces = [67, 71]
 			update_affected()			
 		elif position.x > 180 and position.x < 243 and !change_affected["mid"]:
+			clear_affected()
 			change_affected["mid"] = true
 			change_affected["up"] = false
 			change_affected["down"] = false

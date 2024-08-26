@@ -992,8 +992,8 @@ rotation = -0.658886
 affected_pieces = [43, 65]
 
 [node name="Kawałek43" parent="BaseMap" instance=ExtResource("16_27fi4")]
-position = Vector2(184, 284)
-rotation = 2.42552
+position = Vector2(177, 269)
+rotation = 2.52594
 affected_pieces = [42, 44]
 
 [node name="Kawałek44" parent="BaseMap" instance=ExtResource("7_qekhn")]
@@ -1152,8 +1152,8 @@ scale = Vector2(-0.644, 0.5)
 affected_pieces = [42, 62, 64]
 
 [node name="Kawałek66" parent="BaseMap" instance=ExtResource("16_27fi4")]
-position = Vector2(200, 692)
-rotation = 0.493819
+position = Vector2(199, 701)
+rotation = 0.330927
 scale = Vector2(0.8, 0.8)
 affected_pieces = [63, 64]
 

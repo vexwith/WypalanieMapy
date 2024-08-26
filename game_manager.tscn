@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=72 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://huatjbly557s" path="res://GUI/bexitom_2.png" id="24_l4ipa"]
 [ext_resource type="Texture2D" uid="uid://dlakmdsc6fv6k" path="res://GUI/keyboard_2.png" id="24_v2j41"]
 [ext_resource type="Texture2D" uid="uid://cvsvjd05grxe6" path="res://GUI/keyboard_32.png" id="25_a2es2"]
+[ext_resource type="Texture2D" uid="uid://di54f3ye3l0fi" path="res://GUI/keyboard_46.png" id="28_qk5g2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
 texture = ExtResource("3_t42ev")
@@ -360,6 +361,21 @@ offset_bottom = 13.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("20_pu80j")
 text = "- UNDO"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/Rewind"]
+position = Vector2(0, 50)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("28_qk5g2")
+
+[node name="Label2" type="Label" parent="Camera2D/Rewind"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 40.0
+offset_right = 105.0
+offset_bottom = 63.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_pu80j")
+text = "- DETAIL"
 
 [node name="Shadow" type="TextureRect" parent="Camera2D"]
 visible = false

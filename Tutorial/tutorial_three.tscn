@@ -66,7 +66,7 @@ theme_override_constants/separation = 40
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("6_4qa52")
-text = "KLIKNIĘCIE W KAWAŁEK MAPY ZAWSZE ZWIĘKSZA POZIOM WYPALENIA SĄSIADUJĄCYCH KAWAŁKÓW O 1"
+text = "KLIKNIĘCIE NA KAWAŁEK MAPY ZAWSZE ZWIĘKSZA POZIOM WYPALENIA SĄSIADUJĄCYCH KAWAŁKÓW O 1"
 horizontal_alignment = 1
 autowrap_mode = 2
 

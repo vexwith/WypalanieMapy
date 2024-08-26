@@ -17,7 +17,7 @@ var clickable = true #used in first map outer pieces
 
 func _ready():
 	rim.modulate.a = 0.0
-	rim.z_index = 1
+#	rim.z_index = 1
 	
 	stage_number = find_child("StageNumber")
 	if stage_number != null:

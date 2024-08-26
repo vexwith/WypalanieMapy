@@ -48,6 +48,8 @@ const SECURITY_KEY = "092GSD2"
 var camera_limits = [-624, -684, 2544, 1764]
 var reset_pos = Vector2(495, 413)
 
+const MAX_WYPALENIA = 6
+
 var first_map = true
 const MAX_PIECES = 25 #all pieces including hidden on the first map + 1
 var next_piece = 17 #index of next piece used to show hidden pieces in first map
@@ -124,7 +126,7 @@ func _ready():
 	verify_save_directory(SAVE_DIR)
 	if Globals.kontynuuj:
 		Globals.kontynuuj = false
-		_on_reset_button_pressed()
+		_on_reset_button_pressed(false)
 		load_data(SAVE_DIR + SAVE_FILE_NAME)
 		get_tree().reload_current_scene()
 	
@@ -279,11 +281,14 @@ func clear_modulation():
 	for piece in base_map.get_children():
 		if piece is Area2D:
 			piece.sprite.self_modulate = Color.WHITE
+			
+	for piece in non_euclidean_pieces.get_children():
+		piece.sprite.self_modulate = Color.WHITE
 
 func failed(piece):
 	if piece.stage == 5 or piece.stage == 6:
 		Globals.wypalenia += 1
-		if Globals.wypalenia == 3:
+		if Globals.wypalenia == MAX_WYPALENIA:
 			var message = message_scene.instantiate()
 			get_tree().root.add_child(message)
 			message.global_position = piece.global_position
@@ -437,11 +442,7 @@ func _on_non_euclidean_clicked():
 	wide_map.hide()
 	
 	#lapa returns you to wide map instead
-	var door_rect = Rect2(0, 0, 43, 51)
-	lapa_button.get_theme_stylebox("normal").texture = lapa_exit_normal
-	lapa_button.get_theme_stylebox("normal").region_rect = door_rect
-	lapa_button.get_theme_stylebox("hover").texture = lapa_exit_hover
-	lapa_button.get_theme_stylebox("hover").region_rect = door_rect
+	lapa_to_door()
 	
 	
 	Globals.undraggable = true
@@ -452,17 +453,27 @@ func back_from_non_euclidean():
 	wide_map.show()
 	draggable = true
 	
-	var door_rect = Rect2(2, 2, 53, 52)
-	lapa_button.get_theme_stylebox("normal").texture = lapa_button_normal
-	lapa_button.get_theme_stylebox("normal").region_rect = door_rect
-	lapa_button.get_theme_stylebox("hover").texture = lapa_button_hover
-	lapa_button.get_theme_stylebox("hover").region_rect = door_rect
+	door_to_lapa()
 	
 	if non_euclidean_completed():
 		var teleport = base_map.get_child(41)
 		teleport.stage = 4
 		teleport.sprite.play(str(teleport.stage))
 		_on_piece_clicked(teleport)
+
+func lapa_to_door():
+	var door_rect = Rect2(0, 0, 43, 51)
+	lapa_button.get_theme_stylebox("normal").texture = lapa_exit_normal
+	lapa_button.get_theme_stylebox("normal").region_rect = door_rect
+	lapa_button.get_theme_stylebox("hover").texture = lapa_exit_hover
+	lapa_button.get_theme_stylebox("hover").region_rect = door_rect
+	
+func door_to_lapa():
+	var door_rect = Rect2(2, 2, 53, 52)
+	lapa_button.get_theme_stylebox("normal").texture = lapa_button_normal
+	lapa_button.get_theme_stylebox("normal").region_rect = door_rect
+	lapa_button.get_theme_stylebox("hover").texture = lapa_button_hover
+	lapa_button.get_theme_stylebox("hover").region_rect = door_rect
 
 func upgrade_to_wide_map():
 	#in outer wide map all pieces start from 1
@@ -592,7 +603,7 @@ func hills_failed():
 			
 	return false
 
-func _on_reset_button_pressed():
+func _on_reset_button_pressed(reload = true):
 	if Globals.crawl_mode:
 		_on_hills_exit_button_up()
 		return
@@ -604,6 +615,7 @@ func _on_reset_button_pressed():
 	Globals.bomb_clicked = false
 	Globals.saper_count = 0
 	Globals.trapped = false
+	Globals.wypalenia = 0
 	
 #	if Globals.crawl_mode:
 #		Globals.crawl_mode = false
@@ -613,7 +625,10 @@ func _on_reset_button_pressed():
 		Globals.first_restart = false
 		Globals.say_restart = true
 		
-	get_tree().reload_current_scene()
+	door_to_lapa()
+		
+	if reload: #we sometimes dont want to reload
+		get_tree().reload_current_scene()
 	
 #	#return visibility
 #	max_modulation = 1.0
@@ -747,6 +762,8 @@ func load_prev(map_state):
 	wide_map.visible = in_normal
 	non_euclidean_map.visible = !in_normal
 	Globals.undraggable = !in_normal
+	if in_normal: door_to_lapa()
+	else: lapa_to_door()
 	
 	#rewinding first map outer pieces
 	first_map = map_state.pop_back()
