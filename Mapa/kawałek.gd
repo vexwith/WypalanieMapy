@@ -67,7 +67,10 @@ func update(damage):
 		sprite.show()
 	stage = stage + damage
 	if stage < 0: #in case of undoing to -1 hide
-		sprite.hide()
+		if sprite.self_modulate == Color.PALE_GREEN: #show 0 stage after undoing
+			sprite.play("0")
+		else:
+			sprite.hide()
 	else:
 		sprite.play(str(min(stage, 5)))
 	

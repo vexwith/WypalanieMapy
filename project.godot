@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Ri Hm"
+config/name="WM2"
 run/main_scene="res://UI/menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://909063765180416070.webp"
+config/windows_native_icon="res://909063765180416070.ico"
 
 [autoload]
 
