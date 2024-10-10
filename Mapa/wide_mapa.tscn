@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=113 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
@@ -64,8 +64,11 @@
 [ext_resource type="Script" path="res://CustomPieces/kawałek_52.gd" id="60_whw0o"]
 [ext_resource type="Texture2D" uid="uid://cu2aorwh2euw1" path="res://Mapa/cloud_1.png" id="61_jt636"]
 [ext_resource type="Texture2D" uid="uid://iu13ma1grms2" path="res://Mapa/cloud_2.png" id="62_vwxmg"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_70.gd" id="63_2hifk"]
 [ext_resource type="Texture2D" uid="uid://df3a3ake47dje" path="res://Mapa/cloud_3.png" id="63_ct4ha"]
 [ext_resource type="Texture2D" uid="uid://bvyu0ipdqepke" path="res://Mapa/cloud_4.png" id="64_bnl35"]
+[ext_resource type="Texture2D" uid="uid://c61wrekpwixal" path="res://UI/m_yes_0.png" id="64_fxlyi"]
+[ext_resource type="Texture2D" uid="uid://bju6s1q6hapnb" path="res://GUI/17gotolawaA.png" id="65_uhbsk"]
 
 [sub_resource type="Gradient" id="Gradient_70r0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -419,6 +422,9 @@ orbit_velocity_max = 0.0
 scale_max = 20.0
 scale_curve = SubResource("CurveTexture_yeqhy")
 color_ramp = SubResource("GradientTexture1D_fwgk4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_op0jb"]
+texture = ExtResource("65_uhbsk")
 
 [sub_resource type="Gradient" id="Gradient_p2drl"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -1182,10 +1188,22 @@ visible = true
 [node name="Kawałek70" parent="BaseMap" instance=ExtResource("15_pklcd")]
 position = Vector2(582, 1023)
 rotation = 0.457751
+script = ExtResource("63_2hifk")
 affected_pieces = [68, 69, 71]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek70" index="0"]
 visible = true
+
+[node name="Circle" type="Sprite2D" parent="BaseMap/Kawałek70"]
+texture = ExtResource("64_fxlyi")
+
+[node name="Arrow" type="Button" parent="BaseMap/Kawałek70"]
+offset_left = -30.0313
+offset_top = 11.4507
+offset_right = 34.9687
+offset_bottom = 65.4507
+rotation = -0.977384
+theme_override_styles/normal = SubResource("StyleBoxTexture_op0jb")
 
 [node name="Kawałek71" parent="BaseMap" instance=ExtResource("4_wnbpo")]
 position = Vector2(365, 1082)
