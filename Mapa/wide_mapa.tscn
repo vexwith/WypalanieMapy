@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=119 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
@@ -68,7 +68,9 @@
 [ext_resource type="Texture2D" uid="uid://df3a3ake47dje" path="res://Mapa/cloud_3.png" id="63_ct4ha"]
 [ext_resource type="Texture2D" uid="uid://bvyu0ipdqepke" path="res://Mapa/cloud_4.png" id="64_bnl35"]
 [ext_resource type="Texture2D" uid="uid://c61wrekpwixal" path="res://UI/m_yes_0.png" id="64_fxlyi"]
-[ext_resource type="Texture2D" uid="uid://bju6s1q6hapnb" path="res://GUI/17gotolawaA.png" id="65_uhbsk"]
+[ext_resource type="Theme" uid="uid://8xag5q4andg4" path="res://Items/arrow.tres" id="66_42gkv"]
+[ext_resource type="Texture2D" uid="uid://n2seljnble0a" path="res://Items/Askrzynia1_0.png" id="66_e4gm2"]
+[ext_resource type="Texture2D" uid="uid://wft8rwtow28n" path="res://Items/skrzynie_otwarte_0.png" id="67_sajdc"]
 
 [sub_resource type="Gradient" id="Gradient_70r0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -423,8 +425,20 @@ scale_max = 20.0
 scale_curve = SubResource("CurveTexture_yeqhy")
 color_ramp = SubResource("GradientTexture1D_fwgk4")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_op0jb"]
-texture = ExtResource("65_uhbsk")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gx1af"]
+texture = ExtResource("66_e4gm2")
+region_rect = Rect2(0, 0, 173, 169)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1yqlo"]
+texture = ExtResource("66_e4gm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3wacf"]
+texture = ExtResource("67_sajdc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dsr5g"]
+texture = ExtResource("67_sajdc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_20sfx"]
 
 [sub_resource type="Gradient" id="Gradient_p2drl"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -995,7 +1009,20 @@ process_material = SubResource("ParticleProcessMaterial_2tesd")
 [node name="Kawałek42" parent="BaseMap" instance=ExtResource("16_27fi4")]
 position = Vector2(110, 358)
 rotation = -0.658886
+script = ExtResource("63_2hifk")
+next_arrow = 56
 affected_pieces = [43, 65]
+
+[node name="Circle" type="Sprite2D" parent="BaseMap/Kawałek42"]
+texture = ExtResource("64_fxlyi")
+
+[node name="Arrow" type="Button" parent="BaseMap/Kawałek42"]
+offset_left = 12.4755
+offset_top = -30.8117
+offset_right = 77.4755
+offset_bottom = 23.1883
+rotation = 1.27409
+theme = ExtResource("66_42gkv")
 
 [node name="Kawałek43" parent="BaseMap" instance=ExtResource("16_27fi4")]
 position = Vector2(177, 269)
@@ -1014,7 +1041,21 @@ affected_pieces = [44, 46, 48]
 [node name="Kawałek46" parent="BaseMap" instance=ExtResource("5_udpry")]
 position = Vector2(858, 24)
 rotation = 2.49098
+script = ExtResource("63_2hifk")
+next_arrow = 70
 affected_pieces = [45, 47]
+
+[node name="Circle" type="Sprite2D" parent="BaseMap/Kawałek46"]
+position = Vector2(-18.1702, 23.8714)
+texture = ExtResource("64_fxlyi")
+
+[node name="Arrow" type="Button" parent="BaseMap/Kawałek46"]
+offset_left = -67.7178
+offset_top = 16.3188
+offset_right = -2.71777
+offset_bottom = 70.3188
+rotation = -0.541052
+theme = ExtResource("66_42gkv")
 
 [node name="Kawałek47" parent="BaseMap" instance=ExtResource("10_xxso4")]
 position = Vector2(991, 109)
@@ -1030,10 +1071,23 @@ affected_pieces = [47, 45]
 [node name="Kawałek49" parent="BaseMap" instance=ExtResource("9_qbyuq")]
 position = Vector2(1519, 493)
 rotation = -0.184694
+script = ExtResource("63_2hifk")
+next_arrow = 42
 affected_pieces = [50]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek49" index="0"]
 visible = true
+
+[node name="Circle" type="Sprite2D" parent="BaseMap/Kawałek49"]
+texture = ExtResource("64_fxlyi")
+
+[node name="Arrow" type="Button" parent="BaseMap/Kawałek49"]
+offset_left = 17.0996
+offset_top = 33.7135
+offset_right = 82.0996
+offset_bottom = 87.7135
+rotation = -2.89725
+theme = ExtResource("66_42gkv")
 
 [node name="Kawałek50" parent="BaseMap" instance=ExtResource("14_lxnwh")]
 position = Vector2(1426, 591)
@@ -1091,10 +1145,24 @@ visible = true
 [node name="Kawałek56" parent="BaseMap" instance=ExtResource("5_udpry")]
 position = Vector2(1247, 1069)
 rotation = 0.349274
+script = ExtResource("63_2hifk")
+next_arrow = 46
 affected_pieces = [54, 55, 57]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek56" index="0"]
 visible = true
+
+[node name="Circle" type="Sprite2D" parent="BaseMap/Kawałek56"]
+position = Vector2(-17.0754, 23.2471)
+texture = ExtResource("64_fxlyi")
+
+[node name="Arrow" type="Button" parent="BaseMap/Kawałek56"]
+offset_left = -24.4875
+offset_top = 64.2599
+offset_right = 40.5125
+offset_bottom = 118.26
+rotation = -2.28638
+theme = ExtResource("66_42gkv")
 
 [node name="Kawałek57" parent="BaseMap" instance=ExtResource("17_npd45")]
 position = Vector2(1071, 1030)
@@ -1189,6 +1257,7 @@ visible = true
 position = Vector2(582, 1023)
 rotation = 0.457751
 script = ExtResource("63_2hifk")
+next_arrow = 49
 affected_pieces = [68, 69, 71]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek70" index="0"]
@@ -1203,7 +1272,21 @@ offset_top = 11.4507
 offset_right = 34.9687
 offset_bottom = 65.4507
 rotation = -0.977384
-theme_override_styles/normal = SubResource("StyleBoxTexture_op0jb")
+theme = ExtResource("66_42gkv")
+
+[node name="Treasure" type="Button" parent="BaseMap/Kawałek70"]
+visible = false
+offset_left = -41.8844
+offset_top = -26.1858
+offset_right = 131.116
+offset_bottom = 142.814
+rotation = -0.453786
+scale = Vector2(0.4, 0.4)
+theme_override_styles/normal = SubResource("StyleBoxTexture_gx1af")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1yqlo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3wacf")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dsr5g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_20sfx")
 
 [node name="Kawałek71" parent="BaseMap" instance=ExtResource("4_wnbpo")]
 position = Vector2(365, 1082)
@@ -2042,6 +2125,12 @@ texture = ExtResource("63_ct4ha")
 [connection signal="timeout" from="BaseMap/Kawałek40/Timer" to="BaseMap/Kawałek40" method="_on_timer_timeout"]
 [connection signal="button_up" from="BaseMap/Kawałek40/Lapa" to="BaseMap/Kawałek40" method="_on_lapa_button_up"]
 [connection signal="timeout" from="BaseMap/Kawałek41/Timer" to="BaseMap/Kawałek41" method="_on_timer_timeout"]
+[connection signal="pressed" from="BaseMap/Kawałek42/Arrow" to="BaseMap/Kawałek42" method="_on_arrow_pressed"]
+[connection signal="pressed" from="BaseMap/Kawałek46/Arrow" to="BaseMap/Kawałek46" method="_on_arrow_pressed"]
+[connection signal="pressed" from="BaseMap/Kawałek49/Arrow" to="BaseMap/Kawałek49" method="_on_arrow_pressed"]
+[connection signal="pressed" from="BaseMap/Kawałek56/Arrow" to="BaseMap/Kawałek56" method="_on_arrow_pressed"]
+[connection signal="pressed" from="BaseMap/Kawałek70/Arrow" to="BaseMap/Kawałek70" method="_on_arrow_pressed"]
+[connection signal="pressed" from="BaseMap/Kawałek70/Treasure" to="BaseMap/Kawałek70" method="_on_treasure_pressed"]
 
 [editable path="BaseMap/Kawałek1"]
 [editable path="BaseMap/Kawałek2"]

@@ -14,6 +14,8 @@ var trapped = false #cant drag while eaten
 
 var crawl_mode = false #hills mode
 
+var treasure = false #got map piece from event strzalkowy
+
 var kontynuuj = false #load from menu
 
 var map_state_log : Array = [] #all previous map states

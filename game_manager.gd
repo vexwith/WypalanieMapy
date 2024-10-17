@@ -508,6 +508,7 @@ func get_small_piece():
 	var non_euclidean = non_euclidean_completed()
 	var saper = map_completed(39, 25)
 	var wide = map_completed(72) and non_euclidean_completed()
+	var treasure = Globals.treasure
 	
 	if saper:
 		if Globals.map_pieces["saper"] == false:
@@ -539,6 +540,16 @@ func get_small_piece():
 	if not non_euclidean_particles.emitting and non_euclidean and not sfx.playing:
 		play_win()
 	non_euclidean_particles.emitting = non_euclidean
+	
+	
+	if treasure:
+		Globals.treasure = false
+		if Globals.map_pieces["strzalki"] == false:
+			Globals.map_pieces["strzalki"] = true
+			small_piece_animation(base_map.get_child(70).find_child("Treasure").global_position + Vector2(85, 0))
+	if treasure and not sfx.playing:
+		play_win()
+	
 	
 func play_win():
 	sfx.stop()
