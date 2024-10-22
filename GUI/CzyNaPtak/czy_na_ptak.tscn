@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://y1g4trw6rh1f"]
+
+[ext_resource type="Script" path="res://GUI/CzyNaPtak/czy_na_ptak.gd" id="1_43dbu"]
+[ext_resource type="PackedScene" uid="uid://c3aqnjqa3y2w" path="res://GUI/CzyNaPtak/panel_right.tscn" id="2_kyflm"]
+
+[node name="CzyNaPtak" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43dbu")
+
+[node name="PanelRight" parent="." instance=ExtResource("2_kyflm")]
+visible = false
+offset_left = 1566.0
+offset_top = 852.0
+offset_right = 1566.0
+offset_bottom = 852.0
+
+[node name="PanelRight2" parent="." instance=ExtResource("2_kyflm")]
+visible = false
+offset_left = 1566.0
+offset_top = 61.0
+offset_right = 1566.0
+offset_bottom = 61.0
+
+[node name="PanelRight3" parent="." instance=ExtResource("2_kyflm")]
+visible = false
+offset_left = 1579.0
+offset_top = 439.0
+offset_right = 1579.0
+offset_bottom = 439.0
+
+[node name="PanelRight4" parent="." instance=ExtResource("2_kyflm")]
+visible = false
+offset_left = 1574.0
+offset_top = 233.0
+offset_right = 1574.0
+offset_bottom = 233.0

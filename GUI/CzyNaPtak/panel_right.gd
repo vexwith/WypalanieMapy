@@ -1,0 +1,15 @@
+extends Control
+
+@onready var animation = $AnimationPlayer
+
+var one_shot = true
+
+func _on_yes_pressed():
+	if one_shot:
+		one_shot = false
+		get_parent().next_ptak()
+
+
+
+func _on_no_pressed():
+	get_parent().reset()
