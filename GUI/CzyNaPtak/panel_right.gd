@@ -4,6 +4,9 @@ extends Control
 
 var one_shot = true
 
+func _ready():
+	hide()
+
 func _on_yes_pressed():
 	if one_shot:
 		one_shot = false

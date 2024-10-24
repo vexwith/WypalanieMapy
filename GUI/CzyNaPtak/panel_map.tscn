@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://n842y2v8cjeu"]
+
+[ext_resource type="Texture2D" uid="uid://b838ijcu6wuk0" path="res://GUI/CzyNaPtak/szuflada_0.png" id="1_tjgn0"]
+[ext_resource type="Script" path="res://GUI/CzyNaPtak/panel_map.gd" id="1_vpnem"]
+[ext_resource type="Texture2D" uid="uid://c552gfxvaw6t1" path="res://GUI/CzyNaPtak/bmapa0oc.png" id="2_c28ji"]
+[ext_resource type="Texture2D" uid="uid://d3v1srigbsmei" path="res://GUI/CzyNaPtak/bmapa0om_3.png" id="3_53ik2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7plui"]
+texture = ExtResource("2_c28ji")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey5ss"]
+texture = ExtResource("3_53ik2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fnjy5"]
+texture = ExtResource("3_53ik2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8trt"]
+
+[sub_resource type="Animation" id="Animation_xw1op"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(396, 22), Vector2(96, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oatah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sfdj"]
+_data = {
+"RESET": SubResource("Animation_oatah"),
+"appear": SubResource("Animation_xw1op")
+}
+
+[node name="PanelMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_vpnem")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(96, 22)
+texture = ExtResource("1_tjgn0")
+
+[node name="Map" type="Button" parent="."]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 66.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/normal = SubResource("StyleBoxTexture_7plui")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ey5ss")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fnjy5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r8trt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1sfdj")
+}
+
+[connection signal="button_up" from="Map" to="." method="_on_map_button_up"]
