@@ -17,6 +17,7 @@ var arrow_event : bool = false :
 
 func _ready():
 	super._ready()
+	circle.modulate.a = 0.4
 	
 	if get_index() != 70: circle.hide()
 	arrow.hide()
@@ -28,6 +29,7 @@ func update(damage):
 			circle.hide()
 			arrow.show()
 		else:
+			circle.modulate.a += 0.2
 			circle.show()
 			arrow.hide()
 
@@ -38,6 +40,7 @@ func _on_arrow_pressed():
 
 
 func _on_treasure_pressed():
+	$zloto.show()
 	arrow.disabled = true
 	Globals.treasure = true
 	SignalBus.emit_signal("piece_clicked", get_parent().get_child(100))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=129 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
@@ -74,6 +74,8 @@
 [ext_resource type="Theme" uid="uid://8xag5q4andg4" path="res://Items/arrow.tres" id="66_42gkv"]
 [ext_resource type="Texture2D" uid="uid://n2seljnble0a" path="res://Items/Askrzynia1_0.png" id="66_e4gm2"]
 [ext_resource type="Texture2D" uid="uid://wft8rwtow28n" path="res://Items/skrzynie_otwarte_0.png" id="67_sajdc"]
+[ext_resource type="Texture2D" uid="uid://i76ed2w48a08" path="res://Items/animacje_5.png" id="71_48nn8"]
+[ext_resource type="Texture2D" uid="uid://dvvilog3bt73b" path="res://Items/animacje_12.png" id="72_0co4m"]
 
 [sub_resource type="Gradient" id="Gradient_70r0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -453,6 +455,20 @@ texture = ExtResource("67_sajdc")
 texture = ExtResource("67_sajdc")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_20sfx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t612g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("71_48nn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_0co4m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_p2drl"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -1321,6 +1337,15 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_1yqlo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_3wacf")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_dsr5g")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_20sfx")
+
+[node name="zloto" type="AnimatedSprite2D" parent="BaseMap/Kawałek70"]
+visible = false
+position = Vector2(-17.6377, -42.59)
+rotation = -0.445059
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_t612g")
+autoplay = "default"
+frame_progress = 0.0138936
 
 [node name="Kawałek71" parent="BaseMap" instance=ExtResource("4_wnbpo")]
 position = Vector2(365, 1082)

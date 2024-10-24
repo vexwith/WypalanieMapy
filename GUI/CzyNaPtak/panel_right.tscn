@@ -8,24 +8,24 @@
 [ext_resource type="Texture2D" uid="uid://4kyqb876wyq8" path="res://GUI/CzyNaPtak/exit_1.png" id="6_ojxyh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxf5i"]
-texture = ExtResource("3_vns7e")
+texture = ExtResource("5_rrtho")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jnb3x"]
-texture = ExtResource("4_xessp")
+texture = ExtResource("6_ojxyh")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0p1f8"]
-texture = ExtResource("4_xessp")
+texture = ExtResource("6_ojxyh")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bujg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r7x4k"]
-texture = ExtResource("5_rrtho")
+texture = ExtResource("3_vns7e")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx21e"]
-texture = ExtResource("6_ojxyh")
+texture = ExtResource("4_xessp")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1gaad"]
-texture = ExtResource("6_ojxyh")
+texture = ExtResource("4_xessp")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_luene"]
 
@@ -189,6 +189,8 @@ libraries = {
 "": SubResource("AnimationLibrary_wah20")
 }
 
+[connection signal="mouse_entered" from="Yes" to="." method="_on_yes_mouse_entered"]
 [connection signal="pressed" from="Yes" to="." method="_on_yes_pressed"]
+[connection signal="mouse_entered" from="No" to="." method="_on_no_mouse_entered"]
 [connection signal="pressed" from="No" to="." method="_on_no_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

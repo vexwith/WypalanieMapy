@@ -52,6 +52,7 @@ func start_new_game():
 	get_tree().change_scene_to_file("res://game_manager.tscn")
 
 func _on_continue_pressed():
+	Globals.crawl_mode = false
 	Globals.kontynuuj = true
 	get_tree().change_scene_to_file("res://game_manager.tscn")
 

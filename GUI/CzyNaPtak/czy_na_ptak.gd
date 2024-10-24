@@ -1,5 +1,11 @@
 extends Control
 
+@onready var sfx = $SFX
+@onready var czy = preload("res://Wavs/Nar_F122.wav")
+@onready var tak = preload("res://Wavs/Nar_F123.wav")
+@onready var kontynuuj = preload("res://Wavs/Nar_F115.wav")
+@onready var niemam = preload("res://Wavs/Nar_F125.wav")
+
 var licznik = 0
 
 func _ready():
@@ -8,7 +14,12 @@ func _ready():
 func next_ptak():
 	if licznik == 11:
 		reset()
+		sfx.stream = niemam
+		sfx.play()
 		return
+	
+	sfx.stream = czy
+	sfx.play()
 	
 	var next = get_child(licznik)
 	next.show()
@@ -30,6 +41,8 @@ func next_ptak():
 func reset():
 	licznik = 0
 	for i in get_children():
+		if i is AudioStreamPlayer:
+			return
 		i.animation.play("disappear")
 		i.one_shot = true
 		

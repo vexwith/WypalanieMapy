@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=74 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cvsvjd05grxe6" path="res://GUI/keyboard_32.png" id="25_a2es2"]
 [ext_resource type="Texture2D" uid="uid://di54f3ye3l0fi" path="res://GUI/keyboard_46.png" id="28_qk5g2"]
 [ext_resource type="PackedScene" uid="uid://y1g4trw6rh1f" path="res://GUI/CzyNaPtak/czy_na_ptak.tscn" id="31_g384u"]
+[ext_resource type="Texture2D" uid="uid://dkqbdqqf632eq" path="res://GUI/b_lev4_0.png" id="36_ejtpr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
 texture = ExtResource("3_t42ev")
@@ -208,6 +209,14 @@ animations = [{
 "name": &"4",
 "speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_ejtpr")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -378,6 +387,12 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("20_pu80j")
 text = "- DETAIL"
 
+[node name="CzyNaPtak" parent="Camera2D" instance=ExtResource("31_g384u")]
+offset_left = -960.0
+offset_top = -544.0
+offset_right = -960.0
+offset_bottom = -544.0
+
 [node name="Shadow" type="TextureRect" parent="Camera2D"]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -411,17 +426,11 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_xr3tq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_f04tw")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3uyue")
 
-[node name="CzyNaPtak" parent="Camera2D" instance=ExtResource("31_g384u")]
-offset_left = -960.0
-offset_top = -544.0
-offset_right = -960.0
-offset_bottom = -544.0
-
 [node name="SmallPiece" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(2061, -262)
 sprite_frames = SubResource("SpriteFrames_rdh5l")
-animation = &"1"
+animation = &"5"
 autoplay = "default"
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
