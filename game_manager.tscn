@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=73 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dlakmdsc6fv6k" path="res://GUI/keyboard_2.png" id="24_v2j41"]
 [ext_resource type="Texture2D" uid="uid://cvsvjd05grxe6" path="res://GUI/keyboard_32.png" id="25_a2es2"]
 [ext_resource type="Texture2D" uid="uid://di54f3ye3l0fi" path="res://GUI/keyboard_46.png" id="28_qk5g2"]
+[ext_resource type="PackedScene" uid="uid://y1g4trw6rh1f" path="res://GUI/CzyNaPtak/czy_na_ptak.tscn" id="31_g384u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
 texture = ExtResource("3_t42ev")
@@ -409,6 +410,12 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_4iovj")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xr3tq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_f04tw")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3uyue")
+
+[node name="CzyNaPtak" parent="Camera2D" instance=ExtResource("31_g384u")]
+offset_left = -960.0
+offset_top = -544.0
+offset_right = -960.0
+offset_bottom = -544.0
 
 [node name="SmallPiece" type="AnimatedSprite2D" parent="."]
 visible = false

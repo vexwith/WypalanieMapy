@@ -25,6 +25,13 @@ offset_top = 61.0
 offset_right = 1566.0
 offset_bottom = 61.0
 
+[node name="PanelRight5" parent="." instance=ExtResource("2_kyflm")]
+offset_left = 330.0
+offset_top = 87.0
+offset_right = 330.0
+offset_bottom = 87.0
+scale = Vector2(-2, 2)
+
 [node name="PanelRight3" parent="." instance=ExtResource("2_kyflm")]
 offset_left = 1579.0
 offset_top = 439.0
@@ -36,13 +43,6 @@ offset_left = 1574.0
 offset_top = 233.0
 offset_right = 1574.0
 offset_bottom = 233.0
-
-[node name="PanelRight5" parent="." instance=ExtResource("2_kyflm")]
-offset_left = 330.0
-offset_top = 87.0
-offset_right = 330.0
-offset_bottom = 87.0
-scale = Vector2(-2, 2)
 
 [node name="PanelRight6" parent="." instance=ExtResource("2_kyflm")]
 offset_left = 333.0
@@ -87,7 +87,7 @@ scale = Vector2(-2, 2)
 
 [node name="PanelMap" parent="." instance=ExtResource("3_ljchs")]
 layout_mode = 1
-offset_left = 1587.0
-offset_top = 974.0
-offset_right = 1587.0
-offset_bottom = 974.0
+offset_left = 1802.0
+offset_top = 543.0
+offset_right = 1802.0
+offset_bottom = 543.0

@@ -122,6 +122,7 @@ func load_data(path : String):
 
 func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
+	SignalBus.connect("get_small_piece", get_small_piece)
 	SignalBus.connect("non_euclidean_clicked", _on_non_euclidean_clicked)
 	verify_save_directory(SAVE_DIR)
 	if Globals.kontynuuj:
@@ -509,6 +510,7 @@ func get_small_piece():
 	var saper = map_completed(39, 25)
 	var wide = map_completed(72) and non_euclidean_completed()
 	var treasure = Globals.treasure
+	var ptak = Globals.ptak_event
 	
 	if saper:
 		if Globals.map_pieces["saper"] == false:
@@ -548,6 +550,15 @@ func get_small_piece():
 			Globals.map_pieces["strzalki"] = true
 			small_piece_animation(base_map.get_child(70).find_child("Treasure").global_position + Vector2(85, 0))
 	if treasure and not sfx.playing:
+		play_win()
+		
+	
+	if ptak:
+		Globals.ptak_event = false
+		if Globals.map_pieces["ptak_event"] == false:
+			Globals.map_pieces["ptak_event"] = true
+			small_piece_animation(camera.find_child("CzyNaPtak").find_child("PanelMap").global_position)
+	if ptak and not sfx.playing:
 		play_win()
 	
 	

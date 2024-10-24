@@ -1,31 +1,31 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3aqnjqa3y2w"]
+[gd_scene load_steps=19 format=3 uid="uid://c3aqnjqa3y2w"]
 
-[ext_resource type="Texture2D" uid="uid://c61wrekpwixal" path="res://UI/m_yes_0.png" id="1_1odam"]
 [ext_resource type="Texture2D" uid="uid://b838ijcu6wuk0" path="res://GUI/CzyNaPtak/szuflada_0.png" id="1_lsd5n"]
 [ext_resource type="Script" path="res://GUI/CzyNaPtak/panel_right.gd" id="1_tesyy"]
-[ext_resource type="Texture2D" uid="uid://cux8i2efnunlu" path="res://UI/m_yes_1.png" id="2_m2v6p"]
-[ext_resource type="Texture2D" uid="uid://bdffoc8amh3vm" path="res://UI/m_no_0.png" id="3_nf752"]
-[ext_resource type="Texture2D" uid="uid://kcckkdm6j6ok" path="res://UI/m_no_1.png" id="4_08wlb"]
+[ext_resource type="Texture2D" uid="uid://w808ha4ejcpw" path="res://GUI/CzyNaPtak/ppmg_continue_0.png" id="3_vns7e"]
+[ext_resource type="Texture2D" uid="uid://clb6nintaoanh" path="res://GUI/CzyNaPtak/ppmg_continue_1.png" id="4_xessp"]
+[ext_resource type="Texture2D" uid="uid://dd7jy6ny2v580" path="res://GUI/CzyNaPtak/exit_0.png" id="5_rrtho"]
+[ext_resource type="Texture2D" uid="uid://4kyqb876wyq8" path="res://GUI/CzyNaPtak/exit_1.png" id="6_ojxyh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxf5i"]
-texture = ExtResource("1_1odam")
+texture = ExtResource("3_vns7e")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jnb3x"]
-texture = ExtResource("2_m2v6p")
+texture = ExtResource("4_xessp")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0p1f8"]
-texture = ExtResource("2_m2v6p")
+texture = ExtResource("4_xessp")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bujg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r7x4k"]
-texture = ExtResource("3_nf752")
+texture = ExtResource("5_rrtho")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx21e"]
-texture = ExtResource("4_08wlb")
+texture = ExtResource("6_ojxyh")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1gaad"]
-texture = ExtResource("4_08wlb")
+texture = ExtResource("6_ojxyh")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_luene"]
 
@@ -108,10 +108,51 @@ tracks/2/keys = {
 "values": [Vector2(400, 0), Vector2(100, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_efg6m"]
+resource_name = "disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 22), Vector2(396, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Yes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(300, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("No:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 0), Vector2(400, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wah20"]
 _data = {
 "RESET": SubResource("Animation_vuqqe"),
-"appear": SubResource("Animation_bnds1")
+"appear": SubResource("Animation_bnds1"),
+"disappear": SubResource("Animation_efg6m")
 }
 
 [node name="PanelRight" type="Control"]
@@ -150,3 +191,4 @@ libraries = {
 
 [connection signal="pressed" from="Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="No" to="." method="_on_no_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -10,4 +10,4 @@ func update(damage):
 		button.hide()
 
 func _on_button_button_up():
-	pass
+	SignalBus.emit_signal("ptak_event")
