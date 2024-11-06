@@ -744,6 +744,12 @@ func _on_hills_exit_button_up():
 		
 	var troll = base_map.get_child(84)
 	troll.update(3)
+
+func _on_z_button_down():
+	var new_event = InputEventAction.new()
+	new_event.action = "rewind"
+	new_event.pressed = true
+	_input(new_event)
 	
 func save_prev():
 	var map_state = []
@@ -846,3 +852,4 @@ func _on_door_button_up():
 func _on_menu_pressed():
 	save_data(SAVE_DIR + SAVE_FILE_NAME)
 	get_tree().change_scene_to_file("res://UI/menu.tscn")
+
