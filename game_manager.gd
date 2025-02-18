@@ -33,16 +33,21 @@ const SECURITY_KEY = "092GSD2"
 @onready var non_euclidean_map = $NonEuclideanMap
 @onready var non_euclidean_pieces = $NonEuclideanMap/Pieces
 
+@onready var dark_map = $DarkMapa
+@onready var dark_pieces = $DarkMapa/Pieces
+
 @onready var ognik = $Ognik
 @onready var camera = $Camera2D
-@onready var reset = $Camera2D/ResetButton
-@onready var exit = $Camera2D/Wyjście
-@onready var real_exit = $Camera2D/RealExit
+@onready var reset = camera.find_child("ResetButton")
+@onready var exit = camera.find_child("Wyjście")
+@onready var real_exit = camera.find_child("RealExit")
 @onready var hills_exit = $HillsExit
-@onready var lapa_button = $Camera2D/LapaButton
+@onready var lapa_button = camera.find_child("LapaButton")
 @onready var key_one = $Camera2D/OgnikButton/Sprite2D
 @onready var small_piece = $SmallPiece
-@onready var menu = $Camera2D/Menu
+@onready var menu = camera.find_child("Menu")
+@onready var screen_shadow = camera.find_child("Shadow")
+@onready var endings = camera.find_child("Endings")
 #@onready var detail_shadow = $"WideMapa/BaseMap/Kawałek100/DetailShadow"
 
 var camera_limits = [-624, -684, 2544, 1764]
@@ -822,14 +827,20 @@ func load_prev(map_state):
 
 func _on_real_exit_button_up():
 	var tween = get_tree().create_tween()
-	$Camera2D/Shadow.show()
-	$Camera2D/Endings.show()
-	$Camera2D/Endings.text = "TO BE CONTINUED"
-	tween.tween_property($Camera2D/Shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
-	tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+	screen_shadow.show()
+#	$Camera2D/Endings.show()
+#	$Camera2D/Endings.text = "TO BE CONTINUED"
+	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+#	tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 	
 	await tween.finished
 	wide_map.hide()
+	for piece in dark_pieces.get_children():
+		piece.update(1)
+	dark_map.show()
+	camera.global_position = Vector2(960, 540)
+	screen_shadow.hide()
+	ognik.find_child("PointLight2D").show()
 
 
 func _on_door_button_up():
@@ -840,11 +851,11 @@ func _on_door_button_up():
 		tween.tween_property($Door/AnimatedSprite2D, "global_position", Vector2(-3879, 350 + 184), 1.0)
 	else:
 		var tween = get_tree().create_tween()
-		$Camera2D/Shadow.show()
-		$Camera2D/Endings.show()
-		$Camera2D/Endings.text = "ENDING 1"
-		tween.tween_property($Camera2D/Shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
-		tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+		screen_shadow.show()
+		endings.show()
+		endings.text = "ENDING 1"
+		tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+		tween.tween_property(endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 		
 		await tween.finished
 		wide_map.hide()

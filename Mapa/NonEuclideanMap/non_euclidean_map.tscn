@@ -48,6 +48,9 @@ mid_pos = Vector2(624.445, 485.556)
 high_pos = Vector2(797.222, 398.333)
 affected_pieces = [1]
 
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek17" index="0"]
+animation = &"0"
+
 [node name="Kawałek18" parent="Pieces" instance=ExtResource("4_0stb4")]
 position = Vector2(663.889, 429.444)
 script = ExtResource("4_7cwx5")

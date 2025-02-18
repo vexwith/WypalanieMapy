@@ -13,6 +13,7 @@ var lapa_index = 0
 var przedmioty = {"ognik": true, "lapa": false}
 	
 func _process(delta):
+	$PointLight2D.global_position = get_global_mouse_position()
 	if not audio.playing and przedmioty["ognik"]:
 		audio.play()
 #	global_position = get_global_mouse_position()

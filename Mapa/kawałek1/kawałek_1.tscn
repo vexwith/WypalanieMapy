@@ -67,7 +67,7 @@ script = ExtResource("1_q6xfj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_22dj4")
-animation = &"5"
+animation = &"0"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-79, 7, -72, 0, -68, -31, -62, -43, 74, -40, 79, -4, 80, 24, 77, 39, 67, 43, 37, 42, 5, 38, -24, 37, -52, 34, -73, 27, -82, 17)
