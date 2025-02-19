@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var timer = $Timer
 @onready var audio = $AudioStreamPlayer
+@onready var light = $PointLight2D
 @onready var cursor_frames = [preload("res://Ognik/OGNIK_1.png"), preload("res://Ognik/OGNIK_2.png"),
 							  preload("res://Ognik/OGNIK_3.png"), preload("res://Ognik/OGNIK_0.png")]
 @onready var lapa = [preload("res://Ognik/cursor_0.png"), preload("res://Ognik/cursor_1.png")]
@@ -10,10 +11,17 @@ var frame_index = 0
 
 var lapa_index = 0
 
+var dark_mode = false
+
 var przedmioty = {"ognik": true, "lapa": false}
 	
 func _process(delta):
-	$PointLight2D.global_position = get_global_mouse_position()
+	if dark_mode:
+		light.global_position = get_global_mouse_position()
+		if przedmioty["ognik"]:
+			light.show()
+		else:
+			light.hide()
 	if not audio.playing and przedmioty["ognik"]:
 		audio.play()
 #	global_position = get_global_mouse_position()

@@ -186,6 +186,9 @@ func _process(delta):
 		if Globals.crawl_mode:
 			bgm.stream = hills
 			plaza_version = 9 #reset
+		elif dark_map.visible:
+			bgm.stream = plaza
+			plaza_version = 8 #max slow
 		elif Globals.lapa_gained:
 			bgm.stream = medley
 			plaza_version = 9 #reset
@@ -284,12 +287,16 @@ func _input(event): #dragging hamdler
 					camera.position.y = 1160
 
 func clear_modulation():
-	for piece in base_map.get_children():
-		if piece is Area2D:
+	if dark_map.visible:
+		for piece in dark_pieces.get_children():
 			piece.sprite.self_modulate = Color.WHITE
-			
-	for piece in non_euclidean_pieces.get_children():
-		piece.sprite.self_modulate = Color.WHITE
+	else:
+		for piece in base_map.get_children():
+			if piece is Area2D:
+				piece.sprite.self_modulate = Color.WHITE
+				
+		for piece in non_euclidean_pieces.get_children():
+			piece.sprite.self_modulate = Color.WHITE
 
 func failed(piece):
 	if piece.stage == 5 or piece.stage == 6:
@@ -758,20 +765,25 @@ func _on_z_button_down():
 	
 func save_prev():
 	var map_state = []
-	for piece in base_map.get_children():
-		if piece is Area2D:
+	if dark_map.visible: #different pieces saved on different maps
+		for piece in dark_pieces.get_children():
 			map_state.append(piece.stage)
-	for non_euclidean_piece in non_euclidean_pieces.get_children():
-		map_state.append(non_euclidean_piece.stage)
+	else:
+		for piece in base_map.get_children():
+			if piece is Area2D:
+				map_state.append(piece.stage)
+		for non_euclidean_piece in non_euclidean_pieces.get_children():
+			map_state.append(non_euclidean_piece.stage)
 		
 	map_state.append(camera.global_position)
 	map_state.append(next_piece)
 	map_state.append(first_map)
 	
-	if not non_euclidean_map.visible: #bool responsible for changing from non-euclidean to normal
-		map_state.append(true)
-	else:
-		map_state.append(false)
+	if not dark_map.visible:
+		if not non_euclidean_map.visible: #bool responsible for changing from non-euclidean to normal
+			map_state.append(true)
+		else:
+			map_state.append(false)
 		
 	map_state.append(last_piece)
 		
@@ -791,12 +803,13 @@ func load_prev(map_state):
 	SignalBus.emit_signal("rewind_bomb")
 	
 	#reading in which map you are
-	var in_normal = map_state.pop_back()
-	wide_map.visible = in_normal
-	non_euclidean_map.visible = !in_normal
-	Globals.undraggable = !in_normal
-	if in_normal: door_to_lapa()
-	else: lapa_to_door()
+	if not dark_map.visible:
+		var in_normal = map_state.pop_back()
+		wide_map.visible = in_normal
+		non_euclidean_map.visible = !in_normal
+		Globals.undraggable = !in_normal
+		if in_normal: door_to_lapa()
+		else: lapa_to_door()
 	
 	#rewinding first map outer pieces
 	first_map = map_state.pop_back()
@@ -810,17 +823,23 @@ func load_prev(map_state):
 	camera.global_position = camera_pos
 	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540) #teleport non-euclidean back
 	
-	var non_euclidean_count = 9
-	for i in range(len(map_state) - 1, -1, -1):
-		if non_euclidean_count >= 0:
-			var piece = non_euclidean_pieces.get_child(non_euclidean_count)
+	if dark_map.visible:
+		for i in range(len(map_state) - 1, -1, -1):
+			var piece = dark_pieces.get_child(i)
 			piece.stage = map_state.pop_back()
 			piece.update(0)
-			non_euclidean_count -= 1
-		else:
-			var piece = base_map.get_child(i + 1)
-			piece.stage = map_state.pop_back()
-			piece.update(0)
+	else:
+		var non_euclidean_count = 9
+		for i in range(len(map_state) - 1, -1, -1):
+			if non_euclidean_count >= 0:
+				var piece = non_euclidean_pieces.get_child(non_euclidean_count)
+				piece.stage = map_state.pop_back()
+				piece.update(0)
+				non_euclidean_count -= 1
+			else:
+				var piece = base_map.get_child(i + 1)
+				piece.stage = map_state.pop_back()
+				piece.update(0)
 			
 	#reestablish particles
 	get_small_piece()
@@ -835,12 +854,19 @@ func _on_real_exit_button_up():
 	
 	await tween.finished
 	wide_map.hide()
+	real_exit.hide()
 	for piece in dark_pieces.get_children():
 		piece.update(1)
 	dark_map.show()
 	camera.global_position = Vector2(960, 540)
+	bgm.stop()
+	Globals.map_state_log.clear()
+	save_prev()
+	await get_tree().create_timer(1.0, false).timeout
 	screen_shadow.hide()
-	ognik.find_child("PointLight2D").show()
+	ognik.dark_mode = true
+	var tween_light = get_tree().create_tween()
+	tween_light.tween_property(ognik.light, "color", Color(1.0, 0.68, 0.0, 1.0), 2.0)
 
 
 func _on_door_button_up():

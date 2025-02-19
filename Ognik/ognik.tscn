@@ -30,7 +30,7 @@ volume_db = -2.0
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 scale = Vector2(1.5, 1.5)
-color = Color(1, 0.584314, 0, 1)
+color = Color(1, 0.58, 0, 0)
 blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("3_2s5vn")
