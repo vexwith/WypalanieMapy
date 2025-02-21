@@ -36,6 +36,9 @@ const SECURITY_KEY = "092GSD2"
 @onready var dark_map = $DarkMapa
 @onready var dark_pieces = $DarkMapa/Pieces
 
+@onready var blue_map = $BlueMapa
+@onready var blue_pieces = $BlueMapa/Pieces
+
 @onready var ognik = $Ognik
 @onready var camera = $Camera2D
 @onready var reset = camera.find_child("ResetButton")
@@ -129,6 +132,7 @@ func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
 	SignalBus.connect("get_small_piece", get_small_piece)
 	SignalBus.connect("non_euclidean_clicked", _on_non_euclidean_clicked)
+	SignalBus.connect("blue_map_clicked", _on_blue_map_clicked)
 	verify_save_directory(SAVE_DIR)
 	if Globals.kontynuuj:
 		Globals.kontynuuj = false
@@ -306,10 +310,14 @@ func failed(piece):
 			get_tree().root.add_child(message)
 			message.global_position = piece.global_position
 		return true
-		
+	
 	if not 'low_pos' in piece:
 		for i in piece.affected_pieces:
-			var affected = base_map.get_child(i)
+			var affected
+			if dark_map.visible:
+				affected = dark_pieces.get_child(i)
+			else:
+				affected = base_map.get_child(i)
 			if affected.stage == 5 or affected.stage == 6:
 				return true
 		
@@ -487,6 +495,27 @@ func door_to_lapa():
 	lapa_button.get_theme_stylebox("normal").region_rect = door_rect
 	lapa_button.get_theme_stylebox("hover").texture = lapa_button_hover
 	lapa_button.get_theme_stylebox("hover").region_rect = door_rect
+	
+func _on_blue_map_clicked():
+	#animating zoom in
+	var portal_piece = dark_pieces.get_child(0)
+	
+	var tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property(camera, "zoom", Vector2(4.0, 4.0), 1.0)
+	tween.tween_property(camera, "position", portal_piece.global_position, 1.0)
+	await tween.finished
+	camera.position = Vector2(960, 540)
+	camera.zoom = Vector2(1.0, 1.0)
+	
+	ognik.dark_mode = !ognik.dark_mode
+	
+	#enable blue map and disable dark map
+	if dark_map.visible:
+		dark_map.visible = false
+		blue_map.visible = true
+	else:
+		blue_map.visible = false
+		dark_map.visible = true
 
 func upgrade_to_wide_map():
 	#in outer wide map all pieces start from 1
@@ -855,9 +884,11 @@ func _on_real_exit_button_up():
 	await tween.finished
 	wide_map.hide()
 	real_exit.hide()
+	dark_map.show()
+	blue_pieces.get_child(0).locked = true #need to disable infinite loop
 	for piece in dark_pieces.get_children():
 		piece.update(1)
-	dark_map.show()
+	blue_pieces.get_child(0).locked = false
 	camera.global_position = Vector2(960, 540)
 	bgm.stop()
 	Globals.map_state_log.clear()

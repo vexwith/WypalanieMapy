@@ -1020,6 +1020,7 @@ script = ExtResource("46_56amj")
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek41" index="0"]
 visible = true
 sprite_frames = SubResource("SpriteFrames_iw5y1")
+animation = &"0"
 
 [node name="Timer" type="Timer" parent="BaseMap/Kawałek41"]
 wait_time = 0.6
@@ -1339,7 +1340,6 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_dsr5g")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_20sfx")
 
 [node name="Zloto" type="AnimatedSprite2D" parent="BaseMap/Kawałek70/Treasure"]
-visible = false
 position = Vector2(72.4597, -10.2874)
 rotation = 0.00872701
 sprite_frames = SubResource("SpriteFrames_t612g")

@@ -22,6 +22,7 @@ func _process(delta):
 			light.show()
 		else:
 			light.hide()
+	else: light.hide()
 	if not audio.playing and przedmioty["ognik"]:
 		audio.play()
 #	global_position = get_global_mouse_position()

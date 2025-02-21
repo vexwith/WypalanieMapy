@@ -4,7 +4,7 @@ extends Piece
 
 @onready var circle = $Circle
 @onready var arrow = $Arrow
-#@onready var zloto = $Zloto
+@onready var zloto = self.find_child("Zloto")
 
 var starting_piece = 70
 
@@ -35,7 +35,7 @@ func update(damage):
 			circle.modulate.a += 0.2
 			circle.show()
 			arrow.hide()
-#			if get_index() == starting_piece: zloto.hide()
+			if get_index() == starting_piece: zloto.hide()
 
 
 func _on_arrow_pressed():
@@ -44,7 +44,7 @@ func _on_arrow_pressed():
 
 
 func _on_treasure_pressed():
-#	zloto.show()
+	zloto.show()
 	arrow.disabled = true
 	Globals.treasure = true
 	SignalBus.emit_signal("piece_clicked", get_parent().get_child(100))
