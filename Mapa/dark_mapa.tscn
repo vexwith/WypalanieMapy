@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vuh6l5cqq2gq"]
+[gd_scene load_steps=22 format=3 uid="uid://vuh6l5cqq2gq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_i15fi"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_mx3da"]
@@ -7,9 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://df3a3ake47dje" path="res://Mapa/cloud_3.png" id="5_ikalv"]
 [ext_resource type="Texture2D" uid="uid://bvyu0ipdqepke" path="res://Mapa/cloud_4.png" id="6_lenbr"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="7_3h0s5"]
+[ext_resource type="Texture2D" uid="uid://2twdyv1gtjts" path="res://Mapa/BlueMap/zly_wir_0.png" id="7_dorhl"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="8_itune"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_1.gd" id="8_m4ghv"]
+[ext_resource type="Texture2D" uid="uid://d2yq1ivorenkt" path="res://Mapa/BlueMap/zly_wir_1.png" id="8_rkt2n"]
 [ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="9_23kj3"]
+[ext_resource type="Texture2D" uid="uid://xgyui51765ek" path="res://Mapa/BlueMap/zly_wir_2.png" id="9_n3bdw"]
+[ext_resource type="Texture2D" uid="uid://hw156cihsevt" path="res://Mapa/BlueMap/zly_wir_3.png" id="10_8gwhh"]
 [ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="10_134fs"]
 [ext_resource type="PackedScene" uid="uid://cwkorr4fc4wuf" path="res://Mapa/kawałek10/kawałek_10.tscn" id="11_ov3nc"]
 [ext_resource type="PackedScene" uid="uid://do6xyoip7a6hu" path="res://Mapa/kawałek13/kawałek_13.tscn" id="12_cp62y"]
@@ -20,6 +24,26 @@
 shader = ExtResource("1_i15fi")
 shader_parameter/direction = Vector2(1, 0)
 shader_parameter/speed_scale = 0.02
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnpyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dorhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rkt2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n3bdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8gwhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="DarkMapa" type="Control"]
 layout_mode = 3
@@ -715,6 +739,13 @@ offset_top = -73.0
 offset_right = 361.0
 offset_bottom = -6.0
 texture = ExtResource("5_ikalv")
+
+[node name="Spiral" type="AnimatedSprite2D" parent="."]
+position = Vector2(786, 562)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_qnpyi")
+autoplay = "default"
+frame_progress = 0.26837
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0

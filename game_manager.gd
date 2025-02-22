@@ -316,6 +316,8 @@ func failed(piece):
 			var affected
 			if dark_map.visible:
 				affected = dark_pieces.get_child(i)
+			elif blue_map.visible:
+				affected = blue_pieces.get_child(i)
 			else:
 				affected = base_map.get_child(i)
 			if affected.stage == 5 or affected.stage == 6:
@@ -808,11 +810,13 @@ func save_prev():
 	map_state.append(next_piece)
 	map_state.append(first_map)
 	
-	if not dark_map.visible:
+	if not dark_map.visible and not blue_map.visible:
 		if not non_euclidean_map.visible: #bool responsible for changing from non-euclidean to normal
 			map_state.append(true)
 		else:
 			map_state.append(false)
+	else: #for switching between dark and blue map
+		map_state.append(dark_map.visible)
 		
 	map_state.append(last_piece)
 		
@@ -832,13 +836,21 @@ func load_prev(map_state):
 	SignalBus.emit_signal("rewind_bomb")
 	
 	#reading in which map you are
-	if not dark_map.visible:
+	if not dark_map.visible and not blue_map.visible:
 		var in_normal = map_state.pop_back()
 		wide_map.visible = in_normal
 		non_euclidean_map.visible = !in_normal
 		Globals.undraggable = !in_normal
 		if in_normal: door_to_lapa()
 		else: lapa_to_door()
+	else:
+		var in_dark = map_state.pop_back()
+		dark_map.visible = in_dark
+		blue_map.visible = !in_dark
+		if !blue_map.visible:
+			dark_map.visible = false
+			dark_map.visible = true
+		ognik.dark_mode = in_dark
 	
 	#rewinding first map outer pieces
 	first_map = map_state.pop_back()

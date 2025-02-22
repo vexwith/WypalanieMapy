@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dudiv4bfg8pq"]
+[gd_scene load_steps=15 format=3 uid="uid://dudiv4bfg8pq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_rx72m"]
 [ext_resource type="Texture2D" uid="uid://boc68kmusax73" path="res://Mapa/BlueMap/Space Background.png" id="2_wf52e"]
@@ -7,12 +7,36 @@
 [ext_resource type="Texture2D" uid="uid://df3a3ake47dje" path="res://Mapa/cloud_3.png" id="5_q7pwi"]
 [ext_resource type="Texture2D" uid="uid://bvyu0ipdqepke" path="res://Mapa/cloud_4.png" id="6_suq2j"]
 [ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="7_ia4x8"]
+[ext_resource type="Texture2D" uid="uid://b8s773of7hvos" path="res://Mapa/NonEuclideanMap/zly_wir_0.png" id="7_rw0f5"]
+[ext_resource type="Texture2D" uid="uid://duuwhu5s6klgk" path="res://Mapa/NonEuclideanMap/zly_wir_1.png" id="8_liuvx"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_1.gd" id="8_mqsya"]
+[ext_resource type="Texture2D" uid="uid://bgs07cnn7k4bp" path="res://Mapa/NonEuclideanMap/zly_wir_2.png" id="9_ep0qn"]
+[ext_resource type="Texture2D" uid="uid://b6rstl8out8tr" path="res://Mapa/NonEuclideanMap/zly_wir_3.png" id="10_mwnr2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_elslx"]
 shader = ExtResource("1_rx72m")
 shader_parameter/direction = Vector2(0, -1)
 shader_parameter/speed_scale = 0.01
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jg4by"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_rw0f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_liuvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ep0qn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mwnr2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="BlueMapa" type="Control"]
 layout_mode = 3
@@ -709,6 +733,12 @@ offset_top = -73.0
 offset_right = 361.0
 offset_bottom = -6.0
 texture = ExtResource("5_q7pwi")
+
+[node name="Spiral" type="AnimatedSprite2D" parent="."]
+position = Vector2(798, 536)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_jg4by")
+autoplay = "default"
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0
