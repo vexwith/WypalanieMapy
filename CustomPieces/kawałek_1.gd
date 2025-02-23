@@ -15,17 +15,61 @@ func _input(event):
 func update(damage):
 	super.update(damage)
 	
-	var first_portal = owner.get_parent().dark_pieces.get_child(0)
-	var second_portal = owner.get_parent().blue_pieces.get_child(0)
-	if !first_portal.locked and !second_portal.locked:
-		pass
-	elif owner.get_parent().dark_map.visible and first_portal == self and !first_portal.locked:
-		for piece in owner.get_parent().blue_pieces.get_children():
+	var gm = owner.get_parent()
+	
+	var first_portal = gm.dark_pieces.get_child(0)
+	var second_portal = gm.blue_pieces.get_child(0)
+	if !first_portal.locked and !second_portal.locked: #infinity
+		if damage < 1: return #dont activate again when going back
+		Globals.detail_mode = false
+		gm.clear_rims(gm.dark_pieces)
+		gm.clear_rims(gm.blue_pieces)
+		for piece in gm.blue_pieces.get_children(): #blocking everything
+			piece.clickable = false
+			get_index()
+			piece.sprite.play(str(5))
+		for piece in gm.dark_pieces.get_children():
+			piece.clickable = false
+#			print(piece.get_index())
+			piece.sprite.play(str(5))
+		Globals.undraggable = true
+		
+#		gm.ognik.dark_mode = false
+		ojojoj()
+		var white_shadow = gm.white_shadow #flashbang
+		white_shadow.show()
+		var tween = get_tree().create_tween().set_parallel(true)
+		var t = 2.0
+		tween.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), t).set_trans(Tween.TRANS_SINE)
+		if gm.blue_map.visible:
+			tween.tween_property(owner.find_child("CanvasModulate"), "color", Color.WHITE, t)
+		else:
+			tween.tween_property(gm.ognik.light, "scale", Vector2(3.0, 3.0), t)
+			tween.tween_property(gm.ognik.light, "color", Color.WHITE, t)
+		await tween.finished
+		
+		var infinity = gm.infinity #placing infinity sign
+		infinity.show()
+		infinity.global_position = gm.camera.global_position - Vector2(1080, 620)
+		
+		var tween2 = get_tree().create_tween() #end flashbang
+		tween2.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 2.0)
+		await tween2.finished
+		white_shadow.hide()
+		
+	elif gm.dark_map.visible and first_portal == self and !first_portal.locked:
+		for piece in gm.blue_pieces.get_children():
 			piece.update(damage)
-	elif owner.get_parent().blue_map.visible and second_portal == self and !second_portal.locked:
-		for piece in owner.get_parent().dark_pieces.get_children():
+	elif gm.blue_map.visible and second_portal == self and !second_portal.locked:
+		for piece in gm.dark_pieces.get_children():
 			piece.update(damage)
-
+			
+func ojojoj():
+	var gm = owner.get_parent()
+	gm.sfx.stream = gm.ojoj
+	for i in range(8):
+		gm.sfx.play()
+		await get_tree().create_timer(0.15).timeout
 
 func _on_timer_timeout():
 	match swaper:

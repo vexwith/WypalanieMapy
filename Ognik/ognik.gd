@@ -28,7 +28,8 @@ func _process(delta):
 #	global_position = get_global_mouse_position()
 	if przedmioty["lapa"]:
 		audio.stop()
-		if Globals.undraggable: #changing to lapa in any way will return to wide map
+		if Globals.undraggable and light.color == Color(1.0, 1.0, 1.0, 0.0): #changing to lapa in any way will return to wide map
+			#in case of infinity it wont happen
 			get_parent().back_from_non_euclidean()
 		if Input.is_action_just_pressed("LPM"):
 			lapa_index = 1

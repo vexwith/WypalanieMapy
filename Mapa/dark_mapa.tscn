@@ -762,11 +762,11 @@ autostart = true
 
 [node name="Kawałek2" parent="Pieces" instance=ExtResource("8_itune")]
 position = Vector2(747, 384)
-affected_pieces = [0, 7, 2]
+affected_pieces = [7, 2, 0]
 
 [node name="Kawałek8" parent="Pieces" instance=ExtResource("9_23kj3")]
 position = Vector2(623, 553)
-affected_pieces = [0, 1, 4, 3]
+affected_pieces = [1, 4, 3, 0]
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("10_134fs")]
 position = Vector2(724, 771)
@@ -774,15 +774,15 @@ affected_pieces = [2, 4, 5]
 
 [node name="Kawałek10" parent="Pieces" instance=ExtResource("11_ov3nc")]
 position = Vector2(726, 667)
-affected_pieces = [2, 3, 0, 5]
+affected_pieces = [2, 3, 5, 0]
 
 [node name="Kawałek13" parent="Pieces" instance=ExtResource("12_cp62y")]
 position = Vector2(899, 705)
-affected_pieces = [0, 4, 3, 6]
+affected_pieces = [4, 3, 6, 0]
 
 [node name="Kawałek16" parent="Pieces" instance=ExtResource("13_3kh0s")]
 position = Vector2(963, 561)
-affected_pieces = [0, 5, 7]
+affected_pieces = [5, 7, 0]
 
 [node name="Kawałek4" parent="Pieces" instance=ExtResource("14_26wqu")]
 position = Vector2(949, 385)

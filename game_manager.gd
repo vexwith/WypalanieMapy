@@ -35,6 +35,7 @@ const SECURITY_KEY = "092GSD2"
 
 @onready var dark_map = $DarkMapa
 @onready var dark_pieces = $DarkMapa/Pieces
+@onready var infinity = $Infinity
 
 @onready var blue_map = $BlueMapa
 @onready var blue_pieces = $BlueMapa/Pieces
@@ -50,6 +51,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var small_piece = $SmallPiece
 @onready var menu = camera.find_child("Menu")
 @onready var screen_shadow = camera.find_child("Shadow")
+@onready var white_shadow = camera.find_child("WhiteShadow")
 @onready var endings = camera.find_child("Endings")
 #@onready var detail_shadow = $"WideMapa/BaseMap/Kawałek100/DetailShadow"
 
@@ -269,6 +271,9 @@ func _input(event): #dragging hamdler
 				var piece = base_map.get_child(i)
 				piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
 				if piece.stage_number != null: piece.stage_number.hide()
+			if ognik.light.color.a == 1.0:
+				clear_rims(dark_pieces)
+				clear_rims(blue_pieces)
 #		detail_shadow.color.a = 0.4 if detail_shadow.color.a == 0.0 else 0.0
 #	if event.is_action_released("ctrl"):
 #		Globals.detail_mode = false
@@ -289,6 +294,12 @@ func _input(event): #dragging hamdler
 					camera.position.y = -80
 				if new_pos.y > 1160: #1080
 					camera.position.y = 1160
+
+func clear_rims(map):
+	for i in range(len(map.get_children())):
+		var piece = map.get_child(i)
+		piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
+		if piece.stage_number != null: piece.stage_number.hide()
 
 func clear_modulation():
 	if dark_map.visible:

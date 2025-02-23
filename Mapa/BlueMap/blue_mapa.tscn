@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dudiv4bfg8pq"]
+[gd_scene load_steps=16 format=3 uid="uid://dudiv4bfg8pq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_rx72m"]
 [ext_resource type="Texture2D" uid="uid://boc68kmusax73" path="res://Mapa/BlueMap/Space Background.png" id="2_wf52e"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://CustomPieces/kawałek_1.gd" id="8_mqsya"]
 [ext_resource type="Texture2D" uid="uid://bgs07cnn7k4bp" path="res://Mapa/NonEuclideanMap/zly_wir_2.png" id="9_ep0qn"]
 [ext_resource type="Texture2D" uid="uid://b6rstl8out8tr" path="res://Mapa/NonEuclideanMap/zly_wir_3.png" id="10_mwnr2"]
+[ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="13_dr4a3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_elslx"]
 shader = ExtResource("1_rx72m")
@@ -752,6 +753,10 @@ script = ExtResource("8_mqsya")
 [node name="Timer" type="Timer" parent="Pieces/Kawałek7"]
 wait_time = 0.7
 autostart = true
+
+[node name="Kawałek8" parent="Pieces" instance=ExtResource("13_dr4a3")]
+position = Vector2(663, 510)
+affected_pieces = [0]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0.45098, 1)
