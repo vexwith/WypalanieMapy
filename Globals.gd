@@ -19,6 +19,8 @@ var ptak_event = false #got map piece from ptak event
 
 var kontynuuj = false #load from menu
 
+var reset_dark = false #reseting from dark map
+
 var map_state_log : Array = [] #all previous map states
 
 #variables saved between playthroughs

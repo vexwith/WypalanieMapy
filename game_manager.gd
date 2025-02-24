@@ -141,14 +141,14 @@ func _ready():
 		_on_reset_button_pressed(false)
 		load_data(SAVE_DIR + SAVE_FILE_NAME)
 		get_tree().reload_current_scene()
-	
+		
 #	MAX_PIECES = base_map.get_child_count()
 	upgrade_to_wide_map()
 	if not Globals.lapa_gained:
 		lapa_button.hide()
 		key_one.hide()
 		sfx.volume_db = 0.0
-	else:
+	elif !Globals.reset_dark:
 		start_flying_piece()
 		base_map.get_child(0).texture = postmapa
 		if bgm.stream == plaza:
@@ -177,6 +177,13 @@ func _ready():
 	#saving blank map
 	save_prev()
 
+	if Globals.reset_dark:
+		Globals.reset_dark = false
+		plaza_version = 8 #it resets to normal plaza so we have to slow it again
+		screen_shadow.show()
+		screen_shadow.modulate.a = 1.0
+		_on_real_exit_button_up()
+		
 #	for i in range(1, 72):
 #		var piece = base_map.get_child(i)
 #		piece.stage = 4
@@ -679,10 +686,16 @@ func hills_failed():
 			
 	return false
 
+func reset_dark_map():
+	pass
+
 func _on_reset_button_pressed(reload = true):
 	if Globals.crawl_mode:
 		_on_hills_exit_button_up()
 		return
+			
+	if ognik.light.color.a != 0.0:
+		Globals.reset_dark = true
 		
 	Globals.map_state_log.clear()
 	Globals.focused_piece = null
@@ -705,7 +718,8 @@ func _on_reset_button_pressed(reload = true):
 		
 	if reload: #we sometimes dont want to reload
 		get_tree().reload_current_scene()
-	
+
+		
 #	#return visibility
 #	max_modulation = 1.0
 #	first_bkg.modulate.a = 1.0
@@ -897,6 +911,8 @@ func load_prev(map_state):
 	get_small_piece()
 
 func _on_real_exit_button_up():
+	sfx.volume_db = -7.0
+	
 	var tween = get_tree().create_tween()
 	screen_shadow.show()
 #	$Camera2D/Endings.show()
@@ -908,14 +924,19 @@ func _on_real_exit_button_up():
 	wide_map.hide()
 	real_exit.hide()
 	dark_map.show()
+	
 	blue_pieces.get_child(0).locked = true #need to disable infinite loop
 	for piece in dark_pieces.get_children():
 		piece.update(1)
 	blue_pieces.get_child(0).locked = false
+	
 	camera.global_position = Vector2(960, 540)
-	bgm.stop()
-	Globals.map_state_log.clear()
+	if bgm.stream != plaza:
+		bgm.stop()
+	
+	Globals.map_state_log.clear() #disabling old map states
 	save_prev()
+	
 	await get_tree().create_timer(1.0, false).timeout
 	screen_shadow.hide()
 	ognik.dark_mode = true

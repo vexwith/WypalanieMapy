@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cnv8bt3vr5u1o"]
+
+[node name="PortalButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0

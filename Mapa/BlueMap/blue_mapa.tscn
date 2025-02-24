@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dudiv4bfg8pq"]
+[gd_scene load_steps=23 format=3 uid="uid://dudiv4bfg8pq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_rx72m"]
 [ext_resource type="Texture2D" uid="uid://boc68kmusax73" path="res://Mapa/BlueMap/Space Background.png" id="2_wf52e"]
@@ -12,7 +12,13 @@
 [ext_resource type="Script" path="res://CustomPieces/kawałek_1.gd" id="8_mqsya"]
 [ext_resource type="Texture2D" uid="uid://bgs07cnn7k4bp" path="res://Mapa/NonEuclideanMap/zly_wir_2.png" id="9_ep0qn"]
 [ext_resource type="Texture2D" uid="uid://b6rstl8out8tr" path="res://Mapa/NonEuclideanMap/zly_wir_3.png" id="10_mwnr2"]
+[ext_resource type="Texture2D" uid="uid://dtojrmly2w7ag" path="res://Mapa/NonEuclideanMap/pole7_0.png" id="13_abrke"]
 [ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="13_dr4a3"]
+[ext_resource type="Texture2D" uid="uid://dx5ft4bd8hic4" path="res://Mapa/NonEuclideanMap/pole7_1.png" id="14_kndmb"]
+[ext_resource type="Texture2D" uid="uid://crjqpt0c2fbh" path="res://Mapa/NonEuclideanMap/pole7_2.png" id="15_qcgow"]
+[ext_resource type="Texture2D" uid="uid://ckmo4x6cac7c8" path="res://Mapa/NonEuclideanMap/pole7_3.png" id="16_4m7hx"]
+[ext_resource type="Texture2D" uid="uid://k3lbry52wlsu" path="res://Mapa/NonEuclideanMap/pole7_4.png" id="17_afv1i"]
+[ext_resource type="Texture2D" uid="uid://bjelttbjbgyvt" path="res://Mapa/NonEuclideanMap/pole7_5.png" id="18_vglh1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_elslx"]
 shader = ExtResource("1_rx72m")
@@ -37,6 +43,57 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aeooo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_abrke")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_kndmb")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_qcgow")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_4m7hx")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_afv1i")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_vglh1")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
 }]
 
 [node name="BlueMapa" type="Control"]
@@ -749,6 +806,9 @@ offset_bottom = 40.0
 [node name="Kawałek7" parent="Pieces" instance=ExtResource("7_ia4x8")]
 position = Vector2(793, 545)
 script = ExtResource("8_mqsya")
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek7" index="0"]
+sprite_frames = SubResource("SpriteFrames_aeooo")
 
 [node name="Timer" type="Timer" parent="Pieces/Kawałek7"]
 wait_time = 0.7
