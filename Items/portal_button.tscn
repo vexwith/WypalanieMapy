@@ -1,5 +1,77 @@
-[gd_scene format=3 uid="uid://cnv8bt3vr5u1o"]
+[gd_scene load_steps=14 format=3 uid="uid://cnv8bt3vr5u1o"]
+
+[ext_resource type="Texture2D" uid="uid://dbbcxyoocwnvg" path="res://Tutorial/m_but1_0.png" id="1_8fhg5"]
+[ext_resource type="Texture2D" uid="uid://dpt3mp8py5glw" path="res://Tutorial/m_but1_1.png" id="2_50h4x"]
+[ext_resource type="Texture2D" uid="uid://dnciydvpka48y" path="res://Items/portal_plate_0.png" id="3_3302j"]
+[ext_resource type="Script" path="res://Items/portal_button.gd" id="3_rvnda"]
+[ext_resource type="Texture2D" uid="uid://cgs7jgph1rtuy" path="res://Items/portal_plate_1.png" id="4_4u4xg"]
+[ext_resource type="Texture2D" uid="uid://djigt1cvaladk" path="res://Items/portal_plate_2.png" id="5_8m3pe"]
+[ext_resource type="Texture2D" uid="uid://be1evnerlb41n" path="res://Items/portal_plate_3.png" id="6_hx4bn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lwsha"]
+texture = ExtResource("1_8fhg5")
+region_rect = Rect2(0, 0, 113, 97)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5x4gp"]
+texture = ExtResource("1_8fhg5")
+modulate_color = Color(0.745098, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f2ax4"]
+texture = ExtResource("2_50h4x")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5ly0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03vsh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_daosl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3302j")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4u4xg")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8m3pe")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hx4bn")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}]
 
 [node name="PortalButton" type="Button"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 113.0
+offset_bottom = 97.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_lwsha")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5x4gp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_f2ax4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v5ly0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_03vsh")
+script = ExtResource("3_rvnda")
+
+[node name="Mode" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(152, 50)
+sprite_frames = SubResource("SpriteFrames_daosl")
+animation = &"0"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

@@ -821,8 +821,14 @@ func _on_z_button_down():
 	
 func save_prev():
 	var map_state = []
-	if dark_map.visible: #different pieces saved on different maps
+	
+	var portal_button = dark_map.find_child("PortalButton")
+	map_state.append(portal_button.next_state)
+	
+	if dark_map.visible or blue_map.visible: #different pieces saved on different maps
 		for piece in dark_pieces.get_children():
+			map_state.append(piece.stage)
+		for piece in blue_pieces.get_children():
 			map_state.append(piece.stage)
 	else:
 		for piece in base_map.get_children():
@@ -889,12 +895,16 @@ func load_prev(map_state):
 	camera.global_position = camera_pos
 	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540) #teleport non-euclidean back
 	
-	if dark_map.visible:
-		for i in range(len(map_state) - 1, -1, -1):
+	if ognik.light.color.a != 0.0: #dark and blue map
+		for i in range(len(blue_pieces.get_children()) - 1, -1, -1):
+			var piece = blue_pieces.get_child(i)
+			piece.stage = map_state.pop_back()
+			piece.update(0)
+		for i in range(len(dark_pieces.get_children()) - 1, -1, -1):
 			var piece = dark_pieces.get_child(i)
 			piece.stage = map_state.pop_back()
 			piece.update(0)
-	else:
+	else: #normal map
 		var non_euclidean_count = 9
 		for i in range(len(map_state) - 1, -1, -1):
 			if non_euclidean_count >= 0:
@@ -906,6 +916,13 @@ func load_prev(map_state):
 				var piece = base_map.get_child(i + 1)
 				piece.stage = map_state.pop_back()
 				piece.update(0)
+				
+	#changing portal button state
+	var cur_button = dark_map.find_child("PortalButton")
+	var prev_state = map_state.pop_back()
+	if prev_state != cur_button.next_state:
+		for i in range(abs(prev_state - cur_button.next_state)):
+			cur_button.update_buttons(self, -1)
 			
 	#reestablish particles
 	get_small_piece()

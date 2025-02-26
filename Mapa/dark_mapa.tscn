@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://vuh6l5cqq2gq"]
+[gd_scene load_steps=36 format=3 uid="uid://vuh6l5cqq2gq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_i15fi"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_mx3da"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://xgyui51765ek" path="res://Mapa/BlueMap/zly_wir_2.png" id="9_n3bdw"]
 [ext_resource type="Texture2D" uid="uid://hw156cihsevt" path="res://Mapa/BlueMap/zly_wir_3.png" id="10_8gwhh"]
 [ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="10_134fs"]
+[ext_resource type="PackedScene" uid="uid://cnv8bt3vr5u1o" path="res://Items/portal_button.tscn" id="11_1efrf"]
 [ext_resource type="PackedScene" uid="uid://cwkorr4fc4wuf" path="res://Mapa/kawałek10/kawałek_10.tscn" id="11_ov3nc"]
 [ext_resource type="PackedScene" uid="uid://do6xyoip7a6hu" path="res://Mapa/kawałek13/kawałek_13.tscn" id="12_cp62y"]
 [ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="13_3kh0s"]
@@ -23,8 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://no6b72bvw3ay" path="res://Mapa/BlueMap/pole1_1.png" id="14_lkbwq"]
 [ext_resource type="Texture2D" uid="uid://den0f23t8ek7f" path="res://Mapa/BlueMap/pole1_2.png" id="15_507nl"]
 [ext_resource type="Texture2D" uid="uid://13l41xdxanhs" path="res://Mapa/BlueMap/pole1_3.png" id="16_f68yw"]
+[ext_resource type="Texture2D" uid="uid://ct8w8ywt1ee1r" path="res://Mapa/kawałek1/pole1_4.png" id="16_l8m55"]
 [ext_resource type="Texture2D" uid="uid://c5io2jd3nmmke" path="res://Mapa/BlueMap/pole1_4.png" id="17_hot21"]
+[ext_resource type="Texture2D" uid="uid://ba0u0apxylcko" path="res://Mapa/kawałek1/pole1_5.png" id="17_mn27m"]
 [ext_resource type="Texture2D" uid="uid://cmowgjcjmsd8w" path="res://Mapa/BlueMap/pole1_5.png" id="18_d44xx"]
+[ext_resource type="Texture2D" uid="uid://dwtecpvw0hk7t" path="res://Mapa/kawałek1/pole1_0.png" id="22_pqqkf"]
+[ext_resource type="Texture2D" uid="uid://dsmyekh404sj3" path="res://Mapa/kawałek1/pole1_1.png" id="23_k04kc"]
+[ext_resource type="Texture2D" uid="uid://bo3tny3bor3kf" path="res://Mapa/kawałek1/pole1_2.png" id="24_hnoyi"]
+[ext_resource type="Texture2D" uid="uid://uitwkg6rbwub" path="res://Mapa/kawałek1/pole1_3.png" id="25_36ld6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ullq"]
 shader = ExtResource("1_i15fi")
@@ -71,6 +78,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("16_l8m55")
+}],
+"loop": true,
+"name": &"10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_mn27m")
+}],
+"loop": true,
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("15_507nl")
 }],
 "loop": true,
@@ -99,6 +122,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_pqqkf")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_k04kc")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_hnoyi")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_36ld6")
+}],
+"loop": true,
+"name": &"9",
 "speed": 5.0
 }]
 
@@ -796,6 +851,14 @@ offset_top = -73.0
 offset_right = 361.0
 offset_bottom = -6.0
 texture = ExtResource("5_ikalv")
+
+[node name="PortalButton" parent="." instance=ExtResource("11_1efrf")]
+layout_mode = 0
+offset_left = 1460.0
+offset_top = 560.0
+offset_right = 1573.0
+offset_bottom = 657.0
+scale = Vector2(0.8, 0.8)
 
 [node name="Spiral" type="AnimatedSprite2D" parent="."]
 position = Vector2(786, 562)

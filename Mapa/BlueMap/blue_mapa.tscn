@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dudiv4bfg8pq"]
+[gd_scene load_steps=30 format=3 uid="uid://dudiv4bfg8pq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_rx72m"]
 [ext_resource type="Texture2D" uid="uid://boc68kmusax73" path="res://Mapa/BlueMap/Space Background.png" id="2_wf52e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://iu13ma1grms2" path="res://Mapa/cloud_2.png" id="4_xpjo5"]
 [ext_resource type="Texture2D" uid="uid://df3a3ake47dje" path="res://Mapa/cloud_3.png" id="5_q7pwi"]
 [ext_resource type="Texture2D" uid="uid://bvyu0ipdqepke" path="res://Mapa/cloud_4.png" id="6_suq2j"]
+[ext_resource type="PackedScene" uid="uid://cnv8bt3vr5u1o" path="res://Items/portal_button.tscn" id="7_5lf76"]
 [ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="7_ia4x8"]
 [ext_resource type="Texture2D" uid="uid://b8s773of7hvos" path="res://Mapa/NonEuclideanMap/zly_wir_0.png" id="7_rw0f5"]
 [ext_resource type="Texture2D" uid="uid://duuwhu5s6klgk" path="res://Mapa/NonEuclideanMap/zly_wir_1.png" id="8_liuvx"]
@@ -17,8 +18,14 @@
 [ext_resource type="Texture2D" uid="uid://dx5ft4bd8hic4" path="res://Mapa/NonEuclideanMap/pole7_1.png" id="14_kndmb"]
 [ext_resource type="Texture2D" uid="uid://crjqpt0c2fbh" path="res://Mapa/NonEuclideanMap/pole7_2.png" id="15_qcgow"]
 [ext_resource type="Texture2D" uid="uid://ckmo4x6cac7c8" path="res://Mapa/NonEuclideanMap/pole7_3.png" id="16_4m7hx"]
+[ext_resource type="Texture2D" uid="uid://chpaf01qftwvf" path="res://Mapa/kawałek7/pole7_4.png" id="16_iqgpo"]
 [ext_resource type="Texture2D" uid="uid://k3lbry52wlsu" path="res://Mapa/NonEuclideanMap/pole7_4.png" id="17_afv1i"]
+[ext_resource type="Texture2D" uid="uid://dc0q6lbnckpn5" path="res://Mapa/kawałek7/pole7_5.png" id="17_c65gm"]
 [ext_resource type="Texture2D" uid="uid://bjelttbjbgyvt" path="res://Mapa/NonEuclideanMap/pole7_5.png" id="18_vglh1"]
+[ext_resource type="Texture2D" uid="uid://drt0276ga3wxs" path="res://Mapa/kawałek7/pole7_0.png" id="22_03e6q"]
+[ext_resource type="Texture2D" uid="uid://dcuu0fwbx4ge4" path="res://Mapa/kawałek7/pole7_1.png" id="23_fsqwd"]
+[ext_resource type="Texture2D" uid="uid://b512xhgkbur8g" path="res://Mapa/kawałek7/pole7_2.png" id="24_1xo7b"]
+[ext_resource type="Texture2D" uid="uid://c8r4aci8gcuip" path="res://Mapa/kawałek7/pole7_3.png" id="25_ma5r0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_elslx"]
 shader = ExtResource("1_rx72m")
@@ -65,6 +72,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("16_iqgpo")
+}],
+"loop": true,
+"name": &"10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_c65gm")
+}],
+"loop": true,
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("15_qcgow")
 }],
 "loop": true,
@@ -93,6 +116,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_03e6q")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_fsqwd")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_1xo7b")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_ma5r0")
+}],
+"loop": true,
+"name": &"9",
 "speed": 5.0
 }]
 
@@ -792,6 +847,14 @@ offset_right = 361.0
 offset_bottom = -6.0
 texture = ExtResource("5_q7pwi")
 
+[node name="PortalButton" parent="." instance=ExtResource("7_5lf76")]
+layout_mode = 0
+offset_left = 713.0
+offset_top = 1174.0
+offset_right = 826.0
+offset_bottom = 1271.0
+scale = Vector2(0.8, 0.8)
+
 [node name="Spiral" type="AnimatedSprite2D" parent="."]
 position = Vector2(798, 536)
 scale = Vector2(0.7, 0.7)
@@ -809,6 +872,7 @@ script = ExtResource("8_mqsya")
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek7" index="0"]
 sprite_frames = SubResource("SpriteFrames_aeooo")
+animation = &"11"
 
 [node name="Timer" type="Timer" parent="Pieces/Kawałek7"]
 wait_time = 0.7

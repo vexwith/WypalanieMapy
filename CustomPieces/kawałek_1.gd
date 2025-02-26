@@ -1,6 +1,16 @@
 extends Piece
 
-var locked = false
+var locked = false :
+	get:
+		return locked
+	set(value):
+		locked = value
+		update(0)
+		
+		if locked:
+			update_affected()
+		else:
+			affected_pieces.clear()
 
 var swaper = 0
 
@@ -13,8 +23,26 @@ func _input(event):
 			SignalBus.emit_signal("piece_clicked", self)
 	
 func update(damage):
-	super.update(damage)
+	#base update changed
+	if stage < 0: #if we start from -1 show sprite
+		if sign(damage) == -1: #cant undo more than -1
+			return
+		sprite.show()
+	stage = stage + damage
+	if stage < 0: #in case of undoing to -1 hide
+		if sprite.self_modulate == Color.PALE_GREEN: #show 0 stage after undoing
+			if locked:
+				sprite.play("6")
+			else:
+				sprite.play("0")
+		else:
+			sprite.hide()
+	elif locked:
+		sprite.play(str(min(stage + 6, 11)))
+	else:
+		sprite.play(str(min(stage, 5)))
 	
+	#portal stuff
 	var gm = owner.get_parent()
 	
 	var first_portal = gm.dark_pieces.get_child(0)
@@ -63,6 +91,11 @@ func update(damage):
 	elif gm.blue_map.visible and second_portal == self and !second_portal.locked:
 		for piece in gm.dark_pieces.get_children():
 			piece.update(damage)
+			
+func update_affected(): #used only for first map outer pieces to link with others
+	for piece in get_parent().get_children():
+		if 0 in piece.affected_pieces:
+			affected_pieces.append(piece.get_index())
 			
 func ojojoj():
 	var gm = owner.get_parent()
