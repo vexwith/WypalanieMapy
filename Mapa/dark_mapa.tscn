@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://vuh6l5cqq2gq"]
+[gd_scene load_steps=40 format=3 uid="uid://vuh6l5cqq2gq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_i15fi"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_mx3da"]
@@ -32,6 +32,10 @@
 [ext_resource type="Texture2D" uid="uid://dsmyekh404sj3" path="res://Mapa/kawałek1/pole1_1.png" id="23_k04kc"]
 [ext_resource type="Texture2D" uid="uid://bo3tny3bor3kf" path="res://Mapa/kawałek1/pole1_2.png" id="24_hnoyi"]
 [ext_resource type="Texture2D" uid="uid://uitwkg6rbwub" path="res://Mapa/kawałek1/pole1_3.png" id="25_36ld6"]
+[ext_resource type="PackedScene" uid="uid://cto0or21dya2h" path="res://Mapa/kawałek12/kawałek_12.tscn" id="33_j55k3"]
+[ext_resource type="PackedScene" uid="uid://qk7xlltaywn" path="res://Mapa/kawałek11/kawałek_11.tscn" id="34_0kjhg"]
+[ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="35_7biof"]
+[ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="36_wycm3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ullq"]
 shader = ExtResource("1_i15fi")
@@ -872,49 +876,73 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Kawałek1" parent="Pieces" instance=ExtResource("7_3h0s5")]
+[node name="Kawałek0" parent="Pieces" instance=ExtResource("7_3h0s5")]
 position = Vector2(780, 562)
 script = ExtResource("8_m4ghv")
 
-[node name="AnimatedSprite2D" parent="Pieces/Kawałek1" index="0"]
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek0" index="0"]
 sprite_frames = SubResource("SpriteFrames_lf7a0")
 
-[node name="Timer" type="Timer" parent="Pieces/Kawałek1"]
+[node name="Timer" type="Timer" parent="Pieces/Kawałek0"]
 wait_time = 0.6
 autostart = true
 
-[node name="Kawałek2" parent="Pieces" instance=ExtResource("8_itune")]
+[node name="Kawałek1" parent="Pieces" instance=ExtResource("8_itune")]
 position = Vector2(747, 384)
-affected_pieces = [7, 2, 0]
+affected_pieces = [7, 2, 11, 0]
 
-[node name="Kawałek8" parent="Pieces" instance=ExtResource("9_23kj3")]
+[node name="Kawałek2" parent="Pieces" instance=ExtResource("9_23kj3")]
 position = Vector2(623, 553)
-affected_pieces = [1, 4, 3, 0]
+affected_pieces = [1, 4, 3, 11, 10, 0]
 
-[node name="Kawałek9" parent="Pieces" instance=ExtResource("10_134fs")]
+[node name="Kawałek3" parent="Pieces" instance=ExtResource("10_134fs")]
 position = Vector2(724, 771)
-affected_pieces = [2, 4, 5]
+affected_pieces = [2, 4, 5, 10]
 
-[node name="Kawałek10" parent="Pieces" instance=ExtResource("11_ov3nc")]
+[node name="Kawałek4" parent="Pieces" instance=ExtResource("11_ov3nc")]
 position = Vector2(726, 667)
 affected_pieces = [2, 3, 5, 0]
 
-[node name="Kawałek13" parent="Pieces" instance=ExtResource("12_cp62y")]
+[node name="Kawałek5" parent="Pieces" instance=ExtResource("12_cp62y")]
 position = Vector2(899, 705)
-affected_pieces = [4, 3, 6, 0]
+affected_pieces = [4, 3, 6, 8, 0]
 
-[node name="Kawałek16" parent="Pieces" instance=ExtResource("13_3kh0s")]
+[node name="Kawałek6" parent="Pieces" instance=ExtResource("13_3kh0s")]
 position = Vector2(963, 561)
 affected_pieces = [5, 7, 0]
 
-[node name="Kawałek4" parent="Pieces" instance=ExtResource("14_26wqu")]
+[node name="Kawałek7" parent="Pieces" instance=ExtResource("14_26wqu")]
 position = Vector2(949, 385)
 affected_pieces = [1, 6]
 
+[node name="Kawałek8" parent="Pieces" instance=ExtResource("33_j55k3")]
+position = Vector2(971, 822)
+affected_pieces = [5]
+
+[node name="Kawałek9" parent="Pieces" instance=ExtResource("34_0kjhg")]
+position = Vector2(200, 1086)
+
+[node name="Kawałek10" parent="Pieces" instance=ExtResource("9_23kj3")]
+position = Vector2(548, 730)
+affected_pieces = [2, 3, 12]
+
+[node name="Kawałek11" parent="Pieces" instance=ExtResource("35_7biof")]
+position = Vector2(608, 354)
+affected_pieces = [1, 2, 13]
+
+[node name="Kawałek12" parent="Pieces" instance=ExtResource("36_wycm3")]
+position = Vector2(449, 565)
+affected_pieces = [10, 13]
+
+[node name="Kawałek13" parent="Pieces" instance=ExtResource("11_ov3nc")]
+position = Vector2(496, 393)
+affected_pieces = [12, 11]
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
-[connection signal="timeout" from="Pieces/Kawałek1/Timer" to="Pieces/Kawałek1" method="_on_timer_timeout"]
+[connection signal="timeout" from="Pieces/Kawałek0/Timer" to="Pieces/Kawałek0" method="_on_timer_timeout"]
 
+[editable path="Pieces/Kawałek0"]
 [editable path="Pieces/Kawałek1"]
-[editable path="Pieces/Kawałek2"]
