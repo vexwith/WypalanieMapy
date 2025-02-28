@@ -905,19 +905,19 @@ affected_pieces = [2, 3, 5, 0]
 
 [node name="Kawałek5" parent="Pieces" instance=ExtResource("12_cp62y")]
 position = Vector2(899, 705)
-affected_pieces = [4, 3, 6, 8, 0]
+affected_pieces = [4, 3, 6, 8, 14, 0]
 
 [node name="Kawałek6" parent="Pieces" instance=ExtResource("13_3kh0s")]
 position = Vector2(963, 561)
-affected_pieces = [5, 7, 0]
+affected_pieces = [5, 7, 14, 0]
 
 [node name="Kawałek7" parent="Pieces" instance=ExtResource("14_26wqu")]
 position = Vector2(949, 385)
-affected_pieces = [1, 6]
+affected_pieces = [1, 6, 15]
 
 [node name="Kawałek8" parent="Pieces" instance=ExtResource("33_j55k3")]
 position = Vector2(971, 822)
-affected_pieces = [5]
+affected_pieces = [5, 14]
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("34_0kjhg")]
 position = Vector2(200, 1086)
@@ -937,6 +937,14 @@ affected_pieces = [10, 13]
 [node name="Kawałek13" parent="Pieces" instance=ExtResource("11_ov3nc")]
 position = Vector2(496, 393)
 affected_pieces = [12, 11]
+
+[node name="Kawałek14" parent="Pieces" instance=ExtResource("9_23kj3")]
+position = Vector2(1089, 697)
+affected_pieces = [5, 6, 8, 15]
+
+[node name="Kawałek15" parent="Pieces" instance=ExtResource("10_134fs")]
+position = Vector2(1171, 529)
+affected_pieces = [7, 14]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
