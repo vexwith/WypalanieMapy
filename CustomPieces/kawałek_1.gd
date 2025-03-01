@@ -8,6 +8,7 @@ var locked = false :
 		update(0)
 		
 		if locked:
+			affected_pieces.clear()
 			update_affected()
 		else:
 			affected_pieces.clear()

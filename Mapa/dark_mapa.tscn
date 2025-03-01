@@ -989,6 +989,7 @@ position = Vector2(1362, 39)
 affected_pieces = [23]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="Pieces/Kawałek0/Timer" to="Pieces/Kawałek0" method="_on_timer_timeout"]
