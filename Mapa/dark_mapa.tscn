@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://vuh6l5cqq2gq"]
+[gd_scene load_steps=42 format=3 uid="uid://vuh6l5cqq2gq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_i15fi"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_mx3da"]
@@ -36,6 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://qk7xlltaywn" path="res://Mapa/kawałek11/kawałek_11.tscn" id="34_0kjhg"]
 [ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="35_7biof"]
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="36_wycm3"]
+[ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="37_xw08q"]
+[ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="38_mpkb4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ullq"]
 shader = ExtResource("1_i15fi")
@@ -946,8 +948,47 @@ affected_pieces = [5, 6, 8, 15]
 position = Vector2(1171, 529)
 affected_pieces = [7, 14]
 
+[node name="Kawałek16" parent="Pieces" instance=ExtResource("13_3kh0s")]
+position = Vector2(108, 70)
+affected_pieces = [17, 18]
+
+[node name="Kawałek17" parent="Pieces" instance=ExtResource("37_xw08q")]
+position = Vector2(185, 191)
+affected_pieces = [16, 18]
+
+[node name="Kawałek18" parent="Pieces" instance=ExtResource("33_j55k3")]
+position = Vector2(300, 79)
+affected_pieces = [16, 17]
+
+[node name="Kawałek19" parent="Pieces" instance=ExtResource("38_mpkb4")]
+position = Vector2(1519, 1085)
+affected_pieces = [21, 20]
+
+[node name="Kawałek20" parent="Pieces" instance=ExtResource("9_23kj3")]
+position = Vector2(1337, 1092)
+affected_pieces = [19]
+
+[node name="Kawałek21" parent="Pieces" instance=ExtResource("11_ov3nc")]
+position = Vector2(1535, 922)
+affected_pieces = [19]
+
+[node name="Kawałek22" parent="Pieces" instance=ExtResource("10_134fs")]
+position = Vector2(1432, 242)
+affected_pieces = [23]
+
+[node name="Kawałek23" parent="Pieces" instance=ExtResource("11_ov3nc")]
+position = Vector2(1437, 133)
+affected_pieces = [22, 24, 25]
+
+[node name="Kawałek24" parent="Pieces" instance=ExtResource("35_7biof")]
+position = Vector2(1553, 98)
+affected_pieces = [23]
+
+[node name="Kawałek25" parent="Pieces" instance=ExtResource("11_ov3nc")]
+position = Vector2(1362, 39)
+affected_pieces = [23]
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="Pieces/Kawałek0/Timer" to="Pieces/Kawałek0" method="_on_timer_timeout"]

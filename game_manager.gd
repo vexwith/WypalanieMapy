@@ -309,8 +309,10 @@ func clear_rims(map):
 		if piece.stage_number != null: piece.stage_number.hide()
 
 func clear_modulation():
-	if dark_map.visible:
+	if dark_map.visible or blue_map.visible:
 		for piece in dark_pieces.get_children():
+			piece.sprite.self_modulate = Color.WHITE
+		for piece in blue_pieces.get_children():
 			piece.sprite.self_modulate = Color.WHITE
 	else:
 		for piece in base_map.get_children():
@@ -944,6 +946,9 @@ func _on_real_exit_button_up():
 	
 	blue_pieces.get_child(0).locked = true #need to disable infinite loop
 	for piece in dark_pieces.get_children():
+		piece.update(1)
+	for upgraded_dark in [2]:
+		var piece = dark_pieces.get_child(upgraded_dark)
 		piece.update(1)
 	blue_pieces.get_child(0).locked = false
 	
