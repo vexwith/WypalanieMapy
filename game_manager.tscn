@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=85 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b0e8obcdhpqo0" path="res://GUI/pulapkareturnnom.png" id="12_u2w4e"]
 [ext_resource type="Texture2D" uid="uid://bf2on41x62uak" path="res://Mapa/bkg_infinite.png" id="13_xfc23"]
 [ext_resource type="Texture2D" uid="uid://bn0s77j1kvekb" path="res://GUI/keyboard_16.png" id="14_0bn3h"]
+[ext_resource type="Texture2D" uid="uid://7q87yite7q77" path="res://GUI/infinity_indicator.png" id="15_2xy63"]
 [ext_resource type="Texture2D" uid="uid://dlsr5ykbk51r" path="res://GUI/b_lev0_0.png" id="18_3gk7w"]
 [ext_resource type="Texture2D" uid="uid://cdnjhhj5dlpwd" path="res://GUI/b_lev1_0.png" id="19_oqw3y"]
 [ext_resource type="Texture2D" uid="uid://dwv7js2un0fsx" path="res://GUI/b_lev2_0.png" id="20_3rgua"]
@@ -319,6 +320,14 @@ limit_left = -624
 limit_top = -684
 limit_right = 2544
 limit_bottom = 1764
+
+[node name="Rim" type="TextureRect" parent="Camera2D"]
+visible = false
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("15_2xy63")
 
 [node name="ResetButton" type="Button" parent="Camera2D"]
 offset_left = 495.0

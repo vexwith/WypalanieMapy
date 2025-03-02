@@ -36,6 +36,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var dark_map = $DarkMapa
 @onready var dark_pieces = $DarkMapa/Pieces
 @onready var infinity = $Infinity
+@onready var infinity_indicator_rim = $Camera2D/Rim
 
 @onready var blue_map = $BlueMapa
 @onready var blue_pieces = $BlueMapa/Pieces
@@ -199,7 +200,7 @@ func _process(delta):
 		if Globals.crawl_mode:
 			bgm.stream = hills
 			plaza_version = 9 #reset
-		elif dark_map.visible:
+		elif dark_map.visible or blue_map.visible:
 			bgm.stream = plaza
 			plaza_version = 8 #max slow
 		elif Globals.lapa_gained:
@@ -236,6 +237,15 @@ func _process(delta):
 	#bkg handler
 	if first_bkg.modulate.a > max_modulation:
 		first_bkg.modulate.a -= 0.001
+		
+	#double portal indicator handler 
+	if (dark_map.visible or blue_map.visible) and Globals.detail_mode:
+		var dark_portal = dark_pieces.get_child(0)
+		var blue_portal = blue_pieces.get_child(0)
+		if !dark_portal.locked and !blue_portal.locked:
+			if dark_portal.rim.modulate == dark_portal.affected_modulation or blue_portal.rim.modulate == blue_portal.affected_modulation:
+				infinity_indicator_rim.show()
+			else: infinity_indicator_rim.hide()
 	
 func _input(event): #dragging hamdler
 	if event.is_action_pressed("ui_cancel"): #esc to end
@@ -302,7 +312,9 @@ func _input(event): #dragging hamdler
 				if new_pos.y > 1160: #1080
 					camera.position.y = 1160
 
+
 func clear_rims(map):
+	infinity_indicator_rim.hide()
 	for i in range(len(map.get_children())):
 		var piece = map.get_child(i)
 		piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)

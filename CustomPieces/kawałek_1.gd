@@ -15,6 +15,7 @@ var locked = false :
 
 var swaper = 0
 
+
 func _input(event):
 	if cursor_entered and clickable and not Globals.ignore_clicks and event.is_action_pressed("LPM"):
 		if !locked: #portal works
