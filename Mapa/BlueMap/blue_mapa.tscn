@@ -891,110 +891,209 @@ autostart = true
 
 [node name="Kawałek1" parent="Pieces" instance=ExtResource("13_dr4a3")]
 position = Vector2(663, 510)
-affected_pieces = [0]
+affected_pieces = [10, 15, 0]
 
 [node name="Kawałek2" parent="Pieces" instance=ExtResource("27_xrnbv")]
 position = Vector2(907, 533)
 rotation = -0.539553
+affected_pieces = [22, 3, 0]
 
 [node name="Kawałek3" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(1097, 721)
+position = Vector2(1073, 694)
 rotation = 0.319159
+scale = Vector2(0.7, 0.7)
+affected_pieces = [2, 4, 5]
 
 [node name="Kawałek4" parent="Pieces" instance=ExtResource("29_oshen")]
-position = Vector2(1151, 896)
+position = Vector2(1118, 833)
 rotation = -0.448349
+affected_pieces = [3, 5, 8]
 
 [node name="Kawałek5" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(1347, 790)
+position = Vector2(1250, 736)
+scale = Vector2(0.7, 0.7)
+affected_pieces = [3, 4, 6]
 
 [node name="Kawałek6" parent="Pieces" instance=ExtResource("13_dr4a3")]
-position = Vector2(1509, 633)
+position = Vector2(1416, 682)
 rotation = 0.645657
+affected_pieces = [5, 7, 32]
 
 [node name="Kawałek7" parent="Pieces" instance=ExtResource("30_cu0nn")]
-position = Vector2(1527, 957)
+position = Vector2(1449, 884)
 rotation = 0.3991
+affected_pieces = [6, 31, 33]
 
 [node name="Kawałek8" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(1017, 1105)
-rotation = -0.927052
+position = Vector2(1042, 1012)
+rotation = -1.3282
+scale = Vector2(0.7, 0.7)
+affected_pieces = [4, 30]
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("31_y071b")]
-position = Vector2(1257, 1078)
-rotation = 0.703816
+position = Vector2(1014, 80)
+rotation = 0.814831
+affected_pieces = [23]
 
 [node name="Kawałek10" parent="Pieces" instance=ExtResource("31_y071b")]
-position = Vector2(470, 361)
+position = Vector2(483, 337)
+rotation = 0.280337
+affected_pieces = [1, 11, 12, 13]
 
 [node name="Kawałek11" parent="Pieces" instance=ExtResource("32_kppem")]
-position = Vector2(512, 165)
+position = Vector2(485, 172)
+scale = Vector2(0.7, 0.7)
+affected_pieces = [10, 38]
 
 [node name="Kawałek12" parent="Pieces" instance=ExtResource("32_kppem")]
-position = Vector2(299, 144)
+position = Vector2(348, 138)
 rotation = -0.139468
+scale = Vector2(0.7, 0.7)
+affected_pieces = [10, 37]
 
 [node name="Kawałek13" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(201, 383)
+position = Vector2(280, 353)
 rotation = -0.695254
+scale = Vector2(0.7, 0.7)
+affected_pieces = [10, 14]
 
 [node name="Kawałek14" parent="Pieces" instance=ExtResource("33_edr00")]
-position = Vector2(97, 276)
-rotation = 0.683469
+position = Vector2(116, 314)
+rotation = -0.208074
+affected_pieces = [13]
 
 [node name="Kawałek15" parent="Pieces" instance=ExtResource("34_clb7f")]
 position = Vector2(538, 674)
 rotation = 0.666474
+affected_pieces = [1, 19, 17]
 
 [node name="Kawałek16" parent="Pieces" instance=ExtResource("27_xrnbv")]
-position = Vector2(626, 1008)
+position = Vector2(601, 1024)
+affected_pieces = [17, 18, 21]
 
 [node name="Kawałek17" parent="Pieces" instance=ExtResource("32_kppem")]
-position = Vector2(532, 914)
+position = Vector2(604, 832)
+rotation = -0.587815
+scale = Vector2(0.7, 0.7)
+affected_pieces = [15, 16]
 
 [node name="Kawałek18" parent="Pieces" instance=ExtResource("33_edr00")]
-position = Vector2(369, 894)
+position = Vector2(420, 991)
+affected_pieces = [16, 21, 20]
 
 [node name="Kawałek19" parent="Pieces" instance=ExtResource("31_y071b")]
-position = Vector2(318, 602)
+position = Vector2(315, 626)
+rotation = -0.184191
+affected_pieces = [15, 35]
 
 [node name="Kawałek20" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(132, 837)
+position = Vector2(227, 953)
+rotation = -0.376093
+scale = Vector2(0.7, 0.7)
+affected_pieces = [18, 36]
 
 [node name="Kawałek21" parent="Pieces" instance=ExtResource("32_kppem")]
-position = Vector2(382, 1132)
-rotation = 0.566056
+position = Vector2(410, 1166)
+rotation = 0.903072
+scale = Vector2(0.7, 0.7)
+affected_pieces = [16, 18]
 
 [node name="Kawałek22" parent="Pieces" instance=ExtResource("31_y071b")]
 position = Vector2(1134, 401)
 rotation = -0.990552
+affected_pieces = [2, 24, 23]
 
 [node name="Kawałek23" parent="Pieces" instance=ExtResource("35_234bx")]
-position = Vector2(1078, 249)
+position = Vector2(1099, 295)
 rotation = -0.461386
+scale = Vector2(0.7, 0.7)
+affected_pieces = [22, 9]
 
 [node name="Kawałek24" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(1360, 405)
+position = Vector2(1297, 421)
+scale = Vector2(0.7, 0.7)
+affected_pieces = [22, 27]
 
 [node name="Kawałek25" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(1248, 172)
-rotation = -1.09195
+position = Vector2(1327, 62)
+rotation = -1.60555
+scale = Vector2(0.7, 0.7)
+affected_pieces = [26]
 
 [node name="Kawałek26" parent="Pieces" instance=ExtResource("36_1jji6")]
-position = Vector2(1386, 234)
-rotation = 0.762656
+position = Vector2(1362, 221)
+rotation = 0.954114
+affected_pieces = [22, 28, 25]
 
 [node name="Kawałek27" parent="Pieces" instance=ExtResource("34_clb7f")]
-position = Vector2(1573, 287)
-rotation = -2.47188
+position = Vector2(1485, 384)
+rotation = -1.99579
+scale = Vector2(0.8, 0.8)
+affected_pieces = [24, 29]
 
 [node name="Kawałek28" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(1552, 39.9999)
-rotation = -0.82328
+position = Vector2(1549, 142)
+rotation = -0.140831
+scale = Vector2(0.7, 0.7)
+affected_pieces = [26]
 
 [node name="Kawałek29" parent="Pieces" instance=ExtResource("28_ugxcn")]
-position = Vector2(974, 42)
-rotation = 1.09677
+position = Vector2(1602, 292)
+rotation = 0.0740292
+scale = Vector2(0.7, 0.7)
+affected_pieces = [27]
+
+[node name="Kawałek30" parent="Pieces" instance=ExtResource("28_ugxcn")]
+position = Vector2(1066, 1181)
+rotation = 0.867861
+scale = Vector2(0.7, 0.7)
+affected_pieces = [8]
+
+[node name="Kawałek31" parent="Pieces" instance=ExtResource("28_ugxcn")]
+position = Vector2(1416, 1058)
+rotation = 1.23422
+scale = Vector2(0.8, 0.8)
+affected_pieces = [7, 34]
+
+[node name="Kawałek32" parent="Pieces" instance=ExtResource("28_ugxcn")]
+position = Vector2(1570, 577)
+rotation = -0.40516
+scale = Vector2(0.7, 0.7)
+affected_pieces = [6]
+
+[node name="Kawałek33" parent="Pieces" instance=ExtResource("28_ugxcn")]
+position = Vector2(1592, 1033)
+rotation = 0.898443
+scale = Vector2(0.7, 0.7)
+affected_pieces = [7]
+
+[node name="Kawałek34" parent="Pieces" instance=ExtResource("13_dr4a3")]
+position = Vector2(1503, 1212)
+rotation = -0.8745
+scale = Vector2(0.7, 0.7)
+affected_pieces = [31]
+
+[node name="Kawałek35" parent="Pieces" instance=ExtResource("29_oshen")]
+position = Vector2(105, 691)
+affected_pieces = [19]
+
+[node name="Kawałek36" parent="Pieces" instance=ExtResource("28_ugxcn")]
+position = Vector2(81, 1058)
+rotation = -0.793225
+scale = Vector2(0.7, 0.7)
+affected_pieces = [20]
+
+[node name="Kawałek37" parent="Pieces" instance=ExtResource("28_ugxcn")]
+position = Vector2(220, 29)
+rotation = 0.784898
+scale = Vector2(0.7, 0.7)
+affected_pieces = [12]
+
+[node name="Kawałek38" parent="Pieces" instance=ExtResource("30_cu0nn")]
+position = Vector2(525, 41)
+rotation = 1.10204
+scale = Vector2(0.7, 0.7)
+affected_pieces = [11]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0.45098, 1)

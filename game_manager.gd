@@ -451,7 +451,7 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = false
 			
 	#saving map state
-	if clicked_piece.get_index() not in range(25, 40) and not Globals.crawl_mode: #if not inside saper or hills
+	if not ((wide_map.visible and clicked_piece.get_index() in range(25, 40)) or Globals.crawl_mode): #if not inside saper or hills
 		last_piece = clicked_piece
 		save_prev()
 
@@ -949,6 +949,9 @@ func _on_real_exit_button_up():
 		piece.update(1)
 	for upgraded_dark in [2]:
 		var piece = dark_pieces.get_child(upgraded_dark)
+		piece.update(1)
+	for upgrade_blue in [1, 2]:
+		var piece = blue_pieces.get_child(upgrade_blue)
 		piece.update(1)
 	blue_pieces.get_child(0).locked = false
 	
