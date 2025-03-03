@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsila2ww7b0a8"
-path="res://.godot/imported/message.png-504f8880ad0bf4819aa2b14d65c59023.ctex"
+uid="uid://b447v26da3h5c"
+path="res://.godot/imported/help_keyb_mouse_PPM.png-f71dc92bc89931d055c95ba8706905aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/message.png"
-dest_files=["res://.godot/imported/message.png-504f8880ad0bf4819aa2b14d65c59023.ctex"]
+source_file="res://GUI/help_keyb_mouse_PPM.png"
+dest_files=["res://.godot/imported/help_keyb_mouse_PPM.png-f71dc92bc89931d055c95ba8706905aa.ctex"]
 
 [params]
 

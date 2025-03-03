@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://vuh6l5cqq2gq"]
+[gd_scene load_steps=43 format=3 uid="uid://vuh6l5cqq2gq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_i15fi"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_mx3da"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="8_itune"]
 [ext_resource type="Script" path="res://CustomPieces/kawałek_1.gd" id="8_m4ghv"]
 [ext_resource type="Texture2D" uid="uid://d2yq1ivorenkt" path="res://Mapa/BlueMap/zly_wir_1.png" id="8_rkt2n"]
+[ext_resource type="PackedScene" uid="uid://cllir3qiwtskn" path="res://Items/Messages/button_instruction.tscn" id="8_x6n0w"]
 [ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="9_23kj3"]
 [ext_resource type="Texture2D" uid="uid://xgyui51765ek" path="res://Mapa/BlueMap/zly_wir_2.png" id="9_n3bdw"]
 [ext_resource type="Texture2D" uid="uid://hw156cihsevt" path="res://Mapa/BlueMap/zly_wir_3.png" id="10_8gwhh"]
@@ -860,11 +861,22 @@ texture = ExtResource("5_ikalv")
 
 [node name="PortalButton" parent="." instance=ExtResource("11_1efrf")]
 layout_mode = 0
-offset_left = 1460.0
-offset_top = 560.0
-offset_right = 1573.0
-offset_bottom = 657.0
+offset_left = 782.0
+offset_top = -68.0
+offset_right = 895.0
+offset_bottom = 29.0
 scale = Vector2(0.8, 0.8)
+
+[node name="Mode" parent="PortalButton" index="0"]
+position = Vector2(1003.75, 832.5)
+
+[node name="ButtonInstruction" parent="." instance=ExtResource("8_x6n0w")]
+layout_mode = 0
+offset_left = 1593.0
+offset_top = 476.0
+offset_right = 1654.0
+offset_bottom = 537.0
+scale = Vector2(0.9, 0.9)
 
 [node name="Spiral" type="AnimatedSprite2D" parent="."]
 position = Vector2(786, 562)
@@ -993,5 +1005,6 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="Pieces/Kawałek0/Timer" to="Pieces/Kawałek0" method="_on_timer_timeout"]
 
+[editable path="PortalButton"]
 [editable path="Pieces/Kawałek0"]
 [editable path="Pieces/Kawałek1"]

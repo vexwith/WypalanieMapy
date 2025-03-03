@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=87 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -37,9 +37,11 @@
 [ext_resource type="Texture2D" uid="uid://huatjbly557s" path="res://GUI/bexitom_2.png" id="24_l4ipa"]
 [ext_resource type="Texture2D" uid="uid://dlakmdsc6fv6k" path="res://GUI/keyboard_2.png" id="24_v2j41"]
 [ext_resource type="Texture2D" uid="uid://cvsvjd05grxe6" path="res://GUI/keyboard_32.png" id="25_a2es2"]
+[ext_resource type="Texture2D" uid="uid://cax37i26u2qwg" path="res://GUI/help_keyb_mouse_LPM.png" id="27_wjqx5"]
 [ext_resource type="Texture2D" uid="uid://di54f3ye3l0fi" path="res://GUI/keyboard_46.png" id="28_qk5g2"]
 [ext_resource type="Texture2D" uid="uid://bqnrbr75mjhb4" path="res://GUI/keyboard_133.png" id="29_pb5t2"]
 [ext_resource type="PackedScene" uid="uid://y1g4trw6rh1f" path="res://GUI/CzyNaPtak/czy_na_ptak.tscn" id="31_g384u"]
+[ext_resource type="Texture2D" uid="uid://b447v26da3h5c" path="res://GUI/help_keyb_mouse_PPM.png" id="31_oa7lu"]
 [ext_resource type="Texture2D" uid="uid://dkqbdqqf632eq" path="res://GUI/b_lev4_0.png" id="36_ejtpr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
@@ -385,9 +387,14 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_p7brn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j65kq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/OgnikButton"]
-position = Vector2(4, 11.25)
+position = Vector2(6, 11.25)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("21_2lek6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/OgnikButton"]
+position = Vector2(2.5, 11.25)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("27_wjqx5")
 
 [node name="LapaButton" type="Button" parent="Camera2D"]
 offset_left = -828.0
@@ -401,9 +408,14 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_d7n1u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5see7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/LapaButton"]
-position = Vector2(4.167, 11.25)
+position = Vector2(2.667, 11.25)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("24_v2j41")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/LapaButton"]
+position = Vector2(6.167, 11.25)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("31_oa7lu")
 
 [node name="Rewind" type="Control" parent="Camera2D"]
 layout_mode = 3

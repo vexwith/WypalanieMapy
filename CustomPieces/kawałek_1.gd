@@ -51,6 +51,7 @@ func update(damage):
 	var second_portal = gm.blue_pieces.get_child(0)
 	if !first_portal.locked and !second_portal.locked: #infinity
 		if damage < 1: return #dont activate again when going back
+		var  temp_detail_mode = Globals.detail_mode
 		Globals.detail_mode = false
 		gm.clear_rims(gm.dark_pieces)
 		gm.clear_rims(gm.blue_pieces)
@@ -71,7 +72,7 @@ func update(damage):
 		var tween = get_tree().create_tween().set_parallel(true)
 		var t = 2.0
 		tween.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), t).set_trans(Tween.TRANS_SINE)
-		if gm.blue_map.visible:
+		if gm.blue_map.visible: #Color(0, 0, 0.451)
 			tween.tween_property(owner.find_child("CanvasModulate"), "color", Color.WHITE, t)
 		else:
 			tween.tween_property(gm.ognik.light, "scale", Vector2(3.0, 3.0), t)
@@ -87,12 +88,20 @@ func update(damage):
 		await tween2.finished
 		white_shadow.hide()
 		
+		Globals.detail_mode = temp_detail_mode
+		
 	elif gm.dark_map.visible and first_portal == self and !first_portal.locked:
 		for piece in gm.blue_pieces.get_children():
 			piece.update(damage)
+			if piece.stage == 5 or piece.stage == 6:
+				gm.sfx.stream = gm.ojoj
+				gm.sfx.play()
 	elif gm.blue_map.visible and second_portal == self and !second_portal.locked:
 		for piece in gm.dark_pieces.get_children():
 			piece.update(damage)
+			if piece.stage == 5 or piece.stage == 6:
+				gm.sfx.stream = gm.ojoj
+				gm.sfx.play()
 			
 func update_affected(): #used only for first map outer pieces to link with others
 	for piece in get_parent().get_children():

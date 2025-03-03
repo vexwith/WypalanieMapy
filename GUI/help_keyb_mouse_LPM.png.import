@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdx61u5yhrg3p"
-path="res://.godot/imported/ogloszenie1_0.png-00de97f9bbd12814d9596e260ef42601.ctex"
+uid="uid://cax37i26u2qwg"
+path="res://.godot/imported/help_keyb_mouse_LPM.png-46bb9954431c98ba1ca94e2014ab3b4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/ogloszenie1_0.png"
-dest_files=["res://.godot/imported/ogloszenie1_0.png-00de97f9bbd12814d9596e260ef42601.ctex"]
+source_file="res://GUI/help_keyb_mouse_LPM.png"
+dest_files=["res://.godot/imported/help_keyb_mouse_LPM.png-46bb9954431c98ba1ca94e2014ab3b4d.ctex"]
 
 [params]
 

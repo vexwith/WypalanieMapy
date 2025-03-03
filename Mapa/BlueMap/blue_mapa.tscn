@@ -1096,7 +1096,7 @@ scale = Vector2(0.7, 0.7)
 affected_pieces = [11]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0.45098, 1)
+color = Color(0, 0, 0.647059, 1)
 
 [connection signal="timeout" from="Pieces/Kawałek0/Timer" to="Pieces/Kawałek0" method="_on_timer_timeout"]
 

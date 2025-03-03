@@ -1,53 +1,55 @@
 [gd_scene load_steps=9 format=3 uid="uid://dfdvqa0ogw2w3"]
 
-[ext_resource type="Texture2D" uid="uid://cdx61u5yhrg3p" path="res://Items/ogloszenie1_0.png" id="1_ayp8a"]
-[ext_resource type="Script" path="res://Items/message.gd" id="2_cmayo"]
-[ext_resource type="Texture2D" uid="uid://bsila2ww7b0a8" path="res://Items/message.png" id="3_bh3ei"]
-[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="4_e8021"]
+[ext_resource type="Texture2D" uid="uid://bwtt0xhsxwewn" path="res://Items/Messages/kartka.png" id="1_y46s6"]
+[ext_resource type="Script" path="res://Items/Messages/message.gd" id="2_p1h7q"]
+[ext_resource type="Texture2D" uid="uid://bsila2ww7b0a8" path="res://Items/Messages/message.png" id="3_6jnx3"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="4_y0lmi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4wt6"]
-texture = ExtResource("1_ayp8a")
-region_rect = Rect2(0, 0, 29, 39)
+texture = ExtResource("1_y46s6")
+region_rect = Rect2(0, 0, 61, 61)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxt2b"]
-texture = ExtResource("1_ayp8a")
+texture = ExtResource("1_y46s6")
+region_rect = Rect2(0, 0, 61, 61)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52rph"]
-texture = ExtResource("1_ayp8a")
+texture = ExtResource("1_y46s6")
+region_rect = Rect2(0, 0, 61, 61)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2vlx"]
 
 [node name="Message" type="Button"]
-offset_left = -22.0
-offset_top = -30.0
-offset_right = 7.0
-offset_bottom = 9.0
+offset_left = -45.75
+offset_top = -45.75
+offset_right = 15.25
+offset_bottom = 15.25
 scale = Vector2(1.5, 1.5)
 theme_override_styles/normal = SubResource("StyleBoxTexture_c4wt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_uxt2b")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_52rph")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d2vlx")
-script = ExtResource("2_cmayo")
+script = ExtResource("2_p1h7q")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -103.333
-offset_top = -100.667
-offset_right = 199.667
-offset_bottom = 243.333
+offset_left = -84.1667
+offset_top = -101.5
+offset_right = 218.833
+offset_bottom = 242.5
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_bh3ei")
+texture = ExtResource("3_6jnx3")
 
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -69.3333
-offset_top = -54.0
-offset_right = 163.667
-offset_bottom = 177.0
+offset_left = -49.5
+offset_top = -55.5
+offset_right = 183.5
+offset_bottom = 175.5
 scale = Vector2(0.75, 0.75)
-theme = ExtResource("4_e8021")
+theme = ExtResource("4_y0lmi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Ło matku!
 Chyba nie chcesz wywołać pożaru co?! 

@@ -18,7 +18,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var mina_wybuch = preload("res://Wavs/explosion-91872.mp3")
 @onready var postmapa = preload("res://Mapa/bkg_postlapa2.png")
 
-@onready var message_scene = preload("res://Items/message.tscn")
+@onready var message_scene = preload("res://Items/Messages/message.tscn")
 
 @onready var lapa_button_normal = preload("res://GUI/lapa_button.png")
 @onready var lapa_button_hover = preload("res://GUI/lapa_button_glow.png")
@@ -49,6 +49,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var hills_exit = $HillsExit
 @onready var lapa_button = camera.find_child("LapaButton")
 @onready var key_one = $Camera2D/OgnikButton/Sprite2D
+@onready var mouse_left = $Camera2D/OgnikButton/Sprite2D2
 @onready var small_piece = $SmallPiece
 @onready var menu = camera.find_child("Menu")
 @onready var screen_shadow = camera.find_child("Shadow")
@@ -94,7 +95,7 @@ func save_data(path : String):
 			"first_enter" : Globals.first_enter,
 			"first_restart" : Globals.first_restart,
 			"say_restart" : Globals.say_restart,
-			"wypalenia" : Globals.wypalenia,
+#			"wypalenia" : Globals.wypalenia,
 			"map_pieces" : Globals.map_pieces
 		}
 	}
@@ -123,7 +124,7 @@ func load_data(path : String):
 		Globals.first_enter = data.player_data.first_enter
 		Globals.first_restart = data.player_data.first_restart
 		Globals.say_restart = data.player_data.say_restart
-		Globals.wypalenia = data.player_data.wypalenia
+#		Globals.wypalenia = data.player_data.wypalenia
 		Globals.map_pieces = data.player_data.map_pieces
 		
 #		Globals.map_state_log = data.map_data.map_state_log
@@ -148,6 +149,7 @@ func _ready():
 	if not Globals.lapa_gained:
 		lapa_button.hide()
 		key_one.hide()
+		mouse_left.hide()
 		sfx.volume_db = 0.0
 	elif !Globals.reset_dark:
 		start_flying_piece()
@@ -269,12 +271,12 @@ func _input(event): #dragging hamdler
 				var prev_state = Globals.map_state_log[-1].duplicate()
 				load_prev(prev_state)
 			
-	if event.is_action_pressed("1"):
+	if event.is_action_pressed("1") or event.is_action_released("LPM"):
 		if not Globals.trapped:
 			_on_ognik_button_button_up()
 			Globals.ignore_clicks = false
 		
-	if event.is_action_pressed("2"):
+	if event.is_action_pressed("2") or event.is_action_pressed("PPM"):
 		if not Globals.crawl_mode and Globals.lapa_gained:
 			_on_lapa_button_button_up()
 			
@@ -300,7 +302,7 @@ func _input(event): #dragging hamdler
 	#dragging
 	if not Globals.crawl_mode and not Globals.trapped:
 		if event is InputEventMouseMotion and draggable:
-			if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
+			if event.button_mask == MOUSE_BUTTON_MASK_RIGHT:
 				var new_pos = camera.position - event.relative * camera.zoom * 0.4
 				camera.position = new_pos
 				if new_pos.x < 400: #480
@@ -457,10 +459,10 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = true
 			await sfx.finished
 			_on_hills_exit_button_up()
-			
-			
-			
 			Globals.ignore_clicks = false
+			
+	if dark_map.visible or blue_map.visible:
+		dark_map_completed()
 			
 	#saving map state
 	if not ((wide_map.visible and clicked_piece.get_index() in range(25, 40)) or Globals.crawl_mode): #if not inside saper or hills
@@ -677,6 +679,16 @@ func non_euclidean_completed():
 			return false
 			
 	return true
+	
+func dark_map_completed():
+	for piece in dark_pieces.get_children():
+		if piece.stage != 3 and piece.stage != 4:
+			return
+	for piece in blue_pieces.get_children():
+		if piece.stage != 3 and piece.stage != 4:
+			return
+			
+	_on_dark_completed()
 	
 func saper_failed():
 	for i in range(25, 40):
@@ -920,7 +932,7 @@ func load_prev(map_state):
 			piece.update(0)
 	else: #normal map
 		var non_euclidean_count = 9
-		for i in range(len(map_state) - 1, -1, -1):
+		for i in range(len(map_state) - 2, -1, -1):
 			if non_euclidean_count >= 0:
 				var piece = non_euclidean_pieces.get_child(non_euclidean_count)
 				piece.stage = map_state.pop_back()
@@ -976,6 +988,7 @@ func _on_real_exit_button_up():
 	
 	await get_tree().create_timer(1.0, false).timeout
 	screen_shadow.hide()
+	screen_shadow.modulate.a = 0.0
 	ognik.dark_mode = true
 	var tween_light = get_tree().create_tween()
 	tween_light.tween_property(ognik.light, "color", Color(1.0, 0.68, 0.0, 1.0), 2.0)
@@ -997,6 +1010,14 @@ func _on_door_button_up():
 		
 		await tween.finished
 		wide_map.hide()
+		
+func _on_dark_completed():
+	var tween = get_tree().create_tween()
+	screen_shadow.show()
+	endings.show()
+	endings.text = "ENDING 2137"
+	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+	tween.tween_property(endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 
 func _on_menu_pressed():
 	save_data(SAVE_DIR + SAVE_FILE_NAME)
