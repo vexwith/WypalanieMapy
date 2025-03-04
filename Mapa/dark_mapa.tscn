@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://vuh6l5cqq2gq"]
+[gd_scene load_steps=48 format=3 uid="uid://vuh6l5cqq2gq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_i15fi"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_mx3da"]
@@ -163,6 +163,33 @@ animations = [{
 "name": &"9",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_rv7sb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_skdjh"]
+gradient = SubResource("Gradient_rv7sb")
+
+[sub_resource type="Curve" id="Curve_6emai"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_74dc6"]
+curve = SubResource("Curve_6emai")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6fjtm"]
+emission_shape = 3
+emission_box_extents = Vector3(1000, 700, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 50.0
+scale_curve = SubResource("CurveTexture_74dc6")
+color_ramp = SubResource("GradientTexture1D_skdjh")
 
 [node name="DarkMapa" type="Control"]
 layout_mode = 3
@@ -999,6 +1026,12 @@ affected_pieces = [23]
 [node name="Kawałek25" parent="Pieces" instance=ExtResource("11_ov3nc")]
 position = Vector2(1362, 39)
 affected_pieces = [23]
+
+[node name="DarkParticles" type="GPUParticles2D" parent="."]
+position = Vector2(798, 592)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_6fjtm")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)

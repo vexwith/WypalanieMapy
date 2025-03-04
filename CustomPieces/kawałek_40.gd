@@ -90,5 +90,6 @@ func _on_lapa_button_up():
 	gm.lapa_button.show()
 	gm.key_one.show()
 	gm.mouse_left.show()
+	gm.bgm.stop()
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(gm.wide_map.find_child("Saper"), "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)

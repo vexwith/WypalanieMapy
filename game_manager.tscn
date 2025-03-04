@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=90 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -42,7 +42,10 @@
 [ext_resource type="Texture2D" uid="uid://bqnrbr75mjhb4" path="res://GUI/keyboard_133.png" id="29_pb5t2"]
 [ext_resource type="PackedScene" uid="uid://y1g4trw6rh1f" path="res://GUI/CzyNaPtak/czy_na_ptak.tscn" id="31_g384u"]
 [ext_resource type="Texture2D" uid="uid://b447v26da3h5c" path="res://GUI/help_keyb_mouse_PPM.png" id="31_oa7lu"]
-[ext_resource type="Texture2D" uid="uid://dkqbdqqf632eq" path="res://GUI/b_lev4_0.png" id="36_ejtpr"]
+[ext_resource type="Texture2D" uid="uid://biad8gbtp5y41" path="res://GUI/keyboard_34.png" id="35_ha5yq"]
+[ext_resource type="Texture2D" uid="uid://p8sjdi1b2fly" path="res://GUI/b_lev4_0.png" id="36_ejtpr"]
+[ext_resource type="Texture2D" uid="uid://dkqbdqqf632eq" path="res://GUI/b_lev6_0.png" id="44_t8m6n"]
+[ext_resource type="Texture2D" uid="uid://br3ndekpre8cg" path="res://GUI/b_lev5_0.png" id="45_bh4lp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
 texture = ExtResource("3_t42ev")
@@ -239,6 +242,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_bh4lp")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_t8m6n")
+}],
+"loop": true,
+"name": &"7",
 "speed": 5.0
 }, {
 "frames": [],
@@ -440,19 +459,34 @@ theme_override_fonts/font = ExtResource("20_pu80j")
 text = "- UNDO"
 
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D/Rewind"]
-position = Vector2(0, 50)
+position = Vector2(0, 100)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("28_qk5g2")
 
 [node name="Label2" type="Label" parent="Camera2D/Rewind"]
 layout_mode = 0
 offset_left = 30.0
-offset_top = 40.0
+offset_top = 90.0
 offset_right = 105.0
-offset_bottom = 63.0
+offset_bottom = 113.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("20_pu80j")
 text = "- DETAIL"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Camera2D/Rewind"]
+position = Vector2(0, 50)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("35_ha5yq")
+
+[node name="Label3" type="Label" parent="Camera2D/Rewind"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 40.0
+offset_right = 163.0
+offset_bottom = 63.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_pu80j")
+text = "- WITH CAMERA"
 
 [node name="Z" type="Button" parent="Camera2D"]
 visible = false
@@ -518,7 +552,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3uyue")
 visible = false
 position = Vector2(2061, -262)
 sprite_frames = SubResource("SpriteFrames_rdh5l")
-animation = &"5"
+animation = &"1"
 autoplay = "default"
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]

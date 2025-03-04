@@ -31,6 +31,9 @@ func update(damage):
 		if stage >= 5:
 			circle.hide()
 			arrow.show()
+			if get_index() == starting_piece:
+				if arrow == $Treasure: return
+			_on_arrow_pressed()
 		else:
 			circle.modulate.a += 0.2
 			circle.show()

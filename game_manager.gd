@@ -253,8 +253,9 @@ func _input(event): #dragging hamdler
 	if event.is_action_pressed("ui_cancel"): #esc to end
 		_on_menu_pressed()
 		
-	if event.is_action_pressed("rewind") and not Globals.crawl_mode:
+	if (event.is_action_pressed("rewind") or event.is_action_pressed("rewind_camera")) and not Globals.crawl_mode:
 		if Globals.lapa_gained or between_maps:
+			var with_camera = event.is_action_pressed("rewind_camera")
 			if len(Globals.map_state_log) > 1:
 				var cur_state = Globals.map_state_log.pop_back()
 				
@@ -266,15 +267,15 @@ func _input(event): #dragging hamdler
 #						last.sprite.play("1")
 				
 				var prev_state = Globals.map_state_log[-1].duplicate()
-				load_prev(prev_state)
+				load_prev(prev_state, with_camera)
 			elif len(Globals.map_state_log) == 1:
 				var prev_state = Globals.map_state_log[-1].duplicate()
-				load_prev(prev_state)
+				load_prev(prev_state, with_camera)
 			
 	if event.is_action_pressed("1") or event.is_action_released("LPM"):
 		if not Globals.trapped:
+			if ognik.przedmioty["lapa"]: Globals.ignore_clicks = false
 			_on_ognik_button_button_up()
-			Globals.ignore_clicks = false
 		
 	if event.is_action_pressed("2") or event.is_action_pressed("PPM"):
 		if not Globals.crawl_mode and Globals.lapa_gained:
@@ -461,8 +462,6 @@ func _on_piece_clicked(clicked_piece):
 			_on_hills_exit_button_up()
 			Globals.ignore_clicks = false
 			
-	if dark_map.visible or blue_map.visible:
-		dark_map_completed()
 			
 	#saving map state
 	if not ((wide_map.visible and clicked_piece.get_index() in range(25, 40)) or Globals.crawl_mode): #if not inside saper or hills
@@ -588,6 +587,48 @@ func get_small_piece():
 	var wide = map_completed(72) and non_euclidean_completed()
 	var treasure = Globals.treasure
 	var ptak = Globals.ptak_event
+	var dark : bool
+	var blue : bool
+	if dark_map.visible or blue_map.visible:
+		var dark_maps = dark_map_completed()
+		dark = dark_maps[0]
+		blue = dark_maps[1]
+				
+		if dark:
+			if Globals.map_pieces["dark"] == false:
+				Globals.map_pieces["dark"] = true
+				small_piece_animation(camera.global_position)
+		var dark_particles = dark_map.find_child("DarkParticles")
+		if not dark_particles.emitting and dark and not sfx.playing:
+			play_win()
+		dark_particles.emitting = dark
+		
+		if blue:
+			if Globals.map_pieces["blue"] == false:
+				Globals.map_pieces["blue"] = true
+				small_piece_animation(camera.global_position)
+		var blue_particles = blue_map.find_child("BlueParticles")
+		if not blue_particles.emitting and blue and not sfx.playing:
+			play_win()
+		blue_particles.emitting = blue
+				
+	if treasure:
+		Globals.treasure = false
+		if Globals.map_pieces["strzalki"] == false:
+			Globals.map_pieces["strzalki"] = true
+			small_piece_animation(base_map.get_child(70).find_child("Treasure").global_position + Vector2(85, 0))
+	if treasure and not sfx.playing:
+		play_win()
+		
+		
+	if ptak:
+		Globals.ptak_event = false
+		if Globals.map_pieces["ptak_event"] == false:
+			Globals.map_pieces["ptak_event"] = true
+			small_piece_animation(camera.find_child("CzyNaPtak").find_child("PanelMap").global_position)
+	if ptak and not sfx.playing:
+		play_win()
+	
 	
 	if saper:
 		if Globals.map_pieces["saper"] == false:
@@ -619,24 +660,6 @@ func get_small_piece():
 	if not non_euclidean_particles.emitting and non_euclidean and not sfx.playing:
 		play_win()
 	non_euclidean_particles.emitting = non_euclidean
-	
-	
-	if treasure:
-		Globals.treasure = false
-		if Globals.map_pieces["strzalki"] == false:
-			Globals.map_pieces["strzalki"] = true
-			small_piece_animation(base_map.get_child(70).find_child("Treasure").global_position + Vector2(85, 0))
-	if treasure and not sfx.playing:
-		play_win()
-		
-	
-	if ptak:
-		Globals.ptak_event = false
-		if Globals.map_pieces["ptak_event"] == false:
-			Globals.map_pieces["ptak_event"] = true
-			small_piece_animation(camera.find_child("CzyNaPtak").find_child("PanelMap").global_position)
-	if ptak and not sfx.playing:
-		play_win()
 	
 	
 func play_win():
@@ -681,14 +704,17 @@ func non_euclidean_completed():
 	return true
 	
 func dark_map_completed():
+	var dark = true
+	var blue = true
 	for piece in dark_pieces.get_children():
 		if piece.stage != 3 and piece.stage != 4:
-			return
+			dark = false
 	for piece in blue_pieces.get_children():
 		if piece.stage != 3 and piece.stage != 4:
-			return
-			
-	_on_dark_completed()
+			blue = false
+	if dark and blue:
+		_on_dark_completed()
+	return [dark, blue]
 	
 func saper_failed():
 	for i in range(25, 40):
@@ -879,7 +905,7 @@ func save_prev():
 		
 	Globals.map_state_log.append(map_state)
 	
-func load_prev(map_state):
+func load_prev(map_state, with_camera=false):
 	var message = get_tree().root.find_child("Message", true, false)
 	if message != null:
 		message.queue_free()
@@ -902,6 +928,7 @@ func load_prev(map_state):
 		else: lapa_to_door()
 	else:
 		var in_dark = map_state.pop_back()
+		if in_dark != dark_map.visible: with_camera = true #save camera if going through portal
 		dark_map.visible = in_dark
 		blue_map.visible = !in_dark
 		if !blue_map.visible:
@@ -918,8 +945,9 @@ func load_prev(map_state):
 		piece.clear_affected()
 		
 	var camera_pos = map_state.pop_back()
-	camera.global_position = camera_pos
-	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540) #teleport non-euclidean back
+	if with_camera:
+		camera.global_position = camera_pos
+		non_euclidean_map.global_position = camera.global_position - Vector2(960, 540) #teleport non-euclidean back
 	
 	if ognik.light.color.a != 0.0: #dark and blue map
 		for i in range(len(blue_pieces.get_children()) - 1, -1, -1):
@@ -1016,8 +1044,9 @@ func _on_dark_completed():
 	screen_shadow.show()
 	endings.show()
 	endings.text = "ENDING 2137"
-	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
-	tween.tween_property(endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+	var t = 6.0
+	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 3.0)
+	tween.tween_property(endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 3.0)
 
 func _on_menu_pressed():
 	save_data(SAVE_DIR + SAVE_FILE_NAME)

@@ -34,20 +34,22 @@ script = ExtResource("2_41xlv")
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -42.1667
-offset_top = -42.8333
-offset_right = 260.833
-offset_bottom = 301.167
+offset_left = -67.5
+offset_top = 8.5
+offset_right = 235.5
+offset_bottom = 352.5
+rotation = -0.50374
 scale = Vector2(0.5, 0.4)
 texture = ExtResource("3_60oj1")
 
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -49.5
-offset_top = -55.5
-offset_right = 183.5
-offset_bottom = 175.5
+offset_left = -79.5
+offset_top = 0.5
+offset_right = 153.5
+offset_bottom = 231.5
+rotation = -0.5044
 scale = Vector2(0.75, 0.75)
 theme = ExtResource("4_c6pgs")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
