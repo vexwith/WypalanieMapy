@@ -462,6 +462,8 @@ func _on_piece_clicked(clicked_piece):
 			_on_hills_exit_button_up()
 			Globals.ignore_clicks = false
 			
+	if all_failed():
+		pass
 			
 	#saving map state
 	if not ((wide_map.visible and clicked_piece.get_index() in range(25, 40)) or Globals.crawl_mode): #if not inside saper or hills
@@ -738,8 +740,12 @@ func hills_failed():
 			
 	return false
 
-func reset_dark_map():
-	pass
+func all_failed():
+	for piece in wide_map.get_children():
+		if piece is Area2D:
+			if piece.stage >= 5:
+				return true
+	return false
 
 func _on_reset_button_pressed(reload = true):
 	if Globals.crawl_mode:
