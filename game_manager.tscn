@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=91 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cn1un1pmuugiu" path="res://GUI/drzwi_1.png" id="9_yk6fx"]
 [ext_resource type="Texture2D" uid="uid://bhc3uho36xwnf" path="res://GUI/bpochodnia.png" id="10_72sdo"]
 [ext_resource type="Texture2D" uid="uid://beh5esbksoc85" path="res://Items/pulapkareturn3.png" id="11_8eg3j"]
+[ext_resource type="PackedScene" uid="uid://nopmatixtsx5" path="res://Mapa/FireMap/fire_mapa.tscn" id="11_36guq"]
 [ext_resource type="Texture2D" uid="uid://dum2dn6nxm8nk" path="res://GUI/lapa_button.png" id="11_ch5pr"]
 [ext_resource type="PackedScene" uid="uid://vuh6l5cqq2gq" path="res://Mapa/dark_mapa.tscn" id="11_vosj4"]
 [ext_resource type="PackedScene" uid="uid://dudiv4bfg8pq" path="res://Mapa/BlueMap/blue_mapa.tscn" id="12_5wq5o"]
@@ -305,6 +306,9 @@ sprite_frames = SubResource("SpriteFrames_0ywhr")
 animation = &"open"
 
 [node name="NonEuclideanMap" parent="." instance=ExtResource("3_r1k3c")]
+visible = false
+
+[node name="FireMapa" parent="." instance=ExtResource("11_36guq")]
 visible = false
 
 [node name="DarkMapa" parent="." instance=ExtResource("11_vosj4")]

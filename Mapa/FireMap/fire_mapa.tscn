@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://nopmatixtsx5"]
+[gd_scene load_steps=21 format=3 uid="uid://nopmatixtsx5"]
 
+[ext_resource type="Script" path="res://Mapa/FireMap/fire_mapa.gd" id="1_augf7"]
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_qrxfl"]
 [ext_resource type="Texture2D" uid="uid://cmdq73iv1df28" path="res://Mapa/bkg2.png" id="2_hfyc4"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="3_ihjpj"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="4_g4ihx"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="5_0sh4n"]
+[ext_resource type="Script" path="res://CustomPieces/firekawałek.gd" id="5_gsu6p"]
 [ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="6_gtxww"]
 [ext_resource type="PackedScene" uid="uid://cqt4n3lxo4au6" path="res://Mapa/kawałek5/kawałek_5.tscn" id="7_6mdgr"]
 [ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="8_yddtx"]
@@ -26,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_augf7")
 
 [node name="BKG" type="TextureRect" parent="."]
 layout_mode = 0
@@ -49,102 +52,145 @@ scale = Vector2(1.8, 1.8)
 
 [node name="Kawałek1" parent="Pieces" instance=ExtResource("3_ihjpj")]
 position = Vector2(602.778, 54.4444)
+script = ExtResource("5_gsu6p")
+affected_pieces = [5]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek1" index="0"]
 animation = &"3"
 
 [node name="Kawałek2" parent="Pieces" instance=ExtResource("4_g4ihx")]
 position = Vector2(785, 160.556)
+script = ExtResource("5_gsu6p")
+affected_pieces = [5, 4, 2]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek2" index="0"]
 animation = &"0"
 
 [node name="Kawałek3" parent="Pieces" instance=ExtResource("5_0sh4n")]
 position = Vector2(763.333, 369.444)
+script = ExtResource("5_gsu6p")
+affected_pieces = [1, 4, 3]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek3" index="0"]
 animation = &"0"
 
 [node name="Kawałek4" parent="Pieces" instance=ExtResource("6_gtxww")]
 position = Vector2(665.555, 499.444)
+script = ExtResource("5_gsu6p")
+affected_pieces = [2, 4, 7, 8, 10]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek4" index="0"]
 animation = &"0"
 
 [node name="Kawałek5" parent="Pieces" instance=ExtResource("7_6mdgr")]
 position = Vector2(691.667, 291.667)
+script = ExtResource("5_gsu6p")
+affected_pieces = [1, 2, 3, 5, 6, 7]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek5" index="0"]
 animation = &"0"
 
 [node name="Kawałek6" parent="Pieces" instance=ExtResource("8_yddtx")]
 position = Vector2(605, 125.556)
+script = ExtResource("5_gsu6p")
+affected_pieces = [0, 1, 4, 6, 12]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek6" index="0"]
 animation = &"0"
 
 [node name="Kawałek7" parent="Pieces" instance=ExtResource("9_b60dc")]
 position = Vector2(583.889, 220)
+script = ExtResource("5_gsu6p")
+affected_pieces = [5, 4, 7, 11, 12]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek7" index="0"]
 animation = &"0"
 
 [node name="Kawałek8" parent="Pieces" instance=ExtResource("10_cn2sa")]
 position = Vector2(583.889, 346.111)
+script = ExtResource("5_gsu6p")
+affected_pieces = [4, 6, 3, 8, 9, 11]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek8" index="0"]
 animation = &"0"
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("11_v2wsh")]
 position = Vector2(491.667, 426.111)
+script = ExtResource("5_gsu6p")
+affected_pieces = [3, 7, 9, 10, 11, 13]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek9" index="0"]
 animation = &"0"
 
 [node name="Kawałek10" parent="Pieces" instance=ExtResource("12_6ro1v")]
 position = Vector2(481.111, 344.444)
+script = ExtResource("5_gsu6p")
+affected_pieces = [7, 8, 11]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek10" index="0"]
 animation = &"0"
 
 [node name="Kawałek11" parent="Pieces" instance=ExtResource("13_1vjmm")]
 position = Vector2(410.556, 489.444)
+script = ExtResource("5_gsu6p")
+affected_pieces = [3, 8, 13, 14]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek11" index="0"]
 animation = &"0"
 
 [node name="Kawałek12" parent="Pieces" instance=ExtResource("14_rtihe")]
 position = Vector2(477.778, 267.222)
+script = ExtResource("5_gsu6p")
+affected_pieces = [6, 7, 8, 9, 12, 13]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek12" index="0"]
 animation = &"0"
 
 [node name="Kawałek13" parent="Pieces" instance=ExtResource("15_a24vv")]
 position = Vector2(418.333, 165)
+script = ExtResource("5_gsu6p")
+affected_pieces = [5, 6, 11, 13, 15]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek13" index="0"]
 animation = &"0"
 
 [node name="Kawałek14" parent="Pieces" instance=ExtResource("16_u4xsb")]
 position = Vector2(337.222, 340.556)
+script = ExtResource("5_gsu6p")
+affected_pieces = [10, 8, 11, 14, 12, 15]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek14" index="0"]
 animation = &"0"
 
 [node name="Kawałek15" parent="Pieces" instance=ExtResource("17_f4gph")]
 position = Vector2(241.111, 340.556)
+script = ExtResource("5_gsu6p")
+affected_pieces = [10, 13, 15]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek15" index="0"]
 animation = &"0"
 
 [node name="Kawałek16" parent="Pieces" instance=ExtResource("18_xtx48")]
 position = Vector2(285.556, 185)
+script = ExtResource("5_gsu6p")
+affected_pieces = [12, 13, 14]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek16" index="0"]
 animation = &"0"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(1, 0.733333, 0.698039, 1)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SpreadTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SpreadTimer" to="." method="_on_spread_timer_timeout"]
 
 [editable path="Pieces/Kawałek1"]
 [editable path="Pieces/Kawałek2"]

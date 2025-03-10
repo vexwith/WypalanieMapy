@@ -33,6 +33,8 @@ const SECURITY_KEY = "092GSD2"
 @onready var non_euclidean_map = $NonEuclideanMap
 @onready var non_euclidean_pieces = $NonEuclideanMap/Pieces
 
+@onready var fire_map = $FireMapa
+
 @onready var dark_map = $DarkMapa
 @onready var dark_pieces = $DarkMapa/Pieces
 @onready var infinity = $Infinity
@@ -463,7 +465,18 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = false
 			
 	if all_failed():
-		pass
+		bgm.stop()
+		Globals.crawl_mode = true
+		white_shadow.show()
+		var tween = get_tree().create_tween()
+		tween.tween_property(white_shadow, "modulate", Color.WHITE, 2.0)
+		await tween.finished
+		
+		wide_map.hide()
+		fire_map.global_position = camera.global_position - Vector2(1920, 1080)/2
+		fire_map.show()
+		fire_map.spawn_timer.start()
+		white_shadow.hide()
 			
 	#saving map state
 	if not ((wide_map.visible and clicked_piece.get_index() in range(25, 40)) or Globals.crawl_mode): #if not inside saper or hills
@@ -741,11 +754,11 @@ func hills_failed():
 	return false
 
 func all_failed():
-	for piece in wide_map.get_children():
-		if piece is Area2D:
-			if piece.stage >= 5:
-				return true
-	return false
+	for i in range(1, 72):
+		var piece = base_map.get_child(i)
+		if piece.clickable and piece.stage < 5:
+			return false
+	return true
 
 func _on_reset_button_pressed(reload = true):
 	if Globals.crawl_mode:
