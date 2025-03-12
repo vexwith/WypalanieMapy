@@ -9,6 +9,9 @@ var LEVEL = 0
 
 var visited_pieces = []
 
+var spawn_time = 5.0
+var spread_time = 2.0
+
 func _ready():
 	for piece in pieces.get_children():
 		var fire = fire_scene.instantiate()
@@ -35,7 +38,7 @@ func _on_timer_timeout():
 				var fire = pieces.get_child(index).get_child(4)
 				fire.show()
 				spread_timer.start()
-		
+			spawn_timer.wait_time -= 0.5
 		
 		
 		

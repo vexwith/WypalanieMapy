@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckkrl06374o2w"]
+[gd_scene load_steps=12 format=3 uid="uid://ckkrl06374o2w"]
 
 [ext_resource type="Texture2D" uid="uid://cwq0o7g1h7fum" path="res://Mapa/FireMap/obj10_2.png" id="1_803c1"]
 [ext_resource type="Texture2D" uid="uid://e5iggms18je" path="res://Mapa/FireMap/obj10_4.png" id="2_t21lg"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://p2r3853tdiby" path="res://Mapa/FireMap/obj10_12.png" id="6_fpbrd"]
 [ext_resource type="Texture2D" uid="uid://c46m86u4ukhqo" path="res://Mapa/FireMap/obj10_13.png" id="7_tnp14"]
 [ext_resource type="Texture2D" uid="uid://2484ewhhtlgc" path="res://Mapa/FireMap/obj10_14.png" id="8_r77r0"]
+[ext_resource type="Script" path="res://Mapa/FireMap/flames.gd" id="9_gufrs"]
+[ext_resource type="AudioStream" uid="uid://ctgm3ym07wvhj" path="res://Wavs/snd_Fire.wav" id="10_x6sus"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h2ou5"]
 animations = [{
@@ -46,3 +48,13 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_h2ou5")
 autoplay = "default"
 frame_progress = 0.152321
+script = ExtResource("9_gufrs")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_x6sus")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

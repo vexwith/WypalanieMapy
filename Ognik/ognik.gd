@@ -6,6 +6,7 @@ extends Area2D
 @onready var cursor_frames = [preload("res://Ognik/OGNIK_1.png"), preload("res://Ognik/OGNIK_2.png"),
 							  preload("res://Ognik/OGNIK_3.png"), preload("res://Ognik/OGNIK_0.png")]
 @onready var lapa = [preload("res://Ognik/cursor_0.png"), preload("res://Ognik/cursor_1.png")]
+@onready var wiadro = preload("res://Ognik/wiadro_0.png")
 
 var frame_index = 0
 
@@ -23,7 +24,7 @@ func _process(delta):
 		else:
 			light.hide()
 	else: light.hide()
-	if not audio.playing and przedmioty["ognik"]:
+	if not audio.playing and przedmioty["ognik"] and not Globals.fire_mode:
 		audio.play()
 #	global_position = get_global_mouse_position()
 	if przedmioty["lapa"]:
@@ -39,8 +40,10 @@ func _process(delta):
 			lapa_index = 0
 
 func _on_timer_timeout():
-	if przedmioty["ognik"]:
+	if przedmioty["ognik"] and not Globals.fire_mode:
 		Input.set_custom_mouse_cursor(cursor_frames[frame_index], Input.CURSOR_ARROW, Vector2(45, 100))
 		frame_index = (frame_index + 1) % 4
+	elif Globals.fire_mode and Globals.crawl_mode:
+		Input.set_custom_mouse_cursor(wiadro, Input.CURSOR_ARROW)
 	if przedmioty["lapa"]:
 		Input.set_custom_mouse_cursor(lapa[lapa_index], Input.CURSOR_ARROW)

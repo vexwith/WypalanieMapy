@@ -13,6 +13,7 @@ var undraggable = false #cant drag on non euclidean map
 var trapped = false #cant drag while eaten
 
 var crawl_mode = false #hills mode
+var fire_mode = false #works the same as crawl mode but with different reset and bgm
 
 var treasure = false #got map piece from event strzalkowy
 var ptak_event = false #got map piece from ptak event

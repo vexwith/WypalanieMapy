@@ -8,6 +8,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var plaza = preload("res://Wavs/Reksio i Skarb Piratów OST - Muza1-(p).mp3")
 @onready var medley = preload("res://Wavs/Reksio i Skarb Piratów Medley (Tomasz Jachowicz cover ⧸ variation by KKR)-(p).mp3")
 @onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
+@onready var reverse = preload("res://Wavs/reversemapa.wav")
 
 @onready var sfx = $SFX
 @onready var ojoj = preload("res://Wavs/6dziura.wav")
@@ -17,6 +18,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var mina_setup = preload("res://Wavs/00ekran.wav")
 @onready var mina_wybuch = preload("res://Wavs/explosion-91872.mp3")
 @onready var postmapa = preload("res://Mapa/bkg_postlapa2.png")
+@onready var ogien = preload("res://Wavs/snd_Fire.wav")
 
 @onready var message_scene = preload("res://Items/Messages/message.tscn")
 
@@ -34,6 +36,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var non_euclidean_pieces = $NonEuclideanMap/Pieces
 
 @onready var fire_map = $FireMapa
+@onready var fire_pieces = $FireMapa/Pieces
 
 @onready var dark_map = $DarkMapa
 @onready var dark_pieces = $DarkMapa/Pieces
@@ -50,6 +53,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var real_exit = camera.find_child("RealExit")
 @onready var hills_exit = $HillsExit
 @onready var lapa_button = camera.find_child("LapaButton")
+@onready var ognik_button = camera.find_child("OgnikButton")
 @onready var key_one = $Camera2D/OgnikButton/Sprite2D
 @onready var mouse_left = $Camera2D/OgnikButton/Sprite2D2
 @onready var small_piece = $SmallPiece
@@ -201,7 +205,12 @@ func _ready():
 func _process(delta):
 	#bgm handler
 	if not bgm.playing:
-		if Globals.crawl_mode:
+		if Globals.fire_mode and Globals.crawl_mode:
+			bgm.stream = reverse
+			plaza_version = 9 #reset
+#		elif Globals.fire_mode: #silence between wide and fire map
+#			bgm.stream = null
+		elif Globals.crawl_mode:
 			bgm.stream = hills
 			plaza_version = 9 #reset
 		elif dark_map.visible or blue_map.visible:
@@ -465,16 +474,28 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = false
 			
 	if all_failed():
-		bgm.stop()
-		Globals.crawl_mode = true
+		ognik.audio.stop()
+		Globals.fire_mode = true
 		white_shadow.show()
-		var tween = get_tree().create_tween()
-		tween.tween_property(white_shadow, "modulate", Color.WHITE, 2.0)
+		var tween = get_tree().create_tween().set_parallel()
+		tween.tween_property(white_shadow, "modulate", Color.WHITE, 4.0)
+		tween.tween_property(bgm, "pitch_scale", 0.1, 4.0)
 		await tween.finished
 		
+		Globals.crawl_mode = true
+		_on_ognik_button_button_up()
+		bgm.stop()
 		wide_map.hide()
+		ognik_button.hide()
+		lapa_button.hide()
+		real_exit.hide()
+		$Camera2D/Rewind.hide()
 		fire_map.global_position = camera.global_position - Vector2(1920, 1080)/2
 		fire_map.show()
+		var reverse_tween = get_tree().create_tween()
+		reverse_tween.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 3.0)
+		await reverse_tween.finished
+		
 		fire_map.spawn_timer.start()
 		white_shadow.hide()
 			
@@ -754,13 +775,16 @@ func hills_failed():
 	return false
 
 func all_failed():
-	for i in range(1, 72):
+	for i in range(1, 1): #72
 		var piece = base_map.get_child(i)
 		if piece.clickable and piece.stage < 5:
 			return false
 	return true
 
 func _on_reset_button_pressed(reload = true):
+	if Globals.fire_mode:
+		reset_fire_map()
+		return
 	if Globals.crawl_mode:
 		_on_hills_exit_button_up()
 		return
@@ -790,26 +814,18 @@ func _on_reset_button_pressed(reload = true):
 	if reload: #we sometimes dont want to reload
 		get_tree().reload_current_scene()
 
-		
-#	#return visibility
-#	max_modulation = 1.0
-#	first_bkg.modulate.a = 1.0
-#
-#	#reseting all pieces
-#	for piece in base_map.get_children():
-#		if piece is Area2D:
-#			piece.stage = -1
-#			piece.sprite.hide()
-#
-#	#reseting reset button
-#	exit.global_position = Vector2(1570, 953)
-#
-#	#reseting hidden pieces progress
-#	first_map = true
-#	next_piece = 17
-#
-#	#reset audio to normal
-#	plaza_version = 0
+func reset_fire_map():
+	for piece in fire_pieces.get_children():
+		var fire = piece.get_child(4)
+		fire.hide()
+		piece.stage = 2
+		piece.update(0)
+	fire_map.LEVEL = 0
+	fire_map.spawn_timer.wait_time = fire_map.spawn_time
+	fire_map.spread_timer.wait_time = fire_map.spread_time
+	fire_map.spread_timer.stop()
+	fire_map.spawn_timer.stop()
+	fire_map.spawn_timer.start()
 
 func _on_wyjście_button_down():
 	var x

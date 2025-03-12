@@ -38,6 +38,8 @@ func _on_no_pressed():
 	
 func start_new_game():
 	Globals.ignore_clicks = false
+	Globals.fire_mode = false
+	Globals.crawl_mode = false
 	#reset meta globals
 	Globals.lapa_gained = false
 	Globals.return_trapped = false
@@ -53,6 +55,7 @@ func start_new_game():
 
 func _on_continue_pressed():
 	Globals.crawl_mode = false
+	Globals.fire_mode = false
 	Globals.kontynuuj = true
 	get_tree().change_scene_to_file("res://game_manager.tscn")
 
