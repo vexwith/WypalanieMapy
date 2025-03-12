@@ -37,6 +37,7 @@ const SECURITY_KEY = "092GSD2"
 
 @onready var fire_map = $FireMapa
 @onready var fire_pieces = $FireMapa/Pieces
+@onready var burn_map = $Camera2D/BurnMap
 
 @onready var dark_map = $DarkMapa
 @onready var dark_pieces = $DarkMapa/Pieces
@@ -474,30 +475,35 @@ func _on_piece_clicked(clicked_piece):
 			Globals.ignore_clicks = false
 			
 	if all_failed():
-		ognik.audio.stop()
-		Globals.fire_mode = true
-		white_shadow.show()
-		var tween = get_tree().create_tween().set_parallel()
-		tween.tween_property(white_shadow, "modulate", Color.WHITE, 4.0)
-		tween.tween_property(bgm, "pitch_scale", 0.1, 4.0)
-		await tween.finished
-		
-		Globals.crawl_mode = true
-		_on_ognik_button_button_up()
-		bgm.stop()
-		wide_map.hide()
-		ognik_button.hide()
-		lapa_button.hide()
-		real_exit.hide()
-		$Camera2D/Rewind.hide()
-		fire_map.global_position = camera.global_position - Vector2(1920, 1080)/2
-		fire_map.show()
-		var reverse_tween = get_tree().create_tween()
-		reverse_tween.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 3.0)
-		await reverse_tween.finished
-		
-		fire_map.spawn_timer.start()
-		white_shadow.hide()
+		if burn_whole_map():
+			wide_map.hide()
+			white_shadow.show()
+			var tween = get_tree().create_tween()
+			tween.tween_property(white_shadow, "modulate", Color.WHITE, 4.0)
+			await tween.finished
+			
+			Globals.fire_mode = true
+			ognik.audio.stop()
+			_on_ognik_button_button_up()
+			bgm.stop()
+			burn_map.hide()
+			ognik_button.hide()
+			lapa_button.hide()
+			real_exit.hide()
+			$Camera2D/Rewind.hide()
+			fire_map.global_position = camera.global_position - Vector2(1920, 1080)/2
+			fire_map.show()
+			var reverse_tween = get_tree().create_tween()
+			reverse_tween.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 3.0)
+			await reverse_tween.finished
+			
+			fire_map.spawn_timer.start()
+			white_shadow.hide()
+		else:
+			Globals.crawl_mode = true
+			burn_map.show()
+			var tween = get_tree().create_tween()
+			tween.tween_property(bgm, "pitch_scale", 0.1, 4.0)
 			
 	#saving map state
 	if not ((wide_map.visible and clicked_piece.get_index() in range(25, 40)) or Globals.crawl_mode): #if not inside saper or hills
@@ -775,9 +781,15 @@ func hills_failed():
 	return false
 
 func all_failed():
-	for i in range(1, 1): #72
+	for i in range(1, 72): #72
 		var piece = base_map.get_child(i)
 		if piece.clickable and piece.stage < 5:
+			return false
+	return true
+	
+func burn_whole_map():
+	for piece in burn_map.get_children():
+		if piece.stage == -1:
 			return false
 	return true
 

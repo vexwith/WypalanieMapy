@@ -6,7 +6,10 @@ extends Area2D
 @onready var cursor_frames = [preload("res://Ognik/OGNIK_1.png"), preload("res://Ognik/OGNIK_2.png"),
 							  preload("res://Ognik/OGNIK_3.png"), preload("res://Ognik/OGNIK_0.png")]
 @onready var lapa = [preload("res://Ognik/cursor_0.png"), preload("res://Ognik/cursor_1.png")]
-@onready var wiadro = preload("res://Ognik/wiadro_0.png")
+@onready var woda = [preload("res://Ognik/e_flash_16.png"), preload("res://Ognik/e_flash_17.png"), 
+					preload("res://Ognik/e_flash_18.png"), preload("res://Ognik/e_flash_19.png"),
+					preload("res://Ognik/e_flash_20.png"), preload("res://Ognik/e_flash_21.png"),
+					preload("res://Ognik/e_flash_22.png"), preload("res://Ognik/e_flash_23.png")]
 
 var frame_index = 0
 
@@ -44,6 +47,7 @@ func _on_timer_timeout():
 		Input.set_custom_mouse_cursor(cursor_frames[frame_index], Input.CURSOR_ARROW, Vector2(45, 100))
 		frame_index = (frame_index + 1) % 4
 	elif Globals.fire_mode and Globals.crawl_mode:
-		Input.set_custom_mouse_cursor(wiadro, Input.CURSOR_ARROW)
+		Input.set_custom_mouse_cursor(woda[frame_index], Input.CURSOR_ARROW)
+		frame_index = (frame_index + 1) % 8
 	if przedmioty["lapa"]:
 		Input.set_custom_mouse_cursor(lapa[lapa_index], Input.CURSOR_ARROW)

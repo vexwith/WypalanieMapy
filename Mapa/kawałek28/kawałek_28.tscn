@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://by687ixxmi05f"]
+
+[ext_resource type="Script" path="res://CustomPieces/kawałek_27.gd" id="1_2ykx1"]
+[ext_resource type="Texture2D" uid="uid://chy5wb2h25w81" path="res://Mapa/kawałek28/mapa28_0.png" id="2_45tr2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_610cd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_45tr2")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}]
+
+[node name="Kawałek28" type="Area2D"]
+script = ExtResource("1_2ykx1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_610cd")
+animation = &"0"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-533, -174, -530, -208, -515, -231, -506, -271, -500, -297, -471, -299, -444, -293, -400, -286, -347, -285, -329, -287, -302, -275, -299, -264, -282, -260, -291, -236, -291, -219, -293, -207, -296, -193, -301, -177, -303, -166, -309, -144, -313, -114, -319, -94, -328, -69, -338, -36, -344, -17, -350, -1, -358, 18, -362, 29, -372, 32, -427, -4, -457, -16, -474, -16, -505, -23, -514, -31, -519, -69, -524, -98, -528, -125)
+
+[node name="Rim" type="Sprite2D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited" flags=18]

@@ -21,26 +21,36 @@ func _ready():
 		
 		piece.update(3)
 
-
+func spawn_flame(number):
+	var indexes = []
+	for i in range(number):
+		var index : int
+		while true:
+			index = randi_range(0, 15)
+			if index not in indexes:
+				break
+		indexes.append(index)
+		var fire = pieces.get_child(index).get_child(4)
+		fire.show()
+	spread_timer.start()
 
 func _on_timer_timeout():
 	LEVEL += 1
+	var indexes = []
 	match LEVEL:
 		1, 2, 3:
-			var index = randi_range(0, 15)
-			var fire = pieces.get_child(index).get_child(4)
-			fire.show()
-			spread_timer.start()
+			spawn_flame(1)
 			spawn_timer.wait_time -= 0.5
-		4:
-			for i in range(2):
-				var index = randi_range(0, 15)
-				var fire = pieces.get_child(index).get_child(4)
-				fire.show()
-				spread_timer.start()
+			spread_timer.wait_time -= 0.25
+		4, 5:
+			spawn_flame(2)
 			spawn_timer.wait_time -= 0.5
-		
-		
+			spread_timer.wait_time -= 0.15
+		6, 7:
+			spawn_flame(2)
+			spawn_timer.wait_time -= 0.2
+		8, 9, 10, 11:
+			spawn_flame(3)
 		
 func _on_spread_timer_timeout():
 	var continue_spread = false
@@ -62,7 +72,15 @@ func _on_spread_timer_timeout():
 				affected_fire.show()
 	
 	if continue_spread:
-		spread_timer.start()
+		var flag = true
+		for piece in pieces.get_children():
+			if piece.stage >= 5:
+				flag = false
+		if flag:
+			spread_timer.start()
+		else:
+			get_parent().sfx.stream = get_parent().ojoj
+			get_parent().sfx.play()
 	else:
 		visited_pieces.clear()
 		spawn_timer.start()

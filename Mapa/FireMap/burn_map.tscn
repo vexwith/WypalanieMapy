@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://cc34otxvc6ovq"]
+
+[ext_resource type="PackedScene" uid="uid://cvh5kbsq1j482" path="res://Mapa/kawałek27/kawałek_27.tscn" id="1_wq02a"]
+[ext_resource type="PackedScene" uid="uid://by687ixxmi05f" path="res://Mapa/kawałek28/kawałek_28.tscn" id="2_kjt0k"]
+[ext_resource type="PackedScene" uid="uid://cl3geemcnully" path="res://Mapa/kawałek29/kawałek_29.tscn" id="3_hf83g"]
+[ext_resource type="PackedScene" uid="uid://ca5600ktvylpw" path="res://Mapa/kawałek30/kawałek_30.tscn" id="4_3orch"]
+[ext_resource type="PackedScene" uid="uid://c6332le02ua5c" path="res://Mapa/kawałek31/kawałek_31.tscn" id="5_b7ufy"]
+[ext_resource type="PackedScene" uid="uid://d1qj0uy46v8ij" path="res://Mapa/kawałek32/kawałek_32.tscn" id="6_l3eic"]
+[ext_resource type="PackedScene" uid="uid://bknkeafejojbc" path="res://Mapa/kawałek33/kawałek_33.tscn" id="7_jka5r"]
+
+[node name="BurnMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="Kawałek27" parent="." instance=ExtResource("1_wq02a")]
+
+[node name="Kawałek28" parent="." instance=ExtResource("2_kjt0k")]
+
+[node name="Kawałek29" parent="." instance=ExtResource("3_hf83g")]
+
+[node name="Kawałek30" parent="." instance=ExtResource("4_3orch")]
+
+[node name="Kawałek31" parent="." instance=ExtResource("5_b7ufy")]
+
+[node name="Kawałek32" parent="." instance=ExtResource("6_l3eic")]
+
+[node name="Kawałek33" parent="." instance=ExtResource("7_jka5r")]

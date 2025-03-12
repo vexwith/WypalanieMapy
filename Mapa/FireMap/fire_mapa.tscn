@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://nopmatixtsx5"]
+[gd_scene load_steps=20 format=3 uid="uid://nopmatixtsx5"]
 
 [ext_resource type="Script" path="res://Mapa/FireMap/fire_mapa.gd" id="1_augf7"]
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_qrxfl"]
-[ext_resource type="Texture2D" uid="uid://cmdq73iv1df28" path="res://Mapa/bkg2.png" id="2_hfyc4"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="3_ihjpj"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="4_g4ihx"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="5_0sh4n"]
@@ -35,14 +34,6 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_qrxfl")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("2_hfyc4")
-stretch_mode = 5
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=92 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://b447v26da3h5c" path="res://GUI/help_keyb_mouse_PPM.png" id="31_oa7lu"]
 [ext_resource type="Texture2D" uid="uid://biad8gbtp5y41" path="res://GUI/keyboard_34.png" id="35_ha5yq"]
 [ext_resource type="Texture2D" uid="uid://p8sjdi1b2fly" path="res://GUI/b_lev4_0.png" id="36_ejtpr"]
+[ext_resource type="PackedScene" uid="uid://cc34otxvc6ovq" path="res://Mapa/FireMap/burn_map.tscn" id="39_tnvfu"]
 [ext_resource type="Texture2D" uid="uid://dkqbdqqf632eq" path="res://GUI/b_lev6_0.png" id="44_t8m6n"]
 [ext_resource type="Texture2D" uid="uid://br3ndekpre8cg" path="res://GUI/b_lev5_0.png" id="45_bh4lp"]
 
@@ -509,6 +510,13 @@ offset_left = -960.0
 offset_top = -544.0
 offset_right = -960.0
 offset_bottom = -544.0
+
+[node name="BurnMap" parent="Camera2D" instance=ExtResource("39_tnvfu")]
+visible = false
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="WhiteShadow" type="TextureRect" parent="Camera2D"]
 visible = false

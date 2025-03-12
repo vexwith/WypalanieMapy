@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca5600ktvylpw"]
+
+[ext_resource type="Script" path="res://CustomPieces/kawałek_27.gd" id="1_ka1ba"]
+[ext_resource type="Texture2D" uid="uid://bq2uxoom5qiyp" path="res://Mapa/kawałek30/mapa30_0.png" id="2_x5cen"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82jgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x5cen")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}]
+
+[node name="Kawałek30" type="Area2D"]
+script = ExtResource("1_ka1ba")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_82jgq")
+animation = &"0"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-319, 46, -305, 56, -287, 71, -249, 83, -230, 88, -219, 105, -213, 124, -208, 144, -201, 156, -167, 168, -142, 185, -135, 207, -117, 254, -116, 274, -73, 281, -34, 272, 31, 273, 48, 264, 40, 231, 24, 176, 4, 126, -19, 81, -34, 44, -77, 11, -99, -8, -150, -25, -191, -22, -220, -2, -229, 10, -245, 25, -269, 33)
+
+[node name="Rim" type="Sprite2D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited" flags=18]
