@@ -477,7 +477,6 @@ func _on_piece_clicked(clicked_piece):
 	if all_failed():
 		if burn_whole_map():
 			wide_map.hide()
-			white_shadow.show()
 			var tween = get_tree().create_tween()
 			tween.tween_property(white_shadow, "modulate", Color.WHITE, 4.0)
 			await tween.finished
@@ -501,6 +500,7 @@ func _on_piece_clicked(clicked_piece):
 			white_shadow.hide()
 		else:
 			Globals.crawl_mode = true
+			white_shadow.show()
 			burn_map.show()
 			var tween = get_tree().create_tween()
 			tween.tween_property(bgm, "pitch_scale", 0.1, 4.0)
@@ -781,7 +781,7 @@ func hills_failed():
 	return false
 
 func all_failed():
-	for i in range(1, 72): #72
+	for i in range(1, 1): #72
 		var piece = base_map.get_child(i)
 		if piece.clickable and piece.stage < 5:
 			return false
@@ -833,6 +833,7 @@ func reset_fire_map():
 		piece.stage = 2
 		piece.update(0)
 	fire_map.LEVEL = 0
+	fire_map.label.text = ""
 	fire_map.spawn_timer.wait_time = fire_map.spawn_time
 	fire_map.spread_timer.wait_time = fire_map.spread_time
 	fire_map.spread_timer.stop()

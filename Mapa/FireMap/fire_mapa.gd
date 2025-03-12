@@ -4,6 +4,7 @@ extends Control
 @onready var pieces = $Pieces
 @onready var spawn_timer = $SpawnTimer
 @onready var spread_timer = $SpreadTimer
+@onready var label = $Label
 
 var LEVEL = 0
 
@@ -35,8 +36,8 @@ func spawn_flame(number):
 	spread_timer.start()
 
 func _on_timer_timeout():
+	label.text = str(11-LEVEL)
 	LEVEL += 1
-	var indexes = []
 	match LEVEL:
 		1, 2, 3:
 			spawn_flame(1)
