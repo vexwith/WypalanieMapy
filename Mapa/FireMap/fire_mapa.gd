@@ -36,8 +36,8 @@ func spawn_flame(number):
 	spread_timer.start()
 
 func _on_timer_timeout():
-	label.text = str(11-LEVEL)
 	LEVEL += 1
+	label.text = str(11-LEVEL)
 	match LEVEL:
 		1, 2, 3:
 			spawn_flame(1)
@@ -84,8 +84,27 @@ func _on_spread_timer_timeout():
 			get_parent().sfx.play()
 	else:
 		visited_pieces.clear()
-		spawn_timer.start()
+		if LEVEL == 11:
+			if completed():
+				get_parent().reset.hide()
+				label.hide()
+				var tween = get_tree().create_tween().set_parallel()
+				var t = 1.0
+				tween.tween_property(pieces, "scale", Vector2(0, 0), t)
+				tween.tween_property(pieces, "position", Vector2(960, 540), t)
+				tween.tween_property($BKG, "scale", Vector2(0, 0), t)
+				tween.tween_property($BKG, "position", Vector2(960, 540), t)
+				await tween.finished
+				Globals.map_saved = true
+				SignalBus.emit_signal("get_small_piece")
+		else:
+			spawn_timer.start()
 
+func completed():
+	for piece in pieces.get_children():
+		if piece.stage not in [3, 4]:
+			return false
+	return true
 
 
 

@@ -17,6 +17,7 @@ var fire_mode = false #works the same as crawl mode but with different reset and
 
 var treasure = false #got map piece from event strzalkowy
 var ptak_event = false #got map piece from ptak event
+var map_saved = false #got map piece from flame minigame
 
 var kontynuuj = false #load from menu
 
@@ -36,6 +37,6 @@ var say_restart = false
 var wypalenia = 0 #after 3 wypalenia spawn a message once
 
 var map_pieces = {"saper": false, "non_euclidean": false, "strzalki": false, "hills": false, "wide_map": false,
-				  "ptak_event": false, "dark": false, "blue": false} #cel gry xD
+				  "ptak_event": false, "dark": false, "blue": false, "flame": false} #cel gry xD
 
 

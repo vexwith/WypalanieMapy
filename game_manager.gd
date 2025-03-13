@@ -629,6 +629,7 @@ func get_small_piece():
 	var wide = map_completed(72) and non_euclidean_completed()
 	var treasure = Globals.treasure
 	var ptak = Globals.ptak_event
+	var flame = Globals.map_saved
 	var dark : bool
 	var blue : bool
 	if dark_map.visible or blue_map.visible:
@@ -662,7 +663,6 @@ func get_small_piece():
 	if treasure and not sfx.playing:
 		play_win()
 		
-		
 	if ptak:
 		Globals.ptak_event = false
 		if Globals.map_pieces["ptak_event"] == false:
@@ -670,7 +670,14 @@ func get_small_piece():
 			small_piece_animation(camera.find_child("CzyNaPtak").find_child("PanelMap").global_position)
 	if ptak and not sfx.playing:
 		play_win()
-	
+		
+	if flame:
+		Globals.map_saved = false
+		if Globals.map_pieces["flame"] == false:
+			Globals.map_pieces["flame"] = true
+			small_piece_animation(camera.global_position)
+	if flame and not sfx.playing:
+		play_win()
 	
 	if saper:
 		if Globals.map_pieces["saper"] == false:
@@ -781,7 +788,7 @@ func hills_failed():
 	return false
 
 func all_failed():
-	for i in range(1, 1): #72
+	for i in range(1, 72): #72
 		var piece = base_map.get_child(i)
 		if piece.clickable and piece.stage < 5:
 			return false

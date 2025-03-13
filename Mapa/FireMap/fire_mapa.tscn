@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://nopmatixtsx5"]
+[gd_scene load_steps=22 format=3 uid="uid://nopmatixtsx5"]
 
 [ext_resource type="Script" path="res://Mapa/FireMap/fire_mapa.gd" id="1_augf7"]
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_qrxfl"]
+[ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_bti7h"]
 [ext_resource type="PackedScene" uid="uid://dayxcxrhwkece" path="res://Mapa/kawałek1/kawałek_1.tscn" id="3_ihjpj"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="4_g4ihx"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="5_0sh4n"]
@@ -29,6 +30,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_augf7")
+
+[node name="UnderGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -170.0
+offset_right = 1600.0
+offset_bottom = 1030.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_bti7h")
 
 [node name="BKG" type="TextureRect" parent="."]
 layout_mode = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=93 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://cc34otxvc6ovq" path="res://Mapa/FireMap/burn_map.tscn" id="39_tnvfu"]
 [ext_resource type="Texture2D" uid="uid://dkqbdqqf632eq" path="res://GUI/b_lev6_0.png" id="44_t8m6n"]
 [ext_resource type="Texture2D" uid="uid://br3ndekpre8cg" path="res://GUI/b_lev5_0.png" id="45_bh4lp"]
+[ext_resource type="Texture2D" uid="uid://w5vvk6ve0kid" path="res://GUI/b_lev7_0.png" id="49_55mtc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnse6"]
 texture = ExtResource("3_t42ev")
@@ -260,6 +261,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_55mtc")
+}],
+"loop": true,
+"name": &"8",
 "speed": 5.0
 }, {
 "frames": [],
@@ -564,7 +573,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3uyue")
 visible = false
 position = Vector2(2061, -262)
 sprite_frames = SubResource("SpriteFrames_rdh5l")
-animation = &"1"
+animation = &"8"
 autoplay = "default"
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
