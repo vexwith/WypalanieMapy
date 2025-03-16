@@ -35,7 +35,7 @@ func _process(delta):
 		for i in affected_pieces:
 			var piece = get_parent().get_child(i)
 			piece.rim.modulate = affected_modulation
-			if stage_number != null: piece.stage_number.show()
+			if piece.stage_number != null: piece.stage_number.show()
 
 func _input(event):
 	if cursor_entered and clickable and not Globals.ignore_clicks and event.is_action_pressed("LPM"):
@@ -98,4 +98,4 @@ func _on_mouse_exited():
 	for i in affected_pieces:
 		var piece = get_parent().get_child(i)
 		piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
-		if stage_number != null: piece.stage_number.hide()
+		if piece.stage_number != null: piece.stage_number.hide()

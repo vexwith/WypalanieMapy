@@ -158,6 +158,11 @@ offset_bottom = 600.0
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("1_g3hhs")
 
+[node name="Secret" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="Lampa" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 540)
 scale = Vector2(1.8, 1.8)
@@ -260,6 +265,7 @@ autowrap_mode = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jticx")
 
+[connection signal="button_up" from="Secret" to="." method="_on_secret_button_up"]
 [connection signal="pressed" from="Controls/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]

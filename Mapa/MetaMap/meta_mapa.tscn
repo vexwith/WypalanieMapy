@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://drje5ks6015dh"]
+
+[ext_resource type="Script" path="res://Mapa/MetaMap/meta_mapa.gd" id="1_0s17a"]
+[ext_resource type="Texture2D" uid="uid://mjoo8a2x7wbg" path="res://UI/bkg_30.png" id="2_j0oc6"]
+[ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_arg42"]
+[ext_resource type="PackedScene" uid="uid://cnsn1rca030sw" path="res://Mapa/kawałek26/kawałek_26.tscn" id="4_epiwd"]
+[ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="5_kgs6o"]
+[ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="6_6hvet"]
+[ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="7_s5yjg"]
+[ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="8_v0b73"]
+[ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="9_2furf"]
+[ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="10_5gnjs"]
+
+[node name="MetaMapa" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0s17a")
+
+[node name="BKG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -480.0
+offset_top = -528.0
+offset_right = 320.0
+offset_bottom = 72.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_j0oc6")
+
+[node name="Pieces" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -130.0
+offset_right = -90.0
+offset_bottom = 40.0
+scale = Vector2(1.8, 1.8)
+
+[node name="Kawałek1" parent="Pieces" instance=ExtResource("3_arg42")]
+position = Vector2(500.556, 93.3333)
+affected_pieces = [3, 7]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek1" index="0"]
+animation = &"3"
+
+[node name="Kawałek2" parent="Pieces" instance=ExtResource("4_epiwd")]
+position = Vector2(600.556, 475.556)
+affected_pieces = [6, 7]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek2" index="0"]
+animation = &"2"
+
+[node name="Kawałek3" parent="Pieces" instance=ExtResource("5_kgs6o")]
+position = Vector2(886.111, 465.556)
+affected_pieces = [4, 0, 0]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek3" index="0"]
+animation = &"3"
+
+[node name="Kawałek4" parent="Pieces" instance=ExtResource("6_6hvet")]
+position = Vector2(611.667, 267.778)
+affected_pieces = [0, 1, 4, 5, 6, 7]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek4" index="0"]
+animation = &"3"
+
+[node name="Kawałek5" parent="Pieces" instance=ExtResource("7_s5yjg")]
+position = Vector2(742.778, 346.667)
+rotation = -2.44346
+affected_pieces = [1, 2, 3, 6]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek5" index="0"]
+animation = &"3"
+
+[node name="Kawałek6" parent="Pieces" instance=ExtResource("8_v0b73")]
+position = Vector2(450, 375.556)
+affected_pieces = [1, 3, 7]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek6" index="0"]
+animation = &"3"
+
+[node name="Kawałek7" parent="Pieces" instance=ExtResource("9_2furf")]
+position = Vector2(722.778, 173.889)
+affected_pieces = [3, 4]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek7" index="0"]
+animation = &"3"
+
+[node name="Kawałek8" parent="Pieces" instance=ExtResource("10_5gnjs")]
+position = Vector2(436.667, 233.889)
+affected_pieces = [0, 3, 5]
+
+[node name="AnimatedSprite2D" parent="Pieces/Kawałek8" index="0"]
+animation = &"3"
+
+[editable path="Pieces/Kawałek1"]
+[editable path="Pieces/Kawałek2"]
+[editable path="Pieces/Kawałek3"]
+[editable path="Pieces/Kawałek4"]
+[editable path="Pieces/Kawałek5"]
+[editable path="Pieces/Kawałek6"]
+[editable path="Pieces/Kawałek7"]
+[editable path="Pieces/Kawałek8"]

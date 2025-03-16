@@ -68,5 +68,5 @@ func _on_exit_pressed():
 	get_tree().quit()
 
 
-
-
+func _on_secret_button_up():
+	get_tree().change_scene_to_file("res://Mapa/MetaMap/meta_mapa.tscn")
