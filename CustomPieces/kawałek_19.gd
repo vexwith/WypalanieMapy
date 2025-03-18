@@ -22,7 +22,7 @@ func _input(event):
 			#animation with sound
 			audio.play()
 			
-			var tween = get_tree().create_tween().set_parallel(true)
+			var tween = get_tree().create_tween().set_parallel(true).bind_node(self)
 			tween.tween_property(first_piece, "scale", Vector2(0.1, 0.1), 0.5)
 			tween.tween_property(second_piece, "scale", Vector2(0.1, 0.1), 0.5)
 			
@@ -30,7 +30,7 @@ func _input(event):
 			first_piece.sprite.play(str(min(first_piece.stage, 5)))
 			second_piece.sprite.play(str(min(second_piece.stage, 5)))
 			
-			var tween_back = get_tree().create_tween().set_parallel(true)
+			var tween_back = get_tree().create_tween().set_parallel(true).bind_node(self)
 			tween_back.tween_property(first_piece, "scale", Vector2(0.977, -1), 0.5)
 			tween_back.tween_property(second_piece, "scale", Vector2(1.0, 1.0), 0.5)
 			

@@ -1,10 +1,11 @@
 extends Control
 
 const SAVE_DIR = "user://saves/"
-const SAVE_FILE_NAME = "save.json"
+const SAVE_FILE_NAME = "save_2.json"
 const SECURITY_KEY = "092GSD2"
 
 @onready var pieces = $Pieces
+@onready var bgm = $AudioStreamPlayer
 
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
@@ -42,3 +43,18 @@ func _ready():
 			piece.clickable = false
 		piece.sprite.modulate.a = 0.7
 		
+	for piece in pieces.get_children():
+		for affected_index in range(len(piece.affected_pieces)-1, -1, -1):
+			var affected = piece.affected_pieces[affected_index]
+			if not pieces.get_child(affected).clickable:
+				piece.affected_pieces.remove_at(affected_index)
+		
+	bgm.play()
+
+
+func _on_audio_stream_player_finished():
+	bgm.play()
+
+
+func _on_exit_button_up():
+	get_tree().change_scene_to_file("res://UI/menu.tscn")

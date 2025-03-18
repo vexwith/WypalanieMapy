@@ -1,13 +1,15 @@
-[gd_scene load_steps=39 format=3 uid="uid://cxves47achr7l"]
+[gd_scene load_steps=46 format=3 uid="uid://cxves47achr7l"]
 
 [ext_resource type="Script" path="res://UI/menu.gd" id="1_87cqx"]
 [ext_resource type="Texture2D" uid="uid://mjoo8a2x7wbg" path="res://UI/bkg_30.png" id="1_g3hhs"]
 [ext_resource type="Theme" uid="uid://c8ivmupmyaa5s" path="res://UI/default.tres" id="2_8wue4"]
 [ext_resource type="Texture2D" uid="uid://1vlfumpsh52" path="res://UI/lampa0.png" id="3_ehwqx"]
+[ext_resource type="Texture2D" uid="uid://bju6s1q6hapnb" path="res://GUI/17gotolawaA.png" id="3_is3ub"]
 [ext_resource type="Texture2D" uid="uid://bm080ffdhfc1a" path="res://UI/kawa0.png" id="3_tffvf"]
 [ext_resource type="Texture2D" uid="uid://b68qsjlks37lf" path="res://UI/lampa1.png" id="4_0kwep"]
 [ext_resource type="Texture2D" uid="uid://dxu1rnojm3sns" path="res://UI/kawa1.png" id="4_5cakg"]
 [ext_resource type="AudioStream" uid="uid://cysqrd6nvhmpq" path="res://Wavs/Reksio i Skarb Piratów OST - Muzamenu-(p).mp3" id="4_jticx"]
+[ext_resource type="Texture2D" uid="uid://cagwvgy70y76h" path="res://GUI/17goto16b.png" id="4_okpcu"]
 [ext_resource type="Texture2D" uid="uid://8bbft02k0xk2" path="res://UI/kawa2.png" id="5_2v5w5"]
 [ext_resource type="Texture2D" uid="uid://hu5qeb2mryp6" path="res://UI/lampa2.png" id="5_fxrjb"]
 [ext_resource type="Texture2D" uid="uid://gqm44rn41ncd" path="res://UI/lampa3.png" id="6_5w1m3"]
@@ -134,6 +136,20 @@ texture = ExtResource("22_gx8d2")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enl2k"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2o26w"]
+texture = ExtResource("3_is3ub")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2d1v1"]
+texture = ExtResource("4_okpcu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aayy0"]
+texture = ExtResource("3_is3ub")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pehu8"]
+texture = ExtResource("3_is3ub")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rywgr"]
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -157,11 +173,6 @@ offset_right = 1040.0
 offset_bottom = 600.0
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("1_g3hhs")
-
-[node name="Secret" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
 
 [node name="Lampa" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 540)
@@ -262,14 +273,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Secret" type="Button" parent="."]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 146.0
+offset_right = 456.0
+offset_bottom = 200.0
+rotation = -2.89252
+theme_override_styles/normal = SubResource("StyleBoxTexture_2o26w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2d1v1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aayy0")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_pehu8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rywgr")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jticx")
 
-[connection signal="button_up" from="Secret" to="." method="_on_secret_button_up"]
 [connection signal="pressed" from="Controls/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Controls/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Controls/ConfirmNewGame/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="Controls/ConfirmNewGame/No" to="." method="_on_no_pressed"]
+[connection signal="button_up" from="Secret" to="." method="_on_secret_button_up"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

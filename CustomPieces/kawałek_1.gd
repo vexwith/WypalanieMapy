@@ -69,7 +69,7 @@ func update(damage):
 		ojojoj()
 		var white_shadow = gm.white_shadow #flashbang
 		white_shadow.show()
-		var tween = get_tree().create_tween().set_parallel(true)
+		var tween = get_tree().create_tween().set_parallel(true).bind_node(self)
 		var t = 2.0
 		tween.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), t).set_trans(Tween.TRANS_SINE)
 		if gm.blue_map.visible: #Color(0, 0, 0.451)
@@ -83,7 +83,7 @@ func update(damage):
 		infinity.show()
 		infinity.global_position = gm.camera.global_position - Vector2(1080, 620)
 		
-		var tween2 = get_tree().create_tween() #end flashbang
+		var tween2 = get_tree().create_tween().bind_node(self) #end flashbang
 		tween2.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 2.0)
 		await tween2.finished
 		white_shadow.hide()

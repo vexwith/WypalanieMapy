@@ -22,15 +22,36 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 
 [node name="Kawałek27" parent="." instance=ExtResource("1_wq02a")]
+position = Vector2(37.5, -17.5)
+scale = Vector2(1.1, 1.1)
 
 [node name="Kawałek28" parent="." instance=ExtResource("2_kjt0k")]
+position = Vector2(40, 6)
+scale = Vector2(1.1, 1.1)
 
 [node name="Kawałek29" parent="." instance=ExtResource("3_hf83g")]
+position = Vector2(16, 10)
+scale = Vector2(1.1, 1.1)
 
 [node name="Kawałek30" parent="." instance=ExtResource("4_3orch")]
+position = Vector2(5, -15)
+scale = Vector2(1.1, 1.1)
 
 [node name="Kawałek31" parent="." instance=ExtResource("5_b7ufy")]
+position = Vector2(-41, -13)
+scale = Vector2(1.1, 1.1)
 
 [node name="Kawałek32" parent="." instance=ExtResource("6_l3eic")]
+position = Vector2(-12, 11)
+scale = Vector2(1.1, 1.1)
 
 [node name="Kawałek33" parent="." instance=ExtResource("7_jka5r")]
+position = Vector2(-3, 0)
+scale = Vector2(1.1, 1.1)
+
+[editable path="Kawałek27"]
+[editable path="Kawałek28"]
+[editable path="Kawałek29"]
+[editable path="Kawałek30"]
+[editable path="Kawałek31"]
+[editable path="Kawałek32"]

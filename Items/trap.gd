@@ -29,7 +29,7 @@ func _on_mouse_freed():
 		sprite.play_backwards("attack_mouse")
 		await sprite.animation_finished
 		mouse.show()
-		var tween = get_tree().create_tween()
+		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property(mouse, "global_position", owner.get_parent().camera.global_position + Vector2(27, 28), 0.5).from(global_position)
 		await tween.finished
 		mouse.hide()

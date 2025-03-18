@@ -89,6 +89,7 @@ func _on_spread_timer_timeout():
 				get_parent().reset.hide()
 				label.hide()
 				var tween = get_tree().create_tween().set_parallel()
+				tween.bind_node(self)
 				var t = 1.0
 				tween.tween_property(pieces, "scale", Vector2(0, 0), t)
 				tween.tween_property(pieces, "position", Vector2(960, 540), t)

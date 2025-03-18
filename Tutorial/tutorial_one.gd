@@ -12,7 +12,7 @@ func _ready():
 	get_parent().find_child("Ognik").przedmioty["lapa"] = true
 	get_parent().find_child("Ognik").przedmioty["ognik"] = false
 
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property($text/Label, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($text/Label2, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($Button, "modulate", Color.WHITE, 1.0)
@@ -30,7 +30,7 @@ func _on_button_pressed():
 	
 	next += 1
 	if next == 7:
-		var tween = get_tree().create_tween()
+		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property($Button2, "modulate", Color.WHITE, 1.0)
 		$Button2.show()
 		

@@ -29,7 +29,7 @@ func _on_piece_clicked(piece):
 
 func bomb_vanish():
 	bomb.show()
-	tween = get_tree().create_tween()
+	tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property(bomb, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0).from(Color(1.0, 1.0, 1.0, 0.0))
 	var x = randi_range(800, 1200)
 	var y = - randi_range(300, 1000)

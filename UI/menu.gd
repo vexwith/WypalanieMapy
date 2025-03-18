@@ -1,11 +1,15 @@
 extends Control
 
+const SAVE_DIR = "user://saves/"
+const SAVE_FILE_NAME = "save_2.json"
+
 @onready var cursor = preload("res://Ognik/cursor_0.png")
 
-const SAVE_DIR = "user://saves/"
-const SAVE_FILE_NAME = "save.json"
+@onready var secret = $Secret
 
 func _ready():
+	Globals.crawl_mode = false
+	Globals.fire_mode = false
 	Bgm.stop()
 	Input.set_custom_mouse_cursor(cursor)
 	
@@ -14,6 +18,7 @@ func _ready():
 	
 	if not FileAccess.file_exists(SAVE_DIR + SAVE_FILE_NAME):
 		$Controls/VBoxContainer/Continue.disabled = true
+		secret.hide()
 		
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
@@ -38,8 +43,6 @@ func _on_no_pressed():
 	
 func start_new_game():
 	Globals.ignore_clicks = false
-	Globals.fire_mode = false
-	Globals.crawl_mode = false
 	#reset meta globals
 	Globals.lapa_gained = false
 	Globals.return_trapped = false
@@ -54,8 +57,6 @@ func start_new_game():
 	get_tree().change_scene_to_file("res://game_manager.tscn")
 
 func _on_continue_pressed():
-	Globals.crawl_mode = false
-	Globals.fire_mode = false
 	Globals.kontynuuj = true
 	get_tree().change_scene_to_file("res://game_manager.tscn")
 

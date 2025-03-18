@@ -12,7 +12,7 @@ func _ready():
 	
 	reset()
 		
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property($Text/Label, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($Text/Label2, "modulate", Color.WHITE, 2.0)
 	tween.tween_property($Text/Label3, "modulate", Color.WHITE, 2.0)

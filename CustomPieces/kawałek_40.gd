@@ -73,7 +73,7 @@ func keep_cursor():
 func _on_timer_timeout():
 	timer.start() #loop
 	
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().bind_node(self)
 	if position == starting_pos:
 		tween.tween_property(self, "position", ending_pos, 2.0).set_ease(Tween.EASE_OUT_IN)
 	else:
@@ -81,7 +81,7 @@ func _on_timer_timeout():
 	
 
 func _on_lapa_button_up():
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property(lapa, "global_position", Vector2(152, 42), 1.0).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	lapa.hide()
@@ -91,5 +91,5 @@ func _on_lapa_button_up():
 	gm.key_one.show()
 	gm.mouse_left.show()
 	gm.bgm.stop()
-	var tween2 = get_tree().create_tween()
+	var tween2 = get_tree().create_tween().bind_node(self)
 	tween2.tween_property(gm.wide_map.find_child("Saper"), "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)

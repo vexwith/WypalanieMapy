@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://drje5ks6015dh"]
+[gd_scene load_steps=32 format=3 uid="uid://drje5ks6015dh"]
 
 [ext_resource type="Script" path="res://Mapa/MetaMap/meta_mapa.gd" id="1_0s17a"]
 [ext_resource type="Texture2D" uid="uid://byu26rk2tm2cc" path="res://Mapa/MetaMap/metamapa.png" id="2_ffcg5"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bd6ddot6uv6cs" path="res://Mapa/trawa.png" id="9_o4urr"]
 [ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="10_5gnjs"]
 [ext_resource type="Texture2D" uid="uid://cijte16q7q3hx" path="res://Mapa/MetaMap/czynamapa.png" id="10_df1tc"]
+[ext_resource type="Texture2D" uid="uid://b1h2pl8h4jlk8" path="res://GUI/breturn.png" id="12_ymp0t"]
+[ext_resource type="Texture2D" uid="uid://vcjqo87klng5" path="res://GUI/breturnom.png" id="13_usmp0"]
+[ext_resource type="Theme" uid="uid://1ilqi4d5psi5" path="res://Mapa/number_theme.tres" id="16_jmqc6"]
+[ext_resource type="AudioStream" uid="uid://c70fpec2rln1l" path="res://Wavs/sfx_bdash_game_etap7_tlo.wav" id="21_650pb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2viqa"]
 shader = ExtResource("2_r8oye")
@@ -34,6 +38,21 @@ shader_parameter/speed_scale = 0.01
 shader = ExtResource("2_r8oye")
 shader_parameter/direction = Vector2(0, -1)
 shader_parameter/speed_scale = 0.01
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ql5go"]
+texture = ExtResource("12_ymp0t")
+region_rect = Rect2(3, 1, 57, 61)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ejm5"]
+texture = ExtResource("13_usmp0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1x2i"]
+texture = ExtResource("12_ymp0t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hn0rq"]
+texture = ExtResource("12_ymp0t")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wy7u"]
 
 [node name="MetaMapa" type="Control"]
 layout_mode = 3
@@ -161,6 +180,19 @@ offset_right = 1978.0
 offset_bottom = 1253.0
 texture = ExtResource("2_ffcg5")
 
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 33.0
+offset_right = 245.0
+offset_bottom = 97.0
+scale = Vector2(-2, 2)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ql5go")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0ejm5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m1x2i")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_hn0rq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2wy7u")
+
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0
 offset_left = -130.0
@@ -196,6 +228,13 @@ affected_pieces = [0, 2]
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek4" index="0"]
 animation = &"2"
 
+[node name="StageNumber" type="Label" parent="Pieces/Kawałek4"]
+offset_left = -13.0
+offset_top = 4.0
+offset_right = 27.0
+offset_bottom = 38.0
+theme = ExtResource("16_jmqc6")
+
 [node name="Kawałek5" parent="Pieces" instance=ExtResource("7_s5yjg")]
 position = Vector2(741.111, 362.222)
 rotation = -2.44346
@@ -224,6 +263,12 @@ affected_pieces = [0, 1, 4, 5, 2, 3]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek8" index="0"]
 animation = &"3"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_650pb")
+
+[connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 
 [editable path="Pieces/Kawałek1"]
 [editable path="Pieces/Kawałek2"]

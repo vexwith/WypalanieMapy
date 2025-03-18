@@ -1,7 +1,7 @@
 extends Node2D
 
 const SAVE_DIR = "user://saves/"
-const SAVE_FILE_NAME = "save.json"
+const SAVE_FILE_NAME = "save_2.json"
 const SECURITY_KEY = "092GSD2"
 
 @onready var bgm = Bgm
@@ -166,7 +166,7 @@ func _ready():
 		sfx.volume_db = -7.0
 		plaza_version = 9 #reset
 		
-		var tween = get_tree().create_tween()
+		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property(wide_map.find_child("Saper"), "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 		
 	if not Globals.return_trapped:
@@ -427,12 +427,12 @@ func _on_piece_clicked(clicked_piece):
 			#move clouds away
 			for up in [53, 54, 31]:
 				var piece = clouds.find_child("Cloud" + str(up))
-				var tween = get_tree().create_tween()
+				var tween = get_tree().create_tween().bind_node(self)
 				tween.tween_property(piece, "position", Vector2(piece.position.x, piece.position.y - 70), 2.0)
 #				piece.position.y -= 70
 			for down in [9, 55, 32]:
 				var piece = clouds.find_child("Cloud" + str(down))
-				var tween = get_tree().create_tween()
+				var tween = get_tree().create_tween().bind_node(self)
 				tween.tween_property(piece, "position", Vector2(piece.position.x, piece.position.y + 70), 2.0)
 #				piece.position.y += 70
 			
@@ -446,7 +446,7 @@ func _on_piece_clicked(clicked_piece):
 #		camera.limit_top = -over
 #		camera.limit_right = over
 #		camera.limit_bottom = over
-		var tween = get_tree().create_tween().set_parallel(true)
+		var tween = get_tree().create_tween().set_parallel(true).bind_node(self)
 		tween.tween_property(camera, "global_position", clicked_piece.global_position, 1.0)
 		tween.tween_property(camera, "zoom", Vector2(2.0, 2.0), 1.0)
 		tween.tween_property(bgm, "pitch_scale", 0.1, 1.0)
@@ -454,14 +454,14 @@ func _on_piece_clicked(clicked_piece):
 		hills_exit.show()
 		reset.modulate.a = 0.0
 		reset.position = Vector2(371, 160)
-		var tween2 = get_tree().create_tween().set_parallel(true)
+		var tween2 = get_tree().create_tween().set_parallel(true).bind_node(self)
 		tween2.tween_property(reset, "modulate", Color(1.0, 1.0, 1.0, 1.0), 1.0)
 		tween2.tween_property(hills_exit, "modulate", Color(1.0, 1.0, 1.0, 1.0), 1.0)
 		bgm.stop()
 		bgm.pitch_scale = 1.0
 		
 	elif Globals.crawl_mode:
-		var tween = get_tree().create_tween()
+		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property(camera, "global_position", clicked_piece.global_position, 0.5)
 		
 		for i in clicked_piece.affected_pieces:
@@ -476,8 +476,12 @@ func _on_piece_clicked(clicked_piece):
 			
 	if all_failed():
 		if burn_whole_map():
+			var message = get_tree().root.find_child("Message", true, false)
+			if message != null:
+				message.queue_free()
+				
 			wide_map.hide()
-			var tween = get_tree().create_tween()
+			var tween = get_tree().create_tween().bind_node(self)
 			tween.tween_property(white_shadow, "modulate", Color.WHITE, 4.0)
 			await tween.finished
 			
@@ -492,7 +496,7 @@ func _on_piece_clicked(clicked_piece):
 			$Camera2D/Rewind.hide()
 			fire_map.global_position = camera.global_position - Vector2(1920, 1080)/2
 			fire_map.show()
-			var reverse_tween = get_tree().create_tween()
+			var reverse_tween = get_tree().create_tween().bind_node(self)
 			reverse_tween.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 3.0)
 			await reverse_tween.finished
 			
@@ -502,7 +506,7 @@ func _on_piece_clicked(clicked_piece):
 			Globals.crawl_mode = true
 			white_shadow.show()
 			burn_map.show()
-			var tween = get_tree().create_tween()
+			var tween = get_tree().create_tween().bind_node(self)
 			tween.tween_property(bgm, "pitch_scale", 0.1, 4.0)
 			
 	#saving map state
@@ -522,7 +526,7 @@ func _on_non_euclidean_clicked():
 	camera.limit_right = over
 	camera.limit_bottom = over
 	
-	var tween = get_tree().create_tween().set_parallel(true)
+	var tween = get_tree().create_tween().set_parallel(true).bind_node(self)
 	tween.tween_property(camera, "zoom", Vector2(4.0, 4.0), 1.0)
 	tween.tween_property(camera, "position", portal_piece.global_position, 1.0)
 	await tween.finished
@@ -577,7 +581,7 @@ func _on_blue_map_clicked():
 	#animating zoom in
 	var portal_piece = dark_pieces.get_child(0)
 	
-	var tween = get_tree().create_tween().set_parallel(true)
+	var tween = get_tree().create_tween().set_parallel(true).bind_node(self)
 	tween.tween_property(camera, "zoom", Vector2(4.0, 4.0), 1.0)
 	tween.tween_property(camera, "position", portal_piece.global_position, 1.0)
 	await tween.finished
@@ -726,7 +730,7 @@ func small_piece_animation(pos : Vector2):
 		if value:
 			count += 1
 	small_piece.play(str(count))
-	var tween = get_tree().create_tween().set_parallel(true)
+	var tween = get_tree().create_tween().set_parallel(true).bind_node(self)
 	tween.tween_property(small_piece, "scale", Vector2(1.0, 1.0), 0.5).from(Vector2(0.1, 0.1))
 	tween.tween_property(small_piece, "global_position", small_piece.position + Vector2(0, 40), 0.3).set_ease(Tween.EASE_IN)
 	tween.chain().tween_property(small_piece, "global_position", small_piece.position - Vector2(0, 40), 0.3).set_ease(Tween.EASE_OUT)
@@ -1037,9 +1041,14 @@ func load_prev(map_state, with_camera=false):
 	get_small_piece()
 
 func _on_real_exit_button_up():
+	var message = get_tree().root.find_child("Message", true, false)
+	if message != null:
+		message.queue_free()
+		
 	sfx.volume_db = -7.0
 	
 	var tween = get_tree().create_tween()
+	tween.bind_node(self)
 	screen_shadow.show()
 #	$Camera2D/Endings.show()
 #	$Camera2D/Endings.text = "TO BE CONTINUED"
@@ -1073,7 +1082,7 @@ func _on_real_exit_button_up():
 	screen_shadow.hide()
 	screen_shadow.modulate.a = 0.0
 	ognik.dark_mode = true
-	var tween_light = get_tree().create_tween()
+	var tween_light = get_tree().create_tween().bind_node(self)
 	tween_light.tween_property(ognik.light, "color", Color(1.0, 0.68, 0.0, 1.0), 2.0)
 
 
@@ -1081,10 +1090,11 @@ func _on_door_button_up():
 	if first_door:
 		first_door = false
 		var tween = get_tree().create_tween()
+		tween.bind_node(self)
 		$Door/AnimatedSprite2D.play("open")
 		tween.tween_property($Door/AnimatedSprite2D, "global_position", Vector2(-3879, 350 + 184), 1.0)
 	else:
-		var tween = get_tree().create_tween()
+		var tween = get_tree().create_tween().bind_node(self)
 		screen_shadow.show()
 		endings.show()
 		endings.text = "ENDING 1"
@@ -1095,11 +1105,10 @@ func _on_door_button_up():
 		wide_map.hide()
 		
 func _on_dark_completed():
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().bind_node(self)
 	screen_shadow.show()
 	endings.show()
 	endings.text = "ENDING 2137"
-	var t = 6.0
 	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 3.0)
 	tween.tween_property(endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 3.0)
 

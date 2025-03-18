@@ -24,11 +24,11 @@ func _process(delta):
 			move_to_dest(high_pos)
 		else:
 			MOVE_RATE = 20.0
-			var tween = get_tree().create_tween()
+			var tween = get_tree().create_tween().bind_node(self)
 			tween.tween_property(self, "position", high_pos, 2.0)
 
 func move_to_dest(dest):
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property(self, "position", mid_pos, 2.0).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position", dest, 2.0).set_ease(Tween.EASE_IN).set_delay(5.0)
 	
