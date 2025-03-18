@@ -1,15 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://drje5ks6015dh"]
+[gd_scene load_steps=23 format=3 uid="uid://drje5ks6015dh"]
 
 [ext_resource type="Script" path="res://Mapa/MetaMap/meta_mapa.gd" id="1_0s17a"]
-[ext_resource type="Texture2D" uid="uid://mjoo8a2x7wbg" path="res://UI/bkg_30.png" id="2_j0oc6"]
+[ext_resource type="Texture2D" uid="uid://byu26rk2tm2cc" path="res://Mapa/MetaMap/metamapa.png" id="2_ffcg5"]
+[ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="2_r8oye"]
+[ext_resource type="Texture2D" uid="uid://b8r1phhymqlk7" path="res://Mapa/NonEuclideanMap/noneuclidean2.png" id="3_6ctya"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="3_arg42"]
 [ext_resource type="PackedScene" uid="uid://cnsn1rca030sw" path="res://Mapa/kawałek26/kawałek_26.tscn" id="4_epiwd"]
+[ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="4_l7l3o"]
 [ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="5_kgs6o"]
+[ext_resource type="Texture2D" uid="uid://boc68kmusax73" path="res://Mapa/BlueMap/Space Background.png" id="5_uscra"]
 [ext_resource type="PackedScene" uid="uid://3lk4nmogsyaq" path="res://Mapa/kawałek8/kawałek_8.tscn" id="6_6hvet"]
+[ext_resource type="Texture2D" uid="uid://d07yyjcoifh7v" path="res://Mapa/saper.png" id="6_h53nl"]
+[ext_resource type="Texture2D" uid="uid://d1i0cmninopb4" path="res://Mapa/bkg_postlapa.png" id="6_m2qak"]
+[ext_resource type="Texture2D" uid="uid://dswkxewfupu4i" path="res://Mapa/MetaMap/darkmapa.png" id="7_g0oyv"]
 [ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="7_s5yjg"]
 [ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="8_v0b73"]
 [ext_resource type="PackedScene" uid="uid://rkafmjposk65" path="res://Mapa/kawałek7/kawałek_7.tscn" id="9_2furf"]
+[ext_resource type="Texture2D" uid="uid://bd6ddot6uv6cs" path="res://Mapa/trawa.png" id="9_o4urr"]
 [ext_resource type="PackedScene" uid="uid://bwmikbpx738km" path="res://Mapa/kawałek4/kawałek_4.tscn" id="10_5gnjs"]
+[ext_resource type="Texture2D" uid="uid://cijte16q7q3hx" path="res://Mapa/MetaMap/czynamapa.png" id="10_df1tc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2viqa"]
+shader = ExtResource("2_r8oye")
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/speed_scale = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrli2"]
+shader = ExtResource("2_r8oye")
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/speed_scale = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x11if"]
+shader = ExtResource("2_r8oye")
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/speed_scale = 0.01
 
 [node name="MetaMapa" type="Control"]
 layout_mode = 3
@@ -20,14 +44,122 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0s17a")
 
+[node name="NonEuclidean" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2viqa")
+layout_mode = 0
+offset_left = 419.0
+offset_top = 683.0
+offset_right = 2339.0
+offset_bottom = 1763.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_6ctya")
+stretch_mode = 1
+
+[node name="WideMap" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_lrli2")
+layout_mode = 0
+offset_left = 629.0
+offset_top = 695.0
+offset_right = 2229.0
+offset_bottom = 1895.0
+rotation = -1.5708
+scale = Vector2(0.46, 0.4)
+texture = ExtResource("4_l7l3o")
+stretch_mode = 1
+
+[node name="FireMap" type="TextureRect" parent="."]
+modulate = Color(1, 0.733333, 0.698039, 1)
+layout_mode = 0
+offset_left = 491.0
+offset_top = 828.0
+offset_right = 1558.0
+offset_bottom = 1428.0
+rotation = 4.37633
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_m2qak")
+
+[node name="FireMap2" type="TextureRect" parent="."]
+modulate = Color(1, 0.733333, 0.698039, 1)
+layout_mode = 0
+offset_left = 362.0
+offset_top = 378.0
+offset_right = 1429.0
+offset_bottom = 978.0
+rotation = -6.20998
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_m2qak")
+
+[node name="SaperMap" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 627.0
+offset_top = -72.0
+offset_right = 1157.0
+offset_bottom = 328.0
+texture = ExtResource("6_h53nl")
+
+[node name="SaperMap2" type="TextureRect" parent="SaperMap"]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 85.0
+offset_right = 1152.0
+offset_bottom = 485.0
+rotation = 1.88023
+texture = ExtResource("6_h53nl")
+
+[node name="SaperMap" type="TextureRect" parent="SaperMap"]
+layout_mode = 0
+offset_left = -51.0
+offset_top = 353.0
+offset_right = 479.0
+offset_bottom = 753.0
+rotation = -1.40928
+texture = ExtResource("6_h53nl")
+
+[node name="BlueMap" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_x11if")
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 117.0
+offset_right = 2720.0
+offset_bottom = 1317.0
+rotation = 0.479966
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_uscra")
+stretch_mode = 1
+
+[node name="DarkMap" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -422.0
+offset_top = -547.0
+offset_right = 1978.0
+offset_bottom = 1253.0
+texture = ExtResource("7_g0oyv")
+
+[node name="Trawa" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1622.0
+offset_top = 551.0
+offset_right = 2689.0
+offset_bottom = 1151.0
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_o4urr")
+
+[node name="CzyNaMap" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -422.0
+offset_top = -547.0
+offset_right = 1978.0
+offset_bottom = 1253.0
+texture = ExtResource("10_df1tc")
+
 [node name="BKG" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -480.0
-offset_top = -528.0
-offset_right = 320.0
-offset_bottom = 72.0
-scale = Vector2(3, 3)
-texture = ExtResource("2_j0oc6")
+offset_left = -422.0
+offset_top = -547.0
+offset_right = 1978.0
+offset_bottom = 1253.0
+texture = ExtResource("2_ffcg5")
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0
@@ -36,59 +168,59 @@ offset_right = -90.0
 offset_bottom = 40.0
 scale = Vector2(1.8, 1.8)
 
-[node name="Kawałek1" parent="Pieces" instance=ExtResource("3_arg42")]
-position = Vector2(500.556, 93.3333)
-affected_pieces = [3, 7]
+[node name="Kawałek1" parent="Pieces" instance=ExtResource("9_2furf")]
+position = Vector2(725, 190.556)
+affected_pieces = [7, 4]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek1" index="0"]
 animation = &"3"
 
-[node name="Kawałek2" parent="Pieces" instance=ExtResource("4_epiwd")]
-position = Vector2(600.556, 475.556)
-affected_pieces = [6, 7]
+[node name="Kawałek2" parent="Pieces" instance=ExtResource("8_v0b73")]
+position = Vector2(463.333, 389.444)
+affected_pieces = [2, 3, 7]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek2" index="0"]
-animation = &"2"
+animation = &"3"
 
-[node name="Kawałek3" parent="Pieces" instance=ExtResource("5_kgs6o")]
-position = Vector2(886.111, 465.556)
-affected_pieces = [4, 0, 0]
+[node name="Kawałek3" parent="Pieces" instance=ExtResource("10_5gnjs")]
+position = Vector2(440, 256.111)
+affected_pieces = [1, 7, 5]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek3" index="0"]
 animation = &"3"
 
-[node name="Kawałek4" parent="Pieces" instance=ExtResource("6_6hvet")]
-position = Vector2(611.667, 267.778)
-affected_pieces = [0, 1, 4, 5, 6, 7]
+[node name="Kawałek4" parent="Pieces" instance=ExtResource("4_epiwd")]
+position = Vector2(607.778, 490.556)
+affected_pieces = [0, 2]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek4" index="0"]
-animation = &"3"
+animation = &"2"
 
 [node name="Kawałek5" parent="Pieces" instance=ExtResource("7_s5yjg")]
-position = Vector2(742.778, 346.667)
+position = Vector2(741.111, 362.222)
 rotation = -2.44346
-affected_pieces = [1, 2, 3, 6]
+affected_pieces = [0, 7, 3, 6]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek5" index="0"]
 animation = &"3"
 
-[node name="Kawałek6" parent="Pieces" instance=ExtResource("8_v0b73")]
-position = Vector2(450, 375.556)
-affected_pieces = [1, 3, 7]
+[node name="Kawałek6" parent="Pieces" instance=ExtResource("3_arg42")]
+position = Vector2(506.667, 107.222)
+affected_pieces = [2, 7]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek6" index="0"]
 animation = &"3"
 
-[node name="Kawałek7" parent="Pieces" instance=ExtResource("9_2furf")]
-position = Vector2(722.778, 173.889)
-affected_pieces = [3, 4]
+[node name="Kawałek7" parent="Pieces" instance=ExtResource("5_kgs6o")]
+position = Vector2(884.445, 466.111)
+affected_pieces = [4, 5, 5]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek7" index="0"]
 animation = &"3"
 
-[node name="Kawałek8" parent="Pieces" instance=ExtResource("10_5gnjs")]
-position = Vector2(436.667, 233.889)
-affected_pieces = [0, 3, 5]
+[node name="Kawałek8" parent="Pieces" instance=ExtResource("6_6hvet")]
+position = Vector2(615.556, 283.889)
+affected_pieces = [0, 1, 4, 5, 2, 3]
 
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek8" index="0"]
 animation = &"3"
