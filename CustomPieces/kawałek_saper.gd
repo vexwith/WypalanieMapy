@@ -11,7 +11,7 @@ func _ready():
 	
 	
 func _on_piece_clicked(piece):
-	if piece == self and stage < 5:
+	if piece == self and stage <= 5:
 		bomb.show()
 		sfx.stream = uzbrojenie
 		sfx.play()

@@ -42,7 +42,8 @@ func update(damage):
 
 
 func _on_arrow_pressed():
-	get_parent().get_child(next_arrow).arrow_event = true
+	if stage < 7:
+		get_parent().get_child(next_arrow).arrow_event = true
 	arrow.disabled = true
 
 

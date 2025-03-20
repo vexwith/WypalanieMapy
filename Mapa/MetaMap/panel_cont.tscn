@@ -1,0 +1,142 @@
+[gd_scene load_steps=14 format=3 uid="uid://cwg2eexmp1q51"]
+
+[ext_resource type="Script" path="res://Mapa/MetaMap/panel_cont.gd" id="1_gq8eq"]
+[ext_resource type="Texture2D" uid="uid://b838ijcu6wuk0" path="res://GUI/CzyNaPtak/szuflada_0.png" id="2_inr22"]
+[ext_resource type="Texture2D" uid="uid://w808ha4ejcpw" path="res://GUI/CzyNaPtak/ppmg_continue_0.png" id="3_omppf"]
+[ext_resource type="Texture2D" uid="uid://clb6nintaoanh" path="res://GUI/CzyNaPtak/ppmg_continue_1.png" id="4_f1kvp"]
+[ext_resource type="AudioStream" uid="uid://cvnfhgs2ryoo0" path="res://Wavs/00teleport1.wav" id="5_wargr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a5tye"]
+texture = ExtResource("3_omppf")
+region_rect = Rect2(0, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2if5j"]
+texture = ExtResource("4_f1kvp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x0uhx"]
+texture = ExtResource("4_f1kvp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8trt"]
+
+[sub_resource type="Animation" id="Animation_oatah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xw1op"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(396, 22), Vector2(96, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qnsqk"]
+resource_name = "disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 22), Vector2(396, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(300, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sfdj"]
+_data = {
+"RESET": SubResource("Animation_oatah"),
+"appear": SubResource("Animation_xw1op"),
+"disappear": SubResource("Animation_qnsqk")
+}
+
+[node name="PanelCont" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_gq8eq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(96, 22)
+texture = ExtResource("2_inr22")
+
+[node name="Map" type="Button" parent="."]
+layout_mode = 0
+offset_right = 42.9999
+offset_bottom = 43.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_a5tye")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2if5j")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x0uhx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r8trt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1sfdj")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wargr")
+
+[connection signal="pressed" from="Map" to="." method="_on_map_pressed"]

@@ -12,7 +12,11 @@ const SECURITY_KEY = "092GSD2"
 @onready var spawn_timer = $SpawnTimer
 @onready var spread_timer = $SpreadTimer
 
+@onready var czynaptak = $CzyNaPtakLight
+
 var frame_index = 0
+
+var ptak_change = -1
 
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
@@ -87,6 +91,7 @@ func _on_exit_button_up():
 
 
 func _on_reset_button_up():
+	Globals.ignore_clicks = false
 	get_tree().reload_current_scene()
 
 func _on_spawn_timer_timeout():
@@ -109,4 +114,11 @@ func _on_piece_clicked(piece):
 		var flame = fire_piece.get_child(5)
 		if flame.visible:
 			flame.hide()
-			fire_piece.update(-2)
+			fire_piece.undo_move()
+	else:
+		var cur_ptak = pieces.get_child(4).stage
+		if cur_ptak <= 5 and cur_ptak > ptak_change:
+			ptak_change = cur_ptak
+			Globals.ignore_clicks = true
+			var r = randi_range(0, len(czynaptak.get_children()) - 1)
+			czynaptak.get_child(r).run()

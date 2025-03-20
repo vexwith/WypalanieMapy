@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://drje5ks6015dh"]
+[gd_scene load_steps=52 format=3 uid="uid://drje5ks6015dh"]
 
 [ext_resource type="Script" path="res://Mapa/MetaMap/meta_mapa.gd" id="1_0s17a"]
 [ext_resource type="Texture2D" uid="uid://byu26rk2tm2cc" path="res://Mapa/MetaMap/metamapa.png" id="2_ffcg5"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cy01wwi12q7av" path="res://GUI/brestartom_2.png" id="15_qejsq"]
 [ext_resource type="PackedScene" uid="uid://bbav8h88a3lio" path="res://Ognik/ognik.tscn" id="16_3h21t"]
 [ext_resource type="Theme" uid="uid://1ilqi4d5psi5" path="res://Mapa/number_theme.tres" id="16_jmqc6"]
+[ext_resource type="PackedScene" uid="uid://cwg2eexmp1q51" path="res://Mapa/MetaMap/panel_cont.tscn" id="16_tt18q"]
 [ext_resource type="Texture2D" uid="uid://cta3yie3e2xx1" path="res://Mapa/kawałek7/pole7_rim.png" id="17_dnrg6"]
 [ext_resource type="Texture2D" uid="uid://b2uddq82msm6a" path="res://Mapa/kawałek6/pole6_rim.png" id="19_t3wga"]
 [ext_resource type="Texture2D" uid="uid://cfyqsbld8fbfo" path="res://Mapa/kawałek4/pole4_rim.png" id="21_15h58"]
@@ -235,6 +236,96 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tv0n3")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_solhg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_v0w1p")
 
+[node name="CzyNaPtakLight" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelCont" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 1618.0
+offset_top = 98.0
+offset_right = 1618.0
+offset_bottom = 98.0
+
+[node name="PanelCont2" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 305.0
+offset_top = 907.0
+offset_right = 305.0
+offset_bottom = 907.0
+scale = Vector2(-2, 2)
+
+[node name="PanelCont3" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 1645.0
+offset_top = 872.0
+offset_right = 1645.0
+offset_bottom = 872.0
+
+[node name="PanelCont4" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 280.0
+offset_top = 353.0
+offset_right = 280.0
+offset_bottom = 353.0
+scale = Vector2(-2, 2)
+
+[node name="PanelCont5" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 1625.0
+offset_top = 464.0
+offset_right = 1625.0
+offset_bottom = 464.0
+
+[node name="PanelCont6" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 416.0
+offset_top = 227.0
+offset_right = 416.0
+offset_bottom = 227.0
+rotation = -1.5708
+
+[node name="PanelCont7" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 1376.0
+offset_top = 310.0
+offset_right = 1376.0
+offset_bottom = 310.0
+rotation = -1.5708
+
+[node name="PanelCont8" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 643.0
+offset_top = 864.0
+offset_right = 643.0
+offset_bottom = 864.0
+rotation = 1.5708
+
+[node name="PanelCont9" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 235.0
+offset_top = 633.0
+offset_right = 235.0
+offset_bottom = 633.0
+scale = Vector2(-2, 2)
+
+[node name="PanelCont10" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 1061.0
+offset_top = 149.0
+offset_right = 1061.0
+offset_bottom = 149.0
+rotation = -1.5708
+
+[node name="PanelCont11" parent="CzyNaPtakLight" instance=ExtResource("16_tt18q")]
+layout_mode = 1
+offset_left = 1300.0
+offset_top = 945.0
+offset_right = 1300.0
+offset_bottom = 945.0
+rotation = 1.5708
+
 [node name="Ognik" parent="." instance=ExtResource("16_3h21t")]
 
 [node name="Pieces" type="Control" parent="."]
@@ -357,11 +448,11 @@ stream = ExtResource("21_650pb")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.0
 one_shot = true
 
 [node name="SpreadTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]

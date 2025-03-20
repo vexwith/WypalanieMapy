@@ -460,7 +460,7 @@ func _on_piece_clicked(clicked_piece):
 		bgm.stop()
 		bgm.pitch_scale = 1.0
 		
-	elif Globals.crawl_mode:
+	elif Globals.crawl_mode and not all_failed():
 		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property(camera, "global_position", clicked_piece.global_position, 0.5)
 		
