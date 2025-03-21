@@ -53,16 +53,10 @@ func _ready():
 		if Globals.map_pieces.values()[i]:
 			piece.rim.z_index = 1
 			match i:
-				0: #blue
-					modulation.color = Color(0, 0, 0.647)
-				1: #dark
+				1:
 					modulation.color = Color.BLACK
 					ognik.dark_mode = true
-					if pieces.get_child(0).clickable:
-						ognik.light.color = Color(0, 0, 0.9)
-						ognik.light.scale = Vector2(2.0, 2.0)
-					else:
-						ognik.light.color.a = 1.0
+					ognik.light.color.a = 1.0
 				2:
 					var flame = flame_scene.instantiate()
 					piece.add_child(flame)
@@ -122,3 +116,10 @@ func _on_piece_clicked(piece):
 			Globals.ignore_clicks = true
 			var r = randi_range(0, len(czynaptak.get_children()) - 1)
 			czynaptak.get_child(r).run()
+			
+	if piece == pieces.get_child(0): #blue
+		modulation.color = Color(0, 0, 0.647)
+		ognik.dark_mode = false
+	elif piece == pieces.get_child(1): #dark
+		modulation.color = Color.BLACK
+		ognik.dark_mode = true

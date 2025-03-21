@@ -81,12 +81,13 @@ func _on_timer_timeout():
 	
 
 func _on_lapa_button_up():
+	var gm = owner.get_parent()
+	gm.sfx.volume_db = -7.0
 	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property(lapa, "global_position", Vector2(152, 42), 1.0).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	lapa.hide()
 	Globals.lapa_gained = true
-	var gm = owner.get_parent()
 	gm.lapa_button.show()
 	gm.key_one.show()
 	gm.mouse_left.show()
