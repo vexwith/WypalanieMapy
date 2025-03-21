@@ -1,0 +1,16 @@
+{
+    "ED1": [
+        ["", "Po przejściu przez drzwi twoim oczom ukazała się klepsydra.", "klepsydra"],
+        ["", "Unosiła się na środku pokoju..."],
+        ["", "\no ile pokojem można nazwać przestrzeń o widocznie niekończącej się powierzchni.", "cont"],
+        ["", "Tak naprawdę trudno było stwierdzić czy to klepsydra unosi się względem ciebie, czy to ty unosisz się odwrócony do góry nogami względem niej."],
+        ["", "...W końcu to ona była centrum tego świata..."],
+        ["", "Nie wiedząc skąd to wiesz spróbowałeś wziąć klepsydrę i schować ją do kieszeni..."],
+        ["", "Jednak klepsydra zniknęła tuż przed twoimi oczyma.", "0"],
+        ["NARRATOR:\n", "Ojoj, przepraszam za spóźnienie, ale nie mogłem cię znaleźć pośród tych wszystkich kawałków mapy.", "narrator"],
+        ["NARRATOR:\n", "W pokoju, w którym się znajdujesz nie znalazłeś nic wartościowego."],
+        ["NARRATOR:\n", "Lepiej wróćmy na prawidłowy tor naszej historii."],
+        ["NARRATOR:\n", "Sterczenie tutaj na pewno nie pomoże ci w wypaleniu mapy."],
+        ["ENDING 1", " ", "0"]
+    ]
+}

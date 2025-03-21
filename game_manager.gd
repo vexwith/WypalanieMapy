@@ -9,6 +9,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var medley = preload("res://Wavs/Reksio i Skarb Piratów Medley (Tomasz Jachowicz cover ⧸ variation by KKR)-(p).mp3")
 @onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
 @onready var reverse = preload("res://Wavs/reversemapa.wav")
+@onready var lustro = preload("res://Wavs/sfx_bdash_game_etap7_tlo.wav")
 
 @onready var sfx = $SFX
 @onready var ojoj = preload("res://Wavs/6dziura.wav")
@@ -61,7 +62,8 @@ const SECURITY_KEY = "092GSD2"
 @onready var menu = camera.find_child("Menu")
 @onready var screen_shadow = camera.find_child("Shadow")
 @onready var white_shadow = camera.find_child("WhiteShadow")
-@onready var endings = camera.find_child("Endings")
+@onready var endings = camera.find_child("EndingsNumber")
+@onready var dialogue = $Camera2D/Endings
 #@onready var detail_shadow = $"WideMapa/BaseMap/Kawałek100/DetailShadow"
 
 var camera_limits = [-624, -684, 2544, 1764]
@@ -80,6 +82,8 @@ var between_maps = true
 var unlock_hills = true
 var camera_exit_pos
 var first_door = true
+
+var lustro_flag = false #for bgm
 
 var draggable = false #false
 var offset : Vector2
@@ -194,23 +198,18 @@ func _ready():
 		screen_shadow.modulate.a = 1.0
 		_on_real_exit_button_up()
 		
-#	for i in range(1, 72):
-#		var piece = base_map.get_child(i)
-#		piece.stage = 4
-#		piece.sprite.play(str(piece.stage))
-#	for j in non_euclidean_pieces.get_children():
-#		j.stage = 4
-#	first_map = false
-#	between_maps = false
+	first_map = false
+	between_maps = false
 	
 func _process(delta):
 	#bgm handler
 	if not bgm.playing:
-		if Globals.fire_mode and Globals.crawl_mode:
+		if lustro_flag:
+			bgm.stream = lustro
+			plaza_version = 9
+		elif Globals.fire_mode and Globals.crawl_mode:
 			bgm.stream = reverse
 			plaza_version = 9 #reset
-#		elif Globals.fire_mode: #silence between wide and fire map
-#			bgm.stream = null
 		elif Globals.crawl_mode:
 			bgm.stream = hills
 			plaza_version = 9 #reset
@@ -419,7 +418,7 @@ func _on_piece_clicked(clicked_piece):
 #				upgrade_to_wide_map()
 				
 	elif unlock_hills:
-		if map_completed(72) and non_euclidean_completed(): #all before hills
+#		if map_completed(72) and non_euclidean_completed(): #all before hills
 			unlock_hills = false
 			var entre = base_map.get_child(72)
 			entre.global_position.x += 70
@@ -1050,10 +1049,7 @@ func _on_real_exit_button_up():
 	var tween = get_tree().create_tween()
 	tween.bind_node(self)
 	screen_shadow.show()
-#	$Camera2D/Endings.show()
-#	$Camera2D/Endings.text = "TO BE CONTINUED"
 	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
-#	tween.tween_property($Camera2D/Endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 	
 	await tween.finished
 	wide_map.hide()
@@ -1096,13 +1092,20 @@ func _on_door_button_up():
 	else:
 		var tween = get_tree().create_tween().bind_node(self)
 		screen_shadow.show()
-		endings.show()
-		endings.text = "ENDING 1"
 		tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
-		tween.tween_property(endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 		
 		await tween.finished
 		wide_map.hide()
+		camera.zoom = Vector2(1.0, 1.0)
+		dialogue.show()
+		lustro_flag = true
+		bgm.stop()
+		var tween2 = get_tree().create_tween().bind_node(self)
+		tween2.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
+		
+		await tween2.finished
+		dialogue.display_dialog("ED1")
+		
 		
 func _on_dark_completed():
 	var tween = get_tree().create_tween().bind_node(self)
