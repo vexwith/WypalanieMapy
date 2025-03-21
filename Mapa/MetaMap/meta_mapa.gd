@@ -56,7 +56,7 @@ func _ready():
 				1:
 					modulation.color = Color.BLACK
 					ognik.dark_mode = true
-					ognik.light.color.a = 1.0
+					ognik.light.color = Color(1, 0.7, 0.5)
 				2:
 					var flame = flame_scene.instantiate()
 					piece.add_child(flame)

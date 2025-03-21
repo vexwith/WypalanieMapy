@@ -33,6 +33,7 @@ script = ExtResource("2_41xlv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
+modulate = Color(0, 0, 0, 0.376471)
 layout_mode = 0
 offset_left = -67.5
 offset_top = 8.5
@@ -52,7 +53,7 @@ offset_bottom = 231.5
 rotation = -0.5044
 scale = Vector2(0.75, 0.75)
 theme = ExtResource("4_c6pgs")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Znajdź
 Przycisk"
 horizontal_alignment = 1
