@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfdvqa0ogw2w3"]
+[gd_scene load_steps=11 format=3 uid="uid://dfdvqa0ogw2w3"]
 
 [ext_resource type="Texture2D" uid="uid://bwtt0xhsxwewn" path="res://Items/Messages/kartka.png" id="1_y46s6"]
 [ext_resource type="Script" path="res://Items/Messages/message.gd" id="2_p1h7q"]
@@ -19,6 +19,15 @@ region_rect = Rect2(0, 0, 61, 61)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2vlx"]
 
+[sub_resource type="Gradient" id="Gradient_oxwnu"]
+offsets = PackedFloat32Array(0, 0.469799, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.388303, 0.388303, 0.388303, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4uk1n"]
+gradient = SubResource("Gradient_oxwnu")
+fill_from = Vector2(0.514151, 1)
+fill_to = Vector2(0.509434, 0)
+
 [node name="Message" type="Button"]
 offset_left = -45.75
 offset_top = -45.75
@@ -33,25 +42,39 @@ script = ExtResource("2_p1h7q")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -84.1667
-offset_top = -101.5
-offset_right = 218.833
-offset_bottom = 242.5
-scale = Vector2(0.75, 0.75)
+offset_left = -297.5
+offset_top = -150.167
+offset_right = 1622.5
+offset_bottom = 929.833
+texture = SubResource("GradientTexture2D_4uk1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="TextureRect"]
+modulate = Color(1, 1, 1, 0.741176)
+position = Vector2(960, 540)
+texture = ExtResource("1_y46s6")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+modulate = Color(0, 0, 0, 0.376471)
+layout_mode = 0
+offset_left = 733.0
+offset_top = 368.0
+offset_right = 1191.0
+offset_bottom = 712.0
 texture = ExtResource("3_6jnx3")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -49.5
-offset_top = -55.5
-offset_right = 183.5
-offset_bottom = 175.5
+offset_left = 426.0
+offset_top = 318.0
+offset_right = 1051.0
+offset_bottom = 511.0
 scale = Vector2(0.75, 0.75)
 theme = ExtResource("4_y0lmi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
 text = "Ło matku!
 Chyba nie chcesz wywołać pożaru co?! 
 Myślisz, że znajdziesz jakieś skarby?"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
