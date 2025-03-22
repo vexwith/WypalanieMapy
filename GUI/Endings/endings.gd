@@ -5,6 +5,7 @@ extends Control
 @onready var label = $VBoxContainer/TextRim/VBoxContainer/Label
 @onready var narrator = $VBoxContainer/Rim/BoxContainer/Narrator
 @onready var klepsydra = $VBoxContainer/Rim/KlepsydraLight
+@onready var tbc = $VBoxContainer/Rim/BoxContainer2/TBC
 
 @onready var text_timer = $TextTimer
 
@@ -57,6 +58,8 @@ func show_next():
 					show_sprite(klepsydra)
 				"narrator":
 					show_sprite(narrator)
+				"tbc":
+					show_sprite(tbc)
 	
 	label.text += speaker
 	writting_in_progress = true

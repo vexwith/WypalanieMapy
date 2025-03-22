@@ -12,5 +12,27 @@
         ["NARRATOR:\n", "Lepiej wróćmy na prawidłowy tor naszej historii."],
         ["NARRATOR:\n", "Sterczenie tutaj na pewno nie pomoże ci w wypaleniu mapy."],
         ["ENDING 1", " ", "0"]
+    ],
+    "ED2": [
+        ["", "Po wielu trudach twoim oczom ukazał się napis:", "tbc"],
+        ["", "\nCiąg dalszy nastąpi", "cont"],
+        ["NARRATOR:\n", "Świetnie, wypaliłeś mapę!", "narrator"],
+        ["NARRATOR:\n", "Jeszcze tylko kilka map i będziesz w wiosce!"],
+        ["NARRATOR:\n", "...Chyba nie myślałeś, że to już koniec?"],
+        ["NARRATOR:\n", "Nie ma się gdzie spieszyć, mamy cały czas we wszechświecie."],
+        ["NARRATOR:\n", "Udało ci się rozwiązać moją zagadkę tak szybko, że nie zdążyłem jej dokończyć..."],
+        ["NARRATOR:\n", "Ale spokojnie, będzie tu po co wracać!"],
+        ["NARRATOR:\n", "..."],
+        ["NARRATOR:\n", "Mam nadzieję, że ZAWSZE będzie powód, żeby tu wracać."],
+        ["ENDING 2", " ", "0"]
+    ],
+    "ED1.5": [
+        ["", "Po przejściu przez drzwi twoim oczom ukazała się... "],
+        ["", "Pustka", "cont"],
+        ["NARRATOR:\n", "Ojoj, przepraszam za spóźnienie, ale nie mogłem cię znaleźć pośród tych wszystkich kawałków mapy.", "narrator"],
+        ["NARRATOR:\n", "W pokoju, w którym się znajdujesz nie znalazłeś nic wartościowego."],
+        ["NARRATOR:\n", "Lepiej wróćmy na prawidłowy tor naszej historii."],
+        ["NARRATOR:\n", "Sterczenie tutaj na pewno nie pomoże ci w wypaleniu mapy."],
+        ["ENDING 1.5", " ", "0"]
     ]
 }

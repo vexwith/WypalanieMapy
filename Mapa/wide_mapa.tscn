@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://gibjfwvaggvf"]
+[gd_scene load_steps=131 format=3 uid="uid://gibjfwvaggvf"]
 
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_cr8sa"]
 [ext_resource type="Texture2D" uid="uid://dftp5b3d0k7np" path="res://Mapa/hills2.png" id="1_mn8p5"]
@@ -74,6 +74,8 @@
 [ext_resource type="Theme" uid="uid://8xag5q4andg4" path="res://Items/arrow.tres" id="66_42gkv"]
 [ext_resource type="Texture2D" uid="uid://n2seljnble0a" path="res://Items/Askrzynia1_0.png" id="66_e4gm2"]
 [ext_resource type="Texture2D" uid="uid://wft8rwtow28n" path="res://Items/skrzynie_otwarte_0.png" id="67_sajdc"]
+[ext_resource type="PackedScene" uid="uid://dfdvqa0ogw2w3" path="res://Items/Messages/message.tscn" id="69_2d064"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_59.gd" id="69_4txwv"]
 [ext_resource type="Texture2D" uid="uid://i76ed2w48a08" path="res://Items/animacje_5.png" id="71_48nn8"]
 [ext_resource type="Texture2D" uid="uid://dvvilog3bt73b" path="res://Items/animacje_12.png" id="72_0co4m"]
 
@@ -1231,10 +1233,35 @@ visible = true
 
 [node name="Kawałek59" parent="BaseMap" instance=ExtResource("8_ysg1w")]
 position = Vector2(921, 985)
-affected_pieces = [57, 59, 60, 68]
+script = ExtResource("69_4txwv")
+affected_pieces = [57, 58, 60, 68]
 
 [node name="AnimatedSprite2D" parent="BaseMap/Kawałek59" index="0"]
 visible = true
+
+[node name="Pozar" parent="BaseMap/Kawałek59" instance=ExtResource("69_2d064")]
+visible = false
+z_index = 1
+offset_left = -16.0
+offset_top = -39.0
+offset_right = 45.0
+offset_bottom = 22.0
+scale = Vector2(0.9, 0.9)
+
+[node name="TextureRect" parent="BaseMap/Kawałek59/Pozar" index="0"]
+offset_left = -250.0
+offset_top = -178.0
+offset_right = 294.0
+offset_bottom = 267.0
+
+[node name="Label" parent="BaseMap/Kawałek59/Pozar" index="1"]
+offset_left = -217.5
+offset_top = -168.833
+offset_right = 457.5
+offset_bottom = 480.167
+text = "XX.XX.XXXX
+Około godziny 20:00 w poniedziałek wybuchł pożar w domu rodzinnym w XXXXXX.
+Na szczęście domownicy nie byli obecni w domu, gdy wybuchł pożar. Po godzinie walki pożar został w końcu ugaszony, ale większa część domu została spalona w tym dołączona do budynku buda. Przyczyna wybuchu pożaru nie jest jasna i konieczne będzie dalsze dochodzenie."
 
 [node name="Kawałek60" parent="BaseMap" instance=ExtResource("13_j21to")]
 position = Vector2(855, 1085)
@@ -2250,6 +2277,7 @@ texture = ExtResource("63_ct4ha")
 [editable path="BaseMap/Kawałek57"]
 [editable path="BaseMap/Kawałek58"]
 [editable path="BaseMap/Kawałek59"]
+[editable path="BaseMap/Kawałek59/Pozar"]
 [editable path="BaseMap/Kawałek60"]
 [editable path="BaseMap/Kawałek61"]
 [editable path="BaseMap/Kawałek62"]

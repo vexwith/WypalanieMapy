@@ -10,6 +10,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
 @onready var reverse = preload("res://Wavs/reversemapa.wav")
 @onready var lustro = preload("res://Wavs/sfx_bdash_game_etap7_tlo.wav")
+@onready var ufo = preload("res://Wavs/00ufo.wav")
 
 @onready var sfx = $SFX
 @onready var ojoj = preload("res://Wavs/6dziura.wav")
@@ -84,6 +85,7 @@ var camera_exit_pos
 var first_door = true
 
 var lustro_flag = false #for bgm
+var ufo_flag = false
 
 var draggable = false #false
 var offset : Vector2
@@ -106,7 +108,7 @@ func save_data(path : String):
 			"first_enter" : Globals.first_enter,
 			"first_restart" : Globals.first_restart,
 			"say_restart" : Globals.say_restart,
-#			"wypalenia" : Globals.wypalenia,
+			"ending_one" : Globals.ending_one,
 			"map_pieces" : Globals.map_pieces
 		}
 	}
@@ -135,7 +137,7 @@ func load_data(path : String):
 		Globals.first_enter = data.player_data.first_enter
 		Globals.first_restart = data.player_data.first_restart
 		Globals.say_restart = data.player_data.say_restart
-#		Globals.wypalenia = data.player_data.wypalenia
+		Globals.ending_one = data.player_data.ending_one
 		Globals.map_pieces = data.player_data.map_pieces
 		
 #		Globals.map_state_log = data.map_data.map_state_log
@@ -198,14 +200,17 @@ func _ready():
 		screen_shadow.modulate.a = 1.0
 		_on_real_exit_button_up()
 		
-	first_map = false
-	between_maps = false
+#	first_map = false
+#	between_maps = false
 	
 func _process(delta):
 	#bgm handler
 	if not bgm.playing:
 		if lustro_flag:
 			bgm.stream = lustro
+			plaza_version = 9
+		elif ufo_flag:
+			bgm.stream = ufo
 			plaza_version = 9
 		elif Globals.fire_mode and Globals.crawl_mode:
 			bgm.stream = reverse
@@ -418,7 +423,7 @@ func _on_piece_clicked(clicked_piece):
 #				upgrade_to_wide_map()
 				
 	elif unlock_hills:
-#		if map_completed(72) and non_euclidean_completed(): #all before hills
+		if map_completed(72) and non_euclidean_completed(): #all before hills
 			unlock_hills = false
 			var entre = base_map.get_child(72)
 			entre.global_position.x += 70
@@ -1090,9 +1095,11 @@ func _on_door_button_up():
 		$Door/AnimatedSprite2D.play("open")
 		tween.tween_property($Door/AnimatedSprite2D, "global_position", Vector2(-3879, 350 + 184), 1.0)
 	else:
-		var tween = get_tree().create_tween().bind_node(self)
 		screen_shadow.show()
-		tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
+		var temp_vol = bgm.volume_db
+		var tween = get_tree().create_tween().set_parallel().bind_node(self)
+		tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 3.0)
+		tween.tween_property(bgm, "volume_db", -15.0, 3.0)
 		
 		await tween.finished
 		wide_map.hide()
@@ -1100,20 +1107,37 @@ func _on_door_button_up():
 		dialogue.show()
 		lustro_flag = true
 		bgm.stop()
+		bgm.volume_db = temp_vol
 		var tween2 = get_tree().create_tween().bind_node(self)
 		tween2.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
 		
 		await tween2.finished
-		dialogue.display_dialog("ED1")
+		if Globals.ending_one:
+			Globals.ending_one = false
+			dialogue.display_dialog("ED1")
+		else:
+			dialogue.display_dialog("ED1.5")
 		
 		
 func _on_dark_completed():
-	var tween = get_tree().create_tween().bind_node(self)
+	var temp_vol = bgm.volume_db
 	screen_shadow.show()
-	endings.show()
-	endings.text = "ENDING 2137"
+	var tween = get_tree().create_tween().set_parallel().bind_node(self)
 	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 3.0)
-	tween.tween_property(endings, "modulate", Color(1.0, 1.0, 1.0, 1.0), 3.0)
+	tween.tween_property(bgm, "volume_db", -15.0, 3.0)
+	
+	await tween.finished
+	dark_map.hide()
+	blue_map.hide()
+	dialogue.show()
+	ufo_flag = true
+	bgm.stop()
+	bgm.volume_db = temp_vol - 7.0
+	var tween2 = get_tree().create_tween().bind_node(self)
+	tween2.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
+	
+	await tween2.finished
+	dialogue.display_dialog("ED2")
 
 func _on_menu_pressed():
 	save_data(SAVE_DIR + SAVE_FILE_NAME)

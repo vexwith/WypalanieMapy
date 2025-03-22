@@ -33,6 +33,7 @@ var return_trapped = false #after trapping return it stays trapped
 var first_enter = true
 var first_restart = true
 var say_restart = false
+var ending_one = true #after first ending change to 1.5
 
 var wypalenia = 0 #after 3 wypalenia spawn a message once
 

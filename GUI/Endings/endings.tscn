@@ -61,6 +61,24 @@ size_flags_horizontal = 2
 size_flags_vertical = 4
 texture = ExtResource("2_qa1xq")
 
+[node name="BoxContainer2" type="BoxContainer" parent="VBoxContainer/Rim"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TBC" type="Label" parent="VBoxContainer/Rim/BoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_4l6ts")
+theme_override_font_sizes/font_size = 200
+text = "TO BE CONTINUED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/Rim"]
 layout_mode = 1
 anchors_preset = 15
