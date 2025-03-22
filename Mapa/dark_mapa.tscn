@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://vuh6l5cqq2gq"]
+[gd_scene load_steps=51 format=3 uid="uid://vuh6l5cqq2gq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_i15fi"]
 [ext_resource type="Texture2D" uid="uid://p17t0hhrogtm" path="res://Mapa/Space Background.png" id="2_mx3da"]
@@ -36,9 +36,12 @@
 [ext_resource type="PackedScene" uid="uid://cto0or21dya2h" path="res://Mapa/kawałek12/kawałek_12.tscn" id="33_j55k3"]
 [ext_resource type="PackedScene" uid="uid://qk7xlltaywn" path="res://Mapa/kawałek11/kawałek_11.tscn" id="34_0kjhg"]
 [ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="35_7biof"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_8.gd" id="35_ngler"]
+[ext_resource type="PackedScene" uid="uid://dfdvqa0ogw2w3" path="res://Items/Messages/message.tscn" id="35_wfnb0"]
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="36_wycm3"]
 [ext_resource type="PackedScene" uid="uid://rc1a7m33hk6g" path="res://Mapa/kawałek6/kawałek_6.tscn" id="37_xw08q"]
 [ext_resource type="PackedScene" uid="uid://due6kkr85glhn" path="res://Mapa/kawałek3/kawałek_3.tscn" id="38_mpkb4"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_10.gd" id="42_gngfr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ullq"]
 shader = ExtResource("1_i15fi")
@@ -958,7 +961,20 @@ affected_pieces = [1, 6, 15]
 
 [node name="Kawałek8" parent="Pieces" instance=ExtResource("33_j55k3")]
 position = Vector2(971, 822)
+script = ExtResource("35_ngler")
 affected_pieces = [5, 14]
+
+[node name="KretDead" parent="Pieces/Kawałek8" instance=ExtResource("35_wfnb0")]
+visible = false
+z_index = 1
+offset_left = -25.0
+offset_top = -48.0
+offset_right = 36.0
+offset_bottom = 13.0
+scale = Vector2(1, 1)
+
+[node name="Label" parent="Pieces/Kawałek8/KretDead" index="1"]
+text = "A więc zmarłem i jadę sobie, proszę ciebie bardzo windą do nieba, a tu nagle chrzast! I ląduje spowrotem na wyspie skarbów!"
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("34_0kjhg")]
 position = Vector2(200, 1086)
@@ -1017,7 +1033,22 @@ affected_pieces = [23]
 
 [node name="Kawałek23" parent="Pieces" instance=ExtResource("11_ov3nc")]
 position = Vector2(1437, 133)
+script = ExtResource("42_gngfr")
 affected_pieces = [22, 24, 25]
+
+[node name="KretWioska" parent="Pieces/Kawałek23" instance=ExtResource("35_wfnb0")]
+visible = false
+z_index = 1
+offset_left = -27.0
+offset_top = -28.0
+offset_right = 34.0
+offset_bottom = 33.0
+scale = Vector2(1, 1)
+
+[node name="Label" parent="Pieces/Kawałek23/KretWioska" index="1"]
+offset_top = -98.833
+offset_bottom = 255.167
+text = "Nie wiem co się dzieje, ale w wiosce nie ma żywej duszy. Próbowałem zawołać wodza, ale z moich ust nie wydobywał się żaden dźwięk. W tak potwornej sytuacji powinien pojawić się narrator, ale po nim też ani śladu."
 
 [node name="Kawałek24" parent="Pieces" instance=ExtResource("35_7biof")]
 position = Vector2(1553, 98)
@@ -1041,3 +1072,7 @@ color = Color(0, 0, 0, 1)
 [editable path="PortalButton"]
 [editable path="Pieces/Kawałek0"]
 [editable path="Pieces/Kawałek1"]
+[editable path="Pieces/Kawałek8"]
+[editable path="Pieces/Kawałek8/KretDead"]
+[editable path="Pieces/Kawałek23"]
+[editable path="Pieces/Kawałek23/KretWioska"]
