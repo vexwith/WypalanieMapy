@@ -786,6 +786,34 @@ rotation = 1.66556
 script = ExtResource("24_640dx")
 affected_pieces = [13, 1]
 
+[node name="KretChad" parent="BaseMap/Kawałek21" instance=ExtResource("69_2d064")]
+visible = false
+z_index = 1
+offset_left = -27.9276
+offset_top = 33.7942
+offset_right = 33.0724
+offset_bottom = 94.7942
+rotation = -1.66504
+scale = Vector2(1, 1)
+
+[node name="TextureRect" parent="BaseMap/Kawałek21/KretChad" index="0"]
+offset_left = -218.0
+offset_top = -246.0
+offset_right = 275.0
+offset_bottom = 264.0
+
+[node name="Label" parent="BaseMap/Kawałek21/KretChad" index="1"]
+offset_top = -238.833
+offset_bottom = 433.167
+theme_override_font_sizes/font_size = 40
+text = "XX.XX.XXXX
+W godzinie mej śmierci zamykam oczy i wspominam, tak, wspominam nasze przygody od wyspy skarbów po wiek XIX.
+Ile razy ratowaliśmy świat przed zagładą. Powinni nam za to postawić nie jeden pomnik.
+Jeśli obserwujesz tego starego kreta gdzieś tam z góry to wiedz, przyjacielu, że bez ciebie nie byłoby mnie tutaj. Nie poznałbym Molly, nie miałbym dzieci, a co dopiero wnuków...
+Pocieszam się myślą, że to ich pora na przeżycie swoich przygód.
+Pozdrów ode mnie Karimatę,
+Kret Kretes"
+
 [node name="Kawałek22" parent="BaseMap" instance=ExtResource("6_5c7sx")]
 position = Vector2(410, 483)
 rotation = -3.0348
@@ -2239,6 +2267,7 @@ texture = ExtResource("63_ct4ha")
 [editable path="BaseMap/Kawałek19"]
 [editable path="BaseMap/Kawałek20"]
 [editable path="BaseMap/Kawałek21"]
+[editable path="BaseMap/Kawałek21/KretChad"]
 [editable path="BaseMap/Kawałek22"]
 [editable path="BaseMap/Kawałek23"]
 [editable path="BaseMap/Kawałek24"]

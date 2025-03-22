@@ -8,6 +8,7 @@ const SAVE_FILE_NAME = "save_2.json"
 @onready var secret = $Secret
 
 func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -5.9)
 	Globals.crawl_mode = false
 	Globals.fire_mode = false
 	Bgm.stop()

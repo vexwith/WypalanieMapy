@@ -1,10 +1,6 @@
 extends Piece
 
-@onready var list = $KretChad
-
-func _ready():
-	super._ready()
-	clickable = false
+@onready var list = $Hint
 
 func update(damage):
 	super.update(damage)

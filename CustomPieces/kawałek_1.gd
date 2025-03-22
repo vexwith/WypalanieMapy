@@ -51,18 +51,20 @@ func update(damage):
 	var second_portal = gm.blue_pieces.get_child(0)
 	if !first_portal.locked and !second_portal.locked: #infinity
 		if damage < 1: return #dont activate again when going back
-		var  temp_detail_mode = Globals.detail_mode
+		var temp_detail_mode = Globals.detail_mode
 		Globals.detail_mode = false
 		gm.clear_rims(gm.dark_pieces)
 		gm.clear_rims(gm.blue_pieces)
 		for piece in gm.blue_pieces.get_children(): #blocking everything
 			piece.clickable = false
-			get_index()
 			piece.sprite.play(str(5))
+			if piece.get_index() in [15]: #showing lists
+				piece.list.show()
 		for piece in gm.dark_pieces.get_children():
 			piece.clickable = false
-#			print(piece.get_index())
 			piece.sprite.play(str(5))
+			if piece.get_index() in [8, 23]:
+				piece.list.show()
 		Globals.undraggable = true
 		
 #		gm.ognik.dark_mode = false
@@ -82,6 +84,11 @@ func update(damage):
 		var infinity = gm.infinity #placing infinity sign
 		infinity.show()
 		infinity.global_position = gm.camera.global_position - Vector2(1080, 620)
+		
+		for i in [15]: #hiding all lists
+			gm.blue_pieces.get_child(i).list.hide()
+		for i in [8, 23]:
+			gm.dark_pieces.get_child(i).list.hide()
 		
 		var tween2 = get_tree().create_tween().bind_node(self) #end flashbang
 		tween2.tween_property(white_shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), 2.0)

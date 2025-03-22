@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dudiv4bfg8pq"]
+[gd_scene load_steps=47 format=3 uid="uid://dudiv4bfg8pq"]
 
 [ext_resource type="Shader" path="res://Mapa/wide_mapa.gdshader" id="1_rx72m"]
 [ext_resource type="Texture2D" uid="uid://boc68kmusax73" path="res://Mapa/BlueMap/Space Background.png" id="2_wf52e"]
@@ -34,7 +34,9 @@
 [ext_resource type="PackedScene" uid="uid://cqt4n3lxo4au6" path="res://Mapa/kawałek5/kawałek_5.tscn" id="32_kppem"]
 [ext_resource type="PackedScene" uid="uid://bqauqrlm00k4e" path="res://Mapa/kawałek9/kawałek_9.tscn" id="33_edr00"]
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="34_clb7f"]
+[ext_resource type="PackedScene" uid="uid://dfdvqa0ogw2w3" path="res://Items/Messages/message.tscn" id="35_3alli"]
 [ext_resource type="PackedScene" uid="uid://celjynmx78vxl" path="res://Mapa/kawałek14/kawałek_14.tscn" id="35_234bx"]
+[ext_resource type="Script" path="res://CustomPieces/kawałek_15.gd" id="35_rlcy5"]
 [ext_resource type="PackedScene" uid="uid://dhlhjgt8bmlcr" path="res://Mapa/kawałek2/kawałek_2.tscn" id="36_1jji6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_elslx"]
@@ -992,7 +994,25 @@ affected_pieces = [13]
 [node name="Kawałek15" parent="Pieces" instance=ExtResource("34_clb7f")]
 position = Vector2(538, 674)
 rotation = 0.666474
+script = ExtResource("35_rlcy5")
 affected_pieces = [1, 19, 17]
+
+[node name="Hint" parent="Pieces/Kawałek15" instance=ExtResource("35_3alli")]
+visible = false
+z_index = 1
+offset_left = -31.2106
+offset_top = 34.7261
+offset_right = 29.7894
+offset_bottom = 95.7261
+rotation = -0.666716
+scale = Vector2(0.9, 0.9)
+
+[node name="Label" parent="Pieces/Kawałek15/Hint" index="1"]
+offset_top = -108.833
+offset_bottom = 304.167
+text = "Z tego co widzę, żeby nas stąd
+wydostać będziesz musiał wypalić mapę, ale ktoś bardzo chce żebyś tego nie zrobił. Ta mapa nie wygląda na taką, którą da się wypalić, ale znalazłem kontrolkę do sterowania portalami.
+Szast prast i będziemy wolni!"
 
 [node name="Kawałek16" parent="Pieces" instance=ExtResource("27_xrnbv")]
 position = Vector2(601, 1024)
@@ -1134,3 +1154,5 @@ color = Color(0, 0, 0.647059, 1)
 [connection signal="timeout" from="Pieces/Kawałek0/Timer" to="Pieces/Kawałek0" method="_on_timer_timeout"]
 
 [editable path="Pieces/Kawałek0"]
+[editable path="Pieces/Kawałek15"]
+[editable path="Pieces/Kawałek15/Hint"]

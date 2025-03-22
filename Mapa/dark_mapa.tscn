@@ -1045,8 +1045,14 @@ offset_right = 34.0
 offset_bottom = 33.0
 scale = Vector2(1, 1)
 
+[node name="TextureRect" parent="Pieces/Kawałek23/KretWioska" index="0"]
+offset_left = -217.5
+offset_right = 240.5
+
 [node name="Label" parent="Pieces/Kawałek23/KretWioska" index="1"]
+offset_left = -227.5
 offset_top = -98.833
+offset_right = 397.5
 offset_bottom = 255.167
 text = "Nie wiem co się dzieje, ale w wiosce nie ma żywej duszy. Próbowałem zawołać wodza, ale z moich ust nie wydobywał się żaden dźwięk. W tak potwornej sytuacji powinien pojawić się narrator, ale po nim też ani śladu."
 
