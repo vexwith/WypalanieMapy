@@ -286,6 +286,26 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_aayy0")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_pehu8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rywgr")
 
+[node name="Shadow" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("20_7whbo")
+theme_override_font_sizes/font_size = 150
+text = "REKSIU OCKNIJ SIĘ"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jticx")
 
