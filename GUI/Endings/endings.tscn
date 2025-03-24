@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://GUI/Endings/endings.gd" id="1_0pt62"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="2_4l6ts"]
-[ext_resource type="Texture2D" uid="uid://bliqsxqrqvp1e" path="res://909063765180416070.webp" id="2_5qqjb"]
 [ext_resource type="Texture2D" uid="uid://dv6kt8fvjsdg3" path="res://GUI/Endings/Zacieniowana_Klepsydra_Mapa_Duza.png" id="2_qa1xq"]
 [ext_resource type="Texture2D" uid="uid://k6hlfyondor1" path="res://GUI/Endings/holyLight.png" id="2_y8j1d"]
+[ext_resource type="Texture2D" uid="uid://dfvx7h4c4ld5j" path="res://GUI/Endings/Nieznajomy.png" id="5_rpwhi"]
 
 [sub_resource type="Gradient" id="Gradient_wv66y"]
 offsets = PackedFloat32Array(0)
@@ -93,7 +93,7 @@ custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
-texture = ExtResource("2_5qqjb")
+texture = ExtResource("5_rpwhi")
 
 [node name="TextRim" type="ReferenceRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1850, 400)

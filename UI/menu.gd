@@ -58,6 +58,7 @@ func start_new_game():
 	Globals.first_enter = true
 	Globals.first_restart = true
 	Globals.say_restart = false
+	Globals.ending_one = true
 	Globals.wypalenia = 0
 	for key in Globals.map_pieces.keys():
 		Globals.map_pieces[key] = false

@@ -24,3 +24,15 @@ func _on_pressed():
 		
 func _on_tween_finished():
 	running = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	if $TextureRect.visible:
+		_on_pressed()
+		await get_tree().create_timer(time).timeout
+		if $TextureRect.visible:
+			_on_pressed()
+
+
+func _on_visibility_changed():
+	_on_visible_on_screen_notifier_2d_screen_exited()
