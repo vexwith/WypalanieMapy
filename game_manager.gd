@@ -265,6 +265,7 @@ func _process(delta):
 			if dark_portal.rim.modulate == dark_portal.affected_modulation or blue_portal.rim.modulate == blue_portal.affected_modulation:
 				infinity_indicator_rim.show()
 			else: infinity_indicator_rim.hide()
+		else: infinity_indicator_rim.hide()
 	
 func _input(event): #dragging hamdler
 	if event.is_action_pressed("ui_cancel"): #esc to end
@@ -1030,10 +1031,14 @@ func load_prev(map_state, camera_pos=null):
 	#rewinding first map outer pieces
 	first_map = map_state.pop_back()
 	next_piece = map_state.pop_back()
-	for i in range(next_piece, MAX_PIECES):
+	for i in range(MAX_PIECES-1, 16, -1): #reset all
 		var piece = base_map.get_child(i)
 		piece.clickable = false
 		piece.clear_affected()
+	for i in range(17, next_piece): #activate those unlocked
+		var piece = base_map.get_child(i)
+		piece.clickable = true
+		piece.update_affected()
 		
 	var cur_camera_pos = map_state.pop_back() #get rid of your camera
 	if camera_pos != null:
@@ -1068,8 +1073,10 @@ func load_prev(map_state, camera_pos=null):
 	var cur_button = dark_map.find_child("PortalButton")
 	var prev_state = map_state.pop_back()
 	if prev_state != cur_button.next_state:
-		for i in range(abs(prev_state - cur_button.next_state)):
+		for i in range(cur_button.next_state):
 			cur_button.update_buttons(self, -1)
+		for i in range(prev_state):
+			cur_button.update_buttons(self, 1)
 			
 	#reestablish particles
 	get_small_piece()
