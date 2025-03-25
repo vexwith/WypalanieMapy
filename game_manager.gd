@@ -69,6 +69,7 @@ const SECURITY_KEY = "092GSD2"
 
 var camera_limits = [-624, -684, 2544, 1764]
 var reset_pos = Vector2(495, 413)
+var map_log_index = 0
 
 const MAX_WYPALENIA = 6
 
@@ -271,21 +272,42 @@ func _input(event): #dragging hamdler
 		
 	if (event.is_action_pressed("rewind") or event.is_action_pressed("rewind_camera")) and not Globals.crawl_mode:
 		if Globals.lapa_gained or between_maps:
-			var with_camera = event.is_action_pressed("rewind_camera")
-			if len(Globals.map_state_log) > 1:
-				var cur_state = Globals.map_state_log.pop_back()
-				
-				clear_modulation()
-				var last = cur_state.pop_back()
-				if last != null:
-					last.sprite.self_modulate = Color.PALE_GREEN
-#					if last.stage == -1:
-#						last.sprite.play("1")
-				
-				var prev_state = Globals.map_state_log[-1].duplicate()
-				load_prev(prev_state, with_camera)
-			elif len(Globals.map_state_log) == 1:
-				var prev_state = Globals.map_state_log[-1].duplicate()
+			var direction = -1 if event.is_action_pressed("rewind") else 1
+			var with_camera = null
+			#out of bounds
+			if (map_log_index == 0 and direction == -1) or \
+			(map_log_index == len(Globals.map_state_log)-1 and direction == 1):
+				var prev_state = Globals.map_state_log[map_log_index].duplicate()
+				load_prev(prev_state)
+			#going both ways
+			else:
+				if direction == 1: #redoing
+					clear_modulation()
+					var future_state = Globals.map_state_log[map_log_index + 1].duplicate()
+					var cur = future_state.pop_back()
+					if cur != null: #only for camera
+						var last_offset = abs(cur.global_position - camera.global_position)
+						if last_offset.x > 960 or last_offset.y > 540:
+							with_camera = future_state[-4]
+					
+					if map_log_index < len(Globals.map_state_log)-2: #for last clicked indicator
+						var far_future_state = Globals.map_state_log[map_log_index + 2].duplicate()
+						var last = far_future_state.pop_back()
+						if last != null:
+							last.sprite.self_modulate = Color.PALE_GREEN
+						
+				if direction == -1: #rewinding
+					var cur_state = Globals.map_state_log[map_log_index].duplicate()
+					clear_modulation()
+					var last = cur_state.pop_back()
+					if last != null:
+						last.sprite.self_modulate = Color.PALE_GREEN
+						var last_offset = abs(last.global_position - camera.global_position)
+						if last_offset.x > 960 or last_offset.y > 540:
+							with_camera = cur_state[-4] #camera position
+							
+				map_log_index += direction 
+				var prev_state = Globals.map_state_log[map_log_index].duplicate()
 				load_prev(prev_state, with_camera)
 			
 	if event.is_action_pressed("1") or event.is_action_released("LPM"):
@@ -966,9 +988,11 @@ func save_prev():
 		
 	map_state.append(last_piece)
 		
+	Globals.map_state_log = Globals.map_state_log.slice(0, map_log_index+1) #cutting alternative branches
 	Globals.map_state_log.append(map_state)
+	map_log_index = len(Globals.map_state_log) - 1
 	
-func load_prev(map_state, with_camera=false):
+func load_prev(map_state, camera_pos=null):
 	var message = get_tree().root.find_child("Message", true, false)
 	if message != null:
 		message.queue_free()
@@ -981,11 +1005,15 @@ func load_prev(map_state, with_camera=false):
 	SignalBus.emit_signal("rewind_numbers")
 	SignalBus.emit_signal("rewind_bomb")
 	
+	var with_camera = false
 	#reading in which map you are
 	if not dark_map.visible and not blue_map.visible:
 		var in_normal = map_state.pop_back()
 		wide_map.visible = in_normal
 		non_euclidean_map.visible = !in_normal
+		if non_euclidean_map.visible:
+			ognik.przedmioty["lapa"] = in_normal
+			ognik.przedmioty["ognik"] = !in_normal
 		Globals.undraggable = !in_normal
 		if in_normal: door_to_lapa()
 		else: lapa_to_door()
@@ -1007,10 +1035,12 @@ func load_prev(map_state, with_camera=false):
 		piece.clickable = false
 		piece.clear_affected()
 		
-	var camera_pos = map_state.pop_back()
-	if with_camera:
+	var cur_camera_pos = map_state.pop_back() #get rid of your camera
+	if camera_pos != null:
 		camera.global_position = camera_pos
-		non_euclidean_map.global_position = camera.global_position - Vector2(960, 540) #teleport non-euclidean back
+	if with_camera: #when going back through a portal change camera to its saved position from before going in
+		camera.global_position = cur_camera_pos
+	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540) #teleport non-euclidean back
 	
 	if ognik.light.color.a != 0.0: #dark and blue map
 		for i in range(len(blue_pieces.get_children()) - 1, -1, -1):
