@@ -2,12 +2,14 @@ extends Control
 
 const SAVE_DIR = "user://saves/"
 const SAVE_FILE_NAME = "save_2.json"
+const VOL_FILE_NAME = "vol.save"
 
 @onready var cursor = preload("res://Ognik/cursor_0.png")
 
 @onready var secret = $Secret
 @onready var shadow = $Shadow
 @onready var label = $Label
+@onready var vol_settings = $VolSetting
 
 var tekst = ["REKSIU OCKNIJ SIĘ", "PRZED WYRUSZENIEM W DROGĘ NALEŻY WYPALIĆ MAPĘ, KTÓRĄ ZNALAZŁEŹ W BUTELCE",
 			 "SPOKOJNIE, NA PEWNO CI SIĘ UDA"]
@@ -15,8 +17,26 @@ var tekst_index = 0
 var tekst_time = 2.0
 var temp_vol
 
+func save_volume():
+	var file = FileAccess.open(SAVE_DIR + VOL_FILE_NAME, FileAccess.WRITE)
+	var saved_vol = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+	file.store_var(saved_vol)
+
+func load_volume():
+	if FileAccess.file_exists(SAVE_DIR + VOL_FILE_NAME):
+		var file = FileAccess.open(SAVE_DIR + VOL_FILE_NAME, FileAccess.READ)
+		var loaded_vol = file.get_var()
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), loaded_vol)
+	else:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -5.9) #default
+
 func _ready():
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -5.9)
+	load_volume()
+	
+	vol_settings.update_slider()
+	vol_settings._on_pressed()
+	vol_settings.disabled = true
+
 	Globals.crawl_mode = false
 	Globals.fire_mode = false
 	Bgm.stop()
@@ -34,7 +54,7 @@ func _on_audio_stream_player_finished():
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+		_on_exit_pressed()
 		
 func _on_new_game_pressed():
 	if FileAccess.file_exists(SAVE_DIR + SAVE_FILE_NAME):
@@ -84,8 +104,8 @@ func _on_tutorial_pressed():
 
 
 func _on_exit_pressed():
+	save_volume()
 	get_tree().quit()
-
 
 func _on_secret_button_up():
 	get_tree().change_scene_to_file("res://Mapa/MetaMap/meta_mapa.tscn")

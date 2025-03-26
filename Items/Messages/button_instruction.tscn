@@ -61,6 +61,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(30.5, 30.5)
 
 [connection signal="pressed" from="." to="." method="_on_pressed" flags=18]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

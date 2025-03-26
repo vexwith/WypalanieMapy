@@ -13,3 +13,5 @@ signal rewind_numbers() #in saper
 signal rewind_bomb()
 
 signal ptak_event() #when clicking button of ptak event
+
+signal message_soundproofing() #to keep track of volume changed by messages

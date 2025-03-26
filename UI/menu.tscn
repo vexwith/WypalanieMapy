@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cxves47achr7l"]
+[gd_scene load_steps=47 format=3 uid="uid://cxves47achr7l"]
 
 [ext_resource type="Script" path="res://UI/menu.gd" id="1_87cqx"]
 [ext_resource type="Texture2D" uid="uid://mjoo8a2x7wbg" path="res://UI/bkg_30.png" id="1_g3hhs"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bwive2mu115cg" path="res://UI/kawa6.png" id="9_8hmbx"]
 [ext_resource type="Texture2D" uid="uid://cjqneycpnwvj8" path="res://UI/lampa6.png" id="9_g4ywf"]
 [ext_resource type="Texture2D" uid="uid://3mu0vc2wwuvl" path="res://UI/kawa7.png" id="10_8s52f"]
+[ext_resource type="PackedScene" uid="uid://dv58w53ouisf4" path="res://UI/VolSettings/vol_setting.tscn" id="18_ra66i"]
 [ext_resource type="Texture2D" uid="uid://ko301h7r2ncn" path="res://UI/GUI.png" id="19_c2veh"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="20_7whbo"]
 [ext_resource type="Texture2D" uid="uid://c61wrekpwixal" path="res://UI/m_yes_0.png" id="20_21lp1"]
@@ -272,6 +273,13 @@ Czy aby na pewno chcesz zacząć nową grę?"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="VolSetting" parent="." instance=ExtResource("18_ra66i")]
+layout_mode = 0
+offset_left = 1784.0
+offset_top = 35.0
+offset_right = 1826.0
+offset_bottom = 78.0
 
 [node name="Secret" type="Button" parent="."]
 layout_mode = 0

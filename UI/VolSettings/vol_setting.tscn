@@ -1,5 +1,209 @@
-[gd_scene format=3 uid="uid://dv58w53ouisf4"]
+[gd_scene load_steps=16 format=3 uid="uid://dv58w53ouisf4"]
+
+[ext_resource type="Texture2D" uid="uid://dut0jj1g2cdty" path="res://UI/VolSettings/m_enter_0.png" id="1_v0cer"]
+[ext_resource type="Texture2D" uid="uid://dredesr60npiv" path="res://UI/VolSettings/m_enter_1.png" id="2_0e8r5"]
+[ext_resource type="Script" path="res://UI/VolSettings/VSlider.gd" id="3_0pviq"]
+[ext_resource type="Texture2D" uid="uid://r08dgun5mvov" path="res://UI/VolSettings/o_tuba_0.png" id="3_sityg"]
+[ext_resource type="Script" path="res://UI/VolSettings/vol_setting.gd" id="3_xa3ay"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxd6k"]
+texture = ExtResource("1_v0cer")
+region_rect = Rect2(0, 0, 42, 43)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l447x"]
+texture = ExtResource("2_0e8r5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iu25d"]
+texture = ExtResource("2_0e8r5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cx0fi"]
+texture = ExtResource("2_0e8r5")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4krg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ucbj"]
+content_margin_left = 21.0
+content_margin_right = 21.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 12
+border_width_top = 10
+border_width_right = 12
+border_width_bottom = 10
+border_color = Color(0.9375, 0.535156, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxts3"]
+content_margin_left = 21.0
+content_margin_right = 21.0
+bg_color = Color(0, 0.886275, 0, 1)
+border_width_left = 12
+border_width_top = 10
+border_width_right = 12
+border_width_bottom = 10
+border_color = Color(0.9375, 0.535156, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Animation" id="Animation_v2ub3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8.4, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VSlider:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(103, 600)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VSlider:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lq5ko"]
+resource_name = "slideout"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8.4, 0), Vector2(8.4, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VSlider:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(103, 20), Vector2(103, 600)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VSlider:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5yxht"]
+_data = {
+"RESET": SubResource("Animation_v2ub3"),
+"slideout": SubResource("Animation_lq5ko")
+}
 
 [node name="VolSetting" type="Button"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 42.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+theme_override_styles/normal = SubResource("StyleBoxTexture_rxd6k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l447x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iu25d")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cx0fi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i4krg")
+script = ExtResource("3_xa3ay")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 37.0
+offset_right = 25.4
+offset_bottom = 77.0
+color = Color(0.871094, 0.496094, 0, 1)
+
+[node name="VSlider" type="VSlider" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 11.0
+offset_top = 61.0
+offset_right = 114.0
+offset_bottom = 661.0
+scale = Vector2(0.2, 0.2)
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("3_sityg")
+theme_override_icons/grabber_highlight = ExtResource("3_sityg")
+theme_override_icons/grabber_disabled = ExtResource("3_sityg")
+theme_override_styles/slider = SubResource("StyleBoxFlat_1ucbj")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_vxts3")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vxts3")
+max_value = 0.8
+step = 0.001
+script = ExtResource("3_0pviq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5yxht")
+}
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="value_changed" from="VSlider" to="VSlider" method="_on_value_changed"]

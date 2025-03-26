@@ -3,6 +3,7 @@ extends Node2D
 const SAVE_DIR = "user://saves/"
 const SAVE_FILE_NAME = "save_2.json"
 const SECURITY_KEY = "092GSD2"
+const VOL_FILE_NAME = "vol.save"
 
 @onready var bgm = Bgm
 @onready var plaza = preload("res://Wavs/Reksio i Skarb Piratów OST - Muza1-(p).mp3")
@@ -95,6 +96,11 @@ var last_piece = null
 
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
+	
+func save_volume():
+	var file = FileAccess.open(SAVE_DIR + VOL_FILE_NAME, FileAccess.WRITE)
+	var saved_vol = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+	file.store_var(saved_vol)
 	
 func save_data(path : String):
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
@@ -862,7 +868,13 @@ func _on_reset_button_pressed(reload = true):
 	door_to_lapa()
 		
 	if reload: #we sometimes dont want to reload
+		reset_sound()
 		get_tree().reload_current_scene()
+
+func reset_sound():
+	AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 7.0 * Globals.open_messages)
+	Globals.open_messages = 0
+	Globals.message_running = false
 
 func reset_fire_map():
 	for piece in fire_pieces.get_children():
@@ -1178,5 +1190,7 @@ func _on_dark_completed():
 
 func _on_menu_pressed():
 	save_data(SAVE_DIR + SAVE_FILE_NAME)
+	reset_sound()
+	save_volume()
 	get_tree().change_scene_to_file("res://UI/menu.tscn")
 

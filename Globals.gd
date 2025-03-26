@@ -2,6 +2,9 @@ extends Node
 
 var focused_piece = null #keep track of piece your cursor is on
 
+var message_running = false #doesnt let you open many messages at the same time
+var open_messages = 0 #currently opened messages
+
 var detail_mode = false #mode that shows you details
 
 var ignore_clicks = false #so we dont burn map
