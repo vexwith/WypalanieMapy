@@ -1007,12 +1007,16 @@ offset_bottom = 95.7261
 rotation = -0.666716
 scale = Vector2(0.9, 0.9)
 
+[node name="TextureRect" parent="Pieces/Kawałek15/Hint" index="0"]
+offset_left = -219.0
+offset_top = -146.0
+offset_right = 265.0
+offset_bottom = 198.0
+
 [node name="Label" parent="Pieces/Kawałek15/Hint" index="1"]
-offset_top = -108.833
-offset_bottom = 304.167
-text = "Z tego co widzę, żeby nas stąd
-wydostać będziesz musiał wypalić mapę, ale ktoś bardzo chce żebyś tego nie zrobił. Ta mapa nie wygląda na taką, którą da się wypalić, ale znalazłem kontrolkę do sterowania portalami.
-Szast prast i będziemy wolni!"
+offset_top = -88.833
+offset_bottom = 324.167
+text = "#2 Nie wiem co się dzieje, ale w wiosce nie ma żywej duszy. Próbowałem zawołać Wodza Kurczakę, ale z moich ust nie wydobywał się żaden dźwięk. W tak potwornej sytuacji powinien pojawić się narrator, ale po nim też ani śladu."
 
 [node name="Kawałek16" parent="Pieces" instance=ExtResource("27_xrnbv")]
 position = Vector2(601, 1024)

@@ -973,8 +973,17 @@ offset_right = 36.0
 offset_bottom = 13.0
 scale = Vector2(1, 1)
 
+[node name="TextureRect" parent="Pieces/Kawałek8/KretDead" index="0"]
+offset_left = -204.0
+offset_top = -139.0
+offset_right = 261.0
+offset_bottom = 205.0
+
 [node name="Label" parent="Pieces/Kawałek8/KretDead" index="1"]
-text = "A więc zmarłem i jadę sobie, proszę ciebie bardzo windą do nieba, a tu nagle chrzast! I ląduje spowrotem na wyspie skarbów!"
+offset_top = -78.833
+offset_bottom = 216.167
+text = "#1
+A więc zmarłem i jadę sobie, proszę ciebie bardzo, windą do nieba, a tu nagle brzdęk! I ląduje z powrotem na wyspie skarbów!"
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("34_0kjhg")]
 position = Vector2(200, 1086)
@@ -1054,7 +1063,9 @@ offset_left = -227.5
 offset_top = -98.833
 offset_right = 397.5
 offset_bottom = 255.167
-text = "Nie wiem co się dzieje, ale w wiosce nie ma żywej duszy. Próbowałem zawołać wodza, ale z moich ust nie wydobywał się żaden dźwięk. W tak potwornej sytuacji powinien pojawić się narrator, ale po nim też ani śladu."
+text = "#3 Z tego co widzę, żeby nas stąd
+wydostać będziesz musiał wypalić mapę, ale ktoś bardzo nie chce żebyś to zrobił. Ta mapa nie wygląda na taką, którą da się wypalić, ale znalazłem kontrolkę do sterowania portalami.
+Szast prast i będziemy wolni!"
 
 [node name="Kawałek24" parent="Pieces" instance=ExtResource("35_7biof")]
 position = Vector2(1553, 98)

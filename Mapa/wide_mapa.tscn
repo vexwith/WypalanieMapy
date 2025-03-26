@@ -1289,7 +1289,7 @@ offset_right = 457.5
 offset_bottom = 480.167
 text = "XX.XX.XXXX
 Około godziny 20:00 w poniedziałek wybuchł pożar w domu rodzinnym w XXXXXX.
-Na szczęście domownicy nie byli obecni w domu, gdy wybuchł pożar. Po godzinie walki pożar został w końcu ugaszony, ale większa część domu została spalona w tym dołączona do budynku buda. Przyczyna wybuchu pożaru nie jest jasna i konieczne będzie dalsze dochodzenie."
+Na szczęście domownicy nie byli obecni. Po godzinie walki pożar został w końcu ugaszony, ale większa część domu została spalona w tym dołączona do budynku buda. Przyczyna wybuchu pożaru nie jest jasna i konieczne będzie dalsze dochodzenie."
 
 [node name="Kawałek60" parent="BaseMap" instance=ExtResource("13_j21to")]
 position = Vector2(855, 1085)
