@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://4jguw7ijsoyf"]
+[gd_scene load_steps=9 format=3 uid="uid://4jguw7ijsoyf"]
 
 [ext_resource type="Script" path="res://GUI/Endings/endings.gd" id="1_0pt62"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="2_4l6ts"]
 [ext_resource type="Texture2D" uid="uid://dv6kt8fvjsdg3" path="res://GUI/Endings/Zacieniowana_Klepsydra_Mapa_Duza.png" id="2_qa1xq"]
 [ext_resource type="Texture2D" uid="uid://k6hlfyondor1" path="res://GUI/Endings/holyLight.png" id="2_y8j1d"]
 [ext_resource type="Texture2D" uid="uid://dfvx7h4c4ld5j" path="res://GUI/Endings/Nieznajomy.png" id="5_rpwhi"]
+[ext_resource type="Script" path="res://GUI/Endings/choice.gd" id="6_vsnfw"]
 
 [sub_resource type="Gradient" id="Gradient_wv66y"]
 offsets = PackedFloat32Array(0)
@@ -120,7 +121,90 @@ theme = ExtResource("2_4l6ts")
 theme_override_font_sizes/font_size = 80
 autowrap_mode = 3
 
+[node name="BoxContainer" type="GridContainer" parent="VBoxContainer/TextRim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -852.0
+offset_top = -152.0
+offset_right = 852.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TextRim/BoxContainer"]
+visible = false
+custom_minimum_size = Vector2(850, 150)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+mouse_filter = 1
+theme = ExtResource("2_4l6ts")
+theme_override_font_sizes/font_size = 80
+text = "* Hau hau hau hau, hau hau hau?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("6_vsnfw")
+
+[node name="Label2" type="Label" parent="VBoxContainer/TextRim/BoxContainer"]
+visible = false
+custom_minimum_size = Vector2(850, 150)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+mouse_filter = 1
+theme = ExtResource("2_4l6ts")
+theme_override_font_sizes/font_size = 80
+text = "* Hau whua hau hau heu heu?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("6_vsnfw")
+
+[node name="Label3" type="Label" parent="VBoxContainer/TextRim/BoxContainer"]
+visible = false
+custom_minimum_size = Vector2(850, 150)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+mouse_filter = 1
+theme = ExtResource("2_4l6ts")
+theme_override_font_sizes/font_size = 80
+text = "* Hau hau hau?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("6_vsnfw")
+
+[node name="Label4" type="Label" parent="VBoxContainer/TextRim/BoxContainer"]
+visible = false
+custom_minimum_size = Vector2(850, 150)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+mouse_filter = 1
+theme = ExtResource("2_4l6ts")
+theme_override_font_sizes/font_size = 80
+text = "* Hau huhau hau heuhyha?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("6_vsnfw")
+
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 0.04
 
+[connection signal="mouse_entered" from="VBoxContainer/TextRim/BoxContainer/Label" to="VBoxContainer/TextRim/BoxContainer/Label" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TextRim/BoxContainer/Label" to="VBoxContainer/TextRim/BoxContainer/Label" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/TextRim/BoxContainer/Label2" to="VBoxContainer/TextRim/BoxContainer/Label2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TextRim/BoxContainer/Label2" to="VBoxContainer/TextRim/BoxContainer/Label2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/TextRim/BoxContainer/Label3" to="VBoxContainer/TextRim/BoxContainer/Label3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TextRim/BoxContainer/Label3" to="VBoxContainer/TextRim/BoxContainer/Label3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/TextRim/BoxContainer/Label4" to="VBoxContainer/TextRim/BoxContainer/Label4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TextRim/BoxContainer/Label4" to="VBoxContainer/TextRim/BoxContainer/Label4" method="_on_mouse_exited"]
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]

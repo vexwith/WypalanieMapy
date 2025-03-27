@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://drje5ks6015dh"]
+[gd_scene load_steps=53 format=3 uid="uid://drje5ks6015dh"]
 
 [ext_resource type="Script" path="res://Mapa/MetaMap/meta_mapa.gd" id="1_0s17a"]
 [ext_resource type="Texture2D" uid="uid://byu26rk2tm2cc" path="res://Mapa/MetaMap/metamapa.png" id="2_ffcg5"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://b7dr3autk1t7g" path="res://Mapa/kawałek14/pole14_rim.png" id="30_dda1p"]
 [ext_resource type="Texture2D" uid="uid://1fyiwqij2r7d" path="res://Mapa/kawałek8/pole8_rim.png" id="32_hwnv0"]
 [ext_resource type="Texture2D" uid="uid://bju6s1q6hapnb" path="res://GUI/17gotolawaA.png" id="33_ppdq0"]
+[ext_resource type="PackedScene" uid="uid://4jguw7ijsoyf" path="res://GUI/Endings/endings.tscn" id="38_a08or"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2viqa"]
 shader = ExtResource("2_r8oye")
@@ -441,6 +442,18 @@ animation = &"3"
 
 [node name="Rim2" type="Sprite2D" parent="Pieces/Kawałek8"]
 texture = ExtResource("32_hwnv0")
+
+[node name="Shadow" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Endings" parent="." instance=ExtResource("38_a08or")]
+visible = false
+layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_650pb")

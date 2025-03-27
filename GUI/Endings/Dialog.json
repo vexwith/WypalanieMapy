@@ -3,7 +3,7 @@
         ["", "Po przejściu przez drzwi twoim oczom ukazała się klepsydra.", "klepsydra"],
         ["", "Unosiła się na środku pokoju..."],
         ["", "\no ile pokojem można nazwać przestrzeń o widocznie niekończącej się powierzchni.", "cont"],
-        ["", "Tak naprawdę trudno było stwierdzić czy to klepsydra unosi się względem ciebie, czy to ty unosisz się odwrócony do góry nogami względem niej."],
+        ["", "Im dłużej na nią patrzyłeś tym bardziej wydawało ci się, że to tak naprawdę pokój wraz z tobą unosi się w okół klepsydry."],
         ["", "...W końcu to ona była centrum tego świata..."],
         ["", "Nie wiedząc skąd to wiesz spróbowałeś wziąć klepsydrę i schować ją do kieszeni..."],
         ["", "Jednak klepsydra zniknęła tuż przed twoimi oczyma.", "0"],
@@ -34,5 +34,89 @@
         ["NARRATOR:\n", "Lepiej wróćmy na prawidłowy tor naszej historii."],
         ["NARRATOR:\n", "Sterczenie tutaj na pewno nie pomoże ci w wypaleniu mapy."],
         ["ENDING 1.5", " ", "0"]
+    ],
+    "TED": [
+        ["", "Po przejściu przez drzwi twoim oczom ukazała się klepsydra.", "klepsydra"],
+        ["", "Unosiła się na środku pokoju..."],
+        ["", "\no ile pokojem można nazwać przestrzeń o widocznie niekończącej się powierzchni.", "cont"],
+        ["", "Im dłużej na nią patrzyłeś tym bardziej wydawało ci się, że to tak naprawdę pokój wraz z tobą unosi się w okół klepsydry."],
+        ["", "...W końcu to ona była centrum tego świata..."],
+        ["", "Nie wiedząc skąd to wiesz spróbowałeś wziąć klepsydrę i schować ją do kieszeni..."],
+        ["", "Udało ci się"],
+        ["", "Klepsydra zamigotała, zafurczała i obróciła się do góry nogami."],
+        ["", "Czas"],
+        ["", " zaczął płynąć do przodu.", "cont"],
+        ["", "Przestrzeń"],
+        ["", " zaczęła się rozszerzać.", "cont"],
+        ["", "To co wodą było od wieków, lodem się stało."],
+        ["", "Zostałeś sam, dryfujący w pustym kosmosie."],
+        ["NARRATOR:\n", "...", "narrator"],
+        ["NARRATOR:\n", "Dotknąłeś klepsydry prawda?"],
+        ["NARRATOR:\n", "Wszystko wróciło na swoje miejsce..."],
+        ["NARRATOR:\n", "Prędzej czy później musiało się to stać..."],
+        ["NARRATOR:\n", "..."],
+        ["NARRATOR:\n", "Pewnie masz pytania. Proszę bardzo, odpowiem na wszystkie."],
+        ["", " ", "wybór"]
+    ],
+    "W1": [
+        ["NARRATOR:\n", "Nie musisz mówić po hauhasku."],
+        ["NARRATOR:\n", "\nMoże się już domyśliłeś, ale nie jesteś dzielnym psem Reksiem...", "cont"],
+        ["NARRATOR:\n", "Reksio umarł... dawno, dawno temu."],
+        ["", " ", "wybór"]
+    ],
+    "W2": [
+        ["NARRATOR:\n", "Na końcu czasu."],
+        ["NARRATOR:\n", "Jesteśmy na tej samej plaży, tylko że miliardy lat później."],
+        ["NARRATOR:\n", "Długo po śmierci cieplnej wszechświata."],
+        ["", " ", "wybór"]
+    ],
+    "W3": [
+        ["NARRATOR:\n", "To był niefortunny wypadek..."],
+        ["NARRATOR:\n", " Kilkanaście lat po jego przygodach zginął w pożarze wraz z Karimatą.", "cont"],
+        ["NARRATOR:\n", "Może to brzmieć okrutnie, ale cieszę się, że umarli razem."],
+        ["NARRATOR:\n", "Kretes długo nie mógł po tym dojść do siebie."],
+        ["NARRATOR:\n", "Sam chciał zdechnąć i targnął się na swoje życie, ale Molly go powstrzymała..."],
+        ["NARRATOR:\n", "Mimo, że minęły wieki pamiętam to bardzo dobrze..."],
+        ["", " ", "wybór"]
+    ],
+    "W4": [
+        ["NARRATOR:\n", "Jesteś graczem."],
+        ["NARRATOR:\n", "Ściągnąłem cię tu abyś wypalił mapę..."],
+        ["NARRATOR:\n", " Albo bardziej, żebym mógł komu potowarzyszyć w jego przygodach.", "cont"],
+        ["", " ", "wybór"]
+    ],
+    "W5": [
+        ["NARRATOR:\n", "To artefakt natury wyższej."],
+        ["NARRATOR:\n", "Znalazłem go w rogu ekranu dawno temu, ale nigdy nie wykorzystałem jego mocy."],
+        ["NARRATOR:\n", " ...Przynajmniej do niedawna.", "cont"],
+        ["NARRATOR:\n", "Klepsydra ma moc przesypywania piasków czasu."],
+        ["NARRATOR:\n", "Niestety, jak się przekonałem, nie jest ona zdolna do przywrócenia do życia tych, których już nie ma..."],
+        ["", " ", "wybór"]
+    ],
+    "PW": [
+        ["NARRATOR:\n", "Haa... Dziękuję ci za tę rozmowę."],
+        ["NARRATOR:\n", "\nCzuję się trochę lepiej.", "cont"],
+        ["NARRATOR:\n", "Przepraszam, że cię tu ściągnąłem."],
+        ["NARRATOR:\n", "Jako narrator nie starzeje się i nie umieram."],
+        ["NARRATOR:\n", "\nWszyscy, na których mi zależało odeszli przede mną...", "cont"],
+        ["NARRATOR:\n", "Na początku nie było tak źle."],
+        ["NARRATOR:\n", "Zostałem narratorem przygód dzieci Kretesa,"],
+        ["NARRATOR:\n", " potem ich dzieci,", "cont"],
+        ["NARRATOR:\n", " potem dzieci ich dzieci i tak dalej.", "cont"],
+        ["NARRATOR:\n", "W końcu jednak nawet to się skończyło."],
+        ["NARRATOR:\n", "Nie ważne jakie dziedzictwo po sobie zostawili nie ma to teraz znaczenia."],
+        ["NARRATOR:\n", "Po wielu wiekach bezcelowego istnienia chciałem wrócić do najpiękniejszych czasów jakie pamiętam"],
+        ["NARRATOR:\n", " - do przygód Reksia.", "cont"],
+        ["NARRATOR:\n", "Użyłem więc klepsydry, aby cofnąć się do Wyspy Skarbów. Jednak nie zastałem tam nikogo żywego."],
+        ["NARRATOR:\n", "Było to..."],
+        ["NARRATOR:\n", " trudne.", "cont"],
+        ["NARRATOR:\n", "Ostatnie co mogłem zrobić to przekonać ciebie, gracza, do zostania tutaj i przeżywania dalszych przgód."],
+        ["NARRATOR:\n", "Z moją małą mocą pisarską i mocą klepsydry rozszerzyłem najtrudniejszą minigrę tak, abyś nie mógł jej przejść."],
+        ["NARRATOR:\n", "Miałem nadzieję, że będę mógł rozszerzać ją szybciej niż będziesz w stanie dojść do końca."],
+        ["NARRATOR:\n", "No cóż..."],
+        ["NARRATOR:\n", " Może klepsydra sama chciała żebyś ją znalazł...", "cont"],
+        ["NARRATOR:\n", "Nie wiem co teraz począć."],
+        ["NARRATOR:\n", "Mogę jedynie prosić cię o zostanie i kontynuowanie naszej przygody."],
+        ["", " ", "wybór2"]
     ]
 }

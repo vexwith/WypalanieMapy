@@ -9,6 +9,8 @@ const SECURITY_KEY = "092GSD2"
 @onready var bgm = $AudioStreamPlayer
 @onready var ognik = $Ognik
 @onready var modulation = $CanvasModulate
+@onready var shadow = $Shadow
+@onready var endings = $Endings
 @onready var spawn_timer = $SpawnTimer
 @onready var spread_timer = $SpreadTimer
 
@@ -123,3 +125,19 @@ func _on_piece_clicked(piece):
 	elif piece == pieces.get_child(1): #dark
 		modulation.color = Color.BLACK
 		ognik.dark_mode = true
+		
+	if win_condition():
+		true_ending()
+		
+func true_ending():
+	var tween = get_tree().create_tween().set_parallel().bind_node(self)
+	var t = 2.0
+	tween.tween_property(shadow, "modulate", Color.WHITE, t)
+	tween.tween_property(bgm, "volume_db", -15.0, t)
+
+func win_condition():
+	for piece in pieces:
+		if piece.stage not in [3, 4]:
+			return false
+			
+	return true
