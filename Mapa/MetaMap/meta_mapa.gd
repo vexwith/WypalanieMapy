@@ -5,6 +5,7 @@ const SAVE_FILE_NAME = "save_2.json"
 const SECURITY_KEY = "092GSD2"
 
 @onready var flame_scene = preload("res://Mapa/FireMap/flames.tscn")
+@onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
 @onready var pieces = $Pieces
 @onready var bgm = $AudioStreamPlayer
 @onready var ognik = $Ognik
@@ -130,14 +131,32 @@ func _on_piece_clicked(piece):
 		true_ending()
 		
 func true_ending():
+	var temp_vol = bgm.volume_db
+	Globals.detail_mode = false
+	pieces.hide()
+	shadow.show()
+	modulation.color = Color.WHITE
+	ognik.dark_mode = false
 	var tween = get_tree().create_tween().set_parallel().bind_node(self)
 	var t = 2.0
 	tween.tween_property(shadow, "modulate", Color.WHITE, t)
 	tween.tween_property(bgm, "volume_db", -15.0, t)
+	
+	await tween.finished
+	bgm.stream = hills
+	bgm.volume_db = temp_vol
+	bgm.play()
+	endings.show()
+	
+	var tween2 = get_tree().create_tween().bind_node(self)
+	tween2.tween_property(shadow, "modulate", Color(1.0, 1.0, 1.0, 0.0), t/2)
+	
+	await tween2.finished
+	shadow.hide()
+	endings.display_dialog("TED")
 
 func win_condition():
-	for piece in pieces:
+	for piece in pieces.get_children():
 		if piece.stage not in [3, 4]:
 			return false
-			
 	return true

@@ -24,7 +24,7 @@ var choices_made = []
 
 func _ready():
 	scene_text = load_scene_text(scene_path)
-	display_dialog("TED")
+#	display_dialog("TED")
 
 func load_scene_text(scene_file):
 	if FileAccess.file_exists(scene_file):

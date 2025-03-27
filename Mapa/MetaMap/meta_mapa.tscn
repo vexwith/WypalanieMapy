@@ -443,17 +443,16 @@ animation = &"3"
 [node name="Rim2" type="Sprite2D" parent="Pieces/Kawałek8"]
 texture = ExtResource("32_hwnv0")
 
+[node name="Endings" parent="." instance=ExtResource("38_a08or")]
+visible = false
+layout_mode = 1
+
 [node name="Shadow" type="ColorRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
-
-[node name="Endings" parent="." instance=ExtResource("38_a08or")]
-visible = false
-layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_650pb")

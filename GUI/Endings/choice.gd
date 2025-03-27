@@ -4,7 +4,7 @@ var hovered = false
 
 func _input(event):
 	if hovered and event.is_action_pressed("LPM"):
-		hovered = false
+		_on_mouse_exited()
 		owner.choice_clicked(self.get_index())
 
 func _on_mouse_entered():
