@@ -6,6 +6,7 @@ extends Control
 @onready var narrator = $VBoxContainer/Rim/BoxContainer/Narrator
 @onready var klepsydra = $VBoxContainer/Rim/KlepsydraLight
 @onready var tbc = $VBoxContainer/Rim/BoxContainer2/TBC
+@onready var kosmos = $VBoxContainer/Rim/TrueKosmos
 @onready var choice_box = $VBoxContainer/TextRim/BoxContainer
 @onready var choices = [$VBoxContainer/TextRim/BoxContainer/Label, $VBoxContainer/TextRim/BoxContainer/Label2,
 						$VBoxContainer/TextRim/BoxContainer/Label3, $VBoxContainer/TextRim/BoxContainer/Label4]
@@ -103,6 +104,19 @@ func show_next():
 					show_sprite(narrator)
 				"tbc":
 					show_sprite(tbc)
+				"mu":
+					var tween = get_tree().create_tween().bind_node(self)
+					tween.tween_property(get_parent().bgm, "pitch_scale", 0.1, 1.0)
+					tween.finished.connect(_on_tween_finished)
+				"klepsydra_rotate":
+					show_sprite(klepsydra)
+					klepsydra.rotation_degrees = 180.0
+					klepsydra.position += klepsydra.size
+					var tween = get_tree().create_tween().bind_node(self)
+					tween.tween_property(klepsydra, "self_modulate", Color(1, 0.345, 0.329), 5.0)
+				"kosmos":
+					show_sprite(kosmos)
+					
 	
 	label.text += speaker
 	writting_in_progress = true
@@ -141,4 +155,9 @@ func _on_text_timer_timeout():
 	if letter_index == len(text):
 		text_timer.stop()
 		writting_in_progress = false
+		
+func _on_tween_finished():
+	get_parent().bgm.stream = get_parent().mu
+	get_parent().bgm.pitch_scale = 1.0
+	get_parent().bgm.play()
 

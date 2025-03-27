@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://4jguw7ijsoyf"]
+[gd_scene load_steps=10 format=3 uid="uid://4jguw7ijsoyf"]
 
 [ext_resource type="Script" path="res://GUI/Endings/endings.gd" id="1_0pt62"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="2_4l6ts"]
+[ext_resource type="Texture2D" uid="uid://b032xer3743oj" path="res://GUI/Endings/Space Background.png" id="2_pxnxp"]
 [ext_resource type="Texture2D" uid="uid://dv6kt8fvjsdg3" path="res://GUI/Endings/Zacieniowana_Klepsydra_Mapa_Duza.png" id="2_qa1xq"]
 [ext_resource type="Texture2D" uid="uid://k6hlfyondor1" path="res://GUI/Endings/holyLight.png" id="2_y8j1d"]
 [ext_resource type="Texture2D" uid="uid://dfvx7h4c4ld5j" path="res://GUI/Endings/Nieznajomy.png" id="5_rpwhi"]
@@ -43,6 +44,22 @@ size_flags_horizontal = 4
 size_flags_vertical = 2
 border_color = Color(1, 1, 1, 1)
 editor_only = false
+
+[node name="TrueKosmos" type="TextureRect" parent="VBoxContainer/Rim"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -490.0
+offset_top = -140.0
+offset_right = 490.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pxnxp")
 
 [node name="KlepsydraLight" type="TextureRect" parent="VBoxContainer/Rim"]
 visible = false

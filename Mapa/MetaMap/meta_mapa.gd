@@ -6,6 +6,7 @@ const SECURITY_KEY = "092GSD2"
 
 @onready var flame_scene = preload("res://Mapa/FireMap/flames.tscn")
 @onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
+@onready var mu = preload("res://Wavs/Sunken Continent of Mu (variation ⧸ reinterpretation of Bartek Broszs track) ｜ Rex and Captain Nemo-(p).mp3")
 @onready var pieces = $Pieces
 @onready var bgm = $AudioStreamPlayer
 @onready var ognik = $Ognik
@@ -135,8 +136,17 @@ func true_ending():
 	Globals.detail_mode = false
 	pieces.hide()
 	shadow.show()
+	#ognik
 	modulation.color = Color.WHITE
 	ognik.dark_mode = false
+	ognik.przedmioty["ognik"] = false
+	ognik.przedmioty["lapa"] = true
+	#flame
+	spawn_timer.stop()
+	spread_timer.stop()
+	var flame = pieces.get_child(2).get_child(5)
+	flame.hide()
+	
 	var tween = get_tree().create_tween().set_parallel().bind_node(self)
 	var t = 2.0
 	tween.tween_property(shadow, "modulate", Color.WHITE, t)
