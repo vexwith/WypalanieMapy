@@ -50,51 +50,53 @@
         ["", " zaczęła się rozszerzać.", "cont"],
         ["", "To co wodą było od wieków, lodem się stało.", "0"],
         ["", "Zostałeś sam, dryfujący w pustym kosmosie.", "kosmos"],
-        ["NARRATOR:\n", "...", "narrator"],
+        ["", "Po pewnym czasie znalazł cię jednak ktoś żywy."],
+        ["NARRATOR:\n", "...", "narrator_neutral"],
         ["NARRATOR:\n", "Dotknąłeś klepsydry prawda?"],
         ["NARRATOR:\n", "Wszystko wróciło na swoje miejsce..."],
         ["NARRATOR:\n", "Prędzej czy później musiało się to stać..."],
-        ["NARRATOR:\n", "..."],
-        ["NARRATOR:\n", "Pewnie masz pytania. Proszę bardzo, odpowiem na wszystkie."],
-        ["", " ", "wybór"]
+        ["NARRATOR:\n", "......."],
+        ["NARRATOR:\n", "Pewnie masz wiele pytań. Proszę bardzo, odpowiem na wszystkie."],
+        ["", " ", "narrator_sad", "wybór"]
     ],
     "W1": [
-        ["NARRATOR:\n", "Nie musisz mówić po hauhasku."],
+        ["NARRATOR:\n", "Nie musisz mówić po hauhasku.", "narrator_neutral"],
         ["NARRATOR:\n", "\nMoże się już domyśliłeś, ale nie jesteś dzielnym psem Reksiem...", "cont"],
         ["NARRATOR:\n", "Reksio umarł... dawno, dawno temu."],
-        ["", " ", "wybór"]
+        ["", " ", "narrator_sad", "wybór"]
     ],
     "W2": [
-        ["NARRATOR:\n", "Na końcu czasu."],
+        ["NARRATOR:\n", "Na końcu czasu.", "narrator_neutral"],
         ["NARRATOR:\n", "Jesteśmy na tej samej plaży, tylko że miliardy lat później."],
         ["NARRATOR:\n", "Długo po śmierci cieplnej wszechświata."],
-        ["", " ", "wybór"]
+        ["", " ", "narrator_sad", "wybór"]
     ],
     "W3": [
-        ["NARRATOR:\n", "To był niefortunny wypadek..."],
+        ["NARRATOR:\n", "To był niefortunny wypadek...", "narrator_neutral"],
         ["NARRATOR:\n", " Kilkanaście lat po jego przygodach zginął w pożarze wraz z Karimatą.", "cont"],
         ["NARRATOR:\n", "Może to brzmieć okrutnie, ale cieszę się, że umarli razem."],
         ["NARRATOR:\n", "Kretes długo nie mógł po tym dojść do siebie."],
         ["NARRATOR:\n", "Sam chciał zdechnąć i targnął się na swoje życie, ale Molly go powstrzymała..."],
         ["NARRATOR:\n", "Mimo, że minęły wieki pamiętam to bardzo dobrze..."],
-        ["", " ", "wybór"]
+        ["", " ", "narrator_sad", "wybór"]
     ],
     "W4": [
-        ["NARRATOR:\n", "Jesteś graczem."],
+        ["NARRATOR:\n", "Jesteś graczem.", "narrator_neutral"],
         ["NARRATOR:\n", "Ściągnąłem cię tu abyś wypalił mapę..."],
         ["NARRATOR:\n", " Albo bardziej, żebym mógł komu potowarzyszyć w jego przygodach.", "cont"],
-        ["", " ", "wybór"]
+        ["", " ", "narrator_sad", "wybór"]
     ],
     "W5": [
-        ["NARRATOR:\n", "To artefakt natury wyższej."],
+        ["NARRATOR:\n", "To artefakt natury wyższej.", "narrator_neutral"],
         ["NARRATOR:\n", "Znalazłem go w rogu ekranu dawno temu, ale nigdy nie wykorzystałem jego mocy."],
         ["NARRATOR:\n", " ...Przynajmniej do niedawna.", "cont"],
         ["NARRATOR:\n", "Klepsydra ma moc przesypywania piasków czasu."],
         ["NARRATOR:\n", "Niestety, jak się przekonałem, nie jest ona zdolna do przywrócenia do życia tych, których już nie ma..."],
-        ["", " ", "wybór"]
+        ["", " ", "narrator_sad", "wybór"]
     ],
     "PW": [
-        ["NARRATOR:\n", "Haa... Dziękuję ci za tę rozmowę."],
+        ["NARRATOR:\n", "Haaa..."],
+        ["NARRATOR:\n", " Dziękuję ci za tę rozmowę.", "narrator_neutral", "cont"],
         ["NARRATOR:\n", "\nCzuję się trochę lepiej.", "cont"],
         ["NARRATOR:\n", "Przepraszam, że cię tu ściągnąłem."],
         ["NARRATOR:\n", "Jako narrator nie starzeje się i nie umieram."],

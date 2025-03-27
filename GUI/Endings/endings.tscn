@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4jguw7ijsoyf"]
+[gd_scene load_steps=12 format=3 uid="uid://4jguw7ijsoyf"]
 
 [ext_resource type="Script" path="res://GUI/Endings/endings.gd" id="1_0pt62"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="2_4l6ts"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://k6hlfyondor1" path="res://GUI/Endings/holyLight.png" id="2_y8j1d"]
 [ext_resource type="Texture2D" uid="uid://dfvx7h4c4ld5j" path="res://GUI/Endings/Nieznajomy.png" id="5_rpwhi"]
 [ext_resource type="Script" path="res://GUI/Endings/choice.gd" id="6_vsnfw"]
+[ext_resource type="Texture2D" uid="uid://dotjod6a63fx4" path="res://GUI/Endings/Nieznajomy_neutral.png" id="7_1m1wo"]
+[ext_resource type="Texture2D" uid="uid://bipxi47udv61n" path="res://GUI/Endings/Nieznajomy_sad.png" id="8_utto8"]
 
 [sub_resource type="Gradient" id="Gradient_wv66y"]
 offsets = PackedFloat32Array(0)
@@ -112,6 +114,30 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
 texture = ExtResource("5_rpwhi")
+
+[node name="NarratorNeutral" type="TextureRect" parent="VBoxContainer/Rim/BoxContainer"]
+visible = false
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("7_1m1wo")
+
+[node name="BoxContainer3" type="BoxContainer" parent="VBoxContainer/Rim"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NarratorSad" type="TextureRect" parent="VBoxContainer/Rim/BoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("8_utto8")
 
 [node name="TextRim" type="ReferenceRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1850, 400)

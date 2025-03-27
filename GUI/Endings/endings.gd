@@ -4,6 +4,8 @@ extends Control
 
 @onready var label = $VBoxContainer/TextRim/VBoxContainer/Label
 @onready var narrator = $VBoxContainer/Rim/BoxContainer/Narrator
+@onready var neutrator = $VBoxContainer/Rim/BoxContainer/NarratorNeutral
+@onready var sadtator = $VBoxContainer/Rim/BoxContainer3/NarratorSad
 @onready var klepsydra = $VBoxContainer/Rim/KlepsydraLight
 @onready var tbc = $VBoxContainer/Rim/BoxContainer2/TBC
 @onready var kosmos = $VBoxContainer/Rim/TrueKosmos
@@ -102,6 +104,10 @@ func show_next():
 					show_sprite(klepsydra)
 				"narrator":
 					show_sprite(narrator)
+				"narrator_neutral":
+					show_sprite(neutrator)
+				"narrator_sad":
+					show_sprite(sadtator, 1.0)
 				"tbc":
 					show_sprite(tbc)
 				"mu":
@@ -122,15 +128,15 @@ func show_next():
 	writting_in_progress = true
 	text_timer.start()
 	
-func show_sprite(sprite):
+func show_sprite(sprite, t=2.0):
 	clear()
 	sprite.modulate.a = 0.0
 	sprite.show()
 	var tween = get_tree().create_tween().bind_node(self)
-	tween.tween_property(sprite, "modulate", Color.WHITE, 2.0)
+	tween.tween_property(sprite, "modulate", Color.WHITE, t)
 	
 func clear():
-	for sprite in [narrator, klepsydra]:
+	for sprite in [narrator, klepsydra, neutrator, sadtator]:
 		if sprite.visible:
 			var tween = get_tree().create_tween().bind_node(self)
 			tween.tween_property(sprite, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
