@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://nopmatixtsx5"]
+[gd_scene load_steps=23 format=3 uid="uid://nopmatixtsx5"]
 
 [ext_resource type="Script" path="res://Mapa/FireMap/fire_mapa.gd" id="1_augf7"]
 [ext_resource type="Texture2D" uid="uid://ci31fpo486xjh" path="res://Mapa/bkg7.png" id="1_qrxfl"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://gk6qmbaocyk1" path="res://Mapa/kawałek15/kawałek_15.tscn" id="17_f4gph"]
 [ext_resource type="PackedScene" uid="uid://woqksepp4ytw" path="res://Mapa/kawałek16/kawałek_16.tscn" id="18_xtx48"]
 [ext_resource type="Theme" uid="uid://1ilqi4d5psi5" path="res://Mapa/number_theme.tres" id="20_873se"]
+[ext_resource type="PackedScene" uid="uid://dfdvqa0ogw2w3" path="res://Items/Messages/message.tscn" id="22_ppmpk"]
 
 [node name="FireMapa" type="Control"]
 layout_mode = 3
@@ -44,6 +45,15 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_qrxfl")
+
+[node name="Waves" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 30.0
+offset_right = 173.0
+offset_bottom = 133.0
+theme = ExtResource("20_873se")
+theme_override_font_sizes/font_size = 80
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0
@@ -179,6 +189,25 @@ affected_pieces = [12, 13, 14]
 [node name="AnimatedSprite2D" parent="Pieces/Kawałek16" index="0"]
 animation = &"0"
 
+[node name="Warning" parent="." instance=ExtResource("22_ppmpk")]
+visible = false
+layout_mode = 0
+offset_left = 300.0
+offset_top = 831.0
+offset_right = 361.0
+offset_bottom = 892.0
+
+[node name="TextureRect" parent="Warning" index="0"]
+offset_left = -189.0
+offset_top = -139.0
+offset_right = 241.0
+offset_bottom = 205.0
+
+[node name="Label" parent="Warning" index="1"]
+text = "Chyba poszło ci aż ZA dobrze.
+Z tego co pamiętam wszystkie kawałki muszą być na poziomie 4 lub 5.
+To porażające!"
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(1, 0.733333, 0.698039, 1)
 
@@ -190,17 +219,13 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 30.0
-offset_right = 173.0
-offset_bottom = 133.0
-theme = ExtResource("20_873se")
-theme_override_font_sizes/font_size = 80
+[node name="Return" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="SpreadTimer" to="." method="_on_spread_timer_timeout"]
+[connection signal="timeout" from="Return" to="." method="_on_return_timeout"]
 
 [editable path="Pieces/Kawałek1"]
 [editable path="Pieces/Kawałek2"]
@@ -218,3 +243,4 @@ theme_override_font_sizes/font_size = 80
 [editable path="Pieces/Kawałek14"]
 [editable path="Pieces/Kawałek15"]
 [editable path="Pieces/Kawałek16"]
+[editable path="Warning"]

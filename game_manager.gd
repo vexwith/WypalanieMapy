@@ -884,6 +884,7 @@ func reset_fire_map():
 		piece.update(0)
 	fire_map.LEVEL = 0
 	fire_map.label.text = ""
+	fire_map.warning.hide()
 	fire_map.spawn_timer.wait_time = fire_map.spawn_time
 	fire_map.spread_timer.wait_time = fire_map.spread_time
 	fire_map.spread_timer.stop()

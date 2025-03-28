@@ -4,7 +4,9 @@ extends Control
 @onready var pieces = $Pieces
 @onready var spawn_timer = $SpawnTimer
 @onready var spread_timer = $SpreadTimer
-@onready var label = $Label
+@onready var return_timer = $Return
+@onready var label = $Waves
+@onready var warning = $Warning
 
 var LEVEL = 0
 
@@ -98,6 +100,12 @@ func _on_spread_timer_timeout():
 				await tween.finished
 				Globals.map_saved = true
 				SignalBus.emit_signal("get_small_piece")
+				return_timer.start()
+			else:
+				warning.modulate.a = 0.0
+				warning.show()
+				var tween = get_tree().create_tween().bind_node(self)
+				tween.tween_property(warning, "modulate", Color.WHITE, 1.0)
 		else:
 			spawn_timer.start()
 
@@ -107,7 +115,5 @@ func completed():
 			return false
 	return true
 
-
-
-
-
+func _on_return_timeout():
+	get_parent()._on_menu_pressed()
