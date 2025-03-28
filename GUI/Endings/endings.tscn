@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4jguw7ijsoyf"]
+[gd_scene load_steps=13 format=3 uid="uid://4jguw7ijsoyf"]
 
 [ext_resource type="Script" path="res://GUI/Endings/endings.gd" id="1_0pt62"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="2_4l6ts"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://GUI/Endings/choice.gd" id="6_vsnfw"]
 [ext_resource type="Texture2D" uid="uid://dotjod6a63fx4" path="res://GUI/Endings/Nieznajomy_neutral.png" id="7_1m1wo"]
 [ext_resource type="Texture2D" uid="uid://bipxi47udv61n" path="res://GUI/Endings/Nieznajomy_sad.png" id="8_utto8"]
+[ext_resource type="Texture2D" uid="uid://b6ycc6pxh081q" path="res://GUI/Endings/Nieznajomy_dead.png" id="9_vufbq"]
 
 [sub_resource type="Gradient" id="Gradient_wv66y"]
 offsets = PackedFloat32Array(0)
@@ -139,6 +140,22 @@ size_flags_horizontal = 6
 size_flags_vertical = 0
 texture = ExtResource("8_utto8")
 
+[node name="BoxContainer4" type="BoxContainer" parent="VBoxContainer/Rim"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NarratorDead" type="TextureRect" parent="VBoxContainer/Rim/BoxContainer4"]
+visible = false
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("9_vufbq")
+
 [node name="TextRim" type="ReferenceRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1850, 400)
 layout_mode = 2
@@ -239,6 +256,44 @@ vertical_alignment = 1
 autowrap_mode = 3
 script = ExtResource("6_vsnfw")
 
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/TextRim"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TextRim/GridContainer"]
+custom_minimum_size = Vector2(850, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme = ExtResource("2_4l6ts")
+theme_override_font_sizes/font_size = 80
+text = "* A co z kartkami?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("6_vsnfw")
+
+[node name="Label2" type="Label" parent="VBoxContainer/TextRim/GridContainer"]
+custom_minimum_size = Vector2(850, 150)
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 1
+theme = ExtResource("2_4l6ts")
+theme_override_font_sizes/font_size = 80
+text = "* Po prostu się zabij"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("6_vsnfw")
+
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 0.04
 
@@ -250,4 +305,8 @@ wait_time = 0.04
 [connection signal="mouse_exited" from="VBoxContainer/TextRim/BoxContainer/Label3" to="VBoxContainer/TextRim/BoxContainer/Label3" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/TextRim/BoxContainer/Label4" to="VBoxContainer/TextRim/BoxContainer/Label4" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/TextRim/BoxContainer/Label4" to="VBoxContainer/TextRim/BoxContainer/Label4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/TextRim/GridContainer/Label" to="VBoxContainer/TextRim/GridContainer/Label" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TextRim/GridContainer/Label" to="VBoxContainer/TextRim/GridContainer/Label" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/TextRim/GridContainer/Label2" to="VBoxContainer/TextRim/GridContainer/Label2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TextRim/GridContainer/Label2" to="VBoxContainer/TextRim/GridContainer/Label2" method="_on_mouse_exited"]
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]

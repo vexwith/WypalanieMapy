@@ -49,7 +49,7 @@
         ["", "Przestrzeń"],
         ["", " zaczęła się rozszerzać.", "cont"],
         ["", "To co wodą było od wieków, lodem się stało.", "0"],
-        ["", "Zostałeś sam, dryfujący w pustym kosmosie.", "kosmos"],
+        ["", "Zostałeś sam, dryfujący w zimnym kosmosie.", "kosmos"],
         ["", "Po pewnym czasie znalazł cię jednak ktoś żywy."],
         ["NARRATOR:\n", "...", "narrator_neutral"],
         ["NARRATOR:\n", "Dotknąłeś klepsydry prawda?"],
@@ -78,46 +78,49 @@
         ["NARRATOR:\n", "Prędzej czy później musiało się to stać..."],
         ["NARRATOR:\n", "......."],
         ["NARRATOR:\n", "Pewnie masz wiele pytań. Proszę bardzo, odpowiem na wszystkie."],
-        ["", " ", "narrator_sad", "wybór"]
+        ["", " ", "wybór"]
     ],
     "W1": [
-        ["NARRATOR:\n", "Nie musisz mówić po hauhasku.", "narrator_neutral"],
+        ["NARRATOR:\n", "Nie musisz mówić po hauhasku."],
         ["NARRATOR:\n", "\nMoże się już domyśliłeś, ale nie jesteś dzielnym psem Reksiem...", "cont"],
         ["NARRATOR:\n", "Reksio umarł... dawno, dawno temu."],
-        ["", " ", "narrator_sad", "wybór"]
+        ["", " ", "wybór"]
     ],
     "W2": [
-        ["NARRATOR:\n", "Na końcu czasu.", "narrator_neutral"],
+        ["NARRATOR:\n", "Na końcu czasu."],
         ["NARRATOR:\n", "Jesteśmy na tej samej plaży, tylko że miliardy lat później."],
         ["NARRATOR:\n", "Długo po śmierci cieplnej wszechświata."],
-        ["", " ", "narrator_sad", "wybór"]
+        ["", " ", "wybór"]
     ],
     "W3": [
-        ["NARRATOR:\n", "To był niefortunny wypadek...", "narrator_neutral"],
+        ["NARRATOR:\n", "To był niefortunny wypadek...", "narrator_sad"],
         ["NARRATOR:\n", " Kilkanaście lat po jego przygodach zginął w pożarze wraz z Karimatą.", "cont"],
         ["NARRATOR:\n", "Może to brzmieć okrutnie, ale cieszę się, że umarli razem."],
+        ["NARRATOR:\n", "Kretes wiedział, że ostatnią nadzieją na ich uratowanie była odbudowa wehikułu czasu."],
+        ["NARRATOR:\n", "Udało im się, ale nie ważne ile razy cofali się w przeszłość Reksio i Karimata zawsze umierali tego samego dnia."],
+        ["NARRATOR:\n", "Wszechświat zadecydował, że ten dzień to dzień śmierci dzielnego psa."],
         ["NARRATOR:\n", "Kretes długo nie mógł po tym dojść do siebie."],
-        ["NARRATOR:\n", "Sam chciał zdechnąć i targnął się na swoje życie, ale Molly go powstrzymała..."],
+        ["NARRATOR:\n", "Sam chciał zdechnąć i targnął się na swoje życie, ale Molly go powstrzymała."],
         ["NARRATOR:\n", "Mimo, że minęły wieki pamiętam to bardzo dobrze..."],
-        ["", " ", "narrator_sad", "wybór"]
+        ["", " ", "narrator_neutral", "wybór"]
     ],
     "W4": [
-        ["NARRATOR:\n", "Jesteś graczem.", "narrator_neutral"],
+        ["NARRATOR:\n", "Jesteś graczem."],
         ["NARRATOR:\n", "Ściągnąłem cię tu abyś wypalił mapę..."],
         ["NARRATOR:\n", " Albo bardziej, żebym mógł komu potowarzyszyć w jego przygodach.", "cont"],
-        ["", " ", "narrator_sad", "wybór"]
+        ["", " ", "wybór"]
     ],
     "W5": [
-        ["NARRATOR:\n", "To artefakt natury wyższej.", "narrator_neutral"],
+        ["NARRATOR:\n", "To artefakt natury wyższej."],
         ["NARRATOR:\n", "Znalazłem go w rogu ekranu dawno temu, ale nigdy nie wykorzystałem jego mocy."],
         ["NARRATOR:\n", " ...Przynajmniej do niedawna.", "cont"],
         ["NARRATOR:\n", "Klepsydra ma moc przesypywania piasków czasu."],
         ["NARRATOR:\n", "Niestety, jak się przekonałem, nie jest ona zdolna do przywrócenia do życia tych, których już nie ma..."],
-        ["", " ", "narrator_sad", "wybór"]
+        ["", " ", "wybór"]
     ],
     "PW": [
         ["NARRATOR:\n", "Haaa..."],
-        ["NARRATOR:\n", " Dziękuję ci za tę rozmowę.", "narrator_neutral", "cont"],
+        ["NARRATOR:\n", " Dziękuję ci za tę rozmowę.", "cont"],
         ["NARRATOR:\n", "\nCzuję się trochę lepiej.", "cont"],
         ["NARRATOR:\n", "Przepraszam, że cię tu ściągnąłem."],
         ["NARRATOR:\n", "Jako narrator nie starzeje się i nie umieram."],
@@ -128,7 +131,7 @@
         ["NARRATOR:\n", " potem dzieci ich dzieci i tak dalej.", "cont"],
         ["NARRATOR:\n", "W końcu jednak nawet to się skończyło."],
         ["NARRATOR:\n", "Nie ważne jakie dziedzictwo po sobie zostawili nie ma to teraz znaczenia."],
-        ["NARRATOR:\n", "Po wielu wiekach bezcelowego istnienia chciałem wrócić do najpiękniejszych czasów jakie pamiętam"],
+        ["NARRATOR:\n", "Po wielu wiekach bezcelowego istnienia pragnąłem wrócić do najpiękniejszych czasów jakie pamiętam"],
         ["NARRATOR:\n", " - do przygód Reksia.", "cont"],
         ["NARRATOR:\n", "Użyłem więc klepsydry, aby cofnąć się do Wyspy Skarbów. Jednak nie zastałem tam nikogo żywego."],
         ["NARRATOR:\n", "Było to..."],
@@ -141,5 +144,25 @@
         ["NARRATOR:\n", "Nie wiem co teraz począć."],
         ["NARRATOR:\n", "Mogę jedynie prosić cię o zostanie i kontynuowanie naszej przygody."],
         ["", " ", "wybór2"]
+    ],
+    "OW1": [
+
+    ],
+    "OW2": [
+        ["NARRATOR:\n", "Więc jednak to jedyne wyjście...", "silence"],
+        ["NARRATOR:\n", "Może masz rację."],
+        ["NARRATOR:\n", "Byłem tyle czasu sam. Zostawiony ze swoimi myślami..."],
+        ["NARRATOR:\n", "Najbardziej żałuję, że nie mogłem przepisać losu Reksia na taki, w którym dalej żyje."],
+        ["NARRATOR:\n", "Dlaczego ten jeden raz kiedy mogłem się na coś przydać nie mogłem niczego zmienić?", "narrator_sad"],
+        ["NARRATOR:\n", "Dlaczego jestem częścią tego świata, a jednocześnie jestem od niego tak oddalony?"],
+        ["NARRATOR:\n", "Dlaczego mogę żyć wiecznie?"],
+        ["NARRATOR:\n", "Kim jestem? Kim jest narrator?"],
+        ["NARRATOR:\n", "Nie rozumiem dlaczego i jak powstałem..."],
+        ["NARRATOR:\n", "I pewnie nie stoi za tym wielki powód..."],
+        ["NARRATOR:\n", "Istnieje, żeby relacjonować. Jeśli nie ma kogokolwiek komu mógłbym służyć jako narrator, moje istnienie traci sens..."],
+        ["NARRATOR:\n", "Może znowu go nabierze kiedy dołącze do reszty..."],
+        ["NARRATOR:\n", "Żegnaj...", "narrator_dead"],
+        ["NARRATOR:\n", " graczu.", "cont"],
+        ["", " ", "0"]
     ]
 }

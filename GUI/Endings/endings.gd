@@ -6,10 +6,12 @@ extends Control
 @onready var narrator = $VBoxContainer/Rim/BoxContainer/Narrator
 @onready var neutrator = $VBoxContainer/Rim/BoxContainer/NarratorNeutral
 @onready var sadtator = $VBoxContainer/Rim/BoxContainer3/NarratorSad
+@onready var deadtator = $VBoxContainer/Rim/BoxContainer4/NarratorDead
 @onready var klepsydra = $VBoxContainer/Rim/KlepsydraLight
 @onready var tbc = $VBoxContainer/Rim/BoxContainer2/TBC
 @onready var kosmos = $VBoxContainer/Rim/TrueKosmos
 @onready var choice_box = $VBoxContainer/TextRim/BoxContainer
+@onready var last_choice_box = $VBoxContainer/TextRim/GridContainer
 @onready var choices = [$VBoxContainer/TextRim/BoxContainer/Label, $VBoxContainer/TextRim/BoxContainer/Label2,
 						$VBoxContainer/TextRim/BoxContainer/Label3, $VBoxContainer/TextRim/BoxContainer/Label4]
 @onready var new_texts = ["* Gdzie jesteśmy?", "* Co stało się z Reksiem?", "* Kim jestem?", "* Czym była ta klepsydra?"]
@@ -27,7 +29,7 @@ var choices_made = []
 
 func _ready():
 	scene_text = load_scene_text(scene_path)
-#	display_dialog("TED")
+#	display_dialog("OW2")
 
 func load_scene_text(scene_file):
 	if FileAccess.file_exists(scene_file):
@@ -44,6 +46,13 @@ func _input(event):
 				
 func choice_clicked(index):
 	clear_choices()
+#	if choices_made == [0, 0, 0, 0]:
+	match index:
+		0:
+			load_dialog("OW1")
+		1:
+			load_dialog("OW2")
+	return
 	if choices_made.is_empty():
 		load_dialog("W1")
 		choices_made = [1, 1, 1, 1]
@@ -93,6 +102,8 @@ func show_next():
 		speaker = ""
 	if "wybór" in parameters:
 		choice()
+	if "wybór2" in parameters:
+		last_choice_box.show()
 	var sprite : String
 	if parameters.size() > 0: #sprites
 		sprite = parameters.pop_front()
@@ -108,6 +119,8 @@ func show_next():
 					show_sprite(neutrator)
 				"narrator_sad":
 					show_sprite(sadtator, 1.0)
+				"narrator_dead":
+					show_sprite(deadtator, 1.0)
 				"tbc":
 					show_sprite(tbc)
 				"mu":
@@ -122,6 +135,9 @@ func show_next():
 					tween.tween_property(klepsydra, "self_modulate", Color(1, 0.345, 0.329), 5.0)
 				"kosmos":
 					show_sprite(kosmos)
+				"silence":
+					get_parent().bgm.pitch_scale = 0.15
+					get_parent().bgm.play(213)
 					
 	
 	label.text += speaker
@@ -136,7 +152,7 @@ func show_sprite(sprite, t=2.0):
 	tween.tween_property(sprite, "modulate", Color.WHITE, t)
 	
 func clear():
-	for sprite in [narrator, klepsydra, neutrator, sadtator]:
+	for sprite in [narrator, klepsydra, neutrator, sadtator, deadtator]:
 		if sprite.visible:
 			var tween = get_tree().create_tween().bind_node(self)
 			tween.tween_property(sprite, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
@@ -144,6 +160,8 @@ func clear():
 func clear_choices():
 	for c in choices:
 		c.hide()
+		
+	last_choice_box.hide()
 	
 func finish(): #ending number
 	pass
@@ -166,6 +184,5 @@ func _on_tween_finished():
 	var m = get_parent()
 	m.bgm.stream = m.mu
 	m.bgm.pitch_scale = 1.0
-	m.bgm.volume_db = 3.0
 	m.bgm.play()
 
