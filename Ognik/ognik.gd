@@ -27,7 +27,7 @@ func _process(delta):
 		else:
 			light.hide()
 	else: light.hide()
-	if not audio.playing and przedmioty["ognik"] and not Globals.fire_mode:
+	if not audio.playing and przedmioty["ognik"] and not Globals.fire_mode and not Globals.mroczna_wioska:
 		audio.play()
 #	global_position = get_global_mouse_position()
 	if przedmioty["lapa"]:
@@ -43,11 +43,11 @@ func _process(delta):
 			lapa_index = 0
 
 func _on_timer_timeout():
-	if przedmioty["ognik"] and not Globals.fire_mode:
+	if przedmioty["ognik"] and not Globals.fire_mode and not Globals.mroczna_wioska:
 		Input.set_custom_mouse_cursor(cursor_frames[frame_index], Input.CURSOR_ARROW, Vector2(45, 100))
 		frame_index = (frame_index + 1) % 4
 	elif Globals.fire_mode and Globals.crawl_mode:
 		Input.set_custom_mouse_cursor(woda[frame_index], Input.CURSOR_ARROW)
 		frame_index = (frame_index + 1) % 8
-	if przedmioty["lapa"]:
+	if przedmioty["lapa"] or Globals.mroczna_wioska:
 		Input.set_custom_mouse_cursor(lapa[lapa_index], Input.CURSOR_ARROW)

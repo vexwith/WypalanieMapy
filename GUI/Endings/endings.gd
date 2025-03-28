@@ -163,7 +163,9 @@ func _on_text_timer_timeout():
 		writting_in_progress = false
 		
 func _on_tween_finished():
-	get_parent().bgm.stream = get_parent().mu
-	get_parent().bgm.pitch_scale = 1.0
-	get_parent().bgm.play()
+	var m = get_parent()
+	m.bgm.stream = m.mu
+	m.bgm.pitch_scale = 1.0
+	m.bgm.volume_db = 3.0
+	m.bgm.play()
 

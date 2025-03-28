@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://51i0tmkrgehq"]
+[gd_scene load_steps=96 format=3 uid="uid://51i0tmkrgehq"]
 
 [ext_resource type="PackedScene" uid="uid://gibjfwvaggvf" path="res://Mapa/wide_mapa.tscn" id="1_8rl2d"]
 [ext_resource type="Script" path="res://game_manager.gd" id="1_vkdem"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://cc34otxvc6ovq" path="res://Mapa/FireMap/burn_map.tscn" id="39_tnvfu"]
 [ext_resource type="PackedScene" uid="uid://4jguw7ijsoyf" path="res://GUI/Endings/endings.tscn" id="40_7sxl8"]
 [ext_resource type="PackedScene" uid="uid://dv58w53ouisf4" path="res://UI/VolSettings/vol_setting.tscn" id="43_ow0nm"]
+[ext_resource type="PackedScene" uid="uid://cshmhtv0sc6d7" path="res://MrocznaWioska/mroczna_wioska.tscn" id="44_sqgfa"]
 [ext_resource type="Texture2D" uid="uid://dkqbdqqf632eq" path="res://GUI/b_lev6_0.png" id="44_t8m6n"]
 [ext_resource type="Texture2D" uid="uid://br3ndekpre8cg" path="res://GUI/b_lev5_0.png" id="45_bh4lp"]
 [ext_resource type="Texture2D" uid="uid://w5vvk6ve0kid" path="res://GUI/b_lev7_0.png" id="49_55mtc"]
@@ -584,6 +585,13 @@ offset_left = 852.0
 offset_top = -420.0
 offset_right = 894.0
 offset_bottom = -377.0
+
+[node name="MrocznaWioska" parent="Camera2D" instance=ExtResource("44_sqgfa")]
+visible = false
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
 
 [node name="SmallPiece" type="AnimatedSprite2D" parent="."]
 visible = false

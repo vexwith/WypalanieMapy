@@ -42,6 +42,7 @@ func load_data(path : String):
 			return
 
 		Globals.map_pieces = data.player_data.map_pieces
+		Globals.ending_one = data.player_data.ending_one
 		
 	else:
 		printerr("Cannot open non-existent file at %s!" % [path])
@@ -175,7 +176,10 @@ func true_ending():
 	
 	await tween2.finished
 	shadow.hide()
-	endings.display_dialog("TED")
+	if Globals.ending_one:
+		endings.display_dialog("TED")
+	else:
+		endings.display_dialog("TED2")
 
 func win_condition():
 	for piece in pieces.get_children():

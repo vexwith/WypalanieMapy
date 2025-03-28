@@ -59,6 +59,27 @@
         ["NARRATOR:\n", "Pewnie masz wiele pytań. Proszę bardzo, odpowiem na wszystkie."],
         ["", " ", "narrator_sad", "wybór"]
     ],
+    "TED2": [
+        ["", "Po przejściu przez drzwi twoim oczom ukazała się klepsydra.", "klepsydra"],
+        ["", "Ta sama klepsydra, którą widziałeś wcześniej w mrocznym pokoju."],
+        ["", "Nie chcąc żeby i tym razem zniknęła przed twoimi oczami szybko wyciągnąłeś w jej stronę rękę."],
+        ["", "Udało ci się", "mu"],
+        ["", "Klepsydra zamigotała, zafurczała i obróciła się do góry nogami.", "klepsydra_rotate"],
+        ["", "Czas"],
+        ["", " zaczął płynąć do przodu.", "cont"],
+        ["", "Przestrzeń"],
+        ["", " zaczęła się rozszerzać.", "cont"],
+        ["", "To co wodą było od wieków, lodem się stało.", "0"],
+        ["", "Zostałeś sam, dryfujący w pustym kosmosie.", "kosmos"],
+        ["", "Po pewnym czasie znalazł cię jednak ktoś żywy."],
+        ["NARRATOR:\n", "...", "narrator_neutral"],
+        ["NARRATOR:\n", "Dotknąłeś klepsydry prawda?"],
+        ["NARRATOR:\n", "Wszystko wróciło na swoje miejsce..."],
+        ["NARRATOR:\n", "Prędzej czy później musiało się to stać..."],
+        ["NARRATOR:\n", "......."],
+        ["NARRATOR:\n", "Pewnie masz wiele pytań. Proszę bardzo, odpowiem na wszystkie."],
+        ["", " ", "narrator_sad", "wybór"]
+    ],
     "W1": [
         ["NARRATOR:\n", "Nie musisz mówić po hauhasku.", "narrator_neutral"],
         ["NARRATOR:\n", "\nMoże się już domyśliłeś, ale nie jesteś dzielnym psem Reksiem...", "cont"],

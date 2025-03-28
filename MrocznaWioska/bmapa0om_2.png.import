@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crd2k6v306thy"
-path="res://.godot/imported/bkg_37.png-d213e9d237050d9a070eee2405054d7c.ctex"
+uid="uid://dwxnnnkgceh8a"
+path="res://.godot/imported/bmapa0om_2.png-3e97b06dc83941fd5e7acda2ccf7002d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bkg_37.png"
-dest_files=["res://.godot/imported/bkg_37.png-d213e9d237050d9a070eee2405054d7c.ctex"]
+source_file="res://MrocznaWioska/bmapa0om_2.png"
+dest_files=["res://.godot/imported/bmapa0om_2.png-3e97b06dc83941fd5e7acda2ccf7002d.ctex"]
 
 [params]
 

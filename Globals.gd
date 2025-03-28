@@ -14,6 +14,7 @@ var saper_count = 0 #adds 1 for every good square in saper. after 8 destroy bomb
 
 var undraggable = false #cant drag on non euclidean map
 var trapped = false #cant drag while eaten
+var mroczna_wioska = false #for changing ognik on mroczna wioska
 
 var crawl_mode = false #hills mode
 var fire_mode = false #works the same as crawl mode but with different reset and bgm

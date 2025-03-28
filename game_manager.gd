@@ -12,6 +12,7 @@ const VOL_FILE_NAME = "vol.save"
 @onready var reverse = preload("res://Wavs/reversemapa.wav")
 @onready var lustro = preload("res://Wavs/sfx_bdash_game_etap7_tlo.wav")
 @onready var ufo = preload("res://Wavs/00ufo.wav")
+@onready var wioska = preload("res://Wavs/Reksio i Skarb Piratów OST - Muza0mapa-(p).mp3")
 
 @onready var sfx = $SFX
 @onready var ojoj = preload("res://Wavs/6dziura.wav")
@@ -42,6 +43,7 @@ const VOL_FILE_NAME = "vol.save"
 @onready var fire_pieces = $FireMapa/Pieces
 @onready var burn_map = $Camera2D/BurnMap
 
+@onready var mroczna_wioska = $Camera2D/MrocznaWioska
 @onready var dark_map = $DarkMapa
 @onready var dark_pieces = $DarkMapa/Pieces
 @onready var infinity = $Infinity
@@ -157,6 +159,7 @@ func _ready():
 	SignalBus.connect("get_small_piece", get_small_piece)
 	SignalBus.connect("non_euclidean_clicked", _on_non_euclidean_clicked)
 	SignalBus.connect("blue_map_clicked", _on_blue_map_clicked)
+	SignalBus.connect("campfire_clicked", _on_campfire_clicked)
 	verify_save_directory(SAVE_DIR)
 	if Globals.kontynuuj:
 		Globals.kontynuuj = false
@@ -205,7 +208,7 @@ func _ready():
 		plaza_version = 8 #it resets to normal plaza so we have to slow it again
 		screen_shadow.show()
 		screen_shadow.modulate.a = 1.0
-		_on_real_exit_button_up()
+		_on_campfire_clicked()
 		
 #	first_map = false
 #	between_maps = false
@@ -219,6 +222,9 @@ func _process(delta):
 		elif ufo_flag:
 			bgm.stream = ufo
 			plaza_version = 9
+		elif mroczna_wioska.visible:
+			bgm.stream = wioska
+			plaza_version = 8
 		elif Globals.fire_mode and Globals.crawl_mode:
 			bgm.stream = reverse
 			plaza_version = 9 #reset
@@ -1099,15 +1105,23 @@ func _on_real_exit_button_up():
 	if message != null:
 		message.hide()
 		
+	Globals.mroczna_wioska = true
+	mroczna_wioska.show()
+	wide_map.hide()
+	bgm.stop()
+		
+func _on_campfire_clicked():
 	sfx.volume_db = -7.0
 	
+	screen_shadow.show()
+	screen_shadow.z_index = 1
 	var tween = get_tree().create_tween()
 	tween.bind_node(self)
-	screen_shadow.show()
 	tween.tween_property(screen_shadow, "modulate", Color(1.0, 1.0, 1.0, 1.0), 2.0)
 	
 	await tween.finished
-	wide_map.hide()
+	screen_shadow.z_index = 0
+	mroczna_wioska.hide()
 	real_exit.hide()
 	dark_map.show()
 	
@@ -1129,6 +1143,7 @@ func _on_real_exit_button_up():
 	Globals.map_state_log.clear() #disabling old map states
 	save_prev()
 	
+	Globals.mroczna_wioska = false
 	await get_tree().create_timer(1.0, false).timeout
 	screen_shadow.hide()
 	screen_shadow.modulate.a = 0.0
