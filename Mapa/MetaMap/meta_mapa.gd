@@ -8,7 +8,8 @@ const SECURITY_KEY = "092GSD2"
 @onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
 @onready var mu = preload("res://Wavs/Sunken Continent of Mu (variation ⧸ reinterpretation of Bartek Broszs track) ｜ Rex and Captain Nemo-(p).mp3")
 @onready var pieces = $Pieces
-@onready var bgm = $AudioStreamPlayer
+@onready var bgm = $BGM
+@onready var sfx = $SFX
 @onready var ognik = $Ognik
 @onready var modulation = $CanvasModulate
 @onready var shadow = $Shadow
@@ -106,7 +107,18 @@ func _on_spread_timer_timeout():
 		pieces.get_child(2).update(1)
 	spawn_timer.start()
 		
+func failed(piece):
+	if piece.stage in [5, 6]:
+		return true
+	for i in piece.affected_pieces:
+		if piece.get_parent().get_child(i).stage in [5, 6]:
+			return true
+	return false
+		
 func _on_piece_clicked(piece):
+	if failed(piece):
+		sfx.play()
+	
 	if piece == pieces.get_child(2):
 		var fire_piece = pieces.get_child(2)
 		var flame = fire_piece.get_child(5)

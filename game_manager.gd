@@ -511,7 +511,7 @@ func _on_piece_clicked(clicked_piece):
 		if burn_whole_map():
 			var message = get_tree().root.find_child("Message", true, false)
 			if message != null:
-				message.call_deferred("free")
+				message.hide()
 				
 			wide_map.hide()
 			var tween = get_tree().create_tween().bind_node(self)
@@ -1009,7 +1009,7 @@ func save_prev():
 func load_prev(map_state, camera_pos=null):
 	var message = get_tree().root.find_child("Message", true, false)
 	if message != null:
-		message.queue_free()
+		message.hide()
 	
 	map_state.pop_back() #get rid of last piece
 	
@@ -1097,7 +1097,7 @@ func load_prev(map_state, camera_pos=null):
 func _on_real_exit_button_up():
 	var message = get_tree().root.find_child("Message", true, false)
 	if message != null:
-		message.call_deferred("free")
+		message.hide()
 		
 	sfx.volume_db = -7.0
 	

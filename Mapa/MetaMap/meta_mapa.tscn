@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://drje5ks6015dh"]
+[gd_scene load_steps=54 format=3 uid="uid://drje5ks6015dh"]
 
 [ext_resource type="Script" path="res://Mapa/MetaMap/meta_mapa.gd" id="1_0s17a"]
 [ext_resource type="Texture2D" uid="uid://byu26rk2tm2cc" path="res://Mapa/MetaMap/metamapa.png" id="2_ffcg5"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://1fyiwqij2r7d" path="res://Mapa/kawałek8/pole8_rim.png" id="32_hwnv0"]
 [ext_resource type="Texture2D" uid="uid://bju6s1q6hapnb" path="res://GUI/17gotolawaA.png" id="33_ppdq0"]
 [ext_resource type="PackedScene" uid="uid://4jguw7ijsoyf" path="res://GUI/Endings/endings.tscn" id="38_a08or"]
+[ext_resource type="AudioStream" uid="uid://do3ewwwh3lfo2" path="res://Wavs/burnmap.wav" id="40_g4u0c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2viqa"]
 shader = ExtResource("2_r8oye")
@@ -454,8 +455,11 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_650pb")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_g4u0c")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -469,7 +473,7 @@ one_shot = true
 
 [connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
 [connection signal="button_up" from="Reset" to="." method="_on_reset_button_up"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="BGM" to="." method="_on_audio_stream_player_finished"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="SpreadTimer" to="." method="_on_spread_timer_timeout"]
 
