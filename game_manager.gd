@@ -1125,6 +1125,7 @@ func _on_campfire_clicked():
 	
 	await tween.finished
 	screen_shadow.z_index = 0
+	wide_map.hide()
 	mroczna_wioska.hide()
 	real_exit.hide()
 	dark_map.show()
@@ -1217,8 +1218,8 @@ func _on_menu_pressed():
 
 
 func _on_random_encounter_timeout():
-	if not sfx.playing:
+	if not sfx.playing and not dialogue.visible:
 		sfx.stream = ojoj
 		sfx.play()
-	random_encounter.wait_time = randi_range(15, 30)
+	random_encounter.wait_time = randi_range(100, 200)
 	random_encounter.start()

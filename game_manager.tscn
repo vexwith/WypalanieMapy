@@ -604,7 +604,7 @@ autoplay = "default"
 max_polyphony = 100
 
 [node name="RandomEncounter" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 
