@@ -3,6 +3,7 @@ extends Control
 @onready var pieces = $Pieces
 
 var map_state_log = []
+var map_log_index = 0
 
 func _ready():
 	SignalBus.connect("piece_clicked", _on_piece_clicked)
@@ -15,13 +16,18 @@ func _ready():
 	tween.tween_property($Text/Label3, "modulate", Color.WHITE, 1.0)
 	
 func _input(event):
-	if event.is_action_pressed("rewind"):
-		if len(map_state_log) > 1:
-			map_state_log.pop_back()
-			var prev_state = map_state_log[-1].duplicate()
+			
+	if (event.is_action_pressed("rewind") or event.is_action_pressed("rewind_camera")):
+		var direction = -1 if event.is_action_pressed("rewind") else 1
+		#out of bounds
+		if (map_log_index == 0 and direction == -1) or \
+		(map_log_index == len(map_state_log)-1 and direction == 1):
+			var prev_state = map_state_log[map_log_index].duplicate()
 			load_prev(prev_state)
-		elif len(map_state_log) == 1:
-			var prev_state = map_state_log[-1].duplicate()
+		#going both ways
+		else:
+			map_log_index += direction 
+			var prev_state = map_state_log[map_log_index].duplicate()
 			load_prev(prev_state)
 			
 	if event.is_action_pressed("restart"):
@@ -50,7 +56,10 @@ func save_prev():
 	var map_state = []
 	for piece in pieces.get_children():
 		map_state.append(piece.stage)
+		
+	map_state_log = map_state_log.slice(0, map_log_index+1) #cutting alternative branches
 	map_state_log.append(map_state)
+	map_log_index = len(map_state_log) - 1
 	
 func load_prev(map_state):
 	for i in range(len(map_state) - 1, -1, -1):

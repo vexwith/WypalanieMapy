@@ -75,8 +75,9 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("6_4qa52")
 text = "JEŚLI POPEŁNIŁEŚ BŁĄD MOŻESZ KLIKNĄĆ
-(R) RESTART ŻEBY COFNĄĆ SIĘ DO POCZĄTKU LUB
-(Z) ABY COFNĄĆ SWÓJ RUCH"
+(Z) ABY COFNĄĆ SWÓJ RUCH
+(C) ABY GO PRZYWRÓCIĆ
+(R) RESTART ŻEBY COFNĄĆ SIĘ DO POCZĄTKU"
 horizontal_alignment = 1
 autowrap_mode = 2
 

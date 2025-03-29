@@ -66,13 +66,13 @@ func show_message():
 				
 func choice_clicked(index):
 	clear_choices()
-#	if choices_made == [0, 0, 0, 0]:
-	match index:
-		0:
-			load_dialog("OW1")
-		1:
-			load_dialog("OW2")
-	return
+	if choices_made == [0, 0, 0, 0]:
+		match index:
+			0:
+				load_dialog("OW1")
+			1:
+				load_dialog("OW2")
+		return
 	if choices_made.is_empty():
 		load_dialog("W1")
 		choices_made = [1, 1, 1, 1]

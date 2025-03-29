@@ -68,7 +68,8 @@ const VOL_FILE_NAME = "vol.save"
 @onready var white_shadow = camera.find_child("WhiteShadow")
 @onready var endings = camera.find_child("EndingsNumber")
 @onready var dialogue = $Camera2D/Endings
-#@onready var detail_shadow = $"WideMapa/BaseMap/Kawałek100/DetailShadow"
+
+@onready var random_encounter = $RandomEncounter
 
 var camera_limits = [-624, -684, 2544, 1764]
 var reset_pos = Vector2(495, 413)
@@ -414,6 +415,8 @@ func failed(piece):
 func _on_piece_clicked(clicked_piece):
 	get_small_piece()
 	clear_modulation()
+	random_encounter.stop()
+	random_encounter.start()
 	
 	if failed(clicked_piece):
 		sfx.stream = ojoj
@@ -1109,6 +1112,7 @@ func _on_real_exit_button_up():
 	mroczna_wioska.show()
 	wide_map.hide()
 	bgm.stop()
+	sfx.stop()
 		
 func _on_campfire_clicked():
 	sfx.volume_db = -7.0
@@ -1210,3 +1214,11 @@ func _on_menu_pressed():
 	save_volume()
 	get_tree().change_scene_to_file("res://UI/menu.tscn")
 
+
+
+func _on_random_encounter_timeout():
+	if not sfx.playing:
+		sfx.stream = ojoj
+		sfx.play()
+	random_encounter.wait_time = randi_range(15, 30)
+	random_encounter.start()
