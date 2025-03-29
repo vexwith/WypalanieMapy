@@ -142,11 +142,69 @@
         ["NARRATOR:\n", "No cóż..."],
         ["NARRATOR:\n", " Może klepsydra sama chciała żebyś ją znalazł...", "cont"],
         ["NARRATOR:\n", "Nie wiem co teraz począć."],
-        ["NARRATOR:\n", "Mogę jedynie prosić cię o zostanie i kontynuowanie naszej przygody."],
+        ["NARRATOR:\n", "Mogę jedynie prosić cię o powrót do naszej przygody wypalania mapy."],
         ["", " ", "wybór2"]
     ],
     "OW1": [
-
+        ["NARRATOR:\n", "Jakimi kartkami?"],
+        ["NARRATOR:\n", "Mapa znowu ewoluowała bez mojej wiedzy?"],
+        ["NARRATOR:\n", "Szczerze powiedziawszy często się to zdarza."],
+        ["NARRATOR:\n", " Sam już nie jestem pewien czy wiem o wszystkim co tu się znajduje.", "cont"],
+        ["NARRATOR:\n", "Nie wiedziałem chociażby o przejściu przez menu, dzięki któremu się tu dostałeś."],
+        ["NARRATOR:\n", " Inaczej schowałbym klepsydrę gdzieś indziej.", "cont"],
+        ["NARRATOR:\n", "Nie wiem nic o kartkach, o których mówisz."],
+        ["", "Chciałeś pokazać narratorowi o co ci chodzi, ale plaża, a tym bardziej mapa, już nie istniały."],
+        ["", "Po listach nie został żaden ślad."],
+        ["NARRATOR:\n", "Czekaj"],
+        ["NARRATOR:\n", ", mam pewien pomysł.", "cont"],
+        ["NARRATOR:\n", "Narrator wyciągnął z powrotem klepsydrę.", "klepsydra"],
+        ["NARRATOR:\n", "Dotknij jej i spróbuj je sobie wyobrazić."],
+        ["", "Zacząłeś przypominać sobie treść listów, które widziałeś."],
+        ["", "Kiedy nagle...", "hills"],
+        ["", " ", "message"]
+    ],
+    "M1": [
+        ["NARRATOR:\n", "Niemożliwe...", "narrator_neutral"],
+        ["", " ", "message"]
+    ],
+    "M2": [
+        ["NARRATOR:\n", "Jak to możliwe?"],
+        ["", " ", "message"]
+    ],
+    "M3": [
+        ["NARRATOR:\n", "Nawet nie wiesz jak się cieszę, że cię widzę Kretesie.", "narrator"],
+        ["", " ", "message"]
+    ],
+    "M4": [
+        ["NARRATOR:\n", "Co masz na myśli?", "narrator_neutral"],
+        ["NARRATOR:\n", "\nChcesz tu zostać?", "cont"],
+        ["", " ", "message"]
+    ],
+    "M5": [
+        ["NARRATOR:\n", "To..."],
+        ["NARRATOR:\n", " Nie wiem co powiedzieć.", "cont"],
+        ["NARRATOR:\n", "\nNawet jeśli tu zostaniesz to niczego tu nie ma.", "cont"],
+        ["", " ", "message"]
+    ],
+    "M6": [
+        ["", " ", "message"]
+    ],
+    "M7": [
+        ["NARRATOR:\n", "Nie myślałem, żeby wykorzystać klepsydrę w ten sposób."],
+        ["", " ", "message"]
+    ],
+    "M8": [
+        ["", " ", "message"]
+    ],
+    "M9": [
+        ["NARRATOR:\n", "To chyba czas."],
+        ["NARRATOR:\n", "...Dziękuję ci graczu."],
+        ["NARRATOR:\n", "I do zobaczenia", "narrator_happy"],
+        ["NARRATOR:\n", "\nDo następnej przygody.", "cont"],
+        ["NARRATOR:\n", "Kretes i narrator użyli tajemniczego artefaktu.", "reverse_mapa"],
+        ["NARRATOR:\n", "Klepsydra zamigotała,", "klepsydra_future"],
+        ["NARRATOR:\n", " zafurczała", "cont"],
+        ["NARRATOR:\n", " i ich oczom ukazał się nowy świt.", "cont", "end"]
     ],
     "OW2": [
         ["NARRATOR:\n", "Więc jednak to jedyne wyjście...", "silence"],
@@ -163,6 +221,6 @@
         ["NARRATOR:\n", "Może znowu go nabierze kiedy dołącze do reszty..."],
         ["NARRATOR:\n", "Żegnaj...", "narrator_dead"],
         ["NARRATOR:\n", " graczu.", "cont"],
-        ["", " ", "0"]
+        ["", " ", "0", "end"]
     ]
 }

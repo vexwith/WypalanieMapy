@@ -7,6 +7,7 @@ const SECURITY_KEY = "092GSD2"
 @onready var flame_scene = preload("res://Mapa/FireMap/flames.tscn")
 @onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
 @onready var mu = preload("res://Wavs/Sunken Continent of Mu (variation ⧸ reinterpretation of Bartek Broszs track) ｜ Rex and Captain Nemo-(p).mp3")
+@onready var reverse_mapa = preload("res://Wavs/reversemapa.wav")
 @onready var pieces = $Pieces
 @onready var bgm = $BGM
 @onready var sfx = $SFX
@@ -117,9 +118,6 @@ func failed(piece):
 	return false
 		
 func _on_piece_clicked(piece):
-	if failed(piece):
-		sfx.play()
-	
 	if piece == pieces.get_child(2):
 		var fire_piece = pieces.get_child(2)
 		var flame = fire_piece.get_child(5)
@@ -140,6 +138,9 @@ func _on_piece_clicked(piece):
 	elif piece == pieces.get_child(1): #dark
 		modulation.color = Color.BLACK
 		ognik.dark_mode = true
+		
+	if failed(piece):
+		sfx.play()
 		
 	if win_condition():
 		true_ending()

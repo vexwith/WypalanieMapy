@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4jguw7ijsoyf"]
+[gd_scene load_steps=16 format=3 uid="uid://4jguw7ijsoyf"]
 
 [ext_resource type="Script" path="res://GUI/Endings/endings.gd" id="1_0pt62"]
 [ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="2_4l6ts"]
@@ -9,7 +9,10 @@
 [ext_resource type="Script" path="res://GUI/Endings/choice.gd" id="6_vsnfw"]
 [ext_resource type="Texture2D" uid="uid://dotjod6a63fx4" path="res://GUI/Endings/Nieznajomy_neutral.png" id="7_1m1wo"]
 [ext_resource type="Texture2D" uid="uid://bipxi47udv61n" path="res://GUI/Endings/Nieznajomy_sad.png" id="8_utto8"]
+[ext_resource type="Texture2D" uid="uid://duux44p5tl01b" path="res://GUI/Endings/Nieznajomy_happy.png" id="9_di543"]
 [ext_resource type="Texture2D" uid="uid://b6ycc6pxh081q" path="res://GUI/Endings/Nieznajomy_dead.png" id="9_vufbq"]
+[ext_resource type="PackedScene" uid="uid://dfdvqa0ogw2w3" path="res://Items/Messages/message.tscn" id="11_gk7uu"]
+[ext_resource type="Script" path="res://GUI/Endings/end_message.gd" id="12_b2nvl"]
 
 [sub_resource type="Gradient" id="Gradient_wv66y"]
 offsets = PackedFloat32Array(0)
@@ -116,14 +119,6 @@ size_flags_horizontal = 6
 size_flags_vertical = 0
 texture = ExtResource("5_rpwhi")
 
-[node name="NarratorNeutral" type="TextureRect" parent="VBoxContainer/Rim/BoxContainer"]
-visible = false
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 0
-texture = ExtResource("7_1m1wo")
-
 [node name="BoxContainer3" type="BoxContainer" parent="VBoxContainer/Rim"]
 layout_mode = 1
 anchors_preset = 15
@@ -155,6 +150,30 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
 texture = ExtResource("9_vufbq")
+
+[node name="NarratorHappy" type="TextureRect" parent="VBoxContainer/Rim/BoxContainer4"]
+visible = false
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("9_di543")
+
+[node name="BoxContainer5" type="BoxContainer" parent="VBoxContainer/Rim"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NarratorNeutral" type="TextureRect" parent="VBoxContainer/Rim/BoxContainer5"]
+visible = false
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("7_1m1wo")
 
 [node name="TextRim" type="ReferenceRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1850, 400)
@@ -294,6 +313,166 @@ vertical_alignment = 1
 autowrap_mode = 3
 script = ExtResource("6_vsnfw")
 
+[node name="Messages" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Message" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 276.0
+offset_right = 238.0
+offset_bottom = 337.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message" index="1"]
+offset_left = -207.0
+offset_top = -33.0
+offset_right = 418.0
+offset_bottom = 135.0
+text = "Ło matku! Udało się!"
+
+[node name="Message2" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 1552.0
+offset_top = 267.0
+offset_right = 1613.0
+offset_bottom = 328.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message2" index="1"]
+text = "A jednak! To ja!
+Komandor Kretes we własnej osobie!
+(Albo duchowej postaci)"
+
+[node name="Message3" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 268.0
+offset_right = 547.0
+offset_bottom = 329.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message3" index="1"]
+offset_top = -118.833
+offset_bottom = 294.167
+text = "Słyszałem wszystko co mówiłeś narratorze.
+Wydaję mi się, że całe to ustrojstwo przyciągnęło mnie z powrotem na wyspę skarbów. W końcu to tu się urodziłem.
+Po co komu cofanie w czasie, które jest tak bezużyteczne? Phi"
+
+[node name="Message4" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 1276.0
+offset_top = 269.0
+offset_right = 1337.0
+offset_bottom = 330.0
+script = ExtResource("12_b2nvl")
+
+[node name="TextureRect" parent="Messages/Message4" index="0"]
+offset_left = -204.0
+offset_top = -139.0
+offset_right = 265.0
+offset_bottom = 205.0
+
+[node name="Label" parent="Messages/Message4" index="1"]
+offset_top = -98.833
+offset_bottom = 255.167
+text = "Bardzo mi miło.
+Powiem ci jeno, że mimo, że nigdy cię nie widzieliśmy byłeś dla nas prawdziwym przyjacielem.
+Zostałeś z nami do usłanej śmierci.
+...Czas żeby odwzajemnić przysługę."
+
+[node name="Message5" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 1442.0
+offset_top = 426.0
+offset_right = 1503.0
+offset_bottom = 487.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message5" index="1"]
+offset_top = -78.833
+offset_bottom = 216.167
+text = "Reksio i reszta poczekają.
+Nigdzie nam nie uciekną.
+W końcu to pies, nie zając.
+Na pewno chcieliby dla odmiany    zobaczyć trochę twoich przygód."
+
+[node name="Message6" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 875.0
+offset_top = 765.0
+offset_right = 936.0
+offset_bottom = 826.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message6" index="1"]
+text = "Oj narratorze, nigdy nie ma niczego! Pojawiłem się tu w końcu ja i szanowny gracz. To znaczy, że nie widziałeś jeszcze wszystkiego!"
+
+[node name="Message7" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 307.0
+offset_right = 388.0
+offset_bottom = 368.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message7" index="1"]
+offset_top = -78.833
+offset_bottom = 216.167
+text = "Jeśli cofanie się w przeszłość
+nie działa spróbujmy przesypać piaski czasu do przodu.
+Kto wie? A nóż z tej kosmicznej papki zrodzi się coś nowego?"
+
+[node name="Message8" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 303.0
+offset_right = 696.0
+offset_bottom = 364.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message8" index="1"]
+offset_top = -18.833
+offset_bottom = 217.167
+text = "Może czekają nas nowe przygody, albo przynajmniej jakiś dżem."
+
+[node name="Message9" parent="Messages" instance=ExtResource("11_gk7uu")]
+layout_mode = 0
+offset_left = 1209.0
+offset_top = 77.0
+offset_right = 1270.0
+offset_bottom = 138.0
+script = ExtResource("12_b2nvl")
+
+[node name="Label" parent="Messages/Message9" index="1"]
+offset_top = -8.833
+offset_bottom = 184.167
+text = "No, nic tu po nas.
+Chodź narratorze."
+
+[node name="WhiteShadow" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="EndTimes" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("2_4l6ts")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.298039, 0.298039, 0.298039, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 200
+text = "WYPALANIE MAPY 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 0.04
 
@@ -310,3 +489,13 @@ wait_time = 0.04
 [connection signal="mouse_entered" from="VBoxContainer/TextRim/GridContainer/Label2" to="VBoxContainer/TextRim/GridContainer/Label2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/TextRim/GridContainer/Label2" to="VBoxContainer/TextRim/GridContainer/Label2" method="_on_mouse_exited"]
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
+
+[editable path="Messages/Message"]
+[editable path="Messages/Message2"]
+[editable path="Messages/Message3"]
+[editable path="Messages/Message4"]
+[editable path="Messages/Message5"]
+[editable path="Messages/Message6"]
+[editable path="Messages/Message7"]
+[editable path="Messages/Message8"]
+[editable path="Messages/Message9"]
