@@ -11,7 +11,7 @@ const VOL_FILE_NAME = "vol.save"
 @onready var label = $Label
 @onready var vol_settings = $VolSetting
 
-var tekst = ["REKSIU OCKNIJ SIĘ", "PRZED WYRUSZENIEM W DROGĘ NALEŻY WYPALIĆ MAPĘ, KTÓRĄ ZNALAZŁEŹ W BUTELCE",
+var tekst = ["REKSIU, OCKNIJ SIĘ", "PRZED WYRUSZENIEM W DROGĘ NALEŻY WYPALIĆ MAPĘ, KTÓRĄ ZNALAZŁEŚ W BUTELCE",
 			 "SPOKOJNIE, NA PEWNO CI SIĘ UDA"]
 var tekst_index = 0
 var tekst_time = 2.0
@@ -31,6 +31,8 @@ func load_volume():
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -5.9) #default
 
 func _ready():
+	Globals.back_to_menu = false
+	
 	load_volume()
 	
 	vol_settings.update_slider()
@@ -48,6 +50,7 @@ func _ready():
 	if not FileAccess.file_exists(SAVE_DIR + SAVE_FILE_NAME):
 		$Controls/VBoxContainer/Continue.disabled = true
 		secret.hide()
+		
 		
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
@@ -102,10 +105,22 @@ func _on_continue_pressed():
 func _on_tutorial_pressed():
 	get_tree().change_scene_to_file("res://Tutorial/tutorial.tscn")
 
+func print_all_nodes(node = get_tree().root, indent = 0):
+#	if node is Sprite2D:
+#		node.texture = null  # Free the texture
+#	elif node is TextureRect:
+#		node.texture = null  # Free the texture
+
+#	print("  ".repeat(indent) + node.name)  # Print node name with indentation
+	for child in node.get_children():
+		if is_instance_valid(child):
+			print_all_nodes(child, indent + 1)  # Recursively print children
 
 func _on_exit_pressed():
 	save_volume()
-	get_tree().quit()
+	print_all_nodes()
+	Input.set_custom_mouse_cursor(null)
+	get_tree().call_deferred("quit")
 
 func _on_secret_button_up():
 	get_tree().change_scene_to_file("res://Mapa/MetaMap/meta_mapa.tscn")

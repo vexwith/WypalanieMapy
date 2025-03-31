@@ -318,7 +318,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Message" parent="Messages" instance=ExtResource("11_gk7uu")]
+[node name="Message1" parent="Messages" instance=ExtResource("11_gk7uu")]
 layout_mode = 0
 offset_left = 177.0
 offset_top = 276.0
@@ -326,7 +326,7 @@ offset_right = 238.0
 offset_bottom = 337.0
 script = ExtResource("12_b2nvl")
 
-[node name="Label" parent="Messages/Message" index="1"]
+[node name="Label" parent="Messages/Message1" index="1"]
 offset_left = -207.0
 offset_top = -33.0
 offset_right = 418.0
@@ -490,7 +490,7 @@ wait_time = 0.04
 [connection signal="mouse_exited" from="VBoxContainer/TextRim/GridContainer/Label2" to="VBoxContainer/TextRim/GridContainer/Label2" method="_on_mouse_exited"]
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
 
-[editable path="Messages/Message"]
+[editable path="Messages/Message1"]
 [editable path="Messages/Message2"]
 [editable path="Messages/Message3"]
 [editable path="Messages/Message4"]

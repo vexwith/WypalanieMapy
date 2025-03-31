@@ -1,6 +1,6 @@
 extends Node
 
-var focused_piece = null #keep track of piece your cursor is on
+var back_to_menu = false
 
 var message_running = false #doesnt let you open many messages at the same time
 var open_messages = 0 #currently opened messages

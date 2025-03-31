@@ -167,6 +167,11 @@ func _ready():
 		_on_reset_button_pressed(false)
 		load_data(SAVE_DIR + SAVE_FILE_NAME)
 		get_tree().reload_current_scene()
+	if Globals.back_to_menu:
+		Globals.back_to_menu = false
+		await get_tree().process_frame
+		get_tree().call_deferred("change_scene_to_file", ("res://UI/menu.tscn"))
+		return
 		
 #	MAX_PIECES = base_map.get_child_count()
 	upgrade_to_wide_map()
@@ -328,6 +333,10 @@ func _input(event): #dragging hamdler
 		if not Globals.trapped:
 			if ognik.przedmioty["lapa"]: Globals.ignore_clicks = false
 			_on_ognik_button_button_up()
+		#random ojoj timer reset
+		if event.is_action_released("LPM"):
+			random_encounter.stop()
+			random_encounter.start()
 		
 	if event.is_action_pressed("2") or event.is_action_pressed("PPM"):
 		if not Globals.crawl_mode and Globals.lapa_gained:
@@ -346,10 +355,6 @@ func _input(event): #dragging hamdler
 			if ognik.light.color.a == 1.0:
 				clear_rims(dark_pieces)
 				clear_rims(blue_pieces)
-#		detail_shadow.color.a = 0.4 if detail_shadow.color.a == 0.0 else 0.0
-#	if event.is_action_released("ctrl"):
-#		Globals.detail_mode = false
-#		$Camera2D/DetailShadow.color.a = 0.0
 		
 			
 	#dragging
@@ -415,8 +420,6 @@ func failed(piece):
 func _on_piece_clicked(clicked_piece):
 	get_small_piece()
 	clear_modulation()
-	random_encounter.stop()
-	random_encounter.start()
 	
 	if failed(clicked_piece):
 		sfx.stream = ojoj
@@ -858,7 +861,6 @@ func _on_reset_button_pressed(reload = true):
 		Globals.reset_dark = true
 		
 	Globals.map_state_log.clear()
-	Globals.focused_piece = null
 	Globals.ignore_clicks = false
 	Globals.undraggable = false
 	Globals.bomb_clicked = false
@@ -1209,12 +1211,25 @@ func _on_dark_completed():
 	await tween2.finished
 	dialogue.display_dialog("ED2")
 
+func print_all_nodes(node = get_tree().root, indent = 0):
+	if node is Sprite2D:
+		node.texture = null  # Free the texture
+	elif node is TextureRect:
+		node.texture = null  # Free the texture
+		
+#	print("  ".repeat(indent) + node.name)  # Print node name with indentation
+	for child in node.get_children():
+		if is_instance_valid(child):
+			print_all_nodes(child, indent + 1)  # Recursively print children
+
 func _on_menu_pressed():
 	save_data(SAVE_DIR + SAVE_FILE_NAME)
 	reset_sound()
 	save_volume()
-	get_tree().change_scene_to_file("res://UI/menu.tscn")
-
+	print_all_nodes()
+	Globals.back_to_menu = true
+	Bgm.stream = null
+	get_tree().reload_current_scene()
 
 
 func _on_random_encounter_timeout():

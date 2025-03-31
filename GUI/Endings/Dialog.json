@@ -57,7 +57,7 @@
         ["NARRATOR:\n", "Prędzej czy później musiało się to stać..."],
         ["NARRATOR:\n", "......."],
         ["NARRATOR:\n", "Pewnie masz wiele pytań. Proszę bardzo, odpowiem na wszystkie."],
-        ["", " ", "narrator_sad", "wybór"]
+        ["", " ", "wybór"]
     ],
     "TED2": [
         ["", "Po przejściu przez drzwi twoim oczom ukazała się klepsydra.", "klepsydra"],
@@ -88,7 +88,7 @@
     ],
     "W2": [
         ["NARRATOR:\n", "Na końcu czasu."],
-        ["NARRATOR:\n", "Jesteśmy na tej samej plaży, tylko że miliardy lat później."],
+        ["NARRATOR:\n", "Jesteśmy w tym samym miejscu gdzie kiedyś była plaża, tylko że miliardy lat później."],
         ["NARRATOR:\n", "Długo po śmierci cieplnej wszechświata."],
         ["", " ", "wybór"]
     ],
@@ -107,7 +107,7 @@
     "W4": [
         ["NARRATOR:\n", "Jesteś graczem."],
         ["NARRATOR:\n", "Ściągnąłem cię tu abyś wypalił mapę..."],
-        ["NARRATOR:\n", " Albo bardziej, żebym mógł komu potowarzyszyć w jego przygodach.", "cont"],
+        ["NARRATOR:\n", " Albo bardziej, żebym miał komu potowarzyszyć w jego przygodach.", "cont"],
         ["", " ", "wybór"]
     ],
     "W5": [
@@ -123,7 +123,7 @@
         ["NARRATOR:\n", " Dziękuję ci za tę rozmowę.", "cont"],
         ["NARRATOR:\n", "\nCzuję się trochę lepiej.", "cont"],
         ["NARRATOR:\n", "Przepraszam, że cię tu ściągnąłem."],
-        ["NARRATOR:\n", "Jako narrator nie starzeje się i nie umieram."],
+        ["NARRATOR:\n", "Jako narrator nie starzeję się i nie umieram."],
         ["NARRATOR:\n", "\nWszyscy, na których mi zależało odeszli przede mną...", "cont"],
         ["NARRATOR:\n", "Na początku nie było tak źle."],
         ["NARRATOR:\n", "Zostałem narratorem przygód dzieci Kretesa,"],
@@ -217,8 +217,8 @@
         ["NARRATOR:\n", "Kim jestem? Kim jest narrator?"],
         ["NARRATOR:\n", "Nie rozumiem dlaczego i jak powstałem..."],
         ["NARRATOR:\n", "I pewnie nie stoi za tym wielki powód..."],
-        ["NARRATOR:\n", "Istnieje, żeby relacjonować. Jeśli nie ma kogokolwiek komu mógłbym służyć jako narrator, moje istnienie traci sens..."],
-        ["NARRATOR:\n", "Może znowu go nabierze kiedy dołącze do reszty..."],
+        ["NARRATOR:\n", "Istnieję, żeby relacjonować. Jeśli nie ma kogokolwiek, komu mógłbym służyć jako narrator, moje istnienie traci sens..."],
+        ["NARRATOR:\n", "Może znowu go nabierze, kiedy dołącze do reszty..."],
         ["NARRATOR:\n", "Żegnaj...", "narrator_dead"],
         ["NARRATOR:\n", " graczu.", "cont"],
         ["", " ", "0", "end"]
