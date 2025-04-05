@@ -183,7 +183,7 @@
     "M5": [
         ["NARRATOR:\n", "To..."],
         ["NARRATOR:\n", " Nie wiem co powiedzieć.", "cont"],
-        ["NARRATOR:\n", "\nNawet jeśli tu zostaniesz to niczego tu nie ma.", "cont"],
+        ["NARRATOR:\n", "\nNawet jeśli tu zostaniesz, to niczego tu nie ma.", "cont"],
         ["", " ", "message"]
     ],
     "M6": [

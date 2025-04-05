@@ -35,10 +35,11 @@ func _process(delta):
 		if Globals.undraggable and light.color.a == 0.0: #changing to lapa in any way will return to wide map
 			#in case of infinity it wont happen
 			get_parent().back_from_non_euclidean()
-		if Input.is_action_just_pressed("PPM"):
-			lapa_index = 1
+		if Input.is_action_just_pressed("PPM") or Input.is_action_just_pressed("LPM"):
 			if Globals.trapped:
 				SignalBus.emit_signal("mouse_freed")
+			if Input.is_action_just_pressed("PPM"):
+				lapa_index = 1
 		if Input.is_action_just_released("PPM"):
 			lapa_index = 0
 

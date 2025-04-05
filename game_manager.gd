@@ -76,6 +76,7 @@ var reset_pos = Vector2(495, 413)
 var map_log_index = 0
 
 const MAX_WYPALENIA = 6
+var message = null
 
 var first_map = true
 const MAX_PIECES = 25 #all pieces including hidden on the first map + 1
@@ -167,6 +168,7 @@ func _ready():
 		_on_reset_button_pressed(false)
 		load_data(SAVE_DIR + SAVE_FILE_NAME)
 		get_tree().reload_current_scene()
+		return
 	if Globals.back_to_menu:
 		Globals.back_to_menu = false
 		await get_tree().process_frame
@@ -397,8 +399,8 @@ func clear_modulation():
 func failed(piece):
 	if piece.stage == 5 or piece.stage == 6:
 		Globals.wypalenia += 1
-		if Globals.wypalenia == MAX_WYPALENIA:
-			var message = message_scene.instantiate()
+		if Globals.wypalenia == MAX_WYPALENIA and not (dark_map.visible or blue_map.visible):
+			message = message_scene.instantiate()
 			get_tree().root.add_child(message)
 			message.global_position = piece.global_position
 		return true
@@ -521,9 +523,7 @@ func _on_piece_clicked(clicked_piece):
 			
 	if all_failed():
 		if burn_whole_map():
-			var message = get_tree().root.find_child("Message", true, false)
-			if message != null:
-				message.hide()
+			reset_dynamic_message()
 				
 			wide_map.hide()
 			var tween = get_tree().create_tween().bind_node(self)
@@ -561,6 +561,8 @@ func _on_piece_clicked(clicked_piece):
 
 
 func _on_non_euclidean_clicked():
+	reset_dynamic_message()
+	
 	#animating zoom in
 	var portal_piece = base_map.get_child(41)
 	var init_cam_pos = camera.position
@@ -814,7 +816,7 @@ func dark_map_completed():
 		_on_dark_completed()
 	return [dark, blue]
 	
-func saper_failed():
+func saper_failed(): #used in saper number
 	for i in range(25, 40):
 		var piece = base_map.get_child(i)
 		if piece.stage >= 5:
@@ -883,9 +885,19 @@ func _on_reset_button_pressed(reload = true):
 		get_tree().reload_current_scene()
 
 func reset_sound():
+	reset_dynamic_message()
 	AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 7.0 * Globals.open_messages)
 	Globals.open_messages = 0
 	Globals.message_running = false
+	
+func reset_dynamic_message():
+#	var prev_message = get_tree().root.find_child("Message", true, false)
+	if message != null:
+		if message.get_child(0).visible:
+			AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 7.0)
+			Globals.open_messages -= 1
+		message.call_deferred("free")
+		
 
 func reset_fire_map():
 	for piece in fire_pieces.get_children():
@@ -1018,9 +1030,7 @@ func save_prev():
 	map_log_index = len(Globals.map_state_log) - 1
 	
 func load_prev(map_state, camera_pos=null):
-	var message = get_tree().root.find_child("Message", true, false)
-	if message != null:
-		message.hide()
+	reset_dynamic_message()
 	
 	map_state.pop_back() #get rid of last piece
 	
@@ -1106,9 +1116,7 @@ func load_prev(map_state, camera_pos=null):
 	get_small_piece()
 
 func _on_real_exit_button_up():
-	var message = get_tree().root.find_child("Message", true, false)
-	if message != null:
-		message.hide()
+	reset_dynamic_message()
 		
 	Globals.mroczna_wioska = true
 	mroczna_wioska.show()

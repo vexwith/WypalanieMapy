@@ -22,9 +22,10 @@ func _on_piece_clicked(piece):
 			gm.sfx.stream = gm.mina_setup
 			gm.sfx.play()
 			await gm.sfx.finished
-			gm.sfx.stream = gm.mina_wybuch
-			gm.sfx.play()
-			update(5)
+			if self.stage > 0:
+				gm.sfx.stream = gm.mina_wybuch
+				gm.sfx.play()
+				update(5)
 			bomb.hide()
 
 func bomb_vanish():
