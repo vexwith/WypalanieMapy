@@ -1157,6 +1157,7 @@ color = Color(0, 0, 0.647059, 1)
 
 [connection signal="timeout" from="Pieces/Kawałek0/Timer" to="Pieces/Kawałek0" method="_on_timer_timeout"]
 
+[editable path="PortalButton"]
 [editable path="Pieces/Kawałek0"]
 [editable path="Pieces/Kawałek15"]
 [editable path="Pieces/Kawałek15/Hint"]

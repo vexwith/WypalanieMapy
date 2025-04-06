@@ -1,6 +1,6 @@
 extends Button
 
-var vol_adj = 7.0
+var vol_adj = 5.0
 var time = 1.0
 var fn = func(b, a): AudioServer.set_bus_volume_db(a, b) #bind sends args after the call args so we have to switch them
 

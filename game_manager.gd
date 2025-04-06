@@ -98,6 +98,9 @@ var offset : Vector2
 
 var last_piece = null
 
+var game_time = 0.0
+var reset_block_time = 2.0
+
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
 	
@@ -222,6 +225,8 @@ func _ready():
 #	between_maps = false
 	
 func _process(delta):
+	game_time = min(game_time + delta, reset_block_time * 2)
+	
 	#bgm handler
 	if not bgm.playing:
 		if lustro_flag:
@@ -420,12 +425,13 @@ func failed(piece):
 	return false
 	
 func _on_piece_clicked(clicked_piece):
-	get_small_piece()
-	clear_modulation()
-	
 	if failed(clicked_piece):
 		sfx.stream = ojoj
 		sfx.play()
+		
+	get_small_piece()
+	clear_modulation()
+	
 	if first_map:
 		#check if first map is almost done
 		var map_uncompleted = true
@@ -485,6 +491,8 @@ func _on_piece_clicked(clicked_piece):
 			
 	elif clicked_piece.get_index() == 72 and not Globals.crawl_mode:
 		Globals.crawl_mode = true
+		game_time = reset_block_time - reset_block_time/2 #cant reset in animation
+		
 		camera_exit_pos = camera.global_position
 		var over = 9000
 		camera.limit_left = -over
@@ -508,6 +516,7 @@ func _on_piece_clicked(clicked_piece):
 		bgm.pitch_scale = 1.0
 		
 	elif Globals.crawl_mode and not all_failed():
+		game_time = reset_block_time - reset_block_time/2 #cant reset in animation
 		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property(camera, "global_position", clicked_piece.global_position, 0.5)
 		
@@ -598,17 +607,18 @@ func _on_non_euclidean_clicked():
 	
 func back_from_non_euclidean():
 	Globals.undraggable = false
+	if non_euclidean_completed():
+		var teleport = base_map.get_child(41)
+		teleport.stage = 4
+		teleport.sprite.play(str(teleport.stage))
+		_on_piece_clicked(teleport)
+		
 	non_euclidean_map.hide()
 	wide_map.show()
 	draggable = true
 	
 	door_to_lapa()
 	
-	if non_euclidean_completed():
-		var teleport = base_map.get_child(41)
-		teleport.stage = 4
-		teleport.sprite.play(str(teleport.stage))
-		_on_piece_clicked(teleport)
 
 func lapa_to_door():
 	var door_rect = Rect2(0, 0, 43, 51)
@@ -711,7 +721,7 @@ func get_small_piece():
 		if Globals.map_pieces["strzalki"] == false:
 			Globals.map_pieces["strzalki"] = true
 			small_piece_animation(base_map.get_child(70).find_child("Treasure").global_position + Vector2(85, 0))
-	if treasure and not sfx.playing:
+	if treasure:
 		play_win()
 		
 	if ptak:
@@ -739,6 +749,17 @@ func get_small_piece():
 		play_win()
 	saper_particles.emitting = saper
 	
+	if non_euclidean:
+		if Globals.map_pieces["non_euclidean"] == false:
+			Globals.map_pieces["non_euclidean"] = true
+			small_piece_animation(camera.global_position)
+	var portal_particles = base_map.get_child(41).find_child("Particles")
+	var non_euclidean_particles = non_euclidean_map.find_child("NonEuclideanParticles")
+	if not non_euclidean_particles.emitting and non_euclidean:
+		play_win()
+	portal_particles.emitting = non_euclidean
+	non_euclidean_particles.emitting = non_euclidean
+	
 	if sfx.playing:
 		await sfx.finished
 	
@@ -752,16 +773,6 @@ func get_small_piece():
 	wide_particles.emitting = wide
 		
 		
-	if non_euclidean:
-		if Globals.map_pieces["non_euclidean"] == false:
-			Globals.map_pieces["non_euclidean"] = true
-			small_piece_animation(camera.global_position)
-	var non_euclidean_particles = base_map.get_child(41).find_child("Particles")
-	if not non_euclidean_particles.emitting and non_euclidean and not sfx.playing:
-		play_win()
-	non_euclidean_particles.emitting = non_euclidean
-	
-	
 func play_win():
 	sfx.stop()
 	sfx.stream = win
@@ -852,6 +863,8 @@ func burn_whole_map():
 	return true
 
 func _on_reset_button_pressed(reload = true):
+	if game_time < reset_block_time:
+		return
 	if Globals.fire_mode:
 		reset_fire_map()
 		return
@@ -886,7 +899,7 @@ func _on_reset_button_pressed(reload = true):
 
 func reset_sound():
 	reset_dynamic_message()
-	AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 7.0 * Globals.open_messages)
+	AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 5.0 * Globals.open_messages)
 	Globals.open_messages = 0
 	Globals.message_running = false
 	
@@ -894,8 +907,9 @@ func reset_dynamic_message():
 #	var prev_message = get_tree().root.find_child("Message", true, false)
 	if message != null:
 		if message.get_child(0).visible:
-			AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 7.0)
+			AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 5.0)
 			Globals.open_messages -= 1
+			SignalBus.emit_signal("message_soundproofing")
 		message.call_deferred("free")
 		
 
@@ -958,6 +972,7 @@ func _on_lapa_button_button_up():
 
 func _on_hills_exit_button_up():
 	Globals.crawl_mode = false
+	game_time = 0.0
 	
 	camera.limit_left = camera_limits[0]
 	camera.limit_top = camera_limits[1]
@@ -1047,8 +1062,8 @@ func load_prev(map_state, camera_pos=null):
 		wide_map.visible = in_normal
 		non_euclidean_map.visible = !in_normal
 		if non_euclidean_map.visible:
-			ognik.przedmioty["lapa"] = in_normal
-			ognik.przedmioty["ognik"] = !in_normal
+			_on_ognik_button_button_up()
+			Globals.ignore_clicks = false
 		Globals.undraggable = !in_normal
 		if in_normal: door_to_lapa()
 		else: lapa_to_door()

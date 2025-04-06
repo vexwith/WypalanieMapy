@@ -423,7 +423,7 @@ offset_top = -78.833
 offset_bottom = 216.167
 text = "Jeśli cofanie się w przeszłość
 nie działa spróbujmy przesypać piaski czasu do przodu.
-Kto wie? A nóż z tej kosmicznej papki zrodzi się coś nowego?"
+Kto wie? A nuż z tej kosmicznej papki zrodzi się coś nowego?"
 
 [node name="Message8" parent="Messages" instance=ExtResource("11_gk7uu")]
 layout_mode = 0

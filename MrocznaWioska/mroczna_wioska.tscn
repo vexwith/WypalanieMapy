@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cshmhtv0sc6d7"]
+[gd_scene load_steps=19 format=3 uid="uid://cshmhtv0sc6d7"]
 
 [ext_resource type="Script" path="res://MrocznaWioska/mroczna_wioska.gd" id="1_cq3ly"]
 [ext_resource type="Texture2D" uid="uid://crd2k6v306thy" path="res://MrocznaWioska/bkg_37.png" id="2_jpm74"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ljjlr3yndnvo" path="res://MrocznaWioska/bmapaom_2.png" id="4_0d581"]
 [ext_resource type="Texture2D" uid="uid://2n6rpx0cj1as" path="res://MrocznaWioska/bmapa0oc.png" id="5_o0qrh"]
 [ext_resource type="Texture2D" uid="uid://dwxnnnkgceh8a" path="res://MrocznaWioska/bmapa0om_2.png" id="6_v84sg"]
+[ext_resource type="Texture2D" uid="uid://bsila2ww7b0a8" path="res://Items/Messages/message.png" id="7_xed1h"]
+[ext_resource type="Theme" uid="uid://b08scbdwv7hst" path="res://Tutorial/text_theme.tres" id="8_exnlv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpmqo"]
 texture = ExtResource("3_8umme")
@@ -85,5 +87,140 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
 
+[node name="FakeMapa" type="Button" parent="."]
+offset_left = 1226.0
+offset_top = 86.0
+offset_right = 1297.0
+offset_bottom = 152.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8gck7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fc6ef")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
+
+[node name="FakeList" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FakeMapa2" type="Button" parent="FakeList"]
+visible = false
+offset_left = 1106.0
+offset_top = 86.0
+offset_right = 1177.0
+offset_bottom = 152.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8gck7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fc6ef")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
+
+[node name="FakeMapa3" type="Button" parent="FakeList"]
+visible = false
+offset_left = 986.0
+offset_top = 86.0
+offset_right = 1057.0
+offset_bottom = 152.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8gck7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fc6ef")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
+
+[node name="FakeMapa4" type="Button" parent="FakeList"]
+visible = false
+offset_left = 866.0
+offset_top = 86.0
+offset_right = 937.0
+offset_bottom = 152.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8gck7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fc6ef")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
+
+[node name="FakeMapa5" type="Button" parent="FakeList"]
+visible = false
+offset_left = 746.0
+offset_top = 86.0
+offset_right = 817.0
+offset_bottom = 152.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8gck7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fc6ef")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
+
+[node name="FakeMapa6" type="Button" parent="FakeList"]
+visible = false
+offset_left = 626.0
+offset_top = 86.0
+offset_right = 697.0
+offset_bottom = 152.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8gck7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fc6ef")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
+
+[node name="TextureRect" type="TextureRect" parent="FakeList/FakeMapa6"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = -118.667
+offset_top = 6.0
+offset_right = 184.333
+offset_bottom = 350.0
+texture = ExtResource("7_xed1h")
+
+[node name="Label" type="Label" parent="FakeList/FakeMapa6"]
+visible = false
+layout_mode = 0
+offset_left = -89.0
+offset_top = 75.0
+offset_right = 166.0
+offset_bottom = 335.0
+theme = ExtResource("8_exnlv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "AliWern
+Kretonpodziemny
+Lien
+Wazzap
+Valiola
+Kaczor Dziennikarski
+Shadow aka cień
+Yoshida
+Bobromir
+HappyOrange"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="FakeMapa7" type="Button" parent="FakeList"]
+visible = false
+offset_left = 506.0
+offset_top = 86.0
+offset_right = 577.0
+offset_bottom = 152.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8gck7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fc6ef")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jkhjc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="pressed" from="Mapa" to="." method="_on_mapa_pressed"]
 [connection signal="pressed" from="DarkMapa" to="." method="_on_dark_mapa_pressed"]
+[connection signal="pressed" from="FakeMapa" to="." method="_on_fake_mapa_pressed"]
+[connection signal="pressed" from="FakeList/FakeMapa6" to="." method="_on_fake_mapa_6_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
