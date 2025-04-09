@@ -88,6 +88,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_3elgi")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
 
 [node name="FakeMapa" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1226.0
 offset_top = 86.0
 offset_right = 1297.0
@@ -106,6 +107,7 @@ offset_bottom = 40.0
 
 [node name="FakeMapa2" type="Button" parent="FakeList"]
 visible = false
+layout_mode = 0
 offset_left = 1106.0
 offset_top = 86.0
 offset_right = 1177.0
@@ -119,6 +121,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
 
 [node name="FakeMapa3" type="Button" parent="FakeList"]
 visible = false
+layout_mode = 0
 offset_left = 986.0
 offset_top = 86.0
 offset_right = 1057.0
@@ -132,6 +135,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
 
 [node name="FakeMapa4" type="Button" parent="FakeList"]
 visible = false
+layout_mode = 0
 offset_left = 866.0
 offset_top = 86.0
 offset_right = 937.0
@@ -145,6 +149,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
 
 [node name="FakeMapa5" type="Button" parent="FakeList"]
 visible = false
+layout_mode = 0
 offset_left = 746.0
 offset_top = 86.0
 offset_right = 817.0
@@ -158,6 +163,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0yhes")
 
 [node name="FakeMapa6" type="Button" parent="FakeList"]
 visible = false
+layout_mode = 0
 offset_left = 626.0
 offset_top = 86.0
 offset_right = 697.0
@@ -204,6 +210,7 @@ autowrap_mode = 2
 
 [node name="FakeMapa7" type="Button" parent="FakeList"]
 visible = false
+layout_mode = 0
 offset_left = 506.0
 offset_top = 86.0
 offset_right = 577.0

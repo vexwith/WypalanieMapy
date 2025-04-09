@@ -1016,7 +1016,7 @@ offset_bottom = 198.0
 [node name="Label" parent="Pieces/Kawałek15/Hint" index="1"]
 offset_top = -88.833
 offset_bottom = 324.167
-text = "#2 Nie wiem co się dzieje, ale w wiosce nie ma żywej duszy. Próbowałem zawołać Wodza Kurczakę, ale z moich ust nie wydobywał się żaden dźwięk. W tak potwornej sytuacji powinien pojawić się narrator, ale po nim też ani śladu."
+text = "#2 Nie wiem co się dzieje, ale w wiosce nie ma żywej duszy. Próbowałem zawołać Wodza Kurczakę, ale z moich ust nie wydobywał się żaden dźwięk. W tak potwornej sytuacji powinien pojawić się Narrator, ale po nim też ani śladu."
 
 [node name="Kawałek16" parent="Pieces" instance=ExtResource("27_xrnbv")]
 position = Vector2(601, 1024)

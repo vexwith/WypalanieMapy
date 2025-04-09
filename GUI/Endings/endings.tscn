@@ -357,7 +357,7 @@ script = ExtResource("12_b2nvl")
 [node name="Label" parent="Messages/Message3" index="1"]
 offset_top = -118.833
 offset_bottom = 294.167
-text = "Słyszałem wszystko co mówiłeś narratorze.
+text = "Słyszałem wszystko co mówiłeś Narratorze.
 Wydaję mi się, że całe to ustrojstwo przyciągnęło mnie z powrotem na wyspę skarbów. W końcu to tu się urodziłem.
 Po co komu cofanie w czasie, które jest tak bezużyteczne? Phi"
 
@@ -379,9 +379,9 @@ offset_bottom = 205.0
 offset_top = -98.833
 offset_bottom = 255.167
 text = "Bardzo mi miło.
-Powiem ci jeno, że mimo, że nigdy cię nie widzieliśmy byłeś dla nas prawdziwym przyjacielem.
+Powiem ci jeno, że mimo, że nigdy Cię nie widzieliśmy byłeś dla nas prawdziwym przyjacielem.
 Zostałeś z nami do usłanej śmierci.
-...Czas żeby odwzajemnić przysługę."
+...Czas odwzajemnić przysługę."
 
 [node name="Message5" parent="Messages" instance=ExtResource("11_gk7uu")]
 layout_mode = 0
@@ -397,7 +397,7 @@ offset_bottom = 216.167
 text = "Reksio i reszta poczekają.
 Nigdzie nam nie uciekną.
 W końcu to pies, nie zając.
-Na pewno chcieliby dla odmiany    zobaczyć trochę twoich przygód."
+Na pewno chcieliby dla odmiany    zobaczyć trochę Twoich przygód."
 
 [node name="Message6" parent="Messages" instance=ExtResource("11_gk7uu")]
 layout_mode = 0
@@ -408,7 +408,7 @@ offset_bottom = 826.0
 script = ExtResource("12_b2nvl")
 
 [node name="Label" parent="Messages/Message6" index="1"]
-text = "Oj narratorze, nigdy nie ma niczego! Pojawiłem się tu w końcu ja i szanowny gracz. To znaczy, że nie widziałeś jeszcze wszystkiego!"
+text = "Oj Narratorze, nigdy nie ma niczego! Pojawiłem się tu w końcu ja i szanowny gracz. To znaczy, że nie widziałeś jeszcze wszystkiego!"
 
 [node name="Message7" parent="Messages" instance=ExtResource("11_gk7uu")]
 layout_mode = 0
@@ -422,8 +422,8 @@ script = ExtResource("12_b2nvl")
 offset_top = -78.833
 offset_bottom = 216.167
 text = "Jeśli cofanie się w przeszłość
-nie działa spróbujmy przesypać piaski czasu do przodu.
-Kto wie? A nuż z tej kosmicznej papki zrodzi się coś nowego?"
+nie działa, spróbujmy przesypać piaski czasu do przodu.
+Kto wie - a nuż z tej kosmicznej papki zrodzi się coś nowego?"
 
 [node name="Message8" parent="Messages" instance=ExtResource("11_gk7uu")]
 layout_mode = 0
@@ -450,7 +450,7 @@ script = ExtResource("12_b2nvl")
 offset_top = -8.833
 offset_bottom = 184.167
 text = "No, nic tu po nas.
-Chodź narratorze."
+Chodź, Narratorze."
 
 [node name="WhiteShadow" type="ColorRect" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfdvqa0ogw2w3"]
+[gd_scene load_steps=10 format=3 uid="uid://dfdvqa0ogw2w3"]
 
 [ext_resource type="Texture2D" uid="uid://bwtt0xhsxwewn" path="res://Items/Messages/kartka.png" id="1_y46s6"]
 [ext_resource type="Script" path="res://Items/Messages/message.gd" id="2_p1h7q"]
@@ -17,6 +17,9 @@ region_rect = Rect2(0, 0, 61, 61)
 texture = ExtResource("1_y46s6")
 region_rect = Rect2(0, 0, 61, 61)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6t8j"]
+texture = ExtResource("1_y46s6")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2vlx"]
 
 [node name="Message" type="Button"]
@@ -28,6 +31,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_styles/normal = SubResource("StyleBoxTexture_c4wt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_uxt2b")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_52rph")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_f6t8j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d2vlx")
 script = ExtResource("2_p1h7q")
 

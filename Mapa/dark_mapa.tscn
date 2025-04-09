@@ -985,7 +985,7 @@ offset_bottom = 205.0
 offset_top = -78.833
 offset_bottom = 216.167
 text = "#1
-A więc zmarłem i jadę sobie, proszę ciebie bardzo, windą do nieba, a tu nagle brzdęk! I ląduje z powrotem na wyspie skarbów!"
+A więc zmarłem i jadę sobie, proszę ciebie bardzo, windą do nieba, a tu nagle brzdęk! Ląduję z powrotem na wyspie skarbów!"
 
 [node name="Kawałek9" parent="Pieces" instance=ExtResource("34_0kjhg")]
 position = Vector2(200, 1086)
