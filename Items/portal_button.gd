@@ -20,7 +20,7 @@ func update_buttons(gm, state):
 	for button in [dark_button, blue_button]:
 		button.disabled = !button.disabled
 		button.next_state = max(button.next_state + state, 0)
-		button.mode.play(str(min(next_state, 3)))
+		button.mode.play(str(min(button.next_state, 3)))
 	
 	var dark_portal = gm.dark_pieces.get_child(0)
 	var blue_portal = gm.blue_pieces.get_child(0)

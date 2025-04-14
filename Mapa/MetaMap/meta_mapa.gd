@@ -88,6 +88,7 @@ func _on_audio_stream_player_finished():
 
 
 func _on_exit_button_up():
+	Globals.ignore_clicks = false
 	get_tree().change_scene_to_file("res://UI/menu.tscn")
 
 
