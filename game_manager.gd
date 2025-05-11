@@ -98,8 +98,8 @@ var offset : Vector2
 
 var last_piece = null
 
-var game_time = 0.0
 var reset_block_time = 2.0
+var game_time = 2.0
 
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
@@ -491,7 +491,7 @@ func _on_piece_clicked(clicked_piece):
 			
 	elif clicked_piece.get_index() == 72 and not Globals.crawl_mode:
 		Globals.crawl_mode = true
-		game_time = reset_block_time - reset_block_time/2 #cant reset in animation
+		game_time = reset_block_time/2 #cant reset in animation
 		
 		camera_exit_pos = camera.global_position
 		var over = 9000
@@ -516,7 +516,7 @@ func _on_piece_clicked(clicked_piece):
 		bgm.pitch_scale = 1.0
 		
 	elif Globals.crawl_mode and not all_failed():
-		game_time = reset_block_time - reset_block_time/2 #cant reset in animation
+		game_time = reset_block_time/2 #cant reset in animation
 		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property(camera, "global_position", clicked_piece.global_position, 0.5)
 		
@@ -598,6 +598,7 @@ func _on_non_euclidean_clicked():
 	non_euclidean_map.global_position = camera.global_position - Vector2(960, 540)
 	non_euclidean_map.show()
 	wide_map.hide()
+	portal_piece.clickable = true
 	
 	#lapa returns you to wide map instead
 	lapa_to_door()
