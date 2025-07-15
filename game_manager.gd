@@ -3,7 +3,7 @@ extends Node2D
 const SAVE_DIR = "user://saves/"
 const SAVE_FILE_NAME = "save_2.json"
 const SECURITY_KEY = "092GSD2"
-const VOL_FILE_NAME = "vol.save"
+const VOL_FILE_NAME = "vol_and_touch.save"
 
 @onready var bgm = Bgm
 @onready var plaza = preload("res://Wavs/Reksio i Skarb Piratów OST - Muza1-(p).mp3")
@@ -108,6 +108,8 @@ func save_volume():
 	var file = FileAccess.open(SAVE_DIR + VOL_FILE_NAME, FileAccess.WRITE)
 	var saved_vol = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
 	file.store_var(saved_vol)
+	var saved_touchpad = Globals.touchpad
+	file.store_var(saved_touchpad)
 	
 func save_data(path : String):
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
@@ -336,7 +338,7 @@ func _input(event): #dragging hamdler
 				var prev_state = Globals.map_state_log[map_log_index].duplicate()
 				load_prev(prev_state, with_camera)
 			
-	if event.is_action_pressed("1") or event.is_action_released("LPM"):
+	if event.is_action_pressed("1") or (event.is_action_released("LPM") and not Globals.touchpad):
 		if not Globals.trapped:
 			if ognik.przedmioty["lapa"]: Globals.ignore_clicks = false
 			_on_ognik_button_button_up()
@@ -367,7 +369,7 @@ func _input(event): #dragging hamdler
 	#dragging
 	if not Globals.crawl_mode and not Globals.trapped:
 		if event is InputEventMouseMotion and draggable:
-			if event.button_mask == MOUSE_BUTTON_MASK_RIGHT:
+			if event.button_mask == MOUSE_BUTTON_MASK_RIGHT or (event.button_mask == MOUSE_BUTTON_MASK_LEFT and Globals.touchpad):
 				var new_pos = camera.position - event.relative * camera.zoom * 0.4
 				camera.position = new_pos
 				if new_pos.x < 400: #480
@@ -1118,6 +1120,9 @@ func load_prev(map_state, camera_pos=null):
 				var piece = base_map.get_child(i + 1)
 				piece.stage = map_state.pop_back()
 				piece.update(0)
+				# clear detail mode of first map outer pieces
+				piece.rim.modulate = Color(1.0, 1.0, 1.0, 0.0)
+				if piece.stage_number != null: piece.stage_number.hide()
 				
 	#changing portal button state
 	var cur_button = dark_map.find_child("PortalButton")
@@ -1128,8 +1133,9 @@ func load_prev(map_state, camera_pos=null):
 		for i in range(prev_state):
 			cur_button.update_buttons(self, 1)
 			
-	#reestablish particles
+	# reestablish particles
 	get_small_piece()
+		
 
 func _on_real_exit_button_up():
 	reset_dynamic_message()

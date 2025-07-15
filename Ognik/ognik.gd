@@ -38,9 +38,9 @@ func _process(delta):
 		if Input.is_action_just_pressed("PPM") or Input.is_action_just_pressed("LPM"):
 			if Globals.trapped:
 				SignalBus.emit_signal("mouse_freed")
-			if Input.is_action_just_pressed("PPM"):
+			if Input.is_action_just_pressed("PPM") or (Input.is_action_just_pressed("LPM") and Globals.touchpad):
 				lapa_index = 1
-		if Input.is_action_just_released("PPM"):
+		if Input.is_action_just_released("PPM") or (Input.is_action_just_released("LPM") and Globals.touchpad):
 			lapa_index = 0
 
 func _on_timer_timeout():

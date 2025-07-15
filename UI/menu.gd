@@ -2,7 +2,7 @@ extends Control
 
 const SAVE_DIR = "user://saves/"
 const SAVE_FILE_NAME = "save_2.json"
-const VOL_FILE_NAME = "vol.save"
+const VOL_FILE_NAME = "vol_and_touch.save"
 
 @onready var cursor = preload("res://Ognik/cursor_0.png")
 
@@ -21,12 +21,17 @@ func save_volume():
 	var file = FileAccess.open(SAVE_DIR + VOL_FILE_NAME, FileAccess.WRITE)
 	var saved_vol = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
 	file.store_var(saved_vol)
+	var saved_touchpad = Globals.touchpad
+	file.store_var(saved_touchpad)
 
 func load_volume():
 	if FileAccess.file_exists(SAVE_DIR + VOL_FILE_NAME):
 		var file = FileAccess.open(SAVE_DIR + VOL_FILE_NAME, FileAccess.READ)
 		var loaded_vol = file.get_var()
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), loaded_vol)
+		var loaded_touchpad = file.get_var()
+		Globals.touchpad = loaded_touchpad
+		$Touchpad/CheckBox.button_pressed = loaded_touchpad
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -5.9) #default
 
@@ -143,3 +148,8 @@ func _on_label_change():
 	var tween = get_tree().create_tween().bind_node(self)
 	tween.finished.connect(_on_label_start)
 	tween.tween_property(label, "modulate", Color(1.0, 1.0, 1.0, 0.0), 3.0)
+
+
+func _on_check_box_toggled(button_pressed):
+	Globals.touchpad = button_pressed
+	save_volume() # It also saves touchpad

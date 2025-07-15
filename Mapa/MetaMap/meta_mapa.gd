@@ -3,6 +3,7 @@ extends Control
 const SAVE_DIR = "user://saves/"
 const SAVE_FILE_NAME = "save_2.json"
 const SECURITY_KEY = "092GSD2"
+const VOL_FILE_NAME = "vol_and_touch.save"
 
 @onready var flame_scene = preload("res://Mapa/FireMap/flames.tscn")
 @onready var hills = preload("res://Wavs/Mysterious Hills-(p).mp3")
@@ -26,6 +27,13 @@ var ptak_change = -1
 
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
+	
+func save_volume():
+	var file = FileAccess.open(SAVE_DIR + VOL_FILE_NAME, FileAccess.WRITE)
+	var saved_vol = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+	file.store_var(saved_vol)
+	var saved_touchpad = Globals.touchpad
+	file.store_var(saved_touchpad)
 	
 func load_data(path : String):
 	if FileAccess.file_exists(path):
@@ -88,6 +96,7 @@ func _on_audio_stream_player_finished():
 
 
 func _on_exit_button_up():
+	save_volume()
 	Globals.ignore_clicks = false
 	get_tree().change_scene_to_file("res://UI/menu.tscn")
 

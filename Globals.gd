@@ -2,6 +2,8 @@ extends Node
 
 var back_to_menu = false
 
+var touchpad = false #yoshida chcial xd
+
 var message_running = false #doesnt let you open many messages at the same time
 var open_messages = 0 #currently opened messages
 
