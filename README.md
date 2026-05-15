@@ -42,7 +42,9 @@ WypalanieMapy/
 
 Oryginalnie wypalanie mapy pochodzi z gry Reksio i Skarb Piratów. W jednej z minigierek gracz musiał odkryć co widnieje na mapie napisanej atramentem sympatycznym poprzez zbliżanie ognia do poszczególnych jej elementów.
 
-Każde kliknięcie zwiększa widoczność wybranego kawałka w znacznym stopniu, a także kawałków obok niego o mniejszą wartość. Celem jest doprowadzenie mapy do stanu, w którym wszystko jest widoczne i w kolorze, jednocześnie uważając żeby nie wypalić dziury w papierze.
+Każde kliknięcie zwiększa widoczność wybranego kawałka w znacznym stopniu, a także kawałków obok niego o mniejszą wartość. Celem jest doprowadzenie mapy do stanu, w którym wszystko jest widoczne i w kolorze, jednocześnie uważając, żeby nie wypalić dziury w papierze.
+
+Wypalanie Mapy 2 jest rozwinięciem tego konceptu na najróżniejsze, niespodziewane sposoby. Co jeszcze kryje się w mapie...?
 
 ## Kontrolki
 
