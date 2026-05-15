@@ -1,5 +1,11 @@
+## Wypalanie Mapy 2
+gra typu puzzle zrobiona w 3 dni na game jam https://itch.io/jam/prgj
+
+link do gry - https://vex2137.itch.io/wypalanie-mapy-2
+
 ## Architektura projektu
 
+```
 WypalanieMapy/ 
 ├── game_manager.gd # Główny system zarządzający grą 
 ├── Globals.gd # Globalne zmienne stanu gry 
@@ -30,6 +36,7 @@ WypalanieMapy/
 ├── Wavs/ # Ścieżka dźwiękowa i efekty dźwiękowe 
 ├── *.ttf / *.otf # Czcionki (AutourOne, PixelFraktur, Silver, Get Now) 
 └── [czcionki i ikony] # Zasoby graficzne
+```
 
 ## Cel gry
 
